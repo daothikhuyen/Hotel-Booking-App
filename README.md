@@ -10,7 +10,12 @@
 
 ## UI: Hotel Booking App
 
+- **OnBoarding and Splash**
+  
 <img src="./assets/images/image_project/splash_view.png" width="200"/>
+<img src="./assets/images/image_project/onboarding_1.png" width="200"/>
+<img src="./assets/images/image_project/onboarding_2.png" width="200"/>
+<img src="./assets/images/image_project/onboarding_3.png" width="200"/>
 
 ## Technologies Used
 - Visual studio code
