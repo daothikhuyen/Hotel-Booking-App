@@ -8,13 +8,13 @@ import 'package:hotel_booking_app/theme/app_colors.dart';
 
 
 void main() {
-  // runApp(
-  //   DevicePreview(
-  //     enabled: !kReleaseMode,
-  //     builder: (context) => MyApp(), // Wrap your app
-  //   ),
-  // );
-  runApp(const MyApp());
+  runApp(
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => MyApp(), // Wrap your app
+    ),
+  );
+  // runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

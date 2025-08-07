@@ -12,10 +12,15 @@
 
 - **OnBoarding and Splash**
   
-<img src="./assets/images/image_project/splash_view.png" width="200"/>
-<img src="./assets/images/image_project/onboarding_1.png" width="200"/>
-<img src="./assets/images/image_project/onboarding_2.png" width="200"/>
-<img src="./assets/images/image_project/onboarding_3.png" width="200"/>
+<img src="./assets/images/image_project/splash_view.png" width="200"/> <img src="./assets/images/image_project/onboarding_1.png" width="200"/> <img src="./assets/images/image_project/onboarding_2.png" width="200"/> <img src="./assets/images/image_project/onboarding_3.png" width="200"/>
+
+- **Login**
+  
+<img src="./assets/images/image_project/login.png" width="200"/> 
+
+- **Demo**
+  
+ https://github.com/user-attachments/assets/dac7bc57-74db-4196-9060-a1dd0e8c3f63
 
 ## Technologies Used
 - Visual studio code

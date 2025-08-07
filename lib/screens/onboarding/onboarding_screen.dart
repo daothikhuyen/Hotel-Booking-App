@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hotel_booking_app/routes/app_router.dart';
 import 'package:hotel_booking_app/screens/sign_in.dart';
 import 'package:hotel_booking_app/theme/app_colors.dart';
+import 'package:hotel_booking_app/widgets/customer_button.dart';
 import '../../data/onboarding_data.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -24,7 +26,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     } else {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const SignIn()),
+        animationRouter(SignIn())
       );
     }
   }
@@ -110,24 +112,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               )
                               : SizedBox.shrink(),
                           const SizedBox(height: 30),
-                          ElevatedButton(
-                            onPressed: nextPage,
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFF2853AF),
-                              minimumSize: const Size(double.infinity, 56),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                            ),
-                            child: Text(
-                              item['nameButton']!,
-                              style: GoogleFonts.jost(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
+                          CustomerButton(textButton: item['nameButton']!, onPressed: nextPage, bold: true),
                           const SizedBox(height: 20),
                           if (item['nameButton']! == 'Get Started')
                             Row(
