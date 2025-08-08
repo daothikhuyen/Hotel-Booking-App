@@ -24,10 +24,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         curve: Curves.easeInOut,
       );
     } else {
-      Navigator.pushReplacement(
-        context,
-        animationRouter(SignIn())
-      );
+      Navigator.pushReplacement(context, animationRouter(SignIn()));
     }
   }
 
@@ -112,7 +109,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               )
                               : SizedBox.shrink(),
                           const SizedBox(height: 30),
-                          CustomerButton(textButton: item['nameButton']!, onPressed: nextPage, bold: true),
+                          CustomerButton(
+                            textButton: item['nameButton']!,
+                            onPressed: nextPage,
+                            bold: true,
+                          ),
                           const SizedBox(height: 20),
                           if (item['nameButton']! == 'Get Started')
                             Row(

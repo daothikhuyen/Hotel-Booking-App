@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SocialButton extends StatelessWidget {
-  const SocialButton({super.key, required this.linkIcon});
+  const SocialButton({super.key, required this.linkIcon, required this.onPressed});
 
   final String linkIcon;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onPressed,
       child: Container(
         width: 72.0,
         height: 48.0,

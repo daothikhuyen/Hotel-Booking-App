@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hotel_booking_app/routes/app_router.dart';
+import 'package:hotel_booking_app/screens/home_screen.dart';
+import 'package:hotel_booking_app/services/auth_service.dart';
 import 'package:hotel_booking_app/theme/app_colors.dart';
 import 'package:hotel_booking_app/widgets/circular_checkbox%20.dart';
 import 'package:hotel_booking_app/widgets/customer_button.dart';
 import 'package:hotel_booking_app/widgets/social_button.dart';
+
+import '../utils/validator.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -20,38 +25,30 @@ class _SignInState extends State<SignIn> {
   final TextEditingController _password = TextEditingController();
 
   bool isCheckbox = false;
+  bool _closePassword = true;
+  String? error;
 
-  void LogIn() {
+  // ignore: non_constant_identifier_names
+  Future<void> LogIn() async {
+    if (_formKey.currentState!.validate()) {
+      String email = _emailInput.text;
+      String password = _password.text;
 
-  if(_formKey.currentState!.validate()){
-    print('ho');
-  }
-}
+      String? response = await AuthService().signInUser(email, password);
 
-
-// validator for email
-  String? validatorEmail(String? value) {
-    final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-
-    if (value == null || value.isEmpty) {
-      return 'Please entern your email';
-    } else if (!emailRegExp.hasMatch(value)) {
-      return 'Invalid email format';
+      if (response == 'sucess') {
+        ScaffoldMessenger.of(
+          // ignore: use_build_context_synchronously
+          context,
+        ).showSnackBar(SnackBar(content: Text("SignIn Sucess")));
+        // ignore: use_build_context_synchronously
+        Navigator.push(context, animationRouter(HomeScreen()));
+      } else {
+        setState(() {
+          error = response;
+        });
+      }
     }
-
-    return null;
-  }
-
-// validator for password  
-  String? validatePassword(String? value) {
-
-    if (value == null || value.isEmpty) {
-      return 'Please entern your password';
-    } else if (value.length < 8) {
-      return 'Password must be at least 6 characters long';
-    }
-
-    return null;
   }
 
   @override
@@ -89,6 +86,18 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
                 SizedBox(height: 30),
+                Align(
+                  child: Text(
+                    error ?? '',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14,
+                      color: AppColors.error,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                SizedBox(height: 15),
                 Text(
                   'Email Address',
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
@@ -103,6 +112,10 @@ class _SignInState extends State<SignIn> {
                     fillColor: Color(0xFFF6F6F6),
                     border: InputBorder.none,
                     enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(13),
+                      borderSide: BorderSide.none,
+                    ),
+                    focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(13),
                       borderSide: BorderSide.none,
                     ),
@@ -137,14 +150,22 @@ class _SignInState extends State<SignIn> {
                       borderRadius: BorderRadius.circular(13),
                       borderSide: BorderSide.none,
                     ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(13),
+                      borderSide: BorderSide.none,
+                    ),
                     suffixIcon: IconButton(
                       icon: Icon(Icons.visibility_off),
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          _closePassword = !_closePassword;
+                        });
+                      },
                     ),
                   ),
                   keyboardType: TextInputType.visiblePassword,
                   textInputAction: TextInputAction.next,
-                  obscureText: true,
+                  obscureText: _closePassword,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 15),
@@ -247,14 +268,35 @@ class _SignInState extends State<SignIn> {
                   children: [
                     SocialButton(
                       linkIcon: 'assets/images/icon/Icon - Google.svg',
+                      onPressed: () async {
+                        String response =
+                            await AuthService().signInUserWithGoogle();
+                        if (response == 'sucess') {
+                          ScaffoldMessenger.of(
+                            // ignore: use_build_context_synchronously
+                            context,
+                          ).showSnackBar(
+                            SnackBar(content: Text("SignIn Sucess")),
+                          );
+                          // ignore: use_build_context_synchronously
+                          Navigator.push(
+                            context,
+                            animationRouter(HomeScreen()),
+                          );
+                        } else {
+                          error = response;
+                        }
+                      },
                     ),
                     SizedBox(width: 10),
                     SocialButton(
                       linkIcon: 'assets/images/icon/Icon - Apple.svg',
+                      onPressed: () {},
                     ),
                     SizedBox(width: 10),
                     SocialButton(
                       linkIcon: 'assets/images/icon/Icon - Facebook.svg',
+                      onPressed: () {},
                     ),
                   ],
                 ),

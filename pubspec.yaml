@@ -38,8 +38,10 @@ dependencies:
   google_fonts: ^6.3.0
   device_preview: ^1.2.0
   flutter_svg: ^2.2.0
-  # firebase_core: ^4.0.0
-  # firebase_database: ^12.0.0
+  firebase_core: ^4.0.0
+  firebase_database: ^12.0.0
+  firebase_auth: ^6.0.0
+  google_sign_in: ^6.3.0
 
 dev_dependencies:
   flutter_test:
@@ -69,17 +71,17 @@ flutter:
     - assets/images/icon/
     - assets/images/
 
-flutter_native_splash:
-  color: "#2853af"
-  image: assets/images/logo.png
-  android: true
-  ios: true
-  web: false
+# flutter_native_splash:
+#   color: "#2853af"
+#   image: assets/images/logo.png
+#   android: true
+#   ios: true
+#   web: false
 
-  android_12:
-    color: "#2853af"
-    icon_background_color: "#071b5d"
-    image: assets/images/logo.png
+#   android_12:
+#     color: "#2853af"
+#     icon_background_color: "#071b5d"
+#     image: assets/images/logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
