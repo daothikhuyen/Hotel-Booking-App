@@ -69,6 +69,8 @@ flutter:
   assets:
     - assets/images/onboarding/
     - assets/images/icon/
+    - assets/images/home/
+    - assets/images/avatar/
     - assets/images/
 
 # flutter_native_splash:

@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/firebase_options.dart';
+import 'package:hotel_booking_app/screens/home/main_home_screen.dart';
 import 'package:hotel_booking_app/screens/onboarding/splash_screen.dart';
 // import 'package:hotel_booking_app/screens/sign_in.dart';
 import 'package:hotel_booking_app/theme/app_colors.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         scaffoldBackgroundColor: AppColors.background
       ),
-      home: SplashScreen(),
+      home: MainHomeScreen(),
     );
   }
 }
