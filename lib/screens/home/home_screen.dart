@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:hotel_booking_app/theme/app_colors.dart';
+import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/widgets/home/card_most_popular.dart';
 import 'package:hotel_booking_app/widgets/home/header_bar.dart';
+import 'package:hotel_booking_app/widgets/home/title_with_btn.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,20 +18,23 @@ class _HomeScreenState extends State<HomeScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: SingleChildScrollView(
+        // scrollDirection: Axis.horizontal,
         child: Column(
           children: [
-            SizedBox(height: 51.0, child: HeaderBar()),
+            SizedBox(height: 51.0, child: HeaderBar(linkImage: 'assets/images/avatar/Ellipse.png', userName: 'Matr Kohler', address: 'San Diego, CA')),
             Padding(
               padding: const EdgeInsets.only(top: 20),
               child: Container(
                 width: double.infinity,
                 height: 72,
                 decoration: BoxDecoration(
-                  color: AppColors.second_primary,
-                  border: Border.all(width: 1, color: AppColors.second_primary),
+                  color: Theme.of(context).colorScheme.secondary,
+                  border: Border.all(
+                    width: 1,
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
                   borderRadius: BorderRadius.circular(15),
                 ),
-                // color: AppColors.second_primary,
                 child: Padding(
                   padding: const EdgeInsets.only(
                     left: 10,
@@ -54,7 +57,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           Text(
-                            'You Can Change Your Location to\n show nearby villas',
+                            AppLocalizations.of(context)!.locationTitle,
+                            style: TextStyle(color: Colors.black),
                           ),
                         ],
                       ),
@@ -66,96 +70,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
-              ),
-            ),
-            // Most Popular
-            Padding(
-              padding: const EdgeInsets.only(top: 16, bottom: 16),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Most Popular',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'See All',
-                          style: GoogleFonts.plusJakartaSans().copyWith(
-                            fontSize: 12,
-                            color: AppColors.primary,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 225,
-                    child: Scrollbar(
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 4,
-                        itemBuilder: (context, index) {
-                          return CardMostPopular();
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            // Recommendex For You
-            Padding(
-              padding: const EdgeInsets.only(top: 16, bottom: 16),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Recommended For You',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                      Row(children: [
-                          
-                        ],
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'See All',
-                          style: GoogleFonts.plusJakartaSans().copyWith(
-                            fontSize: 12,
-                            color: AppColors.primary,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 225,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 4,
-                      itemBuilder: (context, index) {
-                        return CardMostPopular();
-                      },
-                    ),
-                  ),
-                ],
               ),
             ),
           ],

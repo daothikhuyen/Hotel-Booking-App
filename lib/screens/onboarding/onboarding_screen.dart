@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/routes/app_router.dart';
-import 'package:hotel_booking_app/screens/sign_in.dart';
-import 'package:hotel_booking_app/theme/app_colors.dart';
-import 'package:hotel_booking_app/widgets/customer_button.dart';
+import 'package:hotel_booking_app/screens/auth/sign_in.dart';
+import 'package:hotel_booking_app/themes/app_colors.dart';
+import 'package:hotel_booking_app/widgets/button/primary_btn.dart';
 import '../../data/onboarding_data.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -101,7 +101,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                       borderRadius: BorderRadius.circular(10),
                                       color:
                                           _currentIndex == dotIndex
-                                              ? AppColors.primary
+                                              ? Theme.of(context).colorScheme.primary
                                               : const Color(0xFFBFC6CC),
                                     ),
                                   ),
@@ -109,7 +109,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               )
                               : SizedBox.shrink(),
                           const SizedBox(height: 30),
-                          CustomerButton(
+                          PrimaryBtn(
                             textButton: item['nameButton']!,
                             onPressed: nextPage,
                             bold: true,
@@ -139,7 +139,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   child: Text(
                                     "Register",
                                     style: GoogleFonts.roboto().copyWith(
-                                      color: AppColors.primary,
+                                      color: Theme.of(context).colorScheme.primary,
                                     ),
                                   ),
                                 ),

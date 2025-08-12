@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
 
 class Destination {
-  const Destination( this.id,this.icon, this.label);
+  const Destination( this.id,this.icon, this.labelKey);
   final int id;
   final String icon;
-  final String label;
+  final String labelKey;
 
 }
 

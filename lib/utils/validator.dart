@@ -1,22 +1,25 @@
 // validator for email
-String? validatorEmail(String? value) {
+import 'package:flutter/material.dart';
+import 'package:hotel_booking_app/l10n/app_localizations.dart';
+
+String? validatorEmail(BuildContext context, String? value) {
   final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
 
   if (value == null || value.isEmpty) {
-    return 'Please entern your email';
+    return AppLocalizations.of(context)!.errorEmptyEmail;
   } else if (!emailRegExp.hasMatch(value)) {
-    return 'Invalid email format';
+    return AppLocalizations.of(context)!.errorEmailFormat;
   }
   return null;
 }
 
 // validator for password
-String? validatePassword(String? value) {
+String? validatePassword(BuildContext context, String? value) {
 
   if (value == null || value.isEmpty) {
-    return 'Please entern your password';
+    return AppLocalizations.of(context)!.errorEmptyPassword;
   } else if (value.length < 8) {
-    return 'Password must be at least 6 characters long';
+    return AppLocalizations.of(context)!.errorPasswordFormat;
   }
   return null;
 }

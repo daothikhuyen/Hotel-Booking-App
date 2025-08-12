@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/model/destination.dart';
 import 'package:hotel_booking_app/routes/destinations.dart';
-import 'package:hotel_booking_app/theme/app_colors.dart';
 
 class MainHomeScreen extends StatefulWidget {
   const MainHomeScreen({super.key});
@@ -28,13 +28,14 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: AppColors.background,
+          color: Theme.of(context).colorScheme.surface,
           border: Border(
-            top: BorderSide(color: Colors.grey.shade300, width: 1),
+            top: BorderSide(color: Theme.of(context).colorScheme.outline, width: 0.5),
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              // ignore: deprecated_member_use
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.1),
               blurRadius: 8,
               offset: Offset(0, -2), // location y
             ),
@@ -47,15 +48,15 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
               states,
             ) {
               if (states.contains(WidgetState.selected)) {
-                return const TextStyle(color: AppColors.primary);
+                return TextStyle(color: Theme.of(context).colorScheme.primary);
               }
-              return const TextStyle(color: AppColors.textColor);
+              return TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant);
             }),
           ),
           child: NavigationBar(
             elevation: 0,
             selectedIndex: _selectedIndex,
-            backgroundColor: Colors.white,
+            backgroundColor: Theme.of(context).colorScheme.surface,
             indicatorColor: Colors.transparent,
             onDestinationSelected: (value) {
               setState(() {
@@ -70,9 +71,22 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                     selectedIcon: SvgPicture.asset(
                       d.icon,
                       // ignore: deprecated_member_use
-                      color: AppColors.primary,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
-                    label: d.label,
+                    label: () {
+                      switch (d.labelKey) {
+                        case 'Home':
+                          return AppLocalizations.of(context)!.home;
+                        case 'My Booking':
+                          return AppLocalizations.of(context)!.mybooking;
+                        case 'Message':
+                          return AppLocalizations.of(context)!.message;
+                        case 'Profile':
+                          return AppLocalizations.of(context)!.profile;
+                        default:
+                          return '';
+                      }
+                    }(),
                   );
                 }).toList(),
           ),

@@ -1,14 +1,30 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'package:hotel_booking_app/themes/theme.dart';
+
 class CardMostPopular extends StatefulWidget {
-  const CardMostPopular({super.key});
+  const CardMostPopular({
+    Key? key,
+    this.linkImage,
+    required this.name,
+    required this.address,
+    required this.money, required this.ratting,
+  }) : super(key: key);
+
+  final String? linkImage;
+  final String name;
+  final String address;
+  final double money;
+  final String ratting;
 
   @override
   State<CardMostPopular> createState() => _CardMostPopularState();
 }
 
 class _CardMostPopularState extends State<CardMostPopular> {
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -19,9 +35,9 @@ class _CardMostPopularState extends State<CardMostPopular> {
             height: 220,
             margin: const EdgeInsets.all(4),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
-                image: AssetImage('assets/images/home/FrameOne.png'),
+                image: AssetImage(widget.linkImage ?? 'assets/images/home/FrameOne.png'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -50,34 +66,27 @@ class _CardMostPopularState extends State<CardMostPopular> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'The Horizon Retreat',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
+                    widget.name,
+                    style: CustomerTextStyles.suitableBoldTextStyle(Colors.white)
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'Los Angeles, CA',
-                    style: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.normal,
-                      color: Colors.white,
-                    ),
+                    widget.address,
+                    style: CustomerTextStyles.smallTextStyle(Colors.white.withOpacity(0.7))
                   ),
                   SizedBox(height: 5),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '\$480/night',
-                        style: TextStyle(color: Colors.white, fontSize: 12),
+                        '\$ ${widget.money}/night',
+                        style: CustomerTextStyles.prNormalTextStyle(Colors.white),
                       ),
                       Row(
                         children: [
                           Icon(Icons.star, color: Colors.yellow, size: 12),
                           Text(
-                            '4.5',
+                            widget.ratting,
                             style: TextStyle(fontSize: 12, color: Colors.white),
                           ),
                         ],

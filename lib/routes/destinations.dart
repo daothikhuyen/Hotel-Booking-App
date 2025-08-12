@@ -11,7 +11,7 @@ class DestinationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Container(
         alignment: Alignment.center,
         child: destination.id == 0

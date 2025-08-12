@@ -1,9 +1,16 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hotel_booking_app/themes/theme.dart';
 
 class HeaderBar extends StatelessWidget {
-  const HeaderBar({super.key});
+  const HeaderBar( {super.key, required this.linkImage, required this.userName, required this.address});
+
+  final String? linkImage;
+  final String userName;
+  final String address;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +24,7 @@ class HeaderBar extends StatelessWidget {
               child: Container(
                 color: Colors.white,
                 child: Image.asset(
-                  'assets/images/avatar/Ellipse.png',
+                  linkImage?? 'assets/images/avatar/Ellipse.png',
                   width: 40,
                   height: 40,
                   fit: BoxFit.contain,
@@ -27,26 +34,27 @@ class HeaderBar extends StatelessWidget {
             const SizedBox(width: 12),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Matr Kohler',
-                  style: GoogleFonts.plusJakartaSans().copyWith(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  userName,
+                  style: GoogleFonts.plusJakartaSans(
+                    textStyle: CustomerTextStyles.avBoldTextStyle(Theme.of(context).colorScheme.onSurface)
+                  )
                 ),
                 const SizedBox(height: 4),
                 Row(
                   children: [
                     SvgPicture.asset(
                       'assets/images/icon/Vector.svg',
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
                       fit: BoxFit.contain,
                     ),
                     SizedBox(width: 4),
                     Text(
-                      'San Diego, CA',
+                      address,
                       style: GoogleFonts.plusJakartaSans().copyWith(
-                        color: Color(0xFF78828A),
+                        color: Theme.of(context).colorScheme.onSurfaceVariant
                       ),
                     ),
                   ],
@@ -68,6 +76,7 @@ class HeaderBar extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: SvgPicture.asset(
                   'assets/images/icon/Search.svg',
+                  color: Theme.of(context).iconTheme.color,
                   fit: BoxFit.contain,
                 ),
               ),
@@ -87,6 +96,7 @@ class HeaderBar extends StatelessWidget {
                   children: [
                     SvgPicture.asset(
                       'assets/images/icon/Group.svg',
+                      color: Theme.of(context).iconTheme.color,
                       fit: BoxFit.contain,
                     ),
 

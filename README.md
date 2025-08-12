@@ -18,6 +18,10 @@
   
 <img src="./assets/images/image_project/login.png" width="200"/> 
 
+- **Home**
+  
+ <img src="./assets/images/image_project/top_nav_bar.png" width="200"/> 
+
 - **Demo**
   
  https://github.com/user-attachments/assets/dac7bc57-74db-4196-9060-a1dd0e8c3f63
@@ -30,13 +34,42 @@
 
 ## Installation
 
+- Set up multi language: [See more here](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization)
+
+```bash
+  flutter pub add flutter_localizations --sdk=flutter
+  flutter pub add intl:any
+```
+### Run Widgetbook
+
+- Set up Widgetbook project: [See more her](https://docs.widgetbook.io/guides/quick-start)
+```bash
+  flutter create widgetbook --empty
+  flutter create widgetbook --empty --platforms=web,macos
+```
+- Built file main.directories.g in widgetbook
+  
+```bash
+  Built file main.directories.g
+```
+
+- Move to folder
+```bash
+  cd widgetbook
+```
+
+- Run project
+```bash
+  flutter run
+```
+### Run Hotel Booking App 
 - Move to project branch
+
 ```bash
     git checkout master
 ```
 - Run project
 ```bash
   flutter run
-
 ```
 
