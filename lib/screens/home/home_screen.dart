@@ -72,6 +72,47 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
+            // Most Popular
+            Padding(
+              padding: const EdgeInsets.only(top: 16, bottom: 13),
+              child: Column(
+                children: [
+                  TitleWithBtn(
+                    title: AppLocalizations.of(context)!.mostPopular,
+                    titleBtn: AppLocalizations.of(context)!.seeAll,
+                    onPressed: () {},
+                  ),
+                  SizedBox(height: 5,),
+                  SizedBox(
+                    height: 221,
+                    child: Scrollbar(
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 4,
+                        itemBuilder: (context, index) {
+                          return CardMostPopular(linkImage: 'assets/images/home/FrameOne.png',name: 'The Horizon Retreat', address: 'Los Angeles, CA', money: 450, ratting: '4.5',);
+                        },
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // Recommendex For You
+            Padding(
+              padding: const EdgeInsets.only(bottom: 16),
+              child: Column(
+                children: [
+                  TitleWithBtn(
+                    title: AppLocalizations.of(context)!.homeRecommended,
+                    titleBtn: AppLocalizations.of(context)!.seeAll,
+                    onPressed: () {},
+                  ),
+                  SizedBox(height: 5,),
+                ],
+              ),
+            ),
           ],
         ),
       ),

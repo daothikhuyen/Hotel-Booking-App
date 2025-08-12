@@ -11,7 +11,6 @@
 .svn/
 .swiftpm/
 migrate_working_dir/
-lib/hotel_booking/widgets/home/card_most_popular.dart
 
 
 # IntelliJ related
