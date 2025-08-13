@@ -1,17 +1,16 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import 'package:hotel_booking_app/themes/theme.dart';
 
-class CardMostPopular extends StatefulWidget {
-  const CardMostPopular({
-    Key? key,
+class MostPopularItem extends StatefulWidget {
+  const MostPopularItem({
+    super.key,
     this.linkImage,
     required this.name,
     required this.address,
-    required this.money, required this.ratting,
-  }) : super(key: key);
+    required this.money,
+    required this.ratting,
+  });
 
   final String? linkImage;
   final String name;
@@ -20,11 +19,10 @@ class CardMostPopular extends StatefulWidget {
   final String ratting;
 
   @override
-  State<CardMostPopular> createState() => _CardMostPopularState();
+  State<MostPopularItem> createState() => _MostPopularItemState();
 }
 
-class _CardMostPopularState extends State<CardMostPopular> {
-
+class _MostPopularItemState extends State<MostPopularItem> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -37,12 +35,14 @@ class _CardMostPopularState extends State<CardMostPopular> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
-                image: AssetImage(widget.linkImage ?? 'assets/images/home/FrameOne.png'),
+                image: AssetImage(
+                  widget.linkImage ?? 'assets/images/home/FrameOne.png',
+                ),
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          
+
           Positioned(
             top: 15,
             right: 10,
@@ -67,12 +67,16 @@ class _CardMostPopularState extends State<CardMostPopular> {
                 children: [
                   Text(
                     widget.name,
-                    style: CustomerTextStyles.suitableBoldTextStyle(Colors.white)
+                    style: CustomerTextStyles.suitableBoldTextStyle(
+                      Colors.white,
+                    ),
                   ),
                   SizedBox(height: 5),
                   Text(
                     widget.address,
-                    style: CustomerTextStyles.smallTextStyle(Colors.white.withOpacity(0.7))
+                    style: CustomerTextStyles.smallTextStyle(
+                      Colors.white.withOpacity(0.7),
+                    ),
                   ),
                   SizedBox(height: 5),
                   Row(
@@ -80,7 +84,9 @@ class _CardMostPopularState extends State<CardMostPopular> {
                     children: [
                       Text(
                         '\$ ${widget.money}/night',
-                        style: CustomerTextStyles.prNormalTextStyle(Colors.white),
+                        style: CustomerTextStyles.prNormalTextStyle(
+                          Colors.white,
+                        ),
                       ),
                       Row(
                         children: [

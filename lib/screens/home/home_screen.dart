@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
-import 'package:hotel_booking_app/widgets/home/card_most_popular.dart';
+import 'package:hotel_booking_app/widgets/home/sections/most_popular_section.dart';
+import 'package:hotel_booking_app/widgets/home/sections/recomended_section.dart';
 import 'package:hotel_booking_app/widgets/home/header_bar.dart';
-import 'package:hotel_booking_app/widgets/home/title_with_btn.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,7 +22,14 @@ class _HomeScreenState extends State<HomeScreen> {
         // scrollDirection: Axis.horizontal,
         child: Column(
           children: [
-            SizedBox(height: 51.0, child: HeaderBar(linkImage: 'assets/images/avatar/Ellipse.png', userName: 'Matr Kohler', address: 'San Diego, CA')),
+            SizedBox(
+              height: 51.0,
+              child: HeaderBar(
+                linkImage: 'assets/images/avatar/Ellipse.png',
+                userName: 'Matr Kohler',
+                address: 'San Diego, CA',
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 20),
               child: Container(
@@ -37,14 +45,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(
-                    left: 10,
+                    // left: 5,
                     right: 20,
                     top: 16,
                     bottom: 16,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Row(
                         children: [
@@ -73,46 +81,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             // Most Popular
-            Padding(
-              padding: const EdgeInsets.only(top: 16, bottom: 13),
-              child: Column(
-                children: [
-                  TitleWithBtn(
-                    title: AppLocalizations.of(context)!.mostPopular,
-                    titleBtn: AppLocalizations.of(context)!.seeAll,
-                    onPressed: () {},
-                  ),
-                  SizedBox(height: 5,),
-                  SizedBox(
-                    height: 221,
-                    child: Scrollbar(
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 4,
-                        itemBuilder: (context, index) {
-                          return CardMostPopular(linkImage: 'assets/images/home/FrameOne.png',name: 'The Horizon Retreat', address: 'Los Angeles, CA', money: 450, ratting: '4.5',);
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            MostPopularSection(),
             // Recommendex For You
-            Padding(
-              padding: const EdgeInsets.only(bottom: 16),
-              child: Column(
-                children: [
-                  TitleWithBtn(
-                    title: AppLocalizations.of(context)!.homeRecommended,
-                    titleBtn: AppLocalizations.of(context)!.seeAll,
-                    onPressed: () {},
-                  ),
-                  SizedBox(height: 5,),
-                ],
-              ),
-            ),
+            // RecomendedSection()
           ],
         ),
       ),

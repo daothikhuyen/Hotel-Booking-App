@@ -48,28 +48,31 @@ class AppLocalizationsVi extends AppLocalizations {
   String get noAccount => 'Bạn không có tài khoản?';
 
   @override
-  String get oboardingTitleTwo => 'Đặt phòng một cách dễ dàng, ở lại\\n\nvới phong cách';
+  String get titleSplash => 'Tìm Kỳ Nghỉ Hoàn Hảo Của Bạn, Mọi Lúc, Mọi Nơi';
+
+  @override
+  String get onboardingDescOne => 'Luôn tham gia khóa học lớn và tôi \n đang theo học nhiều loại ngay bây giờ. Một phần tử \n chính xác,laoreet id. ';
+
+  @override
+  String get onboardingDescThree => 'Lorem Ipsum chỉ đơn giản là văn bản giả của ngành in \n và sắp chữ.';
+
+  @override
+  String get onboardingDescTwo => 'Luôn tham gia khóa học và tôi đang \n theo học khác nhau ngay bây giờ. Các yếu tố \n công bằng, chúng tôi không cần phải làm gì. ';
 
   @override
   String get onboardingContiune => 'Tiếp tục';
 
   @override
-  String get onboardingDescOne => 'Luôn tham gia khóa học lớn và tôi đang theo học nhiều loại\\nngay bây giờ. Một phần tử chính xác, laoreet\\ n id. ';
-
-  @override
-  String get onboardingDescThree => 'Lorem Ipsum is simply dummy text of the printing and\\n typesetting industry.';
-
-  @override
-  String get onboardingDescTwo => 'Luôn tham gia khóa học tuyệt vời và tôi đang theo học khác nhau ngay bây giờ. Các yếu tố công bằng, chúng tôi không cần phải làm gì. ';
-
-  @override
   String get onboardingStarted => 'Bắt đầu';
 
   @override
-  String get onboardingTileOne => 'Sang trọng và thoải mái,\\ n Chỉ cần một cú chạm';
+  String get onboardingTitleOne => 'Sang trọng và thoải mái, Chỉ \n với một cú chạm';
 
   @override
-  String get onboardingTitleThree => 'Khám phá khách sạn\\n mơ ước của bạn';
+  String get onboardingTitleTwo => 'Đặt phòng một cách dễ dàng, đầy với phong cách';
+
+  @override
+  String get onboardingTitleThree => 'Khám phá khách sạn \n mơ ước của bạn';
 
   @override
   String get enterEmail => 'Nhập địa chỉ email của bạn';
@@ -117,7 +120,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get signUp => 'Đăng Kí';
 
   @override
-  String get startedTextButton => 'Đăng Kí';
+  String get register => 'Đăng Kí';
 
   @override
   String get errorEmptyEmail => 'Vui lòng nhập email của bạn';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class SocialBtn extends StatelessWidget {
-  const SocialBtn({super.key, required this.linkIcon, required this.onPressed});
+class SocialItem extends StatelessWidget {
+  const SocialItem({super.key, required this.linkIcon, required this.onPressed});
 
   final String linkIcon;
   final VoidCallback onPressed;

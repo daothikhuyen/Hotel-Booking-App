@@ -51,8 +51,8 @@ class MyApp extends StatelessWidget {
         Locale('en'), // English
         Locale('vi'), // Spanish
       ],
-      locale: const Locale('vi'),
-      home: SplashScreen(),
+      locale: const Locale('en'),
+      home: MainHomeScreen(),
     );
   }
 }

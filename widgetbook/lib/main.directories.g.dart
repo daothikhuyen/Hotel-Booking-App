@@ -15,12 +15,14 @@ import 'package:widgetbook_HotelBookingApp/hotel_booking/screens/auth/sign_in.da
     as _widgetbook_HotelBookingApp_hotel_booking_screens_auth_sign_in;
 import 'package:widgetbook_HotelBookingApp/hotel_booking/screens/home/main_home.dart'
     as _widgetbook_HotelBookingApp_hotel_booking_screens_home_main_home;
-import 'package:widgetbook_HotelBookingApp/hotel_booking/widgets/button/primary.dart'
-    as _widgetbook_HotelBookingApp_hotel_booking_widgets_button_primary;
-import 'package:widgetbook_HotelBookingApp/hotel_booking/widgets/home/card_most_popular.dart'
-    as _widgetbook_HotelBookingApp_hotel_booking_widgets_home_card_most_popular;
+import 'package:widgetbook_HotelBookingApp/hotel_booking/widgets/common/category_item.dart'
+    as _widgetbook_HotelBookingApp_hotel_booking_widgets_common_category_item;
+import 'package:widgetbook_HotelBookingApp/hotel_booking/widgets/common/primary_btn.dart'
+    as _widgetbook_HotelBookingApp_hotel_booking_widgets_common_primary_btn;
 import 'package:widgetbook_HotelBookingApp/hotel_booking/widgets/home/header_bar.dart'
     as _widgetbook_HotelBookingApp_hotel_booking_widgets_home_header_bar;
+import 'package:widgetbook_HotelBookingApp/hotel_booking/widgets/home/items/most_popular_item.dart'
+    as _widgetbook_HotelBookingApp_hotel_booking_widgets_home_items_most_popular_item;
 
 final directories = <_widgetbook.WidgetbookNode>[
   _widgetbook.WidgetbookFolder(
@@ -60,14 +62,23 @@ final directories = <_widgetbook.WidgetbookNode>[
     name: 'widgets',
     children: [
       _widgetbook.WidgetbookFolder(
-        name: 'button',
+        name: 'common',
         children: [
+          _widgetbook.WidgetbookLeafComponent(
+            name: 'CategoryItem',
+            useCase: _widgetbook.WidgetbookUseCase(
+              name: 'Default',
+              builder:
+                  _widgetbook_HotelBookingApp_hotel_booking_widgets_common_category_item
+                      .buildFilterBarUseCase,
+            ),
+          ),
           _widgetbook.WidgetbookLeafComponent(
             name: 'PrimaryBtn',
             useCase: _widgetbook.WidgetbookUseCase(
               name: 'Default',
               builder:
-                  _widgetbook_HotelBookingApp_hotel_booking_widgets_button_primary
+                  _widgetbook_HotelBookingApp_hotel_booking_widgets_common_primary_btn
                       .buildPrimaryBtnUseCase,
             ),
           ),
@@ -77,15 +88,6 @@ final directories = <_widgetbook.WidgetbookNode>[
         name: 'home',
         children: [
           _widgetbook.WidgetbookLeafComponent(
-            name: 'CardMostPopular',
-            useCase: _widgetbook.WidgetbookUseCase(
-              name: 'Default',
-              builder:
-                  _widgetbook_HotelBookingApp_hotel_booking_widgets_home_card_most_popular
-                      .buildCardMostPopularUseCase,
-            ),
-          ),
-          _widgetbook.WidgetbookLeafComponent(
             name: 'HeaderBar',
             useCase: _widgetbook.WidgetbookUseCase(
               name: 'Default',
@@ -93,6 +95,20 @@ final directories = <_widgetbook.WidgetbookNode>[
                   _widgetbook_HotelBookingApp_hotel_booking_widgets_home_header_bar
                       .buildHeaderBarUseCase,
             ),
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'items',
+            children: [
+              _widgetbook.WidgetbookLeafComponent(
+                name: 'MostPopularItem',
+                useCase: _widgetbook.WidgetbookUseCase(
+                  name: 'Default',
+                  builder:
+                      _widgetbook_HotelBookingApp_hotel_booking_widgets_home_items_most_popular_item
+                          .buildMostPopularItemUseCase,
+                ),
+              ),
+            ],
           ),
         ],
       ),
