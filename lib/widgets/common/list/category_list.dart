@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/data/category_data.dart';
 import 'package:hotel_booking_app/widgets/common/category_item.dart';
 
-class CategoryList extends StatelessWidget {
+class CategoryList extends StatefulWidget {
   const CategoryList({super.key});
 
   @override
+  State<CategoryList> createState() => _CategoryListState();
+}
+
+class _CategoryListState extends State<CategoryList> {
+  int selectedIndex = 0;
+
+  @override
   Widget build(BuildContext context) {
-    int selectedIndex = 0;
     return SizedBox(
       height: 43,
       child: ListView.builder(
@@ -18,7 +24,9 @@ class CategoryList extends StatelessWidget {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              selectedIndex = index;
+              setState(() {
+                selectedIndex = index;
+              });
             },
             child: CategoryItem(
               title: category_data[index]['title']!,

@@ -42,7 +42,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nearYou => 'Hotel Near You';
 
   @override
-  String get night => 'Night';
+  String get night => 'night';
 
   @override
   String get noAccount => 'Don’t have an account?';

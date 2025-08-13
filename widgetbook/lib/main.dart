@@ -36,6 +36,7 @@ class WidgetbookApp extends StatelessWidget {
             Devices.ios.iPhoneSE,
             Devices.ios.iPhone13,
             Devices.android.smallTablet,
+            Devices.android.samsungGalaxyS20
           ],
         ),
         InspectorAddon(),

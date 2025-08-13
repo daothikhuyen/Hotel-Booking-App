@@ -23,7 +23,7 @@ class HeaderSection extends StatelessWidget {
           child: Text(
             titleBtn,
             style: GoogleFonts.plusJakartaSans(
-              textStyle: CustomerTextStyles.smallBoldTextStyle(
+              textStyle: CustomerTextStyles.prBoldTextStyle(
                 Theme.of(context).colorScheme.primary,
               ),
             ),

@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.only(left: 18, top: 8),
       child: SingleChildScrollView(
         // scrollDirection: Axis.horizontal,
         child: Column(
@@ -33,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Padding(
               padding: const EdgeInsets.only(top: 20),
               child: Container(
+                margin: EdgeInsets.only(right: 16),
                 width: double.infinity,
                 height: 72,
                 decoration: BoxDecoration(
@@ -83,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
             // Most Popular
             MostPopularSection(),
             // Recommendex For You
-            // RecomendedSection()
+            RecomendedSection()
           ],
         ),
       ),

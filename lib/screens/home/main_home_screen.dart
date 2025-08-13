@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/model/destination.dart';
 import 'package:hotel_booking_app/routes/destinations.dart';
-import 'package:hotel_booking_app/utils/location_helper.dart';
+import 'package:hotel_booking_app/utils/translation_helper.dart';
 
 class MainHomeScreen extends StatefulWidget {
   const MainHomeScreen({super.key});

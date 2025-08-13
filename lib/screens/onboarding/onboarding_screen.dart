@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/routes/app_router.dart';
 import 'package:hotel_booking_app/screens/auth/sign_in.dart';
-import 'package:hotel_booking_app/utils/location_helper.dart';
+import 'package:hotel_booking_app/utils/translation_helper.dart';
 import 'package:hotel_booking_app/widgets/common/primary_btn.dart';
 import '../../data/onboarding_data.dart';
 

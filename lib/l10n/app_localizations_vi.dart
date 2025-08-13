@@ -42,7 +42,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get nearYou => 'Khách sạn gần bạn';
 
   @override
-  String get night => 'Đêm';
+  String get night => 'đêm';
 
   @override
   String get noAccount => 'Bạn không có tài khoản?';

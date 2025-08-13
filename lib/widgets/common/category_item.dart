@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/themes/theme.dart';
-import 'package:hotel_booking_app/utils/location_helper.dart';
+import 'package:hotel_booking_app/utils/translation_helper.dart';
 
 class CategoryItem  extends StatelessWidget {
   final String title;

@@ -164,7 +164,7 @@ abstract class AppLocalizations {
   /// No description provided for @night.
   ///
   /// In en, this message translates to:
-  /// **'Night'**
+  /// **'night'**
   String get night;
 
   /// No description provided for @noAccount.

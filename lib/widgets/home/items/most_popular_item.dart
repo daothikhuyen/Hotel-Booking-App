@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/themes/theme.dart';
 
 class MostPopularItem extends StatefulWidget {
@@ -23,7 +24,7 @@ class MostPopularItem extends StatefulWidget {
 }
 
 class _MostPopularItemState extends State<MostPopularItem> {
-  @override
+@override
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Stack(
@@ -31,7 +32,7 @@ class _MostPopularItemState extends State<MostPopularItem> {
           Container(
             width: 156,
             height: 220,
-            margin: const EdgeInsets.all(4),
+            margin: const EdgeInsets.only(right: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
@@ -44,8 +45,8 @@ class _MostPopularItemState extends State<MostPopularItem> {
           ),
 
           Positioned(
-            top: 15,
-            right: 10,
+            top: 10,
+            right: 18,
             child: CircleAvatar(
               radius: 10,
               backgroundColor: Colors.white,
@@ -83,14 +84,13 @@ class _MostPopularItemState extends State<MostPopularItem> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '\$ ${widget.money}/night',
-                        style: CustomerTextStyles.prNormalTextStyle(
-                          Colors.white,
-                        ),
+                        '\$ ${widget.money}/${AppLocalizations.of(context)!.night}',
+                        style: CustomerTextStyles.prNormalTextStyle(Colors.white),
                       ),
                       Row(
                         children: [
-                          Icon(Icons.star, color: Colors.yellow, size: 12),
+                          SvgPicture.asset('assets/images/icon/solar_star-bold.svg', width: 12, height: 12, fit: BoxFit.contain,),
+                          SizedBox(width: 3,),
                           Text(
                             widget.ratting,
                             style: TextStyle(fontSize: 12, color: Colors.white),

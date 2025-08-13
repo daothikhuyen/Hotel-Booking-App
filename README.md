@@ -19,8 +19,8 @@
 <img src="./assets/images/image_project/login.png" width="200"/> 
 
 - **Home**
-  
- <img src="./assets/images/image_project/top_nav_bar.png" width="200"/>  <img src="./assets/images/image_project/homeLight.png" width="200"/>  <img src="./assets/images/image_project/homeDark.png" width="200"/> 
+
+<img src="./assets/images/image_project/home_1.png" width="200"/> 
 
 - **Demo**
   

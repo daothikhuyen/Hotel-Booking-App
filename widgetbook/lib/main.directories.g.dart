@@ -23,6 +23,11 @@ import 'package:widgetbook_HotelBookingApp/hotel_booking/widgets/home/header_bar
     as _widgetbook_HotelBookingApp_hotel_booking_widgets_home_header_bar;
 import 'package:widgetbook_HotelBookingApp/hotel_booking/widgets/home/items/most_popular_item.dart'
     as _widgetbook_HotelBookingApp_hotel_booking_widgets_home_items_most_popular_item;
+<<<<<<< HEAD
+=======
+import 'package:widgetbook_HotelBookingApp/hotel_booking/widgets/home/items/recommended_item.dart'
+    as _widgetbook_HotelBookingApp_hotel_booking_widgets_home_items_recommended_item;
+>>>>>>> feature/recommended_section
 
 final directories = <_widgetbook.WidgetbookNode>[
   _widgetbook.WidgetbookFolder(
@@ -108,6 +113,18 @@ final directories = <_widgetbook.WidgetbookNode>[
                           .buildMostPopularItemUseCase,
                 ),
               ),
+<<<<<<< HEAD
+=======
+              _widgetbook.WidgetbookLeafComponent(
+                name: 'RecomendedItem',
+                useCase: _widgetbook.WidgetbookUseCase(
+                  name: 'Default',
+                  builder:
+                      _widgetbook_HotelBookingApp_hotel_booking_widgets_home_items_recommended_item
+                          .buildRecomendedItemUseCase,
+                ),
+              ),
+>>>>>>> feature/recommended_section
             ],
           ),
         ],

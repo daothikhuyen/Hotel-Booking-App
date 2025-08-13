@@ -50,8 +50,16 @@ class CustomerTextStyles {
 
   static TextStyle avBoldTextStyle(Color color) {
     return TextStyle(
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: FontWeight.w700,
+        color: color
+    );
+  }
+
+  static TextStyle avTextStyle(Color color) {
+    return TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.normal,
         color: color
     );
   }
