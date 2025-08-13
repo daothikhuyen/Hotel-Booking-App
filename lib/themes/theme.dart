@@ -50,13 +50,21 @@ class CustomerTextStyles {
 
   static TextStyle avBoldTextStyle(Color color) {
     return TextStyle(
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: FontWeight.w700,
         color: color
     );
   }
 
-  static TextStyle suitableTextStyle(Color color) {
+  static TextStyle avTextStyle(Color color) {
+    return TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.normal,
+        color: color
+    );
+  }
+
+  static TextStyle suitableTextStyle(Color? color) {
     return TextStyle(fontWeight: FontWeight.normal, fontSize: 14, color: color);
   }
 
@@ -76,7 +84,7 @@ class CustomerTextStyles {
     return TextStyle(fontSize: 10, color: color, fontWeight: FontWeight.w600);
   }
 
-  static TextStyle smallTextStyle(Color color) {
+  static TextStyle smallTextStyle(Color? color) {
     return TextStyle(fontSize: 10, color: color, fontWeight: FontWeight.normal);
   }
 }

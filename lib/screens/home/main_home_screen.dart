@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/model/destination.dart';
 import 'package:hotel_booking_app/routes/destinations.dart';
+import 'package:hotel_booking_app/utils/translation_helper.dart';
 
 class MainHomeScreen extends StatefulWidget {
   const MainHomeScreen({super.key});
@@ -73,20 +74,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                       // ignore: deprecated_member_use
                       color: Theme.of(context).colorScheme.primary,
                     ),
-                    label: () {
-                      switch (d.labelKey) {
-                        case 'Home':
-                          return AppLocalizations.of(context)!.home;
-                        case 'My Booking':
-                          return AppLocalizations.of(context)!.mybooking;
-                        case 'Message':
-                          return AppLocalizations.of(context)!.message;
-                        case 'Profile':
-                          return AppLocalizations.of(context)!.profile;
-                        default:
-                          return '';
-                      }
-                    }(),
+                    label: getTranslatedText(context, d.labelKey)
                   );
                 }).toList(),
           ),

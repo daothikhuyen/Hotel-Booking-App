@@ -9,7 +9,7 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get agreeTerm => 'By signing up you agree to our \\nTerms \\nand Conditions of Use';
+  String get agreeTerm => 'By signing up you agree to our \nTerms \nand Conditions of Use';
 
   @override
   String get bestToday => 'Best Today';
@@ -42,34 +42,37 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nearYou => 'Hotel Near You';
 
   @override
-  String get night => 'Night';
+  String get night => 'night';
 
   @override
   String get noAccount => 'Don’t have an account?';
 
   @override
-  String get oboardingTitleTwo => 'Book with Ease, Stay \\n\nwith Style';
+  String get titleSplash => 'Find Your Perfect Stay, Anytime, Anywhere';
+
+  @override
+  String get onboardingDescOne => 'Semper in cursus magna et eu varius\n nunc adipiscing. Elementum justo, laoreet\n  id sem . ';
+
+  @override
+  String get onboardingDescThree => 'Lorem Ipsum is simply dummy text of the printing and\n typesetting industry.';
+
+  @override
+  String get onboardingDescTwo => 'Semper in cursus magna et eu varius\n nunc adipiscing. Elementum justo, laoreet\n id sem . ';
 
   @override
   String get onboardingContiune => 'Continue';
 
   @override
-  String get onboardingDescOne => 'Semper in cursus magna et eu varius\\n nunc adipiscing. Elementum justo, laoreet \\n  id sem . ';
-
-  @override
-  String get onboardingDescThree => 'Lorem Ipsum is simply dummy text of the printing and\\n typesetting industry.';
-
-  @override
-  String get onboardingDescTwo => 'Semper in cursus magna et eu varius \\n nunc adipiscing. Elementum justo, laoreet\\n id sem . ';
-
-  @override
   String get onboardingStarted => 'Get Started';
 
   @override
-  String get onboardingTileOne => 'Luxury and Comfort, \\n Just a Tap Away';
+  String get onboardingTitleOne => 'Luxury and Comfort,\n Just a Tap Away';
 
   @override
-  String get onboardingTitleThree => 'Discover Your Dream \\n Hotel, Effortlessly';
+  String get onboardingTitleTwo => 'Book with Ease, Stay \n with Style';
+
+  @override
+  String get onboardingTitleThree => 'Discover Your Dream \n Hotel, Effortlessly';
 
   @override
   String get enterEmail => 'Enter your email address';
@@ -117,7 +120,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get signUp => 'Sign Up';
 
   @override
-  String get startedTextButton => 'Register\n';
+  String get register => 'Register';
 
   @override
   String get errorEmptyEmail => 'Please entern your email';

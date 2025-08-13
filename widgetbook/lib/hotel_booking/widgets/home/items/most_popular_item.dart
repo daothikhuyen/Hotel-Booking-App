@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/widgets/home/card_most_popular.dart';
+import 'package:hotel_booking_app/widgets/home/items/most_popular_item.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
-@widgetbook.UseCase(name: 'Default', type: CardMostPopular)
-Widget buildCardMostPopularUseCase(BuildContext context) {
+@widgetbook.UseCase(name: 'Default', type: MostPopularItem)
+Widget buildMostPopularItemUseCase(BuildContext context) {
   return Center(
-    child: CardMostPopular(
+    child: MostPopularItem(
       linkImage: context.knobs.stringOrNull(
-        label: 'Link Image',
+        label: 'Link Image', 
         initialValue: 'assets/images/home/FrameOne.png',
       ),
       name: context.knobs.string(

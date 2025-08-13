@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/routes/app_router.dart';
+import 'package:hotel_booking_app/widgets/auth/socail_section.dart';
 import 'package:hotel_booking_app/screens/home/main_home_screen.dart';
 import 'package:hotel_booking_app/services/auth_service.dart';
 import 'package:hotel_booking_app/themes/app_colors.dart';
 import 'package:hotel_booking_app/themes/theme.dart';
 import 'package:hotel_booking_app/widgets/auth/circular_checkbox%20.dart';
-import 'package:hotel_booking_app/widgets/button/primary_btn.dart';
-import 'package:hotel_booking_app/widgets/auth/social_btn.dart';
+import 'package:hotel_booking_app/widgets/common/primary_btn.dart';
 import 'package:hotel_booking_app/widgets/auth/auth_text_field.dart';
 
 import '../../utils/validator.dart';
@@ -224,44 +224,7 @@ class _SignInState extends State<SignIn> {
                   ],
                 ),
                 SizedBox(height: 25),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SocialBtn(
-                      linkIcon: 'assets/images/icon/Icon - Google.svg',
-                      onPressed: () async {
-                        String response =
-                            await AuthService().signInUserWithGoogle();
-                        if (response == 'sucess') {
-                          ScaffoldMessenger.of(
-                            // ignore: use_build_context_synchronously
-                            context,
-                          ).showSnackBar(
-                            SnackBar(content: Text("SignIn Sucess")),
-                          );
-                          Navigator.push(
-                            // ignore: use_build_context_synchronously
-                            context,
-                            animationRouter(MainHomeScreen()),
-                          );
-                        } else {
-                          error = response;
-                        }
-                      },
-                    ),
-                    SizedBox(width: 10),
-                    SocialBtn(
-                      linkIcon: 'assets/images/icon/Icon - Apple.svg',
-                      onPressed: () {},
-                    ),
-                    SizedBox(width: 10),
-                    SocialBtn(
-                      linkIcon: 'assets/images/icon/Icon - Facebook.svg',
-                      onPressed: () {},
-                    ),
-                  ],
-                ),
-
+                SocailSection(error: error), // list btn socail
                 Padding(
                   padding: const EdgeInsets.only(top: 40),
                   child: Align(
@@ -271,12 +234,17 @@ class _SignInState extends State<SignIn> {
                           color: Theme.of(context).colorScheme.onSurfaceVariant,
                         ),
                         children: [
-                          TextSpan(text: AppLocalizations.of(context)!.textFooterOne),
                           TextSpan(
-                            text: ' ${AppLocalizations.of(context)!.textFooterTwo}\n',
+                            text: AppLocalizations.of(context)!.textFooterOne,
+                          ),
+                          TextSpan(
+                            text:
+                                ' ${AppLocalizations.of(context)!.textFooterTwo}\n',
                             style: TextStyle(fontWeight: FontWeight.w600),
                           ),
-                          TextSpan(text: AppLocalizations.of(context)!.textFooterThree),
+                          TextSpan(
+                            text: AppLocalizations.of(context)!.textFooterThree,
+                          ),
                           TextSpan(
                             text: AppLocalizations.of(context)!.textFooterFour,
                             style: TextStyle(fontWeight: FontWeight.w600),

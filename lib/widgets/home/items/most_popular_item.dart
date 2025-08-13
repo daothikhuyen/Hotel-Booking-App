@@ -1,17 +1,17 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
+import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/themes/theme.dart';
 
-class CardMostPopular extends StatefulWidget {
-  const CardMostPopular({
-    Key? key,
+class MostPopularItem extends StatefulWidget {
+  const MostPopularItem({
+    super.key,
     this.linkImage,
     required this.name,
     required this.address,
-    required this.money, required this.ratting,
-  }) : super(key: key);
+    required this.money,
+    required this.ratting,
+  });
 
   final String? linkImage;
   final String name;
@@ -20,12 +20,11 @@ class CardMostPopular extends StatefulWidget {
   final String ratting;
 
   @override
-  State<CardMostPopular> createState() => _CardMostPopularState();
+  State<MostPopularItem> createState() => _MostPopularItemState();
 }
 
-class _CardMostPopularState extends State<CardMostPopular> {
-
-  @override
+class _MostPopularItemState extends State<MostPopularItem> {
+@override
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Stack(
@@ -33,7 +32,7 @@ class _CardMostPopularState extends State<CardMostPopular> {
           Container(
             width: 156,
             height: 220,
-            margin: const EdgeInsets.all(4),
+            margin: const EdgeInsets.only(right: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
@@ -44,8 +43,8 @@ class _CardMostPopularState extends State<CardMostPopular> {
           ),
           
           Positioned(
-            top: 15,
-            right: 10,
+            top: 10,
+            right: 18,
             child: CircleAvatar(
               radius: 10,
               backgroundColor: Colors.white,
@@ -79,12 +78,13 @@ class _CardMostPopularState extends State<CardMostPopular> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '\$ ${widget.money}/night',
+                        '\$ ${widget.money}/${AppLocalizations.of(context)!.night}',
                         style: CustomerTextStyles.prNormalTextStyle(Colors.white),
                       ),
                       Row(
                         children: [
-                          Icon(Icons.star, color: Colors.yellow, size: 12),
+                          SvgPicture.asset('assets/images/icon/solar_star-bold.svg', width: 12, height: 12, fit: BoxFit.contain,),
+                          SizedBox(width: 3,),
                           Text(
                             widget.ratting,
                             style: TextStyle(fontSize: 12, color: Colors.white),

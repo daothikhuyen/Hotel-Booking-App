@@ -98,7 +98,7 @@ abstract class AppLocalizations {
   /// No description provided for @agreeTerm.
   ///
   /// In en, this message translates to:
-  /// **'By signing up you agree to our \\nTerms \\nand Conditions of Use'**
+  /// **'By signing up you agree to our \nTerms \nand Conditions of Use'**
   String get agreeTerm;
 
   /// No description provided for @bestToday.
@@ -164,7 +164,7 @@ abstract class AppLocalizations {
   /// No description provided for @night.
   ///
   /// In en, this message translates to:
-  /// **'Night'**
+  /// **'night'**
   String get night;
 
   /// No description provided for @noAccount.
@@ -173,11 +173,29 @@ abstract class AppLocalizations {
   /// **'Don’t have an account?'**
   String get noAccount;
 
-  /// No description provided for @oboardingTitleTwo.
+  /// No description provided for @titleSplash.
   ///
   /// In en, this message translates to:
-  /// **'Book with Ease, Stay \\n\nwith Style'**
-  String get oboardingTitleTwo;
+  /// **'Find Your Perfect Stay, Anytime, Anywhere'**
+  String get titleSplash;
+
+  /// No description provided for @onboardingDescOne.
+  ///
+  /// In en, this message translates to:
+  /// **'Semper in cursus magna et eu varius\n nunc adipiscing. Elementum justo, laoreet\n  id sem . '**
+  String get onboardingDescOne;
+
+  /// No description provided for @onboardingDescThree.
+  ///
+  /// In en, this message translates to:
+  /// **'Lorem Ipsum is simply dummy text of the printing and\n typesetting industry.'**
+  String get onboardingDescThree;
+
+  /// No description provided for @onboardingDescTwo.
+  ///
+  /// In en, this message translates to:
+  /// **'Semper in cursus magna et eu varius\n nunc adipiscing. Elementum justo, laoreet\n id sem . '**
+  String get onboardingDescTwo;
 
   /// No description provided for @onboardingContiune.
   ///
@@ -185,40 +203,28 @@ abstract class AppLocalizations {
   /// **'Continue'**
   String get onboardingContiune;
 
-  /// No description provided for @onboardingDescOne.
-  ///
-  /// In en, this message translates to:
-  /// **'Semper in cursus magna et eu varius\\n nunc adipiscing. Elementum justo, laoreet \\n  id sem . '**
-  String get onboardingDescOne;
-
-  /// No description provided for @onboardingDescThree.
-  ///
-  /// In en, this message translates to:
-  /// **'Lorem Ipsum is simply dummy text of the printing and\\n typesetting industry.'**
-  String get onboardingDescThree;
-
-  /// No description provided for @onboardingDescTwo.
-  ///
-  /// In en, this message translates to:
-  /// **'Semper in cursus magna et eu varius \\n nunc adipiscing. Elementum justo, laoreet\\n id sem . '**
-  String get onboardingDescTwo;
-
   /// No description provided for @onboardingStarted.
   ///
   /// In en, this message translates to:
   /// **'Get Started'**
   String get onboardingStarted;
 
-  /// No description provided for @onboardingTileOne.
+  /// No description provided for @onboardingTitleOne.
   ///
   /// In en, this message translates to:
-  /// **'Luxury and Comfort, \\n Just a Tap Away'**
-  String get onboardingTileOne;
+  /// **'Luxury and Comfort,\n Just a Tap Away'**
+  String get onboardingTitleOne;
+
+  /// No description provided for @onboardingTitleTwo.
+  ///
+  /// In en, this message translates to:
+  /// **'Book with Ease, Stay \n with Style'**
+  String get onboardingTitleTwo;
 
   /// No description provided for @onboardingTitleThree.
   ///
   /// In en, this message translates to:
-  /// **'Discover Your Dream \\n Hotel, Effortlessly'**
+  /// **'Discover Your Dream \n Hotel, Effortlessly'**
   String get onboardingTitleThree;
 
   /// No description provided for @enterEmail.
@@ -311,11 +317,11 @@ abstract class AppLocalizations {
   /// **'Sign Up'**
   String get signUp;
 
-  /// No description provided for @startedTextButton.
+  /// No description provided for @register.
   ///
   /// In en, this message translates to:
-  /// **'Register\n'**
-  String get startedTextButton;
+  /// **'Register'**
+  String get register;
 
   /// No description provided for @errorEmptyEmail.
   ///

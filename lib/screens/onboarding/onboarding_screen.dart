@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/routes/app_router.dart';
 import 'package:hotel_booking_app/screens/auth/sign_in.dart';
-import 'package:hotel_booking_app/themes/app_colors.dart';
-import 'package:hotel_booking_app/widgets/button/primary_btn.dart';
+import 'package:hotel_booking_app/utils/translation_helper.dart';
+import 'package:hotel_booking_app/widgets/common/primary_btn.dart';
 import '../../data/onboarding_data.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -67,7 +68,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            item['title']!,
+                            getTranslatedText(context, item['title']!),
                             textAlign: TextAlign.center,
                             style: GoogleFonts.jost().copyWith(
                               color: Colors.white,
@@ -78,7 +79,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           ),
                           const SizedBox(height: 12),
                           Text(
-                            item['desc']!,
+                            getTranslatedText(context, item['desc']!),
                             textAlign: TextAlign.center,
                             style: GoogleFonts.jost().copyWith(
                               color: Colors.white70,
@@ -110,17 +111,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               : SizedBox.shrink(),
                           const SizedBox(height: 30),
                           PrimaryBtn(
-                            textButton: item['nameButton']!,
+                            textButton: getTranslatedText(context,item['nameButton']!),
                             onPressed: nextPage,
                             bold: true,
                           ),
                           const SizedBox(height: 20),
-                          if (item['nameButton']! == 'Get Started')
+                          if (item['nameButton']! == 'getStarted')
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "Don't have an account ?",
+                                  AppLocalizations.of(context)!.noAccount,
                                   style: TextStyle(color: Colors.white),
                                 ),
                                 TextButton(
@@ -137,7 +138,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                       },
 
                                   child: Text(
-                                    "Register",
+                                    AppLocalizations.of(context)!.register,
                                     style: GoogleFonts.roboto().copyWith(
                                       color: Theme.of(context).colorScheme.primary,
                                     ),

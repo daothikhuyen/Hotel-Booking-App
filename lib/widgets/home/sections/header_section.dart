@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/themes/theme.dart';
 
-class TitleWithBtn extends StatelessWidget {
-  const TitleWithBtn({super.key, required this.title, required this.onPressed, required this.titleBtn});
+class HeaderSection extends StatelessWidget {
+  const HeaderSection({super.key, required this.title, required this.onPressed, required this.titleBtn});
 
   final String title;
   final String titleBtn;
@@ -23,7 +23,7 @@ class TitleWithBtn extends StatelessWidget {
           child: Text(
             titleBtn,
             style: GoogleFonts.plusJakartaSans(
-              textStyle: CustomerTextStyles.smallBoldTextStyle(
+              textStyle: CustomerTextStyles.prBoldTextStyle(
                 Theme.of(context).colorScheme.primary,
               ),
             ),

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/routes/app_router.dart';
 import 'package:hotel_booking_app/screens/onboarding/onboarding_screen.dart';
-import 'package:hotel_booking_app/themes/app_colors.dart';
+import 'package:hotel_booking_app/themes/theme.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -35,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              "assets/images/logo.png",
+              "assets/images/logoApp.png",
               height: 123.2,
               width: 89.7,
               fit: BoxFit.cover,
@@ -47,11 +48,8 @@ class _SplashScreenState extends State<SplashScreen> {
               ).copyWith(fontWeight: FontWeight.bold, color: Colors.white),
             ),
             Text(
-              'Find Your Prefect Stay, Anytime, Anywhere',
-              style: GoogleFonts.jost().copyWith(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+              AppLocalizations.of(context)!.titleSplash,
+              style: CustomerTextStyles.smallBoldTextStyle(Colors.white)
             ),
           ],
         ),
