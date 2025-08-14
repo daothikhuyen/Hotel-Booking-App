@@ -42,6 +42,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get nearYou => 'Khách sạn gần bạn';
 
   @override
+  String get openMap => 'Mở Map';
+
+  @override
   String get night => 'đêm';
 
   @override

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/model/destination.dart';
 import 'package:hotel_booking_app/routes/destinations.dart';
 import 'package:hotel_booking_app/utils/translation_helper.dart';
+import 'package:hotel_booking_app/widgets/home/header_bar.dart';
 
 class MainHomeScreen extends StatefulWidget {
   const MainHomeScreen({super.key});
@@ -18,20 +18,22 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: IndexedStack(
-          index: _selectedIndex,
-          children:
-              destinations.map<Widget>((Destination destination) {
-                return DestinationView(destination);
-              }).toList(),
-        ),
+      // backgroundColor: Theme.of(context).colorScheme.surface,
+      body: IndexedStack(
+        index: _selectedIndex,
+        children:
+            destinations.map<Widget>((Destination destination) {
+              return DestinationView(destination);
+            }).toList(),
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.surface,
           border: Border(
-            top: BorderSide(color: Theme.of(context).colorScheme.outline, width: 0.5),
+            top: BorderSide(
+              color: Theme.of(context).colorScheme.outline,
+              width: 0.5,
+            ),
           ),
           boxShadow: [
             BoxShadow(
@@ -51,7 +53,9 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
               if (states.contains(WidgetState.selected)) {
                 return TextStyle(color: Theme.of(context).colorScheme.primary);
               }
-              return TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant);
+              return TextStyle(
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+              );
             }),
           ),
           child: NavigationBar(
@@ -74,7 +78,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                       // ignore: deprecated_member_use
                       color: Theme.of(context).colorScheme.primary,
                     ),
-                    label: getTranslatedText(context, d.labelKey)
+                    label: getTranslatedText(context, d.labelKey),
                   );
                 }).toList(),
           ),

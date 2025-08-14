@@ -21,6 +21,8 @@ import 'package:widgetbook_HotelBookingApp/hotel_booking/widgets/common/primary_
     as _widgetbook_HotelBookingApp_hotel_booking_widgets_common_primary_btn;
 import 'package:widgetbook_HotelBookingApp/hotel_booking/widgets/home/header_bar.dart'
     as _widgetbook_HotelBookingApp_hotel_booking_widgets_home_header_bar;
+import 'package:widgetbook_HotelBookingApp/hotel_booking/widgets/home/items/best_today_item.dart'
+    as _widgetbook_HotelBookingApp_hotel_booking_widgets_home_items_best_today_item;
 import 'package:widgetbook_HotelBookingApp/hotel_booking/widgets/home/items/most_popular_item.dart'
     as _widgetbook_HotelBookingApp_hotel_booking_widgets_home_items_most_popular_item;
 import 'package:widgetbook_HotelBookingApp/hotel_booking/widgets/home/items/recommended_item.dart'
@@ -101,6 +103,15 @@ final directories = <_widgetbook.WidgetbookNode>[
           _widgetbook.WidgetbookFolder(
             name: 'items',
             children: [
+              _widgetbook.WidgetbookLeafComponent(
+                name: 'BestTodayItem',
+                useCase: _widgetbook.WidgetbookUseCase(
+                  name: 'Default',
+                  builder:
+                      _widgetbook_HotelBookingApp_hotel_booking_widgets_home_items_best_today_item
+                          .buildBestTodayItemUseCase,
+                ),
+              ),
               _widgetbook.WidgetbookLeafComponent(
                 name: 'MostPopularItem',
                 useCase: _widgetbook.WidgetbookUseCase(

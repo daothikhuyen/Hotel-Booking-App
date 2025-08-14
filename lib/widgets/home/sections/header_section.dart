@@ -11,25 +11,28 @@ class HeaderSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
-        ),
-        TextButton(
-          onPressed: onPressed,
-          child: Text(
-            titleBtn,
-            style: GoogleFonts.plusJakartaSans(
-              textStyle: CustomerTextStyles.prBoldTextStyle(
-                Theme.of(context).colorScheme.primary,
+    return Padding(
+      padding: const EdgeInsets.only(right: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+          ),
+          TextButton(
+            onPressed: onPressed,
+            child: Text(
+              titleBtn,
+              style: GoogleFonts.plusJakartaSans(
+                textStyle: CustomerTextStyles.prBoldTextStyle(
+                  Theme.of(context).colorScheme.primary,
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

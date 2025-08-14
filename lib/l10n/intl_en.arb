@@ -22,6 +22,8 @@
   "@mybooking": {},
   "nearYou": "Hotel Near You",
   "@nearYou": {},
+  "openMap": "Open Map",
+  "@openMap":{},
   "night": "night",
   "@night": {},
   "noAccount": "Don’t have an account?",

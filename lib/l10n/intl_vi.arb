@@ -22,6 +22,8 @@
   "@mybooking": {},
   "nearYou": "Khách sạn gần bạn",
   "@nearYou": {},
+  "openMap": "Mở Map",
+  "@openMap":{},
   "night": "đêm",
   "@night": {},
   "noAccount": "Bạn không có tài khoản?",

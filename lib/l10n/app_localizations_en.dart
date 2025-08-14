@@ -42,6 +42,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nearYou => 'Hotel Near You';
 
   @override
+  String get openMap => 'Open Map';
+
+  @override
   String get night => 'night';
 
   @override

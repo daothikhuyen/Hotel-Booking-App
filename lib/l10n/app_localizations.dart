@@ -161,6 +161,12 @@ abstract class AppLocalizations {
   /// **'Hotel Near You'**
   String get nearYou;
 
+  /// No description provided for @openMap.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Map'**
+  String get openMap;
+
   /// No description provided for @night.
   ///
   /// In en, this message translates to:

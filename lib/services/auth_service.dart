@@ -1,10 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 // ignore: non_constant_identifier_names
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  // Get current user
+  Future getCurrentUser() async{
+    return _auth.currentUser;
+  }
 
   Future<String> signInUser(String email, String password) async {
     try {

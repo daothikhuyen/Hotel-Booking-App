@@ -1,7 +1,5 @@
 // ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/themes/app_colors.dart';
 
 class CircularCheckbox extends StatefulWidget {
   const CircularCheckbox({
