@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hotel_booking_app/controller/hotel_controller.dart';
+import 'package:hotel_booking_app/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/gen/assets.gen.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
-import 'package:hotel_booking_app/widgets/home/header_bar.dart';
-import 'package:hotel_booking_app/widgets/home/sections/best_section.dart';
-import 'package:hotel_booking_app/widgets/home/sections/map_section.dart';
-import 'package:hotel_booking_app/widgets/home/sections/most_popular_section.dart';
-import 'package:hotel_booking_app/widgets/home/sections/recomended_section.dart';
+import 'package:hotel_booking_app/model/hotel.dart';
+import 'package:hotel_booking_app/widgets/header_bar.dart';
+import 'package:hotel_booking_app/widgets/list/best_section.dart';
+import 'package:hotel_booking_app/screens/home/widgets/map_section.dart';
+import 'package:hotel_booking_app/screens/home/widgets/most_popular_section.dart';
+import 'package:hotel_booking_app/widgets/list/recomended_section.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,10 +21,26 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
+
+  List<Hotel> hotelPopular = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final controller = Provider.of<HotelController>(context, listen: false);
+      hotelPopular = await controller.fetchMostPopularHotels();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    final controller = Provider.of<HotelController>(context, listen: false);
+
     return Scaffold(
-      appBar: HeaderBar(
+      appBar: const HeaderBar(
         linkImage: 'assets/images/avatar/Ellipse.png',
         userName: 'Matr Kohler',
         address: 'San Diego, CA',
@@ -28,18 +49,17 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Padding(
           padding: const EdgeInsets.only(left: 18, top: 8),
           child: SingleChildScrollView(
-            // scrollDirection: Axis.horizontal,
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(right: 16),
+                  margin: const EdgeInsets.only(right: 16),
                   width: double.infinity,
                   height: 72,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.secondary,
+                    color: context.colorScheme.secondary,
                     border: Border.all(
                       width: 1,
-                      color: Theme.of(context).colorScheme.secondary,
+                      color: context.colorScheme.secondary,
                     ),
                     borderRadius: BorderRadius.circular(15),
                   ),
@@ -52,7 +72,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      // crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Row(
                           children: [
@@ -60,13 +79,15 @@ class _HomeScreenState extends State<HomeScreen> {
                               radius: 32,
                               backgroundColor: Colors.white,
                               child: SvgPicture.asset(
-                                'assets/images/icon/Frame.svg',
+                                Assets.images.icon.frame,
                                 fit: BoxFit.contain,
                               ),
                             ),
                             Text(
                               AppLocalizations.of(context)!.locationTitle,
-                              style: TextStyle(color: Colors.black),
+                              style: TextStyle(
+                                color: context.colorScheme.inverseSurface,
+                              ),
                             ),
                           ],
                         ),
@@ -80,13 +101,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 // Most Popular
-                MostPopularSection(),
+                MostPopularSection(hotelPopular),
                 // Recommendex For You
-                RecomendedSection(),
+                const RecomendedSection(),
                 // Map
-                MapSection(),
+                const MapSection(),
                 // Best Today
-                BestSection(),
+                const BestSection(),
               ],
             ),
           ),

@@ -353,6 +353,12 @@ abstract class AppLocalizations {
   /// **'Password must be at least 6 characters long'**
   String get errorPasswordFormat;
 
+  /// No description provided for @loginSucess.
+  ///
+  /// In en, this message translates to:
+  /// **'Login Sucess'**
+  String get loginSucess;
+
   /// No description provided for @tagAll.
   ///
   /// In en, this message translates to:

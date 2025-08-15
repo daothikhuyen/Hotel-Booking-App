@@ -4,87 +4,74 @@ import 'package:hotel_booking_app/themes/app_colors.dart';
 
 ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
-  colorScheme: ColorScheme.light(
-    surface: AppColors.backgroundLight,
+  colorScheme: const ColorScheme.light(
     primary: AppColors.primaryLight,
-    secondary: AppColors.secondaryLight,
-    outline: AppColors.borderLight, // border
-    onSurface: AppColors.textPrimaryLight,
-    onSurfaceVariant: AppColors.textSecondaryLight, //subscript
-    error: AppColors.error,
+    onPrimary: AppColors.greyscale0,
+    secondary: AppColors.secondary50,
+    onSecondary: AppColors.greyscale0,
+    surface: AppColors.greyscale0,
+    onSurface: AppColors.greyscale0,
+    error: AppColors.error100,
+    onError: AppColors.alter100,
+    outline: AppColors.greyscale200, // border
+    onSurfaceVariant: AppColors.greyscale900, //subscript
+    tertiary: AppColors.greyscale500,
+    onTertiary: AppColors.greyscale200,
+    inverseSurface: AppColors.greyscale900,
+    
   ),
-  iconTheme: IconThemeData(
-    color: AppColors.iconLight, // màu icon riêng
+  iconTheme: const IconThemeData(
+    color: AppColors.greyscale900, // private color icon
   ),
-  scaffoldBackgroundColor: Colors.white,
-  textTheme: GoogleFonts.jostTextTheme(),
+  textTheme:customerTextThem(),
+  scaffoldBackgroundColor: AppColors.greyscale0,
 );
 
 ThemeData darkMode = ThemeData(
   brightness: Brightness.dark,
-  colorScheme: ColorScheme.dark(
-    surface: AppColors.backgroundDart,
+  colorScheme: const ColorScheme.dark(
     primary: AppColors.primaryDark,
-    secondary: AppColors.secondaryDark,
+    onPrimary: AppColors.greyscale0,
+    secondary: AppColors.secondary50,
+    onSecondary: AppColors.greyscale0,
+    surface: AppColors.greyscale900,
+    onSurface: AppColors.greyscale0,
     outline: AppColors.borderDark,
-    onSurface: AppColors.textPrimaryDark,
-    onSurfaceVariant: AppColors.textSecondaryDark,
-    error: AppColors.error,
+    onSurfaceVariant: AppColors.greyscale0,
+    error: AppColors.error100,
   ),
-  iconTheme: IconThemeData(
-    color: AppColors.iconDart, // màu icon riêng
+  iconTheme: const IconThemeData(
+    color: AppColors.iconDart, // private color icon
   ),
-  scaffoldBackgroundColor: const Color(0xFF000000),
-  textTheme: GoogleFonts.jostTextTheme(ThemeData.dark().textTheme),
+  scaffoldBackgroundColor: AppColors.greyscale900,
+  textTheme: customerTextThem(),
 );
 
-// customer textstyle
-class CustomerTextStyles {
-  static TextStyle hugeBoldTextStyle() {
-    return TextStyle(
-      fontSize: 24,
-      fontWeight: FontWeight.w900,
-      letterSpacing: 0.5,
-    );
-  }
+TextTheme customerTextThem(){
+  return GoogleFonts.jostTextTheme().copyWith(
+    // Heading
+    displayLarge: const TextStyle(fontSize: 32, fontWeight: FontWeight.w700), // heading_1
+    displayMedium: const TextStyle(fontSize: 28, fontWeight: FontWeight.w700), // heading_2
+    displaySmall: const TextStyle(fontSize: 24, fontWeight: FontWeight.w700), // heading_3, headingThree
+    headlineLarge: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700), // bigTitle
+    headlineMedium: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700), // title
+    headlineSmall: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700), // paragraph
 
-  static TextStyle avBoldTextStyle(Color color) {
-    return TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w700,
-        color: color
-    );
-  }
+    // Caption & small text
+    bodyLarge: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400), // caption
+    bodyMedium: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400), // smallText
+    bodySmall: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
 
-  static TextStyle avTextStyle(Color color) {
-    return TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.normal,
-        color: color
-    );
-  }
+    // Buttons
+    labelLarge: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600), // bigButton
+    labelMedium: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600), // smallButton
 
-  static TextStyle suitableTextStyle(Color? color) {
-    return TextStyle(fontWeight: FontWeight.normal, fontSize: 14, color: color);
-  }
+    // Body variants
+    titleLarge: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600), // bodyLargeSemibold
+    titleMedium: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500), // bodyLargeMedium
+    titleSmall: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400), // bodyLargeRegular
 
-  static TextStyle suitableBoldTextStyle(Color color) {
-    return TextStyle(fontWeight: FontWeight.w600, fontSize: 14, color: color);
-  }
-
-  static TextStyle prBoldTextStyle(Color color) {
-    return TextStyle(color: color, fontSize: 12, fontWeight: FontWeight.w600);
-  }
-
-  static TextStyle prNormalTextStyle(Color color) {
-    return TextStyle(color: color, fontSize: 12, fontWeight: FontWeight.normal);
-  }
-
-  static TextStyle smallBoldTextStyle(Color color) {
-    return TextStyle(fontSize: 10, color: color, fontWeight: FontWeight.w600);
-  }
-
-  static TextStyle smallTextStyle(Color? color) {
-    return TextStyle(fontSize: 10, color: color, fontWeight: FontWeight.normal);
-  }
+    // Extra body mappings
+    labelSmall: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500), // bodyMediumMedium
+  );
 }

@@ -138,6 +138,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get errorPasswordFormat => 'Mật khẩu phải dài ít nhất 6 kí tự';
 
   @override
+  String get loginSucess => 'Đăng nhập thành công';
+
+  @override
   String get tagAll => 'Tất cả';
 
   @override

@@ -138,6 +138,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorPasswordFormat => 'Password must be at least 6 characters long';
 
   @override
+  String get loginSucess => 'Login Sucess';
+
+  @override
   String get tagAll => 'All';
 
   @override

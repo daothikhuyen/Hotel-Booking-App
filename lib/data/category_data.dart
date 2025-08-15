@@ -1,18 +1,20 @@
+import 'package:hotel_booking_app/gen/assets.gen.dart';
+
 final List<Map<String, String>> category_data = [
   {
     'image': '',
-    'title': "All",
+    'title': 'All',
   },
   {
-    'image': 'assets/images/icon/villa.png',
-    'title': "Villa",
+    'image': Assets.images.icon.villa.path,
+    'title': 'Villa',
   },
   {
-    'image': 'assets/images/icon/hotel.png',
+    'image': Assets.images.icon.hotel.path,
     'title': 'Hotels',
   },
   {
-    'image': 'assets/images/icon/apartement.png',
+    'image': Assets.images.icon.apartement.path,
     'title': 'Aparterment',
   },
 ];

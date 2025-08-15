@@ -15,10 +15,10 @@ class DestinationView extends StatelessWidget {
       body: Container(
         alignment: Alignment.center,
         child: destination.id == 0
-            ? HomeScreen()
+            ? const HomeScreen()
             : destination.id  == 1
-            ? MyBookingScreen()
-            : HomeScreen()
+            ? const MyBookingScreen()
+            : const HomeScreen(),
       ),
     );
   }

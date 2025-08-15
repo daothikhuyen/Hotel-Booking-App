@@ -1,0 +1,30 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
+import 'package:hotel_booking_app/model/hotel.dart';
+
+class HotelService {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  List<Hotel> hotels = [];
+
+  /// Get list of hotels with rating >= 4.5
+  Future<List<Hotel>> fetchMostPopularHotels() async {
+    try {
+      final snapshot =
+          await _firestore
+              .collection('hotels')
+              .where('ratting', isGreaterThanOrEqualTo: 4.5)
+              .get();
+
+      hotels =
+          snapshot.docs.map((doc) {
+            return Hotel.fromJson(doc.data(), doc.id);
+          }).toList();
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
+    return hotels;
+  }
+}

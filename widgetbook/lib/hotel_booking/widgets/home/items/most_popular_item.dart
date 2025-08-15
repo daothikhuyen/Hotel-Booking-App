@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/widgets/home/items/most_popular_item.dart';
+import 'package:hotel_booking_app/widgets/cards/most_popular_card.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
@@ -24,7 +24,7 @@ Widget buildMostPopularItemUseCase(BuildContext context) {
             .slider(label: 'Price', initialValue: 450.0, min: 0, max: 1000.0)
             .toStringAsFixed(2),
       ),
-      ratting: context.knobs.string(label: 'Ratting', initialValue: '4.5'),
+      ratting: context.knobs.double.slider(label: 'Ratting', initialValue: 4.6),
     ),
   );
 }

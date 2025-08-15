@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hotel_booking_app/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/routes/app_router.dart';
-import 'package:hotel_booking_app/widgets/auth/socail_section.dart';
+import 'package:hotel_booking_app/screens/auth/widget/socail_section.dart';
 import 'package:hotel_booking_app/screens/home/main_home_screen.dart';
 import 'package:hotel_booking_app/services/auth_service.dart';
-import 'package:hotel_booking_app/themes/app_colors.dart';
-import 'package:hotel_booking_app/themes/theme.dart';
-import 'package:hotel_booking_app/widgets/auth/circular_checkbox%20.dart';
-import 'package:hotel_booking_app/widgets/common/primary_btn.dart';
-import 'package:hotel_booking_app/widgets/auth/auth_text_field.dart';
-
-import '../../utils/validator.dart';
+import 'package:hotel_booking_app/widgets/buttons/primary_btn.dart';
+import 'package:hotel_booking_app/utils/validator.dart';
+import 'package:hotel_booking_app/screens/auth/widget/circular_checkbox%20.dart';
+import 'package:hotel_booking_app/widgets/hb_texfield.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -20,114 +18,146 @@ class SignIn extends StatefulWidget {
   State<SignIn> createState() => _SignInState();
 }
 
-// call api to login
-
 class _SignInState extends State<SignIn> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailInput = TextEditingController();
-  final TextEditingController _password = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  final _email = TextEditingController();
+  final _password = TextEditingController();
 
   bool isCheckbox = false;
   String? error;
 
-  // ignore: non_constant_identifier_names
-  Future<void> LogIn() async {
+  // login
+  Future<void> logIn() async {
     if (_formKey.currentState!.validate()) {
-      String email = _emailInput.text;
-      String password = _password.text;
-
-      String? response = await AuthService().signInUser(email, password);
+      final response = await AuthService().signInUser(
+        _email.text,
+        _password.text,
+      );
 
       if (response == 'sucess') {
-        ScaffoldMessenger.of(
-          // ignore: use_build_context_synchronously
-          context,
-        ).showSnackBar(SnackBar(content: Text("SignIn Sucess")));
-        // ignore: use_build_context_synchronously
-        Navigator.push(context, animationRouter(MainHomeScreen()));
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(AppLocalizations.of(context)!.loginSucess)),
+        );
+        await Navigator.push(context, animationRouter(const MainHomeScreen()));
       } else {
-        setState(() {
-          error = response;
-        });
+        setState(() => error = response);
       }
     }
   }
 
+  // error text
+  Widget _buildErrorText() =>
+      error == null
+          ? const SizedBox.shrink()
+          : Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Text(
+              error!,
+              style: context.textTheme.bodyLarge!.copyWith(
+                color: context.colorScheme.error,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          );
+
+  // or sign in with
+  Widget _buildDividerWithText(String text) => Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Expanded(
+        child: Container(height: 1.5, color: context.colorScheme.outline),
+      ),
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: Text(
+          text,
+          style: context.textTheme.bodyMedium!.copyWith(
+            color: context.colorScheme.outline,
+          ),
+        ),
+      ),
+      Expanded(
+        child: Container(height: 1.5, color: context.colorScheme.outline),
+      ),
+    ],
+  );
+
+  @override
+  void dispose() {
+    _email.dispose();
+    _password.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final translate = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
+        leading: IconButton(
+          onPressed: () {},
+          icon: Icon(Icons.arrow_back, color: context.iconTheme.color),
+        ),
       ),
       body: Form(
         key: _formKey,
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Align(
+                const SizedBox(height: 20),
+                Center(
                   child: Text(
-                    AppLocalizations.of(context)!.signInTitle,
-                    style: GoogleFonts.jost().copyWith(
-                      fontSize: 25,
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: 0.2,
+                    translate.signInTitle,
+                    style: GoogleFonts.jost(
+                      textStyle: context.textTheme.displaySmall!.copyWith(
+                        color: context.colorScheme.onSurfaceVariant,
+                      ),
                     ),
                     textAlign: TextAlign.center,
                   ),
                 ),
-                SizedBox(height: 10),
-                Align(
+                const SizedBox(height: 10),
+                Center(
                   child: Text(
-                    AppLocalizations.of(context)!.signInDesc,
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    translate.signInDesc,
+                    style: context.textTheme.bodyMedium!.copyWith(
+                      color: context.colorScheme.onSurfaceVariant,
                     ),
                     textAlign: TextAlign.center,
                   ),
                 ),
-                SizedBox(height: 18),
-                Align(
-                  child: Text(
-                    error ?? '',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14,
-                      color: AppColors.error,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                SizedBox(height: 15),
+                _buildErrorText(),
+                const SizedBox(height: 15),
                 Text(
-                  AppLocalizations.of(context)!.emailAddress,
-                  style: CustomerTextStyles.suitableBoldTextStyle(
-                    Theme.of(context).colorScheme.onSurface,
+                  translate.emailAddress,
+                  style: context.textTheme.headlineSmall!.copyWith(
+                    color: context.colorScheme.onSurfaceVariant,
                   ),
                 ),
-                SizedBox(height: 10),
-                AuthTextField(
-                  controller: _emailInput,
-                  hintText: AppLocalizations.of(context)!.enterEmail,
-                  isPassword: false,
-                  validator: (value) => validatorEmail(context, value),
+                const SizedBox(height: 10),
+                HBTexField(
+                  controller: _email,
+                  hintText: translate.enterEmail,
+                  validator: (v) => validatorEmail(context, v),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Text(
-                  AppLocalizations.of(context)!.password,
-                  style: CustomerTextStyles.suitableBoldTextStyle(
-                    Theme.of(context).colorScheme.onSurface,
+                  translate.password,
+                  style: context.textTheme.headlineSmall!.copyWith(
+                    color: context.colorScheme.onSurfaceVariant,
                   ),
                 ),
-                SizedBox(height: 10),
-                AuthTextField(
+                const SizedBox(height: 10),
+                HBTexField(
                   controller: _password,
-                  hintText: AppLocalizations.of(context)!.enterPassword,
+                  hintText: translate.enterPassword,
                   isPassword: true,
-                  validator: (value) => validatePassword(context, value),
+                  validator: (v) => validatePassword(context, v),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 15),
@@ -136,125 +166,91 @@ class _SignInState extends State<SignIn> {
                     children: [
                       Row(
                         children: [
-                          CircularCheckbox(size: 28, isCheckbox: false),
-                          SizedBox(width: 8),
-                          Text(AppLocalizations.of(context)!.checkbox),
+                          const CircularCheckbox(size: 28, isCheckbox: false),
+                          const SizedBox(width: 8),
+                          Text(
+                            translate.checkbox,
+                            style: context.textTheme.bodyMedium!.copyWith(
+                              color: context.colorScheme.onSurfaceVariant
+                                  .withValues(alpha: 0.5),
+                            ),
+                          ),
                         ],
                       ),
                       TextButton(
                         onPressed: () {},
                         child: Text(
-                          AppLocalizations.of(context)!.forgotPassword,
-                          style: TextStyle(color: AppColors.error),
+                          translate.forgotPassword,
+                          style: context.textTheme.bodyMedium!.copyWith(
+                            color: context.colorScheme.error,
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 PrimaryBtn(
-                  textButton: AppLocalizations.of(context)!.signIn,
-                  onPressed: LogIn,
+                  textButton: translate.signIn,
+                  onPressed: logIn,
                   bold: false,
                 ),
-
-                Padding(
-                  padding: const EdgeInsets.only(top: 30, bottom: 30),
+                const SizedBox(height: 30),
+                Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        AppLocalizations.of(context)!.noAccount,
-                        style: CustomerTextStyles.suitableBoldTextStyle(
-                          Theme.of(context).colorScheme.onSurfaceVariant,
+                        translate.noAccount,
+                        style: context.textTheme.headlineSmall!.copyWith(
+                          color: context.colorScheme.onSurfaceVariant,
                         ),
                       ),
                       TextButton(
                         onPressed:
-                            () => {
-                              setState(() {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => SignIn(),
-                                  ),
-                                );
-                              }),
-                            },
-
-                        child: Text(
-                          AppLocalizations.of(context)!.signUp,
-                          style: GoogleFonts.roboto(
-                            textStyle: CustomerTextStyles.suitableBoldTextStyle(
-                              Theme.of(context).colorScheme.primary,
+                            () => Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (_) => const SignIn()),
                             ),
+                        child: Text(
+                          translate.signUp,
+                          style: GoogleFonts.roboto(
+                            textStyle: context.textTheme.headlineSmall!
+                                .copyWith(color: context.colorScheme.primary),
                           ),
                         ),
                       ),
                     ],
                   ),
                 ),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 55,
-                      height: 1.5,
-                      child: const DecoratedBox(
-                        decoration: BoxDecoration(color: Color(0xFFE9EBED)),
+                const SizedBox(height: 25),
+                _buildDividerWithText(translate.orSignIn),
+                const SizedBox(height: 25),
+                SocailSection(error: error),
+                const SizedBox(height: 40),
+                Center(
+                  child: Text.rich(
+                    TextSpan(
+                      style: TextStyle(
+                        color: context.colorScheme.onSurfaceVariant,
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8, right: 8),
-                      child: Text(
-                        AppLocalizations.of(context)!.orSignIn,
-                        style: CustomerTextStyles.suitableTextStyle(
-                          Color(0xFF9CA4AB),
+                      children: [
+                        TextSpan(text: translate.textFooterOne),
+                        TextSpan(
+                          text: ' ${translate.textFooterTwo}\n',
+                          style: const TextStyle(fontWeight: FontWeight.w600),
                         ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 55,
-                      height: 1.5,
-                      child: const DecoratedBox(
-                        decoration: BoxDecoration(color: Color(0xFFE9EBED)),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 25),
-                SocailSection(error: error), // list btn socail
-                Padding(
-                  padding: const EdgeInsets.only(top: 40),
-                  child: Align(
-                    child: Text.rich(
-                      TextSpan(
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        TextSpan(text: translate.textFooterThree),
+                        TextSpan(
+                          text: translate.textFooterFour,
+                          style: const TextStyle(fontWeight: FontWeight.w600),
                         ),
-                        children: [
-                          TextSpan(
-                            text: AppLocalizations.of(context)!.textFooterOne,
-                          ),
-                          TextSpan(
-                            text:
-                                ' ${AppLocalizations.of(context)!.textFooterTwo}\n',
-                            style: TextStyle(fontWeight: FontWeight.w600),
-                          ),
-                          TextSpan(
-                            text: AppLocalizations.of(context)!.textFooterThree,
-                          ),
-                          TextSpan(
-                            text: AppLocalizations.of(context)!.textFooterFour,
-                            style: TextStyle(fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      textAlign: TextAlign.center,
+                      ],
                     ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
+                const SizedBox(height: 20),
               ],
             ),
           ),

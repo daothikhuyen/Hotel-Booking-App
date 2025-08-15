@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hotel_booking_app/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/routes/app_router.dart';
 import 'package:hotel_booking_app/screens/onboarding/onboarding_screen.dart';
-import 'package:hotel_booking_app/themes/theme.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,12 +17,9 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    Future.delayed(Duration(seconds: 2), () {
-      Navigator.push(
-        // ignore: use_build_context_synchronously
-        context,
-        animationRouter(OnboardingScreen()),
-      );
+    Future.delayed(const Duration(seconds: 2), () {
+      if (!mounted) return;
+      Navigator.push(context, animationRouter(const OnboardingScreen()));
     });
   }
 
@@ -36,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              "assets/images/logoApp.png",
+              'assets/images/logoApp.png',
               height: 123.2,
               width: 89.7,
               fit: BoxFit.cover,
@@ -44,12 +41,16 @@ class _SplashScreenState extends State<SplashScreen> {
             Text(
               'Grand Hotel',
               style: GoogleFonts.jost(
-                textStyle: Theme.of(context).textTheme.displayMedium,
-              ).copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+                textStyle: context.textTheme.displayLarge!.copyWith(
+                  color: context.colorScheme.onSurface,
+                ),
+              ),
             ),
             Text(
               AppLocalizations.of(context)!.titleSplash,
-              style: CustomerTextStyles.smallBoldTextStyle(Colors.white)
+              style: context.textTheme.bodyMedium!.copyWith(
+                color: context.colorScheme.onSurface,
+              ),
             ),
           ],
         ),

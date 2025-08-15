@@ -1,24 +1,26 @@
 
+import 'package:hotel_booking_app/gen/assets.gen.dart';
+
 final List<Map<String, String>> onboardingData = [
   {
-    'image': 'assets/images/onboarding/02 - On Boarding #1.png',
-    'title': "onboardingTitleOne",
+    'image': Assets.images.onboarding.a02OnBoarding1.path,
+    'title': 'onboardingTitleOne',
     'desc':
         'onboardingDescOne',
-    'nameButton': 'contiune',
+    'textButton': 'contiune',
   },
   {
-    'image': 'assets/images/onboarding/03 - On Boarding #2.png',
+    'image': Assets.images.onboarding.a03OnBoarding2.path,
     'title': 'onboardingTitleTwo',
     'desc':
         'onboardingDescTwo',
-    'nameButton': 'contiune',
+    'textButton': 'contiune',
   },
   {
-    'image': 'assets/images/onboarding/04 - On Boarding #3.png',
+    'image': Assets.images.onboarding.a04OnBoarding3.path,
     'title': 'onboardingTitleThree',
     'desc':
         'onboardingDescThree',
-    'nameButton': 'getStarted',
+    'textButton': 'getStarted',
   },
 ];

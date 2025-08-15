@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hotel_booking_app/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/model/destination.dart';
 import 'package:hotel_booking_app/routes/destinations.dart';
 import 'package:hotel_booking_app/utils/translation_helper.dart';
-import 'package:hotel_booking_app/widgets/home/header_bar.dart';
 
 class MainHomeScreen extends StatefulWidget {
   const MainHomeScreen({super.key});
@@ -18,7 +18,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Theme.of(context).colorScheme.surface,
+      backgroundColor: context.colorScheme.surface,
       body: IndexedStack(
         index: _selectedIndex,
         children:
@@ -28,19 +28,18 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surface,
+          color: context.colorScheme.surface,
           border: Border(
             top: BorderSide(
-              color: Theme.of(context).colorScheme.outline,
+              color: context.colorScheme.outline,
               width: 0.5,
             ),
           ),
           boxShadow: [
             BoxShadow(
-              // ignore: deprecated_member_use
-              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.1),
+              color: context.colorScheme.onSurface.withValues(alpha: 0.1),
               blurRadius: 8,
-              offset: Offset(0, -2), // location y
+              offset: const Offset(0, -2), // location y
             ),
           ],
         ),
@@ -51,17 +50,17 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
               states,
             ) {
               if (states.contains(WidgetState.selected)) {
-                return TextStyle(color: Theme.of(context).colorScheme.primary);
+                return TextStyle(color: context.colorScheme.primary);
               }
               return TextStyle(
-                color: Theme.of(context).colorScheme.onSurfaceVariant,
+                color: context.colorScheme.onSurfaceVariant,
               );
             }),
           ),
           child: NavigationBar(
             elevation: 0,
             selectedIndex: _selectedIndex,
-            backgroundColor: Theme.of(context).colorScheme.surface,
+            backgroundColor: context.colorScheme.surface,
             indicatorColor: Colors.transparent,
             onDestinationSelected: (value) {
               setState(() {
@@ -72,11 +71,10 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                 destinations.map<NavigationDestination>((d) {
                   return NavigationDestination(
                     icon: SvgPicture.asset(d.icon),
-                    // ignore: deprecated_member_use
                     selectedIcon: SvgPicture.asset(
                       d.icon,
-                      // ignore: deprecated_member_use
-                      color: Theme.of(context).colorScheme.primary,
+                      colorFilter:  ColorFilter.mode(context.colorScheme.primary,BlendMode.srcIn),
+                      fit: BoxFit.cover,
                     ),
                     label: getTranslatedText(context, d.labelKey),
                   );
