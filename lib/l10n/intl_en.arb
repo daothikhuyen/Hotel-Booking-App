@@ -1,7 +1,7 @@
 {
   "@@locale": "en",
   "agreeTerm": "By signing up you agree to our \nTerms \nand Conditions of Use",
-  "bestToday": "Best Today",
+  "bestToday": "Best Today 🔥",
   "checkbox": "Remember Me",
   "forgotPassword": "Forgot Password",
   "home": "Home",
@@ -39,11 +39,12 @@
   "textFooterFour" : "Conditions of Use",
   "signUp" : "Sign Up",
   "register": "Register",
+  "signInFailed": "Sign in failed",
+  "signInSucess": "Sign in sucess",
   "errorEmptyEmail": "Please entern your email",
   "errorEmptyPassword": "Please enter your password",
   "errorEmailFormat": "Invalid email format",
   "errorPasswordFormat": "Password must be at least 6 characters long",
-  "loginSucess": "Login Sucess",
   "tagAll": "All",
   "tagApartement": "Apartement\n",
   "tagHotel": "Hotels"

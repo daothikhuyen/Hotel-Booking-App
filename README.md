@@ -20,7 +20,8 @@
 
 - **Home**
 
-<img src="./assets/images/image_project/home_1.png" width="200"/> 
+<img src="./assets/images/image_project/home2.png" width="200"/>  <img src="./assets/images/image_project/home_1.png" width="200"/> 
+
 
 - **Demo**
   
@@ -50,7 +51,7 @@
 - Built file main.directories.g in widgetbook
   
 ```bash
-  Built file main.directories.g
+  flutter pub run build_runner build
 ```
 
 - Move to folder

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
-import 'package:hotel_booking_app/themes/theme.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_HotelBookingApp/main.directories.g.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;

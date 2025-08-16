@@ -18,8 +18,6 @@ linter:
     always_use_package_imports: true       
     prefer_single_quotes: true             
     prefer_final_locals: true               
-    prefer_const_constructors: true        
-    prefer_const_declarations: true        
     use_key_in_widget_constructors: true    
     sort_child_properties_last: true        
     avoid_print: true                      

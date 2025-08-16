@@ -12,7 +12,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get agreeTerm => 'By signing up you agree to our \nTerms \nand Conditions of Use';
 
   @override
-  String get bestToday => 'Best Today';
+  String get bestToday => 'Best Today 🔥';
 
   @override
   String get checkbox => 'Remember Me';
@@ -126,6 +126,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get register => 'Register';
 
   @override
+  String get signInFailed => 'Sign in failed';
+
+  @override
+  String get signInSucess => 'Sign in sucess';
+
+  @override
   String get errorEmptyEmail => 'Please entern your email';
 
   @override
@@ -136,9 +142,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get errorPasswordFormat => 'Password must be at least 6 characters long';
-
-  @override
-  String get loginSucess => 'Login Sucess';
 
   @override
   String get tagAll => 'All';

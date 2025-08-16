@@ -1,7 +1,7 @@
 {
   "@@locale": "vi",
   "agreeTerm": "Bằng cách đăng ký, bạn đồng ý với Điều khoản và Điều kiện sử dụng của chúng tôi",
-  "bestToday": "Tốt nhất hôm nay",
+  "bestToday": "Tốt nhất hôm nay 🔥",
   "checkbox": "Nhớ tôi",
   "forgotPassword": "Quên mật khẩu",
   "home": "Trang chủ",
@@ -39,11 +39,12 @@
   "textFooterFour" : "Điều kiện sử dụng",
   "signUp" : "Đăng Kí",
   "register": "Đăng Kí",
+  "signInFailed": "Đăng nhập không thành công",
+  "signInSucess": "Đăng nhập thành công",
   "errorEmptyEmail": "Vui lòng nhập email của bạn",
   "errorEmptyPassword": "Vui lòng nhập mật khẩu của bạn",
   "errorEmailFormat": "Định dạng email không hợp lệ",
   "errorPasswordFormat": "Mật khẩu phải dài ít nhất 6 kí tự",
-  "loginSucess": "Đăng nhập thành công",
   "tagAll": "Tất cả",
   "tagApartement": "Căn hộ\n",
   "tagHotel": "Khách sạn"

@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hotel_booking_app/firebase_options.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
-import 'package:hotel_booking_app/screens/home/main_home_screen.dart';
-import 'package:hotel_booking_app/screens/onboarding/onboarding_screen.dart';
-import 'package:hotel_booking_app/themes/theme.dart';
+import 'package:hotel_booking_app/features/home/main_home_screen.dart';
+import 'package:hotel_booking_app/features/onboarding/onboarding_screen.dart';
+import 'package:hotel_booking_app/core/themes/theme.dart';
 
 
 void main() async {

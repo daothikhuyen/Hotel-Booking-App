@@ -104,7 +104,7 @@ abstract class AppLocalizations {
   /// No description provided for @bestToday.
   ///
   /// In en, this message translates to:
-  /// **'Best Today'**
+  /// **'Best Today 🔥'**
   String get bestToday;
 
   /// No description provided for @checkbox.
@@ -329,6 +329,18 @@ abstract class AppLocalizations {
   /// **'Register'**
   String get register;
 
+  /// No description provided for @signInFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in failed'**
+  String get signInFailed;
+
+  /// No description provided for @signInSucess.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in sucess'**
+  String get signInSucess;
+
   /// No description provided for @errorEmptyEmail.
   ///
   /// In en, this message translates to:
@@ -352,12 +364,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Password must be at least 6 characters long'**
   String get errorPasswordFormat;
-
-  /// No description provided for @loginSucess.
-  ///
-  /// In en, this message translates to:
-  /// **'Login Sucess'**
-  String get loginSucess;
 
   /// No description provided for @tagAll.
   ///

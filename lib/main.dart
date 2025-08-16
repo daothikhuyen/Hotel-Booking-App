@@ -1,11 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:hotel_booking_app/controller/hotel_controller.dart';
+import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
+import 'package:hotel_booking_app/features/home/controller/navigation_controller.dart';
 import 'package:hotel_booking_app/firebase_options.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
-import 'package:hotel_booking_app/screens/onboarding/onboarding_screen.dart';
-import 'package:hotel_booking_app/themes/theme.dart';
+import 'package:hotel_booking_app/features/home/main_home_screen.dart';
+import 'package:hotel_booking_app/features/onboarding/onboarding_screen.dart';
+import 'package:hotel_booking_app/features/auth/services/auth_service.dart';
+import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:provider/provider.dart';
 
 
@@ -13,13 +16,24 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(
-
-     MultiProvider(
+    //  DevicePreview(
+    //     enabled: !kReleaseMode,
+    //     builder: (context) => MultiProvider(
+    //   providers: [
+    //     ChangeNotifierProvider(create: (context) => HotelController()),
+    //     ChangeNotifierProvider(create: (context) => NavigationController()),
+    //   ],
+    //   child: const MyApp(),
+    // ), // Wrap your app
+    //   ),
+    MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => HotelController()),
+        ChangeNotifierProvider(create: (context) => HotelController()),
+        ChangeNotifierProvider(create: (context) => NavigationController()),
       ],
       child: const MyApp(),
     ),
+    // Wrap your app
   );
 }
 
@@ -44,7 +58,16 @@ class MyApp extends StatelessWidget {
         const Locale('vi'), // Spanish
       ],
       locale: const Locale('en'),
-      home: const OnboardingScreen(),
+      home: StreamBuilder(
+        stream: AuthService().authStateChanges,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return const MainHomeScreen();
+          } else {
+            return const OnboardingScreen();
+          }
+        },
+      ),
     );
   }
 }

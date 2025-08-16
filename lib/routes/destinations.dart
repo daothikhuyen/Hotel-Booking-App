@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/model/destination.dart';
-import 'package:hotel_booking_app/screens/home/home_screen.dart';
-import 'package:hotel_booking_app/screens/my_booking/my_booking_screen.dart';
+import 'package:hotel_booking_app/features/home/home_screen.dart';
+import 'package:hotel_booking_app/features/my_booking/my_booking_screen.dart';
 
 class DestinationView extends StatelessWidget {
-  final Destination destination;
+  final int selectedIndex;
 
-  const DestinationView(this.destination, {super.key});
+  const DestinationView(this.selectedIndex, {super.key} );
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +13,9 @@ class DestinationView extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: Container(
         alignment: Alignment.center,
-        child: destination.id == 0
+        child: selectedIndex == 0
             ? const HomeScreen()
-            : destination.id  == 1
+            : selectedIndex  == 1
             ? const MyBookingScreen()
             : const HomeScreen(),
       ),
