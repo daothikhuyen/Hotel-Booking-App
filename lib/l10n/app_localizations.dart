@@ -104,7 +104,7 @@ abstract class AppLocalizations {
   /// No description provided for @bestToday.
   ///
   /// In en, this message translates to:
-  /// **'Best Today'**
+  /// **'Best Today 🔥'**
   String get bestToday;
 
   /// No description provided for @checkbox.
@@ -160,6 +160,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Hotel Near You'**
   String get nearYou;
+
+  /// No description provided for @openMap.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Map'**
+  String get openMap;
 
   /// No description provided for @night.
   ///
@@ -322,6 +328,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Register'**
   String get register;
+
+  /// No description provided for @signInFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in failed'**
+  String get signInFailed;
+
+  /// No description provided for @signInSucess.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in sucess'**
+  String get signInSucess;
 
   /// No description provided for @errorEmptyEmail.
   ///

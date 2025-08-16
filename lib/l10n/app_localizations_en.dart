@@ -12,7 +12,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get agreeTerm => 'By signing up you agree to our \nTerms \nand Conditions of Use';
 
   @override
-  String get bestToday => 'Best Today';
+  String get bestToday => 'Best Today 🔥';
 
   @override
   String get checkbox => 'Remember Me';
@@ -40,6 +40,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get nearYou => 'Hotel Near You';
+
+  @override
+  String get openMap => 'Open Map';
 
   @override
   String get night => 'night';
@@ -121,6 +124,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get register => 'Register';
+
+  @override
+  String get signInFailed => 'Sign in failed';
+
+  @override
+  String get signInSucess => 'Sign in sucess';
 
   @override
   String get errorEmptyEmail => 'Please entern your email';

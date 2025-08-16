@@ -12,7 +12,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get agreeTerm => 'Bằng cách đăng ký, bạn đồng ý với Điều khoản và Điều kiện sử dụng của chúng tôi';
 
   @override
-  String get bestToday => 'Tốt nhất hôm nay';
+  String get bestToday => 'Tốt nhất hôm nay 🔥';
 
   @override
   String get checkbox => 'Nhớ tôi';
@@ -40,6 +40,9 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get nearYou => 'Khách sạn gần bạn';
+
+  @override
+  String get openMap => 'Mở Map';
 
   @override
   String get night => 'đêm';
@@ -121,6 +124,12 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get register => 'Đăng Kí';
+
+  @override
+  String get signInFailed => 'Đăng nhập không thành công';
+
+  @override
+  String get signInSucess => 'Đăng nhập thành công';
 
   @override
   String get errorEmptyEmail => 'Vui lòng nhập email của bạn';
