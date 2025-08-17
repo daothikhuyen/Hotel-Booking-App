@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/core/utils/translation_helper.dart';
 
 class CategoryItem  extends StatelessWidget {
@@ -41,9 +42,7 @@ class CategoryItem  extends StatelessWidget {
           ): const SizedBox.shrink(),
           Text(
             getTranslatedText(context, title),
-            style: context.textTheme.bodyMedium!.copyWith(
-              color: !isSelected ? context.colorScheme.inverseSurface : context.colorScheme.onPrimary,
-            ),
+            style: CustomTextStyles.bodyRegularSmall(!isSelected ? context.colorScheme.inverseSurface : context.colorScheme.onPrimary),
           ),
         ],
       ),

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/core/widgets/alert.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/routes/app_router.dart';
@@ -61,9 +62,7 @@ class _SignInState extends State<SignIn> {
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: Text(
           text,
-          style: context.textTheme.bodyMedium!.copyWith(
-            color: context.colorScheme.outline,
-          ),
+          style: CustomTextStyles.bodyRegularSmall( context.colorScheme.outline),
         ),
       ),
       Expanded(
@@ -104,11 +103,7 @@ class _SignInState extends State<SignIn> {
                 Center(
                   child: Text(
                     translate.signInTitle,
-                    style: GoogleFonts.jost(
-                      textStyle: context.textTheme.displaySmall!.copyWith(
-                        color: context.colorScheme.onSurfaceVariant,
-                      ),
-                    ),
+                    style: CustomTextStyles.headingThree(context.colorScheme.onSurfaceVariant),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -116,18 +111,14 @@ class _SignInState extends State<SignIn> {
                 Center(
                   child: Text(
                     translate.signInDesc,
-                    style: context.textTheme.bodyMedium!.copyWith(
-                      color: context.colorScheme.onSurfaceVariant,
-                    ),
+                    style: CustomTextStyles.bodyRegularSmall(context.colorScheme.onSurfaceVariant),
                     textAlign: TextAlign.center,
                   ),
                 ),
                 const SizedBox(height: 15),
                 Text(
                   translate.emailAddress,
-                  style: context.textTheme.headlineSmall!.copyWith(
-                    color: context.colorScheme.onSurfaceVariant,
-                  ),
+                  style: CustomTextStyles.bodySemiboldSmall(context.colorScheme.onSurfaceVariant),
                 ),
                 const SizedBox(height: 10),
                 HBTexField(
@@ -138,9 +129,7 @@ class _SignInState extends State<SignIn> {
                 const SizedBox(height: 15),
                 Text(
                   translate.password,
-                  style: context.textTheme.headlineSmall!.copyWith(
-                    color: context.colorScheme.onSurfaceVariant,
-                  ),
+                  style: CustomTextStyles.bodySemiboldSmall(context.colorScheme.onSurfaceVariant),
                 ),
                 const SizedBox(height: 10),
                 HBTexField(
@@ -160,10 +149,8 @@ class _SignInState extends State<SignIn> {
                           const SizedBox(width: 8),
                           Text(
                             translate.checkbox,
-                            style: context.textTheme.bodyMedium!.copyWith(
-                              color: context.colorScheme.onSurfaceVariant
-                                  .withValues(alpha: 0.5),
-                            ),
+                            style: CustomTextStyles.bodyRegularSmall(context.colorScheme.onSurfaceVariant
+                                  .withValues(alpha: 0.5),),
                           ),
                         ],
                       ),
@@ -171,9 +158,7 @@ class _SignInState extends State<SignIn> {
                         onPressed: () {},
                         child: Text(
                           translate.forgotPassword,
-                          style: context.textTheme.bodyMedium!.copyWith(
-                            color: context.colorScheme.error,
-                          ),
+                          style: CustomTextStyles.bodyRegularSmall(context.colorScheme.error),
                         ),
                       ),
                     ],
@@ -192,9 +177,7 @@ class _SignInState extends State<SignIn> {
                     children: [
                       Text(
                         translate.noAccount,
-                        style: context.textTheme.headlineSmall!.copyWith(
-                          color: context.colorScheme.onSurfaceVariant,
-                        ),
+                        style: CustomTextStyles.bodySemiboldMedium(context.colorScheme.onSurfaceVariant),
                       ),
                       TextButton(
                         onPressed:
@@ -205,8 +188,7 @@ class _SignInState extends State<SignIn> {
                         child: Text(
                           translate.signUp,
                           style: GoogleFonts.roboto(
-                            textStyle: context.textTheme.headlineSmall!
-                                .copyWith(color: context.colorScheme.primary),
+                            textStyle: CustomTextStyles.bodySemiboldSmall(context.colorScheme.primary),
                           ),
                         ),
                       ),

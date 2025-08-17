@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/themes/theme.dart';
 
 class HBTexField extends StatefulWidget {
   final TextEditingController controller;
@@ -40,10 +41,10 @@ class _HBTexFieldState extends State<HBTexField> {
     return TextFormField(
       controller: widget.controller,
       validator: widget.validator,
-      style: context.textTheme.labelLarge!.copyWith(color: textColor),
+      style: CustomTextStyles.bodySemiboldSmall(textColor),
       decoration: InputDecoration(
         hintText: widget.hintText,
-        hintStyle: context.textTheme.labelLarge!.copyWith(color: hintColor),
+        hintStyle:  CustomTextStyles.bodySemiboldSmall(hintColor),
         filled: true,
         fillColor: context.colorScheme.onTertiary,
         border: InputBorder.none,
@@ -60,7 +61,7 @@ class _HBTexFieldState extends State<HBTexField> {
                   onPressed: () => setState(() => _obscureText = !_obscureText),
                 )
                 : null,
-        errorStyle: context.textTheme.bodyMedium!.copyWith(color: errorColor),
+        errorStyle: CustomTextStyles.bodyRegularMedium(errorColor),
       ),
       keyboardType: widget.keyboardType,
       textInputAction: widget.textInputAction,

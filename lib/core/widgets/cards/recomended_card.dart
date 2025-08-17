@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/core/themes/app_colors.dart';
@@ -38,9 +39,13 @@ class RecomendedItem extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(13),
                   image: DecorationImage(
-                    image: linkImage != ''
-                    ? NetworkImage(linkImage!)
-                    : const AssetImage('assets/images/home/FrameOne.png') as ImageProvider,
+                    image:
+                        linkImage != ''
+                            ? NetworkImage(linkImage!)
+                            : const AssetImage(
+                                  'assets/images/home/FrameOne.png',
+                                )
+                                as ImageProvider,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -52,10 +57,8 @@ class RecomendedItem extends StatelessWidget {
                 children: [
                   Text(
                     name,
-                    style: GoogleFonts.jost(
-                      textStyle: context.textTheme.headlineSmall!.copyWith(
-                        color: context.colorScheme.onSurfaceVariant,
-                      ),
+                    style: CustomTextStyles.bodySemiboldSmall(
+                      context.colorScheme.onSurfaceVariant,
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -74,9 +77,10 @@ class RecomendedItem extends StatelessWidget {
                       const SizedBox(width: 4),
                       Text(
                         address,
-                        style: context.textTheme.bodySmall!.copyWith(
-                          color: context.colorScheme.onSurfaceVariant
-                              .withValues(alpha: 0.7),
+                        style: CustomTextStyles.bodyRegularXSmall(
+                          context.colorScheme.onSurfaceVariant.withValues(
+                            alpha: 0.7,
+                          ),
                         ),
                       ),
                     ],
@@ -87,18 +91,11 @@ class RecomendedItem extends StatelessWidget {
                       children: [
                         TextSpan(
                           text: '\$$money',
-                          style: GoogleFonts.inter(
-                            textStyle: context.textTheme.headlineSmall!
-                                .copyWith(color: AppColors.primaryLight),
-                          ),
+                          style: CustomTextStyles.bodySemiboldSmall(context.colorScheme.primary),
                         ),
                         TextSpan(
                           text: ' /${AppLocalizations.of(context)!.night}',
-                          style: GoogleFonts.jost(
-                            textStyle: context.textTheme.bodySmall!.copyWith(
-                              color: context.colorScheme.onSurfaceVariant,
-                            ),
-                          ),
+                          style: CustomTextStyles.bodyRegularXSmall(context.colorScheme.onSurfaceVariant),
                         ),
                       ],
                     ),
@@ -120,11 +117,7 @@ class RecomendedItem extends StatelessWidget {
                 const SizedBox(width: 4),
                 Text(
                   ratting,
-                  style: GoogleFonts.inter(
-                    textStyle: context.textTheme.headlineSmall!.copyWith(
-                      color: context.colorScheme.onSurfaceVariant,
-                    ),
-                  ),
+                  style: CustomTextStyles.bodySemiboldSmall(context.colorScheme.onSurfaceVariant),
                 ),
               ],
             ),

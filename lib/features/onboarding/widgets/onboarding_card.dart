@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/core/utils/translation_helper.dart';
 import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
@@ -28,12 +29,12 @@ class OnboardingCard extends StatelessWidget {
       children: [
         Image.asset(images, fit: BoxFit.cover),
         Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFF110C1D), Colors.transparent],
+              colors: [context.colorScheme.inverseSurface, Colors.transparent],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
-              stops: [0.2, 0.8],
+              stops: const [0.2, 0.8],
             ),
           ),
         ),
@@ -47,21 +48,13 @@ class OnboardingCard extends StatelessWidget {
                 Text(
                   getTranslatedText(context, title),
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.jost(
-                    textStyle: context.textTheme.displaySmall?.copyWith(
-                      letterSpacing: 1.5,
-                      color: context.colorScheme.onSurface,
-                    ),
-                  ),
+                  style: CustomTextStyles.headingThree(context.colorScheme.onSurface),
                 ),
                 const SizedBox(height: 12),
                 Text(
                   getTranslatedText(context, desc),
                   textAlign: TextAlign.center,
-                  style: context.textTheme.bodyMedium!.copyWith(
-                    color: context.colorScheme.onSurface.withValues(alpha: 0.7),
-                    letterSpacing: 0.5,
-                  ),
+                  style: CustomTextStyles.bodyRegularSmall(context.colorScheme.onSurface.withValues(alpha: 0.7), letterSpacing: 0.5),
                 ),
                 const SizedBox(height: 35),
                 Padding(
@@ -85,7 +78,6 @@ class OnboardingCard extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: () => {},
-                    
                           child: Text(
                             AppLocalizations.of(context)!.register,
                             style: GoogleFonts.roboto().copyWith(
