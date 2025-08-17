@@ -72,6 +72,9 @@ class $AssetsImagesHomeGen {
 class $AssetsImagesIconGen {
   const $AssetsImagesIconGen();
 
+  /// File path: assets/images/icon/3d-rotate.svg
+  String get a3dRotate => 'assets/images/icon/3d-rotate.svg';
+
   /// File path: assets/images/icon/Document.svg
   String get document => 'assets/images/icon/Document.svg';
 
@@ -131,6 +134,7 @@ class $AssetsImagesIconGen {
 
   /// List of all assets
   List<dynamic> get values => [
+    a3dRotate,
     document,
     frame,
     frameArrow,

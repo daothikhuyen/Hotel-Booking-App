@@ -20,7 +20,7 @@ class HeaderCard extends StatelessWidget {
           Text(
             title,
             style: GoogleFonts.jost(
-              textStyle: context.textTheme.headlineSmall!.copyWith(
+              textStyle: context.textTheme.headlineMedium!.copyWith(
               color: context.colorScheme.onSurfaceVariant,
             ),
             ),

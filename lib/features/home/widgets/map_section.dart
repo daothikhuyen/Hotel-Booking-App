@@ -3,14 +3,15 @@ import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/core/widgets/cards/header_card.dart';
 
 class MapSection extends StatelessWidget {
-  const MapSection({super.key});
+  const MapSection({super.key, required this.title});
+  final String title ;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         HeaderCard(
-          title: AppLocalizations.of(context)!.nearYou,
+          title: title,
           titleBtn: AppLocalizations.of(context)!.openMap,
           onPressed: () {},
         ),

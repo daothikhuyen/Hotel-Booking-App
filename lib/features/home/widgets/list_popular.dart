@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/features/detail/detail_screen.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/core/widgets/cards/header_card.dart';
 import 'package:hotel_booking_app/features/home/widgets/card/popular_card.dart';
+import 'package:hotel_booking_app/routes/app_router.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class ListPopular extends StatefulWidget {
@@ -44,12 +46,17 @@ class _ListPopularState extends State<ListPopular> {
                   itemCount: hotels.length,
                   itemBuilder: (context, index) {
                     final hotel = hotels[index];
-                    return PopularCard(
-                      linkImage: hotel.image,
-                      name: hotel.name,
-                      address: hotel.location,
-                      money: hotel.current_price!,
-                      ratting: hotel.ratting ?? 0,
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, animationRouter(DetailScreen(hotel: hotel,)));
+                      },
+                      child: PopularCard(
+                        linkImage: hotel.image,
+                        name: hotel.name,
+                        address: hotel.location,
+                        money: hotel.current_price!,
+                        ratting: hotel.ratting ?? 0,
+                      ),
                     );
                   },
                 ),
@@ -88,13 +95,3 @@ class _ListPopularState extends State<ListPopular> {
     );
   }
 }
-
-// Container(
-//                       width: 156,
-//                       height: 220,
-//                       margin: const EdgeInsets.only(right: 10),
-//                       decoration: BoxDecoration(
-//                         borderRadius: BorderRadius.circular(15),
-//                         color: context.colorScheme.inverseSurface.withValues(alpha: 0.35),
-//                       ),
-//                     );

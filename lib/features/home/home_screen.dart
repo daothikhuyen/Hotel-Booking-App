@@ -2,11 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
-import 'package:hotel_booking_app/features/auth/sign_in.dart';
 import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/features/home/main_home_screen.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
@@ -16,7 +13,6 @@ import 'package:hotel_booking_app/core/widgets/list/list_horizontal.dart';
 import 'package:hotel_booking_app/features/home/widgets/map_section.dart';
 import 'package:hotel_booking_app/features/home/widgets/list_popular.dart';
 import 'package:hotel_booking_app/core/widgets/list/list_vertical.dart';
-import 'package:hotel_booking_app/routes/app_router.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -158,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     AppLocalizations.of(context)!.seeAll,
                   ),
                   // Map
-                  const MapSection(),
+                  MapSection(title: AppLocalizations.of(context)!.nearYou,),
                   // Best Today
                   ListHorizontal(
                     hotelBestToday,
