@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/routes/app_router.dart';
 import 'package:hotel_booking_app/features/onboarding/onboarding_screen.dart';
@@ -40,17 +41,11 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             Text(
               'Grand Hotel',
-              style: GoogleFonts.jost(
-                textStyle: context.textTheme.displayLarge!.copyWith(
-                  color: context.colorScheme.onSurface,
-                ),
-              ),
+              style: CustomTextStyles.headingOne(context.colorScheme.onSurface,),
             ),
             Text(
               AppLocalizations.of(context)!.titleSplash,
-              style: context.textTheme.bodyMedium!.copyWith(
-                color: context.colorScheme.onSurface,
-              ),
+              style: CustomTextStyles.bodyRegularSmall( context.colorScheme.onSurface),
             ),
           ],
         ),

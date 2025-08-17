@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/features/auth/sign_in.dart';
 import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
@@ -134,9 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Text(
                                 AppLocalizations.of(context)!.locationTitle,
-                                style: GoogleFonts.jost(
-                                  color: context.colorScheme.inverseSurface,
-                                ),
+                                style: CustomTextStyles.bodyRegularSmall(context.colorScheme.inverseSurface),
                               ),
                             ],
                           ),

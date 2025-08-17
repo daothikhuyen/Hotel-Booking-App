@@ -88,13 +88,3 @@ class _ListPopularState extends State<ListPopular> {
     );
   }
 }
-
-// Container(
-//                       width: 156,
-//                       height: 220,
-//                       margin: const EdgeInsets.only(right: 10),
-//                       decoration: BoxDecoration(
-//                         borderRadius: BorderRadius.circular(15),
-//                         color: context.colorScheme.inverseSurface.withValues(alpha: 0.35),
-//                       ),
-//                     );

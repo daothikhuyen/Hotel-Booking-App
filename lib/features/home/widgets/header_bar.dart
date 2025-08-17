@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/features/auth/sign_in.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
@@ -62,10 +63,7 @@ class HeaderBar extends StatelessWidget {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: GoogleFonts.plusJakartaSans(
-                              textStyle: context.textTheme.headlineMedium!
-                                  .copyWith(
-                                    color: context.colorScheme.onSurfaceVariant,
-                                  ),
+                              textStyle: CustomTextStyles.bodySemiboldMedium(context.colorScheme.onSurfaceVariant),
                             ),
                           ),
                           const SizedBox(height: 4),
@@ -81,13 +79,10 @@ class HeaderBar extends StatelessWidget {
                               Text(
                                 'San Diego, CA',
                                 style: GoogleFonts.plusJakartaSans(
-                                  textStyle: context.textTheme.bodySmall!
-                                      .copyWith(
-                                        color: context
+                                  textStyle: CustomTextStyles.bodyRegularXSmall(context
                                             .colorScheme
                                             .onSurfaceVariant
-                                            .withValues(alpha: 0.7),
-                                      ),
+                                            .withValues(alpha: 0.7),),
                                 ),
                               ),
                             ],
