@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
@@ -130,9 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Text(
                                 AppLocalizations.of(context)!.locationTitle,
-                                style: GoogleFonts.jost(
-                                  color: context.colorScheme.inverseSurface,
-                                ),
+                                style: CustomTextStyles.bodyRegularSmall(context.colorScheme.inverseSurface),
                               ),
                             ],
                           ),
@@ -152,6 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     hotelRecomended,
                     AppLocalizations.of(context)!.homeRecommended,
                     AppLocalizations.of(context)!.seeAll,
+                    hotelRecomended.length < 3 ? hotelRecomended.length : 3,
                   ),
                   // Map
                   MapSection(title: AppLocalizations.of(context)!.nearYou,),
@@ -160,6 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     hotelBestToday,
                     AppLocalizations.of(context)!.bestToday,
                     AppLocalizations.of(context)!.seeAll,
+                    hotelBestToday.length < 3 ? hotelBestToday.length : 3,
                   ),
                 ],
               ),

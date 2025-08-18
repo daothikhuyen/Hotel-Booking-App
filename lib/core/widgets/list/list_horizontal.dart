@@ -4,19 +4,23 @@ import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/core/widgets/cards/best_today_card.dart';
 import 'package:hotel_booking_app/core/widgets/cards/header_card.dart';
+import 'package:hotel_booking_app/features/detail/detail_screen.dart';
+import 'package:hotel_booking_app/routes/app_router.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class ListHorizontal extends StatelessWidget {
   const ListHorizontal(
     this.listHotels,
     this.title,
-    this.textButton, {
+    this.textButton,
+    this.number, {
     super.key,
   });
 
   final List<Hotel> listHotels;
   final String title;
   final String textButton;
+  final int number;
 
   @override
   Widget build(BuildContext context) {
@@ -34,17 +38,25 @@ class ListHorizontal extends StatelessWidget {
                     child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
-                      itemCount: hotels.length,
+                      itemCount: number,
                       itemBuilder: (context, index) {
                         final hotel = hotels[index];
-                        return BestTodayItem(
-                          linkImage: hotel.image,
-                          name: hotel.name,
-                          address: hotel.location,
-                          current_price: hotel.current_price ?? 0,
-                          last_price: hotel.last_price ?? 0,
-                          ratting: hotel.ratting ?? 0,
-                          traffic: hotel.traffic ?? 0,
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              animationRouter(DetailScreen(hotel: hotel)),
+                            );
+                          },
+                          child: BestTodayItem(
+                            linkImage: hotel.image,
+                            name: hotel.name,
+                            address: hotel.location,
+                            current_price: hotel.current_price ?? 0,
+                            last_price: hotel.last_price ?? 0,
+                            ratting: hotel.ratting ?? 0,
+                            traffic: hotel.traffic ?? 0,
+                          ),
                         );
                       },
                     ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
 
@@ -80,18 +81,14 @@ class _PopularCardState extends State<PopularCard> {
                 children: [
                   Text(
                     widget.name,
-                    style: context.textTheme.headlineSmall!.copyWith(
-                      color: context.colorScheme.onPrimary,
-                    ),
+                    style:CustomTextStyles.bodySemiboldSmall(context.colorScheme.onPrimary),
                   ),
                   const SizedBox(height: 5),
                   Text(
                     widget.address,
-                    style: context.textTheme.labelMedium!.copyWith(
-                      color: context.colorScheme.onPrimary.withValues(
+                    style: CustomTextStyles.bodyMediumXSmall(context.colorScheme.onPrimary.withValues(
                         alpha: 0.7,
-                      ),
-                    ),
+                      ),),
                   ),
                   const SizedBox(height: 5),
                   Row(
@@ -99,9 +96,7 @@ class _PopularCardState extends State<PopularCard> {
                     children: [
                       Text(
                         '\$${widget.money}/${AppLocalizations.of(context)!.night}',
-                        style: context.textTheme.labelMedium!.copyWith(
-                          color: context.colorScheme.onPrimary,
-                        ),
+                        style: CustomTextStyles.bodyMediumXSmall(context.colorScheme.onPrimary),
                       ),
                       Row(
                         children: [
@@ -114,9 +109,7 @@ class _PopularCardState extends State<PopularCard> {
                           const SizedBox(width: 3),
                           Text(
                             '${widget.ratting}',
-                            style: context.textTheme.labelMedium!.copyWith(
-                              color: context.colorScheme.onPrimary,
-                            ),
+                            style: CustomTextStyles.bodySemiboldXSmall(context.colorScheme.onPrimary),
                           ),
                           const SizedBox(width: 8),
                         ],

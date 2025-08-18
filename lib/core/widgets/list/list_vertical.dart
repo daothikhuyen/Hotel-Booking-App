@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/core/build_divider.dart';
+import 'package:hotel_booking_app/core/widgets/cards/build_divider.dart';
 import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
 import 'package:hotel_booking_app/data/data/hotel_data.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/core/widgets/cards/recomended_card.dart';
 import 'package:hotel_booking_app/core/widgets/cards/header_card.dart';
 import 'package:hotel_booking_app/core/widgets/category/category_list.dart';
+import 'package:hotel_booking_app/features/detail/detail_screen.dart';
+import 'package:hotel_booking_app/routes/app_router.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class ListVertical extends StatelessWidget {
-  const ListVertical(this.listHotels, this.title, this.textButton, {super.key});
+  const ListVertical(
+    this.listHotels,
+    this.title,
+    this.textButton,
+    this.number, {
+    super.key,
+  });
 
   final List<Hotel> listHotels;
   final String title;
   final String textButton;
+  final int number;
 
   get selectedIndex => null;
 
@@ -35,16 +44,24 @@ class ListVertical extends StatelessWidget {
             child: Column(
               children:
                   listHotels.isNotEmpty
-                      ? List.generate(listHotels.length, (index) {
+                      ? List.generate(number, (index) {
                         final hotel = hotels[index];
                         return Column(
                           children: [
-                            RecomendedItem(
-                              linkImage: hotel.image,
-                              name: hotel.name,
-                              address: hotel.location,
-                              money: hotel.current_price ?? 0,
-                              ratting: hotel.ratting.toString(),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  animationRouter(DetailScreen(hotel: hotel)),
+                                );
+                              },
+                              child: RecomendedItem(
+                                linkImage: hotel.image,
+                                name: hotel.name,
+                                address: hotel.location,
+                                money: hotel.current_price ?? 0,
+                                ratting: hotel.ratting.toString(),
+                              ),
                             ),
                             // create horizontal line
                             index < hotelData.length - 1

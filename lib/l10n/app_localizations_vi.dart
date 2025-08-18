@@ -151,4 +151,37 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get tagHotel => 'Khách sạn';
+
+  @override
+  String get titleDetail => 'Chi Tiết';
+
+  @override
+  String get commonFacilities => 'Cơ sở chung';
+
+  @override
+  String get price => 'Giá khách sạn';
+
+  @override
+  String get buttonBooking => 'Đặt ngay';
+
+  @override
+  String get restaurant => 'Nhà hàng ';
+
+  @override
+  String get swimmingPool => 'Hồ Bơi';
+
+  @override
+  String get timeHours => 'Quầy Lễ \n Tân 24h';
+
+  @override
+  String get description => 'Mô tả';
+
+  @override
+  String get location => 'Vị trí';
+
+  @override
+  String get reviews => 'Bình luận';
+
+  @override
+  String get descriptionHotel => 'Nơi lý tưởng cho những ai đang tìm kiếm trải nghiệm nghỉ dưỡng sang trọng và yên tĩnh với tầm nhìn ra biển tuyệt đẹp.Nơi lý tưởng cho những ai đang tìm kiếm trải nghiệm nghỉ dưỡng sang trọng và yên tĩnh với tầm nhìn ra biển tuyệt đẹp';
 }

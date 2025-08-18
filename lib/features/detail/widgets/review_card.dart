@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/features/detail/widgets/read_more.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 
@@ -42,11 +43,7 @@ class ReviewCard extends StatelessWidget {
                       children: [
                         Text(
                           'Kim Borrdy',
-                          style: GoogleFonts.outfit(
-                            textStyle: context.textTheme.labelLarge!.copyWith(
-                              color: context.colorScheme.inverseSurface,
-                            ),
-                          ),
+                          style: CustomTextStyles.bodySemiboldSmall(context.colorScheme.inverseSurface),
                         ),
                         Row(
                           children: [
@@ -59,12 +56,7 @@ class ReviewCard extends StatelessWidget {
                             const SizedBox(width: 4),
                             Text(
                               '4.5',
-                              style: GoogleFonts.inter(
-                                textStyle: context.textTheme.headlineSmall!
-                                    .copyWith(
-                                      color: context.colorScheme.onSurfaceVariant,
-                                    ),
-                              ),
+                              style: CustomTextStyles.bodySemiboldXSmall(context.colorScheme.onSurfaceVariant),
                             ),
                           ],
                         ),

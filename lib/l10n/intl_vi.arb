@@ -47,5 +47,17 @@
   "errorPasswordFormat": "Mật khẩu phải dài ít nhất 6 kí tự",
   "tagAll": "Tất cả",
   "tagApartement": "Căn hộ\n",
-  "tagHotel": "Khách sạn"
+  "tagHotel": "Khách sạn",
+  "titleDetail": "Chi Tiết",
+  "commonFacilities": "Cơ sở chung",
+  "price": "Giá khách sạn",
+  "buttonBooking": "Đặt ngay",
+  "restaurant": "Nhà hàng ",
+  "swimmingPool": "Hồ Bơi",
+  "timeHours" : "Quầy Lễ \n Tân 24h",
+  "description": "Mô tả",
+  "location": "Vị trí",
+  "reviews": "Bình luận",
+  "descriptionHotel": "Nơi lý tưởng cho những ai đang tìm kiếm trải nghiệm nghỉ dưỡng sang trọng và yên tĩnh với tầm nhìn ra biển tuyệt đẹp.Nơi lý tưởng cho những ai đang tìm kiếm trải nghiệm nghỉ dưỡng sang trọng và yên tĩnh với tầm nhìn ra biển tuyệt đẹp"
+
 }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/gen/assets.gen.dart';
 
 class FacilitiesCard extends StatelessWidget {
-  const FacilitiesCard({super.key});
+  const FacilitiesCard({super.key, required this.icon, required this.title});
+
+  final String icon;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -17,16 +19,17 @@ class FacilitiesCard extends StatelessWidget {
             radius: 24,
             backgroundColor: context.colorScheme.secondary,
             child: SvgPicture.asset(
-              Assets.images.icon.a3dRotate,
+              icon,
               fit: BoxFit.contain,
             ),
           ),
         ),
         Text(
-          'AC',
+          title,
           style: context.textTheme.bodySmall!.copyWith(
             color: context.colorScheme.tertiary,
           ),
+          textAlign: TextAlign.center,
         ),
       ],
     );

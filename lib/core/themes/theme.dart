@@ -19,12 +19,11 @@ ThemeData lightMode = ThemeData(
     onTertiary: AppColors.greyscale200,
     inversePrimary: AppColors.primary300,
     inverseSurface: AppColors.greyscale900,
-    
   ),
   iconTheme: const IconThemeData(
     color: AppColors.greyscale900, // private color icon
   ),
-  textTheme:customerTextThem(),
+  textTheme: GoogleFonts.jostTextTheme(),
   scaffoldBackgroundColor: AppColors.greyscale0,
 );
 
@@ -44,35 +43,196 @@ ThemeData darkMode = ThemeData(
   iconTheme: const IconThemeData(
     color: AppColors.iconDart, // private color icon
   ),
+  textTheme: GoogleFonts.jostTextTheme(),
   scaffoldBackgroundColor: AppColors.greyscale900,
-  textTheme: customerTextThem(),
 );
 
-TextTheme customerTextThem(){
-  return GoogleFonts.jostTextTheme().copyWith(
-    // Heading
-    displayLarge: const TextStyle(fontSize: 32, fontWeight: FontWeight.w700), // heading_1
-    displayMedium: const TextStyle(fontSize: 28, fontWeight: FontWeight.w700), // heading_2
-    displaySmall: const TextStyle(fontSize: 24, fontWeight: FontWeight.w700), // heading_3, headingThree
-    headlineLarge: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700), // bigTitle
-    headlineMedium: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700), // title
-    headlineSmall: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700), // paragraph
+// customer textstyle
+class CustomTextStyles {
+  static TextStyle headingOne(Color color) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 32,
+      fontWeight: FontWeight.w900,
+      color: color,
+    );
+  }
 
-    // Caption & small text
-    bodyLarge: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400), // caption
-    bodyMedium: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400), // smallText
-    bodySmall: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+  static TextStyle headingTwo(Color color) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 28,
+      fontWeight: FontWeight.w700,
+      color: color,
+    );
+  }
 
-    // Buttons
-    labelLarge: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600), // bigButton
-    labelMedium: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600), // smallButton
+  static TextStyle headingThree(Color color) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 24,
+      fontWeight: FontWeight.w700,
+      color: color,
+      letterSpacing: 1.5,
+    );
+  }
 
-    // Body variants
-    titleLarge: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600), // bodyLargeSemibold
-    titleMedium: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500), // bodyLargeMedium
-    titleSmall: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400), // bodyLargeRegular
+  static TextStyle bigTitle(Color color) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 28,
+      fontWeight: FontWeight.w700,
+      color: color,
+    );
+  }
 
-    // Extra body mappings
-    labelSmall: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500), // bodyMediumMedium
-  );
+  static TextStyle title(Color color) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 16,
+      fontWeight: FontWeight.w900,
+      color: color,
+    );
+  }
+
+  static TextStyle paragraph(Color color) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 14,
+      fontWeight: FontWeight.w400,
+      color: color,
+    );
+  }
+
+  static TextStyle caption(Color color) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
+      color: color,
+    );
+  }
+
+  static TextStyle smallButton(Color color) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 12,
+      fontWeight: FontWeight.w600,
+      color: color,
+    );
+  }
+
+  static TextStyle bigButton(Color color) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 14,
+      fontWeight: FontWeight.w700,
+      color: color,
+    );
+  }
+
+  static TextStyle smallText(Color color) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
+      color: color,
+    );
+  }
+
+  static TextStyle bodySemiboldLarge(Color color, {letterSpacing,}) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
+      color: color,
+      letterSpacing: 1.5,
+    );
+  }
+
+  static TextStyle bodyMediumLarge(Color color) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 18,
+      fontWeight: FontWeight.w500,
+      color: color,
+    );
+  }
+
+  static TextStyle bodyRegularLarge(Color color) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 18,
+      fontWeight: FontWeight.w400,
+      color: color,
+    );
+  }
+
+  static TextStyle bodySemiboldMedium(Color color) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
+      color: color,
+    );
+  }
+
+  static TextStyle bodyMediumMedium(Color color) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      color: color,
+    );
+  }
+
+  static TextStyle bodyRegularMedium(Color color) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
+      color: color,
+    );
+  }
+
+  static TextStyle bodySemiboldSmall(Color color) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 14,
+      fontWeight: FontWeight.w600,
+      color: color,
+    );
+  }
+
+  static TextStyle bodyMediumSmall(Color color) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 14,
+      fontWeight: FontWeight.w500,
+      color: color,
+    );
+  }
+
+  static TextStyle bodyRegularSmall(Color color, {double letterSpacing = 0}) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 14,
+      fontWeight: FontWeight.w400,
+      color: color,
+      letterSpacing: letterSpacing,
+    );
+  }
+
+  static TextStyle bodySemiboldXSmall(Color color) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 12,
+      fontWeight: FontWeight.w600,
+      color: color,
+    );
+  }
+
+  static TextStyle bodyMediumXSmall(
+    Color color, {
+    TextDecoration? decoration,
+    Color? decorationColor,
+    double? decorationThickness,
+  }) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 12,
+      fontWeight: FontWeight.w500,
+      color: color,
+      decoration: decoration,
+      decorationColor: decorationColor,
+      decorationThickness: decorationThickness,
+    );
+  }
+
+  static TextStyle bodyRegularXSmall(Color color) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
+      color: color,
+    );
+  }
 }

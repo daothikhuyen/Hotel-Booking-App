@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/themes/theme.dart';
 
 // Include name: Most Popular, Best Today,.. and textButton: See All
 class HeaderCard extends StatelessWidget {
@@ -19,20 +20,14 @@ class HeaderCard extends StatelessWidget {
         children: [
           Text(
             title,
-            style: GoogleFonts.jost(
-              textStyle: context.textTheme.headlineMedium!.copyWith(
-              color: context.colorScheme.onSurfaceVariant,
-            ),
-            ),
+            style: CustomTextStyles.bodySemiboldMedium( context.colorScheme.onSurfaceVariant),
           ),
           TextButton(
             onPressed: onPressed,
             child: Text(
               titleBtn,
               style: GoogleFonts.plusJakartaSans(
-                textStyle: context.textTheme.labelMedium!.copyWith(
-                  color: context.colorScheme.primary,
-                ),
+                textStyle: CustomTextStyles.bodyMediumXSmall(context.colorScheme.primary),
               ),
             ),
           ),

@@ -22,6 +22,10 @@
 
 <img src="./assets/images/image_project/home2.png" width="200"/>  <img src="./assets/images/image_project/home_1.png" width="200"/> 
 
+- **Detail**
+
+<img src="./assets/images/image_project/detail_1.png" width="200"/>  <img src="./assets/images/image_project/detail_2.png" width="200"/> 
+
 
 - **Demo**
   
@@ -34,6 +38,12 @@
 - DevTools (v2.42.2)
 
 ## Installation
+
+- Set up multi language: [See more here](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization)
+```bash
+  flutter pub add flutter_localizations --sdk=flutter
+  flutter pub add intl:any
+```
 
 - Set up multi language: [See more here](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization)
 

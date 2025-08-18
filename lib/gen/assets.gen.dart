@@ -72,6 +72,9 @@ class $AssetsImagesHomeGen {
 class $AssetsImagesIconGen {
   const $AssetsImagesIconGen();
 
+  /// File path: assets/images/icon/24-support.svg
+  String get a24Support => 'assets/images/icon/24-support.svg';
+
   /// File path: assets/images/icon/3d-rotate.svg
   String get a3dRotate => 'assets/images/icon/3d-rotate.svg';
 
@@ -115,6 +118,9 @@ class $AssetsImagesIconGen {
   AssetGenImage get apartement =>
       const AssetGenImage('assets/images/icon/apartement.png');
 
+  /// File path: assets/images/icon/building.svg
+  String get building => 'assets/images/icon/building.svg';
+
   /// File path: assets/images/icon/home.svg
   String get home => 'assets/images/icon/home.svg';
 
@@ -132,8 +138,15 @@ class $AssetsImagesIconGen {
   AssetGenImage get villa =>
       const AssetGenImage('assets/images/icon/villa.png');
 
+  /// File path: assets/images/icon/wind-2.svg
+  String get wind2 => 'assets/images/icon/wind-2.svg';
+
+  /// File path: assets/images/icon/wind.svg
+  String get wind => 'assets/images/icon/wind.svg';
+
   /// List of all assets
   List<dynamic> get values => [
+    a24Support,
     a3dRotate,
     document,
     frame,
@@ -148,11 +161,14 @@ class $AssetsImagesIconGen {
     stroke4,
     vector,
     apartement,
+    building,
     home,
     hotel,
     location,
     solarStarBold,
     villa,
+    wind2,
+    wind,
   ];
 }
 
