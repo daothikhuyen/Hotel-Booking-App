@@ -3,7 +3,12 @@ import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 
 class PrimaryBtn extends StatelessWidget {
-  const PrimaryBtn({super.key, required this.textButton, required this.onPressed, required this.bold});
+  const PrimaryBtn({
+    required this.textButton,
+    required this.onPressed,
+    required this.bold,
+    super.key,
+  });
 
   final String textButton;
   final bool bold;
@@ -11,7 +16,6 @@ class PrimaryBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
@@ -21,8 +25,10 @@ class PrimaryBtn extends StatelessWidget {
       ),
       child: Text(
         textButton,
-        // style: bold ? context.textTheme.labelSmall!.copyWith(color:  context.colorScheme.onSurface) : context.textTheme.bodyLarge!.copyWith(color:  context.colorScheme.onSurface),
-        style: bold ? CustomTextStyles.bodyMediumMedium(context.colorScheme.onSurface) : CustomTextStyles.bodyMediumMedium(context.colorScheme.onSurface),
+        style:
+            bold
+                ? HBTextStyles.bodyMediumMedium(context.colorScheme.onSurface)
+                : HBTextStyles.bodyMediumMedium(context.colorScheme.onSurface),
       ),
     );
   }

@@ -15,11 +15,11 @@ Widget buildRecomendedItemUseCase(BuildContext context) {
         label: 'Title',
         initialValue: 'Most Popular Hotel',
       ),
-      address: context.knobs.string(
+      location: context.knobs.string(
         label: 'Address',
         initialValue: 'Los Angeles, CA',
       ),
-      money: double.parse(
+      currentPrice: double.parse(
         context.knobs.double
             .slider(label: 'Price', initialValue: 450.0, min: 0, max: 1000.0)
             .toStringAsFixed(2),

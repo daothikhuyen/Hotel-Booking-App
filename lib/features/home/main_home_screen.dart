@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/utils/translation_helper.dart';
 import 'package:hotel_booking_app/data/model/destination.dart';
 import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
 import 'package:hotel_booking_app/features/home/controller/navigation_controller.dart';
 import 'package:hotel_booking_app/routes/destinations.dart';
-import 'package:hotel_booking_app/core/utils/translation_helper.dart';
 import 'package:provider/provider.dart';
 
 class MainHomeScreen extends StatefulWidget {
@@ -38,7 +38,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Provider.of<HotelController>(context, listen: false);
+    final _ = Provider.of<HotelController>(context, listen: false);
 
     return Scaffold(
       backgroundColor: context.colorScheme.surface,

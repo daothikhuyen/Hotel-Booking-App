@@ -1,13 +1,11 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hotel_booking_app/core/themes/theme.dart';
+import 'package:hotel_booking_app/features/onboarding/onboarding_screen.dart';
 import 'package:hotel_booking_app/firebase_options.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
-import 'package:hotel_booking_app/features/home/main_home_screen.dart';
-import 'package:hotel_booking_app/features/onboarding/onboarding_screen.dart';
-import 'package:hotel_booking_app/core/themes/theme.dart';
 
 
 void main() async {
@@ -16,7 +14,6 @@ void main() async {
 
   runApp(
     DevicePreview(
-        enabled: !kReleaseMode,
         builder: (context) => const MyApp(), // Wrap your app
       ),
     // ChangeNotifierProvider(
@@ -40,15 +37,15 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: lightMode,
       darkTheme: darkMode,
-      localizationsDelegates: [
+      localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: [
-        const Locale('en'), // English
-        const Locale('vi'), // Spanish
+      supportedLocales: const [
+        Locale('en'), // English
+        Locale('vi'), // Spanish
       ],
       locale: const Locale('en'),
       home: const OnboardingScreen(),

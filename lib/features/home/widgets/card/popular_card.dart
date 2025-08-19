@@ -3,22 +3,21 @@ import 'package:flutter_svg/svg.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/l10n/app_localizations.dart';
 
 class PopularCard extends StatefulWidget {
   const PopularCard({
-    super.key,
-    this.linkImage,
     required this.name,
-    required this.address,
-    required this.money,
+    required this.location,
+    required this.currentPrice,
     required this.ratting,
+    this.linkImage,
+    super.key,
   });
 
   final String? linkImage;
   final String name;
-  final String address;
-  final double money;
+  final String location;
+  final double currentPrice;
   final double ratting;
 
   @override
@@ -63,10 +62,7 @@ class _PopularCardState extends State<PopularCard> {
             child: CircleAvatar(
               radius: 10,
               backgroundColor: context.colorScheme.onPrimary,
-              child: SvgPicture.asset(
-                Assets.images.icon.heart,
-                fit: BoxFit.contain,
-              ),
+              child: SvgPicture.asset(Assets.images.icon.heart),
             ),
           ),
           Positioned(
@@ -81,22 +77,27 @@ class _PopularCardState extends State<PopularCard> {
                 children: [
                   Text(
                     widget.name,
-                    style:CustomTextStyles.bodySemiboldSmall(context.colorScheme.onPrimary),
+                    style: HBTextStyles.bodySemiboldSmall(
+                      context.colorScheme.onPrimary,
+                    ),
                   ),
                   const SizedBox(height: 5),
                   Text(
-                    widget.address,
-                    style: CustomTextStyles.bodyMediumXSmall(context.colorScheme.onPrimary.withValues(
-                        alpha: 0.7,
-                      ),),
+                    widget.location,
+                    style: HBTextStyles.bodyMediumXSmall(
+                      context.colorScheme.onPrimary.withValues(alpha: 0.7),
+                    ),
                   ),
                   const SizedBox(height: 5),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '\$${widget.money}/${AppLocalizations.of(context)!.night}',
-                        style: CustomTextStyles.bodyMediumXSmall(context.colorScheme.onPrimary),
+                        context.l10n.currentPrice(widget.currentPrice) +
+                            context.l10n.night,
+                        style: HBTextStyles.bodyMediumXSmall(
+                          context.colorScheme.onPrimary,
+                        ),
                       ),
                       Row(
                         children: [
@@ -104,12 +105,13 @@ class _PopularCardState extends State<PopularCard> {
                             Assets.images.icon.solarStarBold,
                             width: 12,
                             height: 12,
-                            fit: BoxFit.contain,
                           ),
                           const SizedBox(width: 3),
                           Text(
                             '${widget.ratting}',
-                            style: CustomTextStyles.bodySemiboldXSmall(context.colorScheme.onPrimary),
+                            style: HBTextStyles.bodySemiboldXSmall(
+                              context.colorScheme.onPrimary,
+                            ),
                           ),
                           const SizedBox(width: 8),
                         ],

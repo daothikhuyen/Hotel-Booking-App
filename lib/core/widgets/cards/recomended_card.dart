@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/l10n/app_localizations.dart';
-import 'package:hotel_booking_app/core/themes/app_colors.dart';
 
 class RecomendedItem extends StatelessWidget {
   const RecomendedItem({
+    required this.name,
+    required this.location,
+    required this.currentPrice,
+    required this.ratting,
     super.key,
     this.linkImage,
-    required this.name,
-    required this.address,
-    required this.money,
-    required this.ratting,
   });
 
   final String? linkImage;
   final String name;
-  final String address;
-  final double money;
+  final String location;
+  final double currentPrice;
   final String ratting;
 
   @override
@@ -42,9 +39,7 @@ class RecomendedItem extends StatelessWidget {
                     image:
                         linkImage != ''
                             ? NetworkImage(linkImage!)
-                            : const AssetImage(
-                                  'assets/images/home/FrameOne.png',
-                                )
+                            : AssetImage(Assets.images.home.frameOne.path)
                                 as ImageProvider,
                     fit: BoxFit.cover,
                   ),
@@ -57,7 +52,7 @@ class RecomendedItem extends StatelessWidget {
                 children: [
                   Text(
                     name,
-                    style: CustomTextStyles.bodySemiboldSmall(
+                    style: HBTextStyles.bodySemiboldSmall(
                       context.colorScheme.onSurfaceVariant,
                     ),
                   ),
@@ -72,12 +67,11 @@ class RecomendedItem extends StatelessWidget {
                           ),
                           BlendMode.srcIn,
                         ),
-                        fit: BoxFit.contain,
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        address,
-                        style: CustomTextStyles.bodyRegularXSmall(
+                        location,
+                        style: HBTextStyles.bodyRegularXSmall(
                           context.colorScheme.onSurfaceVariant.withValues(
                             alpha: 0.7,
                           ),
@@ -90,12 +84,16 @@ class RecomendedItem extends StatelessWidget {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: '\$$money',
-                          style: CustomTextStyles.bodySemiboldSmall(context.colorScheme.primary),
+                          text: context.l10n.currentPrice(currentPrice),
+                          style: HBTextStyles.bodySemiboldSmall(
+                            context.colorScheme.primary,
+                          ),
                         ),
                         TextSpan(
-                          text: ' /${AppLocalizations.of(context)!.night}',
-                          style: CustomTextStyles.bodyRegularXSmall(context.colorScheme.onSurfaceVariant),
+                          text: context.l10n.night,
+                          style: HBTextStyles.bodyRegularXSmall(
+                            context.colorScheme.onSurfaceVariant,
+                          ),
                         ),
                       ],
                     ),
@@ -112,12 +110,13 @@ class RecomendedItem extends StatelessWidget {
                   Assets.images.icon.solarStarBold,
                   width: 16,
                   height: 16,
-                  fit: BoxFit.contain,
                 ),
                 const SizedBox(width: 4),
                 Text(
                   ratting,
-                  style: CustomTextStyles.bodySemiboldSmall(context.colorScheme.onSurfaceVariant),
+                  style: HBTextStyles.bodySemiboldSmall(
+                    context.colorScheme.onSurfaceVariant,
+                  ),
                 ),
               ],
             ),

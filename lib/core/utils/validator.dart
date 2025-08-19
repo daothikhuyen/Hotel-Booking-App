@@ -1,14 +1,14 @@
 // validator for email
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/l10n/app_localizations.dart';
+import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 
 String? validatorEmail(BuildContext context, String? value) {
   final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
 
   if (value == null || value.isEmpty) {
-    return AppLocalizations.of(context)!.errorEmptyEmail;
+    return context.l10n.errorEmptyEmail;
   } else if (!emailRegExp.hasMatch(value)) {
-    return AppLocalizations.of(context)!.errorEmailFormat;
+    return context.l10n.errorEmailFormat;
   }
   return null;
 }
@@ -17,9 +17,9 @@ String? validatorEmail(BuildContext context, String? value) {
 String? validatePassword(BuildContext context, String? value) {
 
   if (value == null || value.isEmpty) {
-    return AppLocalizations.of(context)!.errorEmptyPassword;
+    return context.l10n.errorEmptyPassword;
   } else if (value.length < 8) {
-    return AppLocalizations.of(context)!.errorPasswordFormat;
+    return context.l10n.errorPasswordFormat;
   }
   return null;
 }

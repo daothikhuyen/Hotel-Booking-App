@@ -1,19 +1,17 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
-import 'package:hotel_booking_app/core/widgets/alert.dart';
-import 'package:hotel_booking_app/l10n/app_localizations.dart';
-import 'package:hotel_booking_app/routes/app_router.dart';
+import 'package:hotel_booking_app/core/utils/validator.dart';
+import 'package:hotel_booking_app/core/widgets/alter/diaglog.dart';
+import 'package:hotel_booking_app/core/widgets/alter/snack_bar.dart';
+import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
+import 'package:hotel_booking_app/core/widgets/texfield.dart';
+import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
+import 'package:hotel_booking_app/features/auth/widgets/circular_checkbox%20.dart';
 import 'package:hotel_booking_app/features/auth/widgets/socail_section.dart';
 import 'package:hotel_booking_app/features/home/main_home_screen.dart';
-import 'package:hotel_booking_app/features/auth/services/auth_service.dart';
-import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
-import 'package:hotel_booking_app/core/utils/validator.dart';
-import 'package:hotel_booking_app/features/auth/widgets/circular_checkbox%20.dart';
-import 'package:hotel_booking_app/core/widgets/hb_texfield.dart';
+import 'package:hotel_booking_app/routes/app_router.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -23,33 +21,15 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  final HBSnackBar snackBar = HBSnackBar();
+  final HBDiaglog diaglog = HBDiaglog();
+  final AuthController authController = AuthController();
   final _formKey = GlobalKey<FormState>();
   final _email = TextEditingController();
   final _password = TextEditingController();
-  final Alert _alert = Alert();
 
   bool isCheckbox = false;
   String? error;
-
-  // login
-  Future<void> logIn() async {
-    if (_formKey.currentState!.validate()) {
-      _alert.showLoading(context);
-      final response = await AuthService().signInUser(
-        _email.text,
-        _password.text,
-      );
-
-      Navigator.of(context, rootNavigator: true).pop();
-
-      if (response == 'sucess') {
-        if (!mounted) return;
-        await Navigator.push(context, animationRouter(const MainHomeScreen()));
-      } else {
-        _alert.showSnackBar(context, AppLocalizations.of(context)!.signInFailed);
-      }
-    }
-  }
 
   // or sign in with
   Widget _buildDividerWithText(String text) => Row(
@@ -62,7 +42,7 @@ class _SignInState extends State<SignIn> {
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: Text(
           text,
-          style: CustomTextStyles.bodyRegularSmall( context.colorScheme.outline),
+          style: HBTextStyles.bodyRegularSmall(context.colorScheme.outline),
         ),
       ),
       Expanded(
@@ -80,7 +60,6 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    final translate = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
@@ -102,39 +81,47 @@ class _SignInState extends State<SignIn> {
                 const SizedBox(height: 20),
                 Center(
                   child: Text(
-                    translate.signInTitle,
-                    style: CustomTextStyles.headingThree(context.colorScheme.onSurfaceVariant),
+                    context.l10n.signInTitle,
+                    style: HBTextStyles.headingThree(
+                      context.colorScheme.onSurfaceVariant,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                 ),
                 const SizedBox(height: 10),
                 Center(
                   child: Text(
-                    translate.signInDesc,
-                    style: CustomTextStyles.bodyRegularSmall(context.colorScheme.onSurfaceVariant),
+                    context.l10n.signInDesc,
+                    style: HBTextStyles.bodyRegularSmall(
+                      context.colorScheme.onSurfaceVariant,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                 ),
                 const SizedBox(height: 15),
                 Text(
-                  translate.emailAddress,
-                  style: CustomTextStyles.bodySemiboldSmall(context.colorScheme.onSurfaceVariant),
+                  context.l10n.emailAddress,
+                  style: HBTextStyles.bodySemiboldSmall(
+                    context.colorScheme.onSurfaceVariant,
+                  ),
                 ),
                 const SizedBox(height: 10),
                 HBTexField(
                   controller: _email,
-                  hintText: translate.enterEmail,
+                  hintText: context.l10n.enterEmail,
                   validator: (v) => validatorEmail(context, v),
                 ),
                 const SizedBox(height: 15),
                 Text(
-                  translate.password,
-                  style: CustomTextStyles.bodySemiboldSmall(context.colorScheme.onSurfaceVariant),
+                  context.l10n.password,
+                  style: HBTextStyles.bodySemiboldSmall(
+                    context.colorScheme.onSurfaceVariant,
+                  ),
                 ),
                 const SizedBox(height: 10),
                 HBTexField(
                   controller: _password,
-                  hintText: translate.enterPassword,
+                  hintText: context.l10n.enterPassword,
                   isPassword: true,
                   validator: (v) => validatePassword(context, v),
                 ),
@@ -148,17 +135,22 @@ class _SignInState extends State<SignIn> {
                           const CircularCheckbox(size: 28, isCheckbox: false),
                           const SizedBox(width: 8),
                           Text(
-                            translate.checkbox,
-                            style: CustomTextStyles.bodyRegularSmall(context.colorScheme.onSurfaceVariant
-                                  .withValues(alpha: 0.5),),
+                            context.l10n.checkbox,
+                            style: HBTextStyles.bodyRegularSmall(
+                              context.colorScheme.onSurfaceVariant.withValues(
+                                alpha: 0.5,
+                              ),
+                            ),
                           ),
                         ],
                       ),
                       TextButton(
                         onPressed: () {},
                         child: Text(
-                          translate.forgotPassword,
-                          style: CustomTextStyles.bodyRegularSmall(context.colorScheme.error),
+                          context.l10n.forgotPassword,
+                          style: HBTextStyles.bodyRegularSmall(
+                            context.colorScheme.error,
+                          ),
                         ),
                       ),
                     ],
@@ -166,8 +158,13 @@ class _SignInState extends State<SignIn> {
                 ),
                 const SizedBox(height: 20),
                 PrimaryBtn(
-                  textButton: translate.signIn,
-                  onPressed: logIn,
+                  textButton: context.l10n.signIn,
+                  onPressed: () => authController.signIn(
+                    context: context,
+                    formKey: _formKey,
+                    email: _email.text,
+                    password: _password.text,
+                  ),
                   bold: false,
                 ),
                 const SizedBox(height: 30),
@@ -176,8 +173,10 @@ class _SignInState extends State<SignIn> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        translate.noAccount,
-                        style: CustomTextStyles.bodySemiboldMedium(context.colorScheme.onSurfaceVariant),
+                        context.l10n.noAccount,
+                        style: HBTextStyles.bodySemiboldMedium(
+                          context.colorScheme.onSurfaceVariant,
+                        ),
                       ),
                       TextButton(
                         onPressed:
@@ -186,9 +185,11 @@ class _SignInState extends State<SignIn> {
                               MaterialPageRoute(builder: (_) => const SignIn()),
                             ),
                         child: Text(
-                          translate.signUp,
+                          context.l10n.signUp,
                           style: GoogleFonts.roboto(
-                            textStyle: CustomTextStyles.bodySemiboldSmall(context.colorScheme.primary),
+                            textStyle: HBTextStyles.bodySemiboldSmall(
+                              context.colorScheme.primary,
+                            ),
                           ),
                         ),
                       ),
@@ -196,7 +197,7 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
                 const SizedBox(height: 25),
-                _buildDividerWithText(translate.orSignIn),
+                _buildDividerWithText(context.l10n.orSignIn),
                 const SizedBox(height: 25),
                 SocailSection(error: error),
                 const SizedBox(height: 40),
@@ -207,14 +208,14 @@ class _SignInState extends State<SignIn> {
                         color: context.colorScheme.onSurfaceVariant,
                       ),
                       children: [
-                        TextSpan(text: translate.textFooterOne),
+                        TextSpan(text: context.l10n.textFooterOne),
                         TextSpan(
-                          text: ' ${translate.textFooterTwo}\n',
+                          text: ' ${context.l10n.textFooterTwo}\n',
                           style: const TextStyle(fontWeight: FontWeight.w600),
                         ),
-                        TextSpan(text: translate.textFooterThree),
+                        TextSpan(text: context.l10n.textFooterThree),
                         TextSpan(
-                          text: translate.textFooterFour,
+                          text: context.l10n.textFooterFour,
                           style: const TextStyle(fontWeight: FontWeight.w600),
                         ),
                       ],

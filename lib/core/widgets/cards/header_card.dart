@@ -5,7 +5,12 @@ import 'package:hotel_booking_app/core/themes/theme.dart';
 
 // Include name: Most Popular, Best Today,.. and textButton: See All
 class HeaderCard extends StatelessWidget {
-  const HeaderCard({super.key, required this.title, required this.onPressed, required this.titleBtn});
+  const HeaderCard({
+    required this.title,
+    required this.onPressed,
+    required this.titleBtn,
+    super.key,
+  });
 
   final String title;
   final String titleBtn;
@@ -20,14 +25,18 @@ class HeaderCard extends StatelessWidget {
         children: [
           Text(
             title,
-            style: CustomTextStyles.bodySemiboldSmall( context.colorScheme.onSurfaceVariant),
+            style: HBTextStyles.bodySemiboldSmall(
+              context.colorScheme.onSurfaceVariant,
+            ),
           ),
           TextButton(
             onPressed: onPressed,
             child: Text(
               titleBtn,
               style: GoogleFonts.plusJakartaSans(
-                textStyle: CustomTextStyles.bodyMediumXSmall(context.colorScheme.primary),
+                textStyle: HBTextStyles.bodyMediumXSmall(
+                  context.colorScheme.primary,
+                ),
               ),
             ),
           ),

@@ -12,7 +12,7 @@
   "mybooking": "My Booking",
   "nearYou": "Hotel Near You",
   "openMap": "Open Map",
-  "night": "night",
+  "night": "/night",
   "noAccount": "Don’t have an account?",
   "titleSplash": "Find Your Perfect Stay, Anytime, Anywhere",
   "onboardingDescOne": "Semper in cursus magna et eu varius\n nunc adipiscing. Elementum justo, laoreet\n  id sem . ",
@@ -47,5 +47,37 @@
   "errorPasswordFormat": "Password must be at least 6 characters long",
   "tagAll": "All",
   "tagApartement": "Apartement\n",
-  "tagHotel": "Hotels"
+  "tagHotel": "Hotels",
+  "traffic": "({traffic})",
+    "@traffic": {
+    "placeholders": {
+      "traffic": {
+        "type": "int"
+      }
+    }
+  },
+  "currentPrice": "${currentPrice}",
+  "@currentPrice": {
+    "placeholders": {
+      "currentPrice": {
+        "type": "double"
+      }
+    }
+  },
+  "lastPrice": "${lastPrice}",
+  "@lastPrice": {
+    "placeholders": {
+      "lastPrice": {
+        "type": "double"
+      }
+    }
+  },
+  "notification": "Notification",
+  "close": "Close",
+  "oK": "OK",
+  "signInFailed": "Sign in failed. Please try again.",
+  "signUpFailed": "Sign up failed. Please try again.",
+  "networkError": "Network error. Check your connection.",
+  "userNotExisted": "You are not logged in. Log in to the app",
+  "hotelNotExisted": "Data does not exist"
 }

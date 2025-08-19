@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/widgets/cards/build_divider.dart';
-import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
-import 'package:hotel_booking_app/data/data/hotel_data.dart';
-import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/data/model/hotel.dart';
-import 'package:hotel_booking_app/core/widgets/cards/recomended_card.dart';
 import 'package:hotel_booking_app/core/widgets/cards/header_card.dart';
+import 'package:hotel_booking_app/core/widgets/cards/recomended_card.dart';
+import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
 import 'package:hotel_booking_app/core/widgets/category/category_list.dart';
+import 'package:hotel_booking_app/data/data/hotel_data.dart';
+import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class ListVertical extends StatelessWidget {
@@ -15,8 +14,6 @@ class ListVertical extends StatelessWidget {
   final List<Hotel> listHotels;
   final String title;
   final String textButton;
-
-  get selectedIndex => null;
 
   @override
   Widget build(BuildContext context) {
@@ -43,18 +40,19 @@ class ListVertical extends StatelessWidget {
                             RecomendedItem(
                               linkImage: hotel.image,
                               name: hotel.name,
-                              address: hotel.location,
-                              money: hotel.current_price ?? 0,
+                              location: hotel.location,
+                              currentPrice: hotel.currentPrice ?? 0,
                               ratting: hotel.ratting.toString(),
                             ),
                             // create horizontal line
-                            index < hotelData.length - 1
-                                ? BuildDivider()
-                                : const SizedBox.shrink(),
+                            if (index < hotelData.length - 1)
+                              const BuildDivider()
+                            else
+                              const SizedBox.shrink(),
                           ],
                         );
                       })
-                      : NewsCardSkeleton(context),
+                      : newsCardSkeleton(context),
             ),
           ),
         ],
@@ -62,32 +60,30 @@ class ListVertical extends StatelessWidget {
     );
   }
 
-  List<Widget> NewsCardSkeleton(BuildContext context) {
+  List<Widget> newsCardSkeleton(BuildContext context) {
     return List.generate(4, (index) {
       return Shimmer(
-        duration: const Duration(seconds: 3),
+        duration: const Duration(seconds: 4),
         interval: const Duration(seconds: 5),
         colorOpacity: 1,
-        enabled: true,
-        direction: const ShimmerDirection.fromLTRB(),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 85,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Skeleton(width: 85, height: 85),
-                  const SizedBox(width: 8),
+                  SizedBox(width: 8),
                   Expanded(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Skeleton(width: 200, height: 13),
-                        const SizedBox(height: 8),
+                        SizedBox(height: 8),
                         Skeleton(width: 100, height: 13),
-                        const SizedBox(height: 8),
+                        SizedBox(height: 8),
                         Skeleton(width: 150, height: 13),
                       ],
                     ),
@@ -97,12 +93,13 @@ class ListVertical extends StatelessWidget {
               ),
             ),
 
-            index < 4 - 1 ? BuildDivider() : const SizedBox.shrink(),
+            if (index < 4 - 1)
+              const BuildDivider()
+            else
+              const SizedBox.shrink(),
           ],
         ),
       );
     });
   }
 }
-
-
