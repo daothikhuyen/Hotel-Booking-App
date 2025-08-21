@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/data/data/onboarding_data.dart';
 import 'package:hotel_booking_app/features/auth/services/auth_service.dart';
 import 'package:hotel_booking_app/features/auth/sign_in.dart';
@@ -36,10 +38,11 @@ class _OnboardingScreen2State extends State<OnboardingScreen> {
               curve: Curves.linear,
             );
           } else {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const SignIn()),
-            );
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => const SignIn()),
+            // );
+            context.go(PageRoutes.signIn);
           }
         },
       );

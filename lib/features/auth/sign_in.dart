@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/core/utils/validator.dart';
 import 'package:hotel_booking_app/core/widgets/alter/diaglog.dart';
@@ -10,8 +12,6 @@ import 'package:hotel_booking_app/core/widgets/texfield.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
 import 'package:hotel_booking_app/features/auth/widgets/circular_checkbox%20.dart';
 import 'package:hotel_booking_app/features/auth/widgets/socail_section.dart';
-import 'package:hotel_booking_app/features/home/main_home_screen.dart';
-import 'package:hotel_booking_app/routes/app_router.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -65,7 +65,7 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context, animationRouter(const MainHomeScreen()));
+            context.push(PageRoutes.homePage);
           },
           icon: Icon(Icons.arrow_back, color: context.iconTheme.color),
         ),

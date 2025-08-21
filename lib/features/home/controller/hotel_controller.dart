@@ -17,7 +17,7 @@ class HotelController extends ChangeNotifier {
       notifyListeners();
       hotels = await serviceMethod;
     } on AppException catch (e) {
-      debugPrint(e.message);
+      throw AppException(message: e.message);
     } finally {
       loading = false;
       notifyListeners();

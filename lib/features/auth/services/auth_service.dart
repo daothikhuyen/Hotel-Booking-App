@@ -5,7 +5,10 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hotel_booking_app/core/exceptions/app_exception.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/firestore_collections.dart';
+import 'package:hotel_booking_app/features/auth/helpers/local_storage_helper.dart';
+import 'package:hotel_booking_app/features/auth/helpers/auth_provider.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
+import 'package:provider/provider.dart';
 
 class AuthService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -15,28 +18,6 @@ class AuthService {
   User? get currentUser => auth.currentUser;
 
   Stream<User?> get authStateChanges => auth.authStateChanges();
-
-  // Get current user
-  Future<HBUser?> getCurrentUser(BuildContext context) async {
-    try {
-      if (currentUser != null) {
-        final snapshot =
-            await _firestore
-                .collection(FirestoreCollections.users)
-                .doc(currentUser?.uid ?? '')
-                .get();
-
-        if (snapshot.exists && snapshot.data() != null) {
-          return HBUser.fromJson(snapshot.data()!, currentUser!.uid);
-        }
-      }
-    } on FirebaseAuthException {
-      throw AppException(message: context.l10n.userNotExisted);
-    } on Exception catch (e) {
-      throw AppException(message: e.toString());
-    }
-    return null;
-  }
 
   Future<void> signUpUser({
     required BuildContext context,
@@ -76,9 +57,27 @@ class AuthService {
     String password,
   ) async {
     try {
-      await auth.signInWithEmailAndPassword(email: email, password: password);
+      final credentail = await auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
 
-      return;
+      final snapshot =
+          await _firestore
+              .collection(FirestoreCollections.users)
+              .doc(credentail.user?.uid)
+              .get();
+
+      if (snapshot.exists && snapshot.data() != null) {
+        final user = HBUser.fromJson(
+          snapshot.data() ?? {},
+          credentail.user?.uid ?? '0',
+        );
+
+        await LocalStorageHelper.saveUser(user);
+        Provider.of<UserProvider>(context, listen: false).setUser(user);
+        return;
+      }
     } on FirebaseAuthException catch (e) {
       debugPrint('Error SignIn :${e.message}');
       throw AppException(message: context.l10n.signInFailed);

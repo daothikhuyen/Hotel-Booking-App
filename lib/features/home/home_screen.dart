@@ -5,8 +5,8 @@ import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/core/widgets/list/list_horizontal.dart';
 import 'package:hotel_booking_app/core/widgets/list/list_vertical.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
-import 'package:hotel_booking_app/data/model/user.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
+import 'package:hotel_booking_app/features/auth/helpers/auth_provider.dart';
 import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
 import 'package:hotel_booking_app/features/home/widgets/header_bar.dart';
 import 'package:hotel_booking_app/features/home/widgets/list_popular.dart';
@@ -24,7 +24,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final AuthController authController = AuthController();
   int selectedIndex = 0;
-  HBUser? currentUser;
 
   List<Hotel> hotelPopular = [];
   List<Hotel> hotelRecomended = [];
@@ -39,20 +38,20 @@ class _HomeScreenState extends State<HomeScreen> {
       final popular = await controller.fetchMostPopularHotels(context);
       final recomended = await controller.fetchRecomendedHotels(context);
       final bestToday = await controller.fetchBestToday(context);
-      final user = await authController.getCurrentUser(context);
 
       setState(() {
         hotelPopular = popular;
         hotelRecomended = recomended;
         hotelBestToday = bestToday;
-        currentUser = user;
       });
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final _ = Provider.of<HotelController>(context, listen: false);
+    final controller = Provider.of<HotelController>(context, listen: false);
+    final userProvider = Provider.of<UserProvider>(context);
+    final user = userProvider.currentUser;
 
     return Scaffold(
       body: CustomScrollView(
@@ -72,9 +71,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: SizedBox(
                     height: 60,
                     child: HeaderBar(
-                      linkImage: currentUser?.photoURL ?? '',
-                      userName: currentUser?.displayName ?? '',
-                      location: currentUser?.location ?? '', // location now
+                      linkImage: user?.photoURL ?? '',
+                      userName: user?.displayName ?? '',
+                      location: user?.location ?? '', // location now
                     ),
                   ),
                 ),

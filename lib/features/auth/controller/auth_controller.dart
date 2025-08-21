@@ -1,24 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/exceptions/app_exception.dart';
+import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/widgets/alter/diaglog.dart';
 import 'package:hotel_booking_app/core/widgets/alter/snack_bar.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
 import 'package:hotel_booking_app/features/auth/services/auth_service.dart';
-import 'package:hotel_booking_app/features/home/main_home_screen.dart';
-import 'package:hotel_booking_app/routes/app_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class AuthController {
+class AuthController extends ChangeNotifier {
   final HBSnackBar snackBar = HBSnackBar();
   final HBDiaglog diaglog = HBDiaglog();
   final AuthService authService = AuthService();
 
-  Future<HBUser?> getCurrentUser(BuildContext context) async {
-    try {
-      return await authService.getCurrentUser(context);
-    } on AppException catch (e) {
-      debugPrint('getCurrentUser: $e');
-    }
-    return null;
+  HBUser? _currentUser;
+
+  HBUser? get currentUser => _currentUser;
+  bool _isSignIn = false;
+  bool get isSignIn => _isSignIn;
+
+  void setUser(HBUser user) {
+    _currentUser = user;
+    notifyListeners();
+  }
+
+  void clearUser() {
+    _currentUser = null;
+    notifyListeners();
+  }
+
+  Future<void> isLoggedIn() async {
+    final prefs = await SharedPreferences.getInstance();
+    _isSignIn =  prefs.getBool('isSignIn') ?? false;
+    notifyListeners();
   }
 
   // sign in with email and password
@@ -32,7 +46,7 @@ class AuthController {
       try {
         diaglog.showLoading(context);
         await AuthService().signInUser(context, email, password);
-        await Navigator.push(context, animationRouter(const MainHomeScreen()));
+        await context.push(PageRoutes.homePage);
       } on AppException catch (e) {
         snackBar.showSnackBar(context, e.message);
       } finally {
@@ -45,7 +59,7 @@ class AuthController {
     try {
       diaglog.showLoading(context);
       await AuthService().signInUserWithGoogle(context);
-      await Navigator.push(context, animationRouter(const MainHomeScreen()));
+      await context.push(PageRoutes.homePage);
     } on AppException catch (e) {
       snackBar.showSnackBar(context, e.message);
     } finally {
