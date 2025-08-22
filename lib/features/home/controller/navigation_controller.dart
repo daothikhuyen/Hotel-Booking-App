@@ -1,9 +1,10 @@
 import 'package:flutter/widgets.dart';
+import 'package:hotel_booking_app/core/utils/app_exception.dart';
 import 'package:hotel_booking_app/data/model/destination.dart';
-import 'package:hotel_booking_app/features/home/service/navigation_service.dart';
+import 'package:hotel_booking_app/features/home/services/navigation_service.dart';
 
-class NavigationController with ChangeNotifier{
-    List<Destination> destinations = [];
+class NavigationController with ChangeNotifier {
+  List<Destination> destinations = [];
 
   bool loading = false;
   String? error;
@@ -11,20 +12,15 @@ class NavigationController with ChangeNotifier{
   final NavigationService _service = NavigationService();
 
   Future<List<Destination>> fetchNavigationBar() async {
-    loading = true;
-    error = null;
-    notifyListeners();
-
     try {
-      destinations = await _service.fetchDestination();
-    } catch (e) {
-      error = e.toString();
+      loading = true;
+      notifyListeners();
+      return await _service.fetchDestination();
+    } on AppException catch (e) {
+      throw AppException(message: e.message);
+    } finally {
+      loading = false;
+      notifyListeners();
     }
-
-    loading = false;
-    notifyListeners();
-
-    return destinations;
   }
-  
 }

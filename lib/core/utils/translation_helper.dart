@@ -1,36 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/l10n/app_localizations.dart';
+import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 
 String getTranslatedText(BuildContext context, String key) {
   switch (key) {
     case 'onboardingTitleOne':
-      return AppLocalizations.of(context)!.onboardingTitleOne;
+      return context.l10n.onboardingTitleOne;
     case 'onboardingTitleTwo':
-      return AppLocalizations.of(context)!.onboardingTitleTwo;
+      return context.l10n.onboardingTitleTwo;
     case 'onboardingTitleThree':
-      return AppLocalizations.of(context)!.onboardingTitleThree;
+      return context.l10n.onboardingTitleThree;
     case 'onboardingDescOne':
-      return AppLocalizations.of(context)!.onboardingDescOne;
+      return context.l10n.onboardingDescOne;
     case 'onboardingDescTwo':
-      return AppLocalizations.of(context)!.onboardingDescTwo;
+      return context.l10n.onboardingDescTwo;
     case 'onboardingDescThree':
-      return AppLocalizations.of(context)!.onboardingDescThree;
+      return context.l10n.onboardingDescThree;
     case 'contiune':
-      return AppLocalizations.of(context)!.onboardingContiune;
+      return context.l10n.onboardingContiune;
     case 'getStarted':
-      return AppLocalizations.of(context)!.onboardingStarted;
+      return context.l10n.onboardingStarted;
     case 'Home':
-      return AppLocalizations.of(context)!.home;
+      return context.l10n.home;
     case 'My Booking':
-      return AppLocalizations.of(context)!.mybooking;
+      return context.l10n.mybooking;
     case 'Message':
-      return AppLocalizations.of(context)!.message;
+      return context.l10n.message;
     case 'Profile':
-      return AppLocalizations.of(context)!.profile;
+      return context.l10n.profile;
     case 'Hotel':
-      return AppLocalizations.of(context)!.tagHotel;
+      return context.l10n.tagHotel;
     case 'Apartement':
-      return AppLocalizations.of(context)!.tagApartement;
+      return context.l10n.tagApartement;
     default:
       return key;
   }

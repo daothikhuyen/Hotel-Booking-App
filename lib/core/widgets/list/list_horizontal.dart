@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
-import 'package:hotel_booking_app/data/model/hotel.dart';
+import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/widgets/cards/best_today_card.dart';
 import 'package:hotel_booking_app/core/widgets/cards/header_card.dart';
-import 'package:hotel_booking_app/features/detail/detail_screen.dart';
-import 'package:hotel_booking_app/routes/app_router.dart';
+import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
+import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class ListHorizontal extends StatelessWidget {
@@ -30,7 +30,7 @@ class ListHorizontal extends StatelessWidget {
         HeaderCard(title: title, titleBtn: textButton, onPressed: () {}),
         // list hotel
         Padding(
-          padding: const EdgeInsets.only(top: 0, bottom: 20),
+          padding: const EdgeInsets.only(bottom: 20),
           child:
               hotels.isNotEmpty
                   ? SizedBox(
@@ -43,17 +43,14 @@ class ListHorizontal extends StatelessWidget {
                         final hotel = hotels[index];
                         return GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              animationRouter(DetailScreen(hotel: hotel)),
-                            );
+                            context.push(PageRoutes.detailPage, extra: hotel);
                           },
                           child: BestTodayItem(
                             linkImage: hotel.image,
                             name: hotel.name,
                             address: hotel.location,
-                            current_price: hotel.current_price ?? 0,
-                            last_price: hotel.last_price ?? 0,
+                            currentPrice: hotel.currentPrice ?? 0,
+                            lastPrice: hotel.lastPrice ?? 0,
                             ratting: hotel.ratting ?? 0,
                             traffic: hotel.traffic ?? 0,
                           ),
@@ -61,7 +58,7 @@ class ListHorizontal extends StatelessWidget {
                       },
                     ),
                   )
-                  : NewCardSkeleton(),
+                  : const NewCardSkeleton(),
         ),
       ],
     );
@@ -84,8 +81,6 @@ class NewCardSkeleton extends StatelessWidget {
             duration: const Duration(seconds: 2),
             interval: const Duration(seconds: 5),
             colorOpacity: 1,
-            enabled: true,
-            direction: const ShimmerDirection.fromLTRB(),
             child: Container(
               height: 101,
               width: 300,
@@ -93,16 +88,16 @@ class NewCardSkeleton extends StatelessWidget {
               margin: const EdgeInsets.only(right: 10),
               decoration: BoxDecoration(
                 border: Border.all(
-                  width: 1,
+                  width: 1.01,
                   color: context.colorScheme.outline.withValues(alpha: 0.7),
                 ),
                 borderRadius: BorderRadius.circular(18),
                 color: context.colorScheme.onPrimary,
               ),
-              child: Row(
+              child: const Row(
                 children: [
                   Skeleton(width: 75, height: 75),
-                  const SizedBox(width: 8),
+                  SizedBox(width: 8),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,

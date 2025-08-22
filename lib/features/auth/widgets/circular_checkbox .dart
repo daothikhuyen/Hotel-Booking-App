@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 class CircularCheckbox extends StatefulWidget {
   const CircularCheckbox({
-    super.key,
     required this.size,
     required this.isCheckbox,
+    super.key,
   });
 
   final double? size;

@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 
 class BestTodayItem extends StatelessWidget {
   const BestTodayItem({
-    super.key,
-    this.linkImage,
     required this.name,
     required this.address,
-    required this.current_price,
+    required this.currentPrice,
     required this.ratting,
     required this.traffic,
-    required this.last_price,
+    required this.lastPrice,
+    required this.linkImage,
+    super.key,
   });
 
-  final String? linkImage;
+  final String linkImage;
   final String name;
   final String address;
-  final double current_price;
-  final double last_price;
+  final double currentPrice;
+  final double lastPrice;
   final double ratting;
   final int traffic;
 
@@ -34,7 +33,7 @@ class BestTodayItem extends StatelessWidget {
       margin: const EdgeInsets.only(right: 10),
       decoration: BoxDecoration(
         border: Border.all(
-          width: 1,
+          width: 1.02,
           color: context.colorScheme.outline.withValues(alpha: 0.7),
         ),
         borderRadius: BorderRadius.circular(18),
@@ -49,11 +48,7 @@ class BestTodayItem extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(13),
               image: DecorationImage(
-                image:
-                    linkImage != ''
-                        ? NetworkImage(linkImage!)
-                        : const AssetImage('assets/images/home/FrameOne.png')
-                            as ImageProvider,
+                image:NetworkImage(linkImage),
                 fit: BoxFit.cover,
               ),
             ),
@@ -65,7 +60,9 @@ class BestTodayItem extends StatelessWidget {
             children: [
               Text(
                 name,
-                style: CustomTextStyles.bodySemiboldSmall(context.colorScheme.onSurfaceVariant),
+                style: HBTextStyles.bodySemiboldSmall(
+                  context.colorScheme.onSurfaceVariant,
+                ),
               ),
               const SizedBox(height: 8),
               Row(
@@ -76,12 +73,13 @@ class BestTodayItem extends StatelessWidget {
                       context.colorScheme.tertiary,
                       BlendMode.srcIn,
                     ),
-                    fit: BoxFit.contain,
                   ),
                   const SizedBox(width: 4),
                   Text(
                     address,
-                    style: CustomTextStyles.bodyRegularSmall( context.colorScheme.tertiary),
+                    style: HBTextStyles.bodyRegularSmall(
+                      context.colorScheme.tertiary,
+                    ),
                   ),
                 ],
               ),
@@ -93,30 +91,38 @@ class BestTodayItem extends StatelessWidget {
                     Assets.images.icon.solarStarBold,
                     width: 16,
                     height: 16,
-                    fit: BoxFit.contain,
                   ),
                   const SizedBox(width: 4),
                   Text(
-                    '$ratting',
-                    style: CustomTextStyles.bodyMediumXSmall(context.colorScheme.onError),
+                    ratting.toString(),
+                    style: HBTextStyles.bodyMediumXSmall(
+                      context.colorScheme.onError,
+                    ),
                   ),
                   const SizedBox(width: 4),
                   Text(
-                    '($traffic)',
-                    style: CustomTextStyles.bodyRegularXSmall(context.colorScheme.inverseSurface.withValues(
-                        alpha: 0.5,
-                      ),),
+                    context.l10n.traffic(traffic),
+                    style: HBTextStyles.bodyRegularXSmall(
+                      context.colorScheme.inverseSurface.withValues(alpha: 0.5),
+                    ),
                   ),
 
                   const SizedBox(width: 15),
                   Text(
-                    '\$$current_price',
-                    style: CustomTextStyles.bodySemiboldSmall(context.colorScheme.onSurfaceVariant),
+                    context.l10n.currentPrice(currentPrice),
+                    style: HBTextStyles.bodySemiboldSmall(
+                      context.colorScheme.onSurfaceVariant,
+                    ),
                   ),
                   const SizedBox(width: 15),
                   Text(
-                    '\$$last_price',
-                    style: CustomTextStyles.bodyMediumXSmall(context.colorScheme.error, decoration: TextDecoration.lineThrough, decorationColor: context.colorScheme.error,decorationThickness: 1  ),
+                    context.l10n.lastPrice(lastPrice),
+                    style: HBTextStyles.bodyMediumXSmall(
+                      context.colorScheme.error,
+                      decoration: TextDecoration.lineThrough,
+                      decorationColor: context.colorScheme.error,
+                      decorationThickness: 1,
+                    ),
                   ),
                 ],
               ),

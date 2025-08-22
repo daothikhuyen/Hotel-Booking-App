@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 
-class MyBookingScreen extends StatefulWidget {
-  const MyBookingScreen({super.key});
+class MyBookingScreen extends StatelessWidget {
+  const MyBookingScreen({Key? key})
+    : super(key: key ?? const ValueKey<String>('MyBookingScreen'));
 
-  @override
-  State<MyBookingScreen> createState() => _MyBookingScreenState();
-}
-
-class _MyBookingScreenState extends State<MyBookingScreen> {
   @override
   Widget build(BuildContext context) {
     return Container();

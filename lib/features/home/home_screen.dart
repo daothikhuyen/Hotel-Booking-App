@@ -1,18 +1,16 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:hotel_booking_app/core/themes/theme.dart';
-import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/l10n/app_localizations.dart';
-import 'package:hotel_booking_app/data/model/hotel.dart';
-import 'package:hotel_booking_app/features/auth/services/auth_service.dart';
-import 'package:hotel_booking_app/features/home/widgets/header_bar.dart';
+import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/core/widgets/list/list_horizontal.dart';
-import 'package:hotel_booking_app/features/home/widgets/map_section.dart';
-import 'package:hotel_booking_app/features/home/widgets/list_popular.dart';
 import 'package:hotel_booking_app/core/widgets/list/list_vertical.dart';
+import 'package:hotel_booking_app/data/model/hotel.dart';
+import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
+import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
+import 'package:hotel_booking_app/features/home/widgets/header_bar.dart';
+import 'package:hotel_booking_app/features/home/widgets/list_popular.dart';
+import 'package:hotel_booking_app/features/home/widgets/map_section.dart';
+import 'package:hotel_booking_app/gen/assets.gen.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -23,8 +21,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final AuthController authController = AuthController();
   int selectedIndex = 0;
-  User? currentUser;
 
   List<Hotel> hotelPopular = [];
   List<Hotel> hotelRecomended = [];
@@ -34,13 +32,11 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
 
-    _loadCurrentUser();
-
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       final controller = Provider.of<HotelController>(context, listen: false);
-      final popular = await controller.fetchMostPopularHotels();
-      final recomended = await controller.fetchRecomendedHotels();
-      final bestToday = await controller.fetchBestToday();
+      final popular = await controller.fetchMostPopularHotels(context);
+      final recomended = await controller.fetchRecomendedHotels(context);
+      final bestToday = await controller.fetchBestToday(context);
 
       setState(() {
         hotelPopular = popular;
@@ -50,21 +46,13 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  Future<void> _loadCurrentUser() async {
-    final AuthService authService = AuthService();
-
-    final User? user = await authService.getCurrentUser();
-    setState(() {
-      currentUser = user;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final controller = Provider.of<HotelController>(context, listen: false);
+    final userProvider = Provider.of<AuthController>(context);
+    final user = userProvider.currentUser;
 
     return Scaffold(
-      appBar: null,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -82,9 +70,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: SizedBox(
                     height: 60,
                     child: HeaderBar(
-                      linkImage: currentUser?.photoURL ?? '',
-                      userName: currentUser?.email ?? '',
-                      address: 'San Diego, CA',
+                      linkImage: user?.photoURL ?? '',
+                      userName: user?.displayName ?? '',
+                      location: user?.location ?? '', // location now
                     ),
                   ),
                 ),
@@ -103,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     decoration: BoxDecoration(
                       color: context.colorScheme.secondary,
                       border: Border.all(
-                        width: 1,
+                        width: 1.02,
                         color: context.colorScheme.secondary,
                       ),
                       borderRadius: BorderRadius.circular(15),
@@ -122,23 +110,22 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               CircleAvatar(
                                 radius: 32,
-                                backgroundColor: Colors.white,
+                                backgroundColor:
+                                    context.colorScheme.onSecondary,
                                 child: SvgPicture.asset(
                                   Assets.images.icon.frame,
-                                  fit: BoxFit.contain,
                                 ),
                               ),
                               Text(
-                                AppLocalizations.of(context)!.locationTitle,
-                                style: CustomTextStyles.bodyRegularSmall(context.colorScheme.inverseSurface),
+                                context.l10n.locationTitle,
+                                style: HBTextStyles.bodyRegularSmall(
+                                  context.colorScheme.inverseSurface,
+                                ),
                               ),
                             ],
                           ),
 
-                          SvgPicture.asset(
-                            Assets.images.icon.frameArrow,
-                            fit: BoxFit.contain,
-                          ),
+                          SvgPicture.asset(Assets.images.icon.frameArrow),
                         ],
                       ),
                     ),
@@ -148,17 +135,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   // Recommendex For You
                   ListVertical(
                     hotelRecomended,
-                    AppLocalizations.of(context)!.homeRecommended,
-                    AppLocalizations.of(context)!.seeAll,
+                    context.l10n.homeRecommended,
+                    context.l10n.seeAll,
                     hotelRecomended.length < 3 ? hotelRecomended.length : 3,
                   ),
                   // Map
-                  MapSection(title: AppLocalizations.of(context)!.nearYou,),
+                  MapSection(title: context.l10n.nearYou),
                   // Best Today
                   ListHorizontal(
                     hotelBestToday,
-                    AppLocalizations.of(context)!.bestToday,
-                    AppLocalizations.of(context)!.seeAll,
+                    context.l10n.bestToday,
+                    context.l10n.seeAll,
                     hotelBestToday.length < 3 ? hotelBestToday.length : 3,
                   ),
                 ],

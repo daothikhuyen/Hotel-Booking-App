@@ -15,7 +15,7 @@ Widget buildHeaderBarUseCase(BuildContext context) {
         label: 'User Name',
         initialValue: 'John Doe',
       ),
-      address: context.knobs.string(
+      location: context.knobs.string(
         label: 'Address',
         initialValue: '123 Main St, Springfield',
       ),

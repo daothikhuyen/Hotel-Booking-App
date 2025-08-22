@@ -1,0 +1,5 @@
+class FirestoreCollections {
+static const String users = 'users';
+  static const String hotels = 'hotels';
+  static const String destinations = 'destination';
+}

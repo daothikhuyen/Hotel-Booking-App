@@ -45,7 +45,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get openMap => 'Mở Map';
 
   @override
-  String get night => 'đêm';
+  String get night => '/đêm';
 
   @override
   String get noAccount => 'Bạn không có tài khoản?';
@@ -126,7 +126,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get register => 'Đăng Kí';
 
   @override
-  String get signInFailed => 'Đăng nhập không thành công';
+  String get signInFailed => 'Đăng nhập không thành công. Hãy thử lại.';
 
   @override
   String get signInSucess => 'Đăng nhập thành công';
@@ -151,6 +151,45 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get tagHotel => 'Khách sạn';
+
+  @override
+  String traffic(int traffic) {
+    return '($traffic)';
+  }
+
+  @override
+  String currentPrice(double currentPrice) {
+    return '\$$currentPrice';
+  }
+
+  @override
+  String lastPrice(double lastPrice) {
+    return '\$$lastPrice';
+  }
+
+  @override
+  String get notification => 'Thông Báo';
+
+  @override
+  String get close => 'Đóng';
+
+  @override
+  String get oK => 'Đồng ý';
+
+  @override
+  String get signOutFailed => 'Đăng xuất thất bại';
+
+  @override
+  String get signUpFailed => 'Đăng ký thất bại. Hãy thử lại.';
+
+  @override
+  String get networkError => 'Lỗi mạng. Kiểm tra kết nối của bạn.';
+
+  @override
+  String get userNotExisted => 'Bạn chưa đăng nhập, Vui lòng đăng nhập ứng dụng';
+
+  @override
+  String get hotelNotExisted => 'Dữ liệu không tồn tại';
 
   @override
   String get titleDetail => 'Chi Tiết';

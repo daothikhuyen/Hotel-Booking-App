@@ -2,13 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:widgetbook/widgetbook.dart';
+// ignore: depend_on_referenced_packages
 import 'package:widgetbook_HotelBookingApp/main.directories.g.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
-
-// This file does not exist yet,
-// it will be generated in the next step
-// import 'main.directories.g.dart';
-
 void main() {
   runApp(const WidgetbookApp());
 }

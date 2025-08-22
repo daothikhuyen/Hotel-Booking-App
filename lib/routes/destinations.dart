@@ -3,9 +3,9 @@ import 'package:hotel_booking_app/features/home/home_screen.dart';
 import 'package:hotel_booking_app/features/my_booking/my_booking_screen.dart';
 
 class DestinationView extends StatelessWidget {
-  final int selectedIndex;
 
   const DestinationView(this.selectedIndex, {super.key} );
+  final int selectedIndex;
 
   @override
   Widget build(BuildContext context) {

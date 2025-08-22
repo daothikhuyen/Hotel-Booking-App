@@ -1,6 +1,6 @@
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 
-final List<Map<String, String>> category_data = [
+final List<Map<String, String>> categoryData = [
   {
     'image': '',
     'title': 'All',

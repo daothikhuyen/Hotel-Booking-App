@@ -13,33 +13,32 @@ import 'package:hotel_booking_app/features/detail/widgets/read_more.dart';
 import 'package:hotel_booking_app/features/detail/widgets/review_card.dart';
 import 'package:hotel_booking_app/features/home/widgets/map_section.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/l10n/app_localizations.dart';
-
 class PopupCard extends StatelessWidget {
   const PopupCard({
-    super.key,
     required this.widget,
-    required this.hotelRecomended, required this.onScrollChange,
+    required this.hotelRecomended,
+    required this.onScrollChange,
+    super.key,
   });
 
   final DetailScreen widget;
   final List<Hotel> hotelRecomended;
-  final Function(bool) onScrollChange;
+  final Function({required bool scrolled}) onScrollChange;
 
   @override
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
       initialChildSize: 0.7,
       minChildSize: 0.7,
-      maxChildSize: 1,
+      maxChildSize: 0.99,
       builder: (context, scrollController) {
-        scrollController.addListener((){
-          onScrollChange(scrollController.offset>50);
+        scrollController.addListener(() {
+          onScrollChange(scrolled: scrollController.offset > 50);
         });
         return Container(
           decoration: BoxDecoration(
             color: context.colorScheme.surface,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(18)),
           ),
           child: SingleChildScrollView(
             controller: scrollController,
@@ -49,41 +48,40 @@ class PopupCard extends StatelessWidget {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          widget.hotel.name.isNotEmpty ? Text(
-                            widget.hotel.name,
-                            style:  CustomTextStyles.bodySemiboldLarge(
-                              context.colorScheme.inverseSurface,
-                              letterSpacing: 0.5,
-                            ),
-                            textAlign: TextAlign.start,
-                          ): Skeleton(width: 50, height: 10),
+                          if (widget.hotel.name.isNotEmpty)
+                            Text(
+                              widget.hotel.name,
+                              style: HBTextStyles.bodySemiboldLarge(
+                                context.colorScheme.inverseSurface,
+                              ),
+                              textAlign: TextAlign.start,
+                            )
+                          else
+                            const Skeleton(width: 50, height: 10),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(
-                                  right: 4,
-                                ),
+                                padding: const EdgeInsets.only(right: 4),
                                 child: SvgPicture.asset(
                                   width: 18,
                                   height: 18,
                                   Assets.images.icon.frame,
-                                  fit: BoxFit.contain,
                                 ),
                               ),
 
-                              widget.hotel.location.isNotEmpty ? Text(
-                                widget.hotel.location,
-                                style: CustomTextStyles.bodyRegularSmall(
-                                  context.colorScheme.onTertiary,
-                                ),
-                              ) : Skeleton(width: 50, height: 5),
+                              if (widget.hotel.location.isNotEmpty)
+                                Text(
+                                  widget.hotel.location,
+                                  style: HBTextStyles.bodyRegularSmall(
+                                    context.colorScheme.onTertiary,
+                                  ),
+                                )
+                              else
+                                const Skeleton(width: 50, height: 5),
                               Padding(
                                 padding: const EdgeInsets.only(
                                   left: 15,
@@ -91,12 +89,11 @@ class PopupCard extends StatelessWidget {
                                 ),
                                 child: SvgPicture.asset(
                                   Assets.images.icon.solarStarBold,
-                                  fit: BoxFit.contain,
                                 ),
                               ),
                               Text(
                                 '${widget.hotel.ratting}',
-                                style: CustomTextStyles.bodySemiboldXSmall(
+                                style: HBTextStyles.bodySemiboldXSmall(
                                   context.colorScheme.onSurfaceVariant,
                                 ),
                               ),
@@ -110,10 +107,7 @@ class PopupCard extends StatelessWidget {
                         child: CircleAvatar(
                           radius: 32,
                           backgroundColor: context.colorScheme.secondary,
-                          child: SvgPicture.asset(
-                            Assets.images.icon.a3dRotate,
-                            fit: BoxFit.contain,
-                          ),
+                          child: SvgPicture.asset(Assets.images.icon.a3dRotate),
                         ),
                       ),
                     ],
@@ -121,9 +115,9 @@ class PopupCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 15, bottom: 10),
                     child: HeaderCard(
-                      title: AppLocalizations.of(context)!.commonFacilities,
+                      title: context.l10n.commonFacilities,
                       onPressed: () {},
-                      titleBtn: AppLocalizations.of(context)!.seeAll,
+                      titleBtn: context.l10n.seeAll,
                     ),
                   ),
                   Row(
@@ -140,34 +134,30 @@ class PopupCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 20, bottom: 10),
                     child: HeaderCard(
-                      title: AppLocalizations.of(context)!.description,
+                      title: context.l10n.description,
                       onPressed: () {},
                       titleBtn: '',
                     ),
                   ),
-                  ReadMore(
-                    text: AppLocalizations.of(context)!.descriptionHotel,
-                  ),
+                  ReadMore(text: context.l10n.descriptionHotel),
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
-                    child: MapSection(
-                      title: AppLocalizations.of(context)!.location,
-                    ),
+                    child: MapSection(title: context.l10n.location),
                   ),
                   HeaderCard(
-                    title: AppLocalizations.of(context)!.reviews,
+                    title: context.l10n.reviews,
                     onPressed: () {},
-                    titleBtn: AppLocalizations.of(context)!.seeAll,
+                    titleBtn: context.l10n.seeAll,
                   ),
-                  ReviewCard(number: 2),
+                  const ReviewCard(number: 2),
 
                   ListHorizontal(
                     hotelRecomended,
-                    AppLocalizations.of(context)!.homeRecommended,
-                    AppLocalizations.of(context)!.seeAll,
+                    context.l10n.homeRecommended,
+                    context.l10n.seeAll,
                     3,
                   ),
-                  SizedBox(height: 80),
+                  const SizedBox(height: 80),
                 ],
               ),
             ),

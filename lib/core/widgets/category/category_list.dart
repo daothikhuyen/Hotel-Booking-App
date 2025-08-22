@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/data/data/category_data.dart';
 import 'package:hotel_booking_app/core/widgets/category/category_item.dart';
+import 'package:hotel_booking_app/data/data/category_data.dart';
 
 class CategoryList extends StatefulWidget {
   const CategoryList({super.key});
@@ -20,7 +20,7 @@ class _CategoryListState extends State<CategoryList> {
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
-        itemCount: category_data.length,
+        itemCount: categoryData.length,
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
@@ -29,8 +29,8 @@ class _CategoryListState extends State<CategoryList> {
               });
             },
             child: CategoryItem(
-              title: category_data[index]['title']!,
-              linkImage: category_data[index]['image'],
+              title: categoryData[index]['title'] ?? 'All',
+              linkImage: categoryData[index]['image'],
               isSelected: selectedIndex == index,
             ),
           );

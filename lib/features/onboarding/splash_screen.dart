@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
-import 'package:hotel_booking_app/l10n/app_localizations.dart';
-import 'package:hotel_booking_app/routes/app_router.dart';
 import 'package:hotel_booking_app/features/onboarding/onboarding_screen.dart';
+import 'package:hotel_booking_app/gen/assets.gen.dart';
+import 'package:hotel_booking_app/routes/app_router.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -31,21 +30,22 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/logoApp.png',
+              '${Assets.images.logoApp}',
               height: 123.2,
               width: 89.7,
               fit: BoxFit.cover,
             ),
             Text(
-              'Grand Hotel',
-              style: CustomTextStyles.headingOne(context.colorScheme.onSurface,),
+              'Grand Hotel', // Name app
+              style: HBTextStyles.headingOne(context.colorScheme.onSurface),
             ),
             Text(
-              AppLocalizations.of(context)!.titleSplash,
-              style: CustomTextStyles.bodyRegularSmall( context.colorScheme.onSurface),
+              context.l10n.titleSplash,
+              style: HBTextStyles.bodyRegularSmall(
+                context.colorScheme.onSurface,
+              ),
             ),
           ],
         ),

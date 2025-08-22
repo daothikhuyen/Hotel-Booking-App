@@ -6,10 +6,8 @@ ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
   colorScheme: const ColorScheme.light(
     primary: AppColors.primaryLight,
-    onPrimary: AppColors.greyscale0,
     secondary: AppColors.secondary50,
     onSecondary: AppColors.greyscale0,
-    surface: AppColors.greyscale0,
     onSurface: AppColors.greyscale0,
     error: AppColors.error100,
     onError: AppColors.alter100,
@@ -35,7 +33,6 @@ ThemeData darkMode = ThemeData(
     secondary: AppColors.secondary50,
     onSecondary: AppColors.greyscale0,
     surface: AppColors.greyscale900,
-    onSurface: AppColors.greyscale0,
     outline: AppColors.borderDark,
     onSurfaceVariant: AppColors.greyscale0,
     error: AppColors.error100,
@@ -48,7 +45,7 @@ ThemeData darkMode = ThemeData(
 );
 
 // customer textstyle
-class CustomTextStyles {
+class HBTextStyles {
   static TextStyle headingOne(Color color) {
     return GoogleFonts.jost().copyWith(
       fontSize: 32,
@@ -130,12 +127,11 @@ class CustomTextStyles {
     );
   }
 
-  static TextStyle bodySemiboldLarge(Color color, {letterSpacing,}) {
+  static TextStyle bodySemiboldLarge(Color color) {
     return GoogleFonts.jost().copyWith(
       fontSize: 18,
       fontWeight: FontWeight.w600,
       color: color,
-      letterSpacing: 1.5,
     );
   }
 

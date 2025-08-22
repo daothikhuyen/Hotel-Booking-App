@@ -7,7 +7,7 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 Widget buildBestTodayItemUseCase(BuildContext context) {
   return Center(
     child: BestTodayItem(
-      linkImage: context.knobs.stringOrNull(
+      linkImage: context.knobs.string(
         label: 'Link Image',
         initialValue: 'assets/images/home/FrameOne.png',
       ),
@@ -19,7 +19,7 @@ Widget buildBestTodayItemUseCase(BuildContext context) {
         label: 'Address',
         initialValue: 'Los Angeles, CA',
       ),
-      current_price: double.parse(
+      currentPrice: double.parse(
         context.knobs.double
             .slider(label: 'Price', initialValue: 450.0, min: 0, max: 1000.0)
             .toStringAsFixed(2),
@@ -34,7 +34,7 @@ Widget buildBestTodayItemUseCase(BuildContext context) {
         initialValue: 100,
         min: 0,
         max: 500,
-      ), last_price:  double.parse(
+      ), lastPrice:  double.parse(
         context.knobs.double
             .slider(label: 'Last Price', initialValue: 500.0, min: 0, max: 1000.0)
             .toStringAsFixed(2),

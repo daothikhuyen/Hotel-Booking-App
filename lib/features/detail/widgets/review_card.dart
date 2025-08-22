@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/features/detail/widgets/read_more.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 
 class ReviewCard extends StatelessWidget {
-  const ReviewCard({super.key, required this.number});
+  const ReviewCard({required this.number, super.key});
 
   final int number;
 
@@ -26,16 +25,14 @@ class ReviewCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(100),
                   image: DecorationImage(
                     image:
-                        const AssetImage('assets/images/home/FrameOne.png')
-                            as ImageProvider,
+                        AssetImage(Assets.images.home.frameOne.path),
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
-              SizedBox(width: 8,),
+              const SizedBox(width: 8),
               Expanded(
                 child: Column(
-                  
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
@@ -43,7 +40,9 @@ class ReviewCard extends StatelessWidget {
                       children: [
                         Text(
                           'Kim Borrdy',
-                          style: CustomTextStyles.bodySemiboldSmall(context.colorScheme.inverseSurface),
+                          style: HBTextStyles.bodySemiboldSmall(
+                            context.colorScheme.inverseSurface,
+                          ),
                         ),
                         Row(
                           children: [
@@ -51,20 +50,25 @@ class ReviewCard extends StatelessWidget {
                               Assets.images.icon.solarStarBold,
                               width: 16,
                               height: 16,
-                              fit: BoxFit.contain,
                             ),
                             const SizedBox(width: 4),
                             Text(
                               '4.5',
-                              style: CustomTextStyles.bodySemiboldXSmall(context.colorScheme.onSurfaceVariant),
+                              style: HBTextStyles.bodySemiboldXSmall(
+                                context.colorScheme.onSurfaceVariant,
+                              ),
                             ),
                           ],
                         ),
                       ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 10, top: 5),
-                      child: ReadMore(text: 'Amazing!  The room is good than the picture. Thanks for amazing experience!'),
+                    const Padding(
+                      padding: EdgeInsets.only(right: 10, top: 5),
+                      child: ReadMore(
+                        text:
+                            'Amazing!  The room is good than the picture.' 
+                            ' Thanks for amazing experience!',
+                      ),
                     ),
                   ],
                 ),

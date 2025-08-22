@@ -3,7 +3,7 @@ import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:readmore/readmore.dart';
 
 class ReadMore extends StatefulWidget {
-  const ReadMore({super.key, required this.text, this.trimLines = 3});
+  const ReadMore({required this.text, super.key, this.trimLines = 3});
 
   final String text;
   final int trimLines;
