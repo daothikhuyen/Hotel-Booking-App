@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
-import 'package:hotel_booking_app/core/widgets/custom_app_bar.dart';
+import 'package:hotel_booking_app/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/features/detail/widgets/bottom_bar.dart';
 import 'package:hotel_booking_app/features/detail/widgets/popup_card.dart';
@@ -77,7 +77,7 @@ class _DetailScreenState extends State<DetailScreen> {
           ),
 
           // header detail
-          CustomAppBar(isScrolled: isScrolled),
+          HBAppBar(isScrolled: isScrolled),
 
           // booking bottom bar
           ButtomBar(widget: widget),

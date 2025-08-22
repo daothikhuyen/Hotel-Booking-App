@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 
-class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({
+class HBAppBar extends StatelessWidget {
+  const HBAppBar({
     required this.isScrolled, super.key,
   });
 
