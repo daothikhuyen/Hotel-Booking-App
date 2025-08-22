@@ -4,7 +4,6 @@ import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/data/data/onboarding_data.dart';
 import 'package:hotel_booking_app/features/auth/services/auth_service.dart';
-import 'package:hotel_booking_app/features/auth/sign_in.dart';
 import 'package:hotel_booking_app/features/onboarding/widgets/onboarding_card.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:hotel_booking_app/core/exceptions/app_exception.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/firestore_collections.dart';
-import 'package:hotel_booking_app/features/auth/helpers/local_storage_helper.dart';
-import 'package:hotel_booking_app/features/auth/helpers/auth_provider.dart';
+import 'package:hotel_booking_app/core/utils/app_exception.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
+import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
+import 'package:hotel_booking_app/features/auth/helpers/local_storage_helper.dart';
 import 'package:provider/provider.dart';
 
 class AuthService {
@@ -39,14 +39,12 @@ class AuthService {
           displayName: email.split('@')[0],
           location: location,
         );
-        debugPrint('Creating User: ${hbUser.toJson()}');
         return await _firestore
             .collection('users')
             .doc(currentUser?.uid)
             .set(hbUser.toJson());
       }
-    } on FirebaseAuthException catch (e) {
-      debugPrint('Error SignUp :${e.message}');
+    } on FirebaseAuthException {
       throw AppException(message: context.l10n.signUpFailed);
     }
   }
@@ -75,7 +73,7 @@ class AuthService {
         );
 
         await LocalStorageHelper.saveUser(user);
-        Provider.of<UserProvider>(context, listen: false).setUser(user);
+        Provider.of<AuthController>(context, listen: false).setUser(user);
         return;
       }
     } on FirebaseAuthException catch (e) {
@@ -98,13 +96,18 @@ class AuthService {
       await auth.signInWithCredential(credential);
 
       return;
-    } on FirebaseAuthException catch (e) {
-      debugPrint('Error Google:${e.message}');
+    } on FirebaseAuthException {
       throw AppException(message: context.l10n.signInFailed);
     }
   }
 
-  Future<void> signOut() async {
-    await auth.signOut();
+  Future<void> signOut(BuildContext context) async {
+    try {
+      await LocalStorageHelper.removeUser();
+      await auth.signOut();
+      return ;
+    } on FirebaseException {
+      throw AppException(message: context.l10n.signOutFailed);
+    }
   }
 }

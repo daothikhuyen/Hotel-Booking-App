@@ -15,6 +15,7 @@ ThemeData lightMode = ThemeData(
     onSurfaceVariant: AppColors.greyscale900, //subscript
     tertiary: AppColors.greyscale500,
     onTertiary: AppColors.greyscale200,
+    inversePrimary: AppColors.primary300,
     inverseSurface: AppColors.greyscale900,
   ),
   iconTheme: const IconThemeData(

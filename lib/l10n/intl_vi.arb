@@ -39,6 +39,7 @@
   "textFooterFour" : "Điều kiện sử dụng",
   "signUp" : "Đăng Kí",
   "register": "Đăng Kí",
+  "signOutFailed": "Đăng xuất thất bại",
   "signInFailed": "Đăng nhập không thành công",
   "signInSucess": "Đăng nhập thành công",
   "errorEmptyEmail": "Vui lòng nhập email của bạn",
@@ -79,6 +80,19 @@
   "signUpFailed": "Đăng ký thất bại. Hãy thử lại.",
   "networkError": "Lỗi mạng. Kiểm tra kết nối của bạn.",
   "userNotExisted": "Bạn chưa đăng nhập, Vui lòng đăng nhập ứng dụng",
-  "hotelNotExisted": "Dữ liệu không tồn tại"
+  "hotelNotExisted": "Dữ liệu không tồn tại",
+
+  "tagHotel": "Khách sạn",
+  "titleDetail": "Chi Tiết",
+  "commonFacilities": "Cơ sở chung",
+  "price": "Giá khách sạn",
+  "buttonBooking": "Đặt ngay",
+  "restaurant": "Nhà hàng ",
+  "swimmingPool": "Hồ Bơi",
+  "timeHours" : "Quầy Lễ \n Tân 24h",
+  "description": "Mô tả",
+  "location": "Vị trí",
+  "reviews": "Bình luận",
+  "descriptionHotel": "Nơi lý tưởng cho những ai đang tìm kiếm trải nghiệm nghỉ dưỡng sang trọng và yên tĩnh với tầm nhìn ra biển tuyệt đẹp.Nơi lý tưởng cho những ai đang tìm kiếm trải nghiệm nghỉ dưỡng sang trọng và yên tĩnh với tầm nhìn ra biển tuyệt đẹp"
 
 }

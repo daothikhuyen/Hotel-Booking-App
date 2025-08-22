@@ -1,9 +1,10 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/routes/app_routes.dart';
+import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/features/auth/sign_in.dart';
@@ -69,8 +70,12 @@ class HeaderBar extends StatelessWidget {
                           children: [
                             SvgPicture.asset(
                               Assets.images.icon.vector,
-                              color: context.colorScheme.onSurfaceVariant
-                                  .withValues(alpha: 0.7),
+                              colorFilter: ColorFilter.mode(
+                                context.colorScheme.onSurfaceVariant.withValues(
+                                  alpha: 0.7,
+                                ),
+                                BlendMode.srcIn,
+                              ),
                             ),
                             const SizedBox(width: 4),
                             Text(
@@ -115,13 +120,20 @@ class HeaderBar extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     child: SvgPicture.asset(
                       Assets.images.icon.search,
-                      color: context.iconTheme.color,
+                      colorFilter: ColorFilter.mode(
+                        context.iconTheme.color ?? Colors.transparent,
+                        BlendMode.srcIn,
+                      ),
                     ),
                   ),
                 ),
               ),
               const SizedBox(width: 8),
               GestureDetector(
+                onTap: () {
+                  authController.signOut;
+                  context.push(PageRoutes.signIn);
+                }, // temporary
                 child: Container(
                   width: 40,
                   height: 40,
@@ -136,7 +148,10 @@ class HeaderBar extends StatelessWidget {
                       children: [
                         SvgPicture.asset(
                           Assets.images.icon.group,
-                          color: context.iconTheme.color,
+                          colorFilter: ColorFilter.mode(
+                            context.iconTheme.color ?? Colors.transparent,
+                            BlendMode.srcIn,
+                          ),
                         ),
 
                         Positioned(
@@ -144,7 +159,7 @@ class HeaderBar extends StatelessWidget {
                           right: 3,
                           child: CircleAvatar(
                             radius: 4,
-                            backgroundColor: Colors.white,
+                            backgroundColor: context.colorScheme.onSecondary,
                             child: CircleAvatar(
                               radius: 2.5,
                               backgroundColor: context.colorScheme.error,

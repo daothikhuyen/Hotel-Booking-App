@@ -419,6 +419,12 @@ abstract class AppLocalizations {
   /// **'OK'**
   String get oK;
 
+  /// No description provided for @signOutFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Out failed'**
+  String get signOutFailed;
+
   /// No description provided for @signUpFailed.
   ///
   /// In en, this message translates to:
@@ -442,6 +448,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Data does not exist'**
   String get hotelNotExisted;
+
+  /// No description provided for @titleDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Detail'**
+  String get titleDetail;
+
+  /// No description provided for @commonFacilities.
+  ///
+  /// In en, this message translates to:
+  /// **'Common Facilities'**
+  String get commonFacilities;
+
+  /// No description provided for @price.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get price;
+
+  /// No description provided for @buttonBooking.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking Now'**
+  String get buttonBooking;
+
+  /// No description provided for @restaurant.
+  ///
+  /// In en, this message translates to:
+  /// **'Restaurant'**
+  String get restaurant;
+
+  /// No description provided for @swimmingPool.
+  ///
+  /// In en, this message translates to:
+  /// **'Swimming \n Pool'**
+  String get swimmingPool;
+
+  /// No description provided for @timeHours.
+  ///
+  /// In en, this message translates to:
+  /// **'24-Hours \n Front Desk'**
+  String get timeHours;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
+
+  /// No description provided for @location.
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get location;
+
+  /// No description provided for @reviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviews'**
+  String get reviews;
+
+  /// No description provided for @descriptionHotel.
+  ///
+  /// In en, this message translates to:
+  /// **'The ideal place for those looking for a luxurious and tranquil holiday experience with stunning sea views. The ideal place for those looking for a luxurious and tranquil holiday experience with stunning sea views'**
+  String get descriptionHotel;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

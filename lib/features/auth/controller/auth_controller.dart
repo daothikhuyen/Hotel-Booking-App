@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hotel_booking_app/core/exceptions/app_exception.dart';
+import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
+import 'package:hotel_booking_app/core/utils/app_exception.dart';
 import 'package:hotel_booking_app/core/widgets/alter/diaglog.dart';
 import 'package:hotel_booking_app/core/widgets/alter/snack_bar.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
@@ -31,7 +32,7 @@ class AuthController extends ChangeNotifier {
 
   Future<void> isLoggedIn() async {
     final prefs = await SharedPreferences.getInstance();
-    _isSignIn =  prefs.getBool('isSignIn') ?? false;
+    _isSignIn = prefs.getString('currentUser')?.isNotEmpty ?? false;
     notifyListeners();
   }
 
@@ -47,6 +48,7 @@ class AuthController extends ChangeNotifier {
         diaglog.showLoading(context);
         await AuthService().signInUser(context, email, password);
         await context.push(PageRoutes.homePage);
+        
       } on AppException catch (e) {
         snackBar.showSnackBar(context, e.message);
       } finally {
@@ -64,6 +66,15 @@ class AuthController extends ChangeNotifier {
       snackBar.showSnackBar(context, e.message);
     } finally {
       Navigator.pop(context);
+    }
+  }
+
+  Future<void> signOut(BuildContext context) async {
+    try {
+      await authService.signOut(context);
+      return;
+    } on AppException {
+      throw AppException(message: context.l10n.signOutFailed);
     }
   }
 }

@@ -6,7 +6,6 @@ import 'package:hotel_booking_app/core/widgets/list/list_horizontal.dart';
 import 'package:hotel_booking_app/core/widgets/list/list_vertical.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
-import 'package:hotel_booking_app/features/auth/helpers/auth_provider.dart';
 import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
 import 'package:hotel_booking_app/features/home/widgets/header_bar.dart';
 import 'package:hotel_booking_app/features/home/widgets/list_popular.dart';
@@ -50,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final controller = Provider.of<HotelController>(context, listen: false);
-    final userProvider = Provider.of<UserProvider>(context);
+    final userProvider = Provider.of<AuthController>(context);
     final user = userProvider.currentUser;
 
     return Scaffold(
@@ -138,14 +137,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     hotelRecomended,
                     context.l10n.homeRecommended,
                     context.l10n.seeAll,
+                    hotelRecomended.length < 3 ? hotelRecomended.length : 3,
                   ),
                   // Map
-                  const MapSection(),
+                  MapSection(title: context.l10n.nearYou),
                   // Best Today
                   ListHorizontal(
                     hotelBestToday,
                     context.l10n.bestToday,
                     context.l10n.seeAll,
+                    hotelBestToday.length < 3 ? hotelBestToday.length : 3,
                   ),
                 ],
               ),

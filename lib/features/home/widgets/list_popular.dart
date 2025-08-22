@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/widgets/cards/header_card.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/features/home/widgets/card/popular_card.dart';
@@ -28,8 +30,8 @@ class _ListPopularState extends State<ListPopular> {
       child: Column(
         children: [
           HeaderCard(
-            title:context.l10n.mostPopular,
-            titleBtn:context.l10n.seeAll,
+            title: context.l10n.mostPopular,
+            titleBtn: context.l10n.seeAll,
             onPressed: () {},
           ),
           const SizedBox(height: 5),
@@ -43,12 +45,17 @@ class _ListPopularState extends State<ListPopular> {
                 itemCount: hotels.length,
                 itemBuilder: (context, index) {
                   final hotel = hotels[index];
-                  return PopularCard(
-                    linkImage: hotel.image,
-                    name: hotel.name,
-                    location: hotel.location,
-                    currentPrice: hotel.currentPrice ?? 0.000,
-                    ratting: hotel.ratting ?? 0,
+                  return GestureDetector(
+                    onTap: () {
+                      context.push(PageRoutes.detailPage, extra: hotel);
+                    },
+                    child: PopularCard(
+                      linkImage: hotel.image,
+                      name: hotel.name,
+                      location: hotel.location,
+                      currentPrice: hotel.currentPrice ?? 0.000,
+                      ratting: hotel.ratting ?? 0,
+                    ),
                   );
                 },
               ),

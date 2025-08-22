@@ -22,10 +22,13 @@
 
 <img src="./assets/images/image_project/home2.png" width="200"/>  <img src="./assets/images/image_project/home_1.png" width="200"/> 
 
+- **Detail**
+
+<img src="./assets/images/image_project/detail_1.png" width="200"/>  <img src="./assets/images/image_project/detail_2.png" width="200"/> 
+
 
 - **Demo**
-  
- https://github.com/user-attachments/assets/dac7bc57-74db-4196-9060-a1dd0e8c3f63
+https://github.com/user-attachments/assets/d1e7f3c0-3862-4cfc-9002-8e79a6e69f6d
 
 ## Technologies Used
 - Visual studio code
@@ -34,6 +37,12 @@
 - DevTools (v2.42.2)
 
 ## Installation
+
+- Set up multi language: [See more here](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization)
+```bash
+  flutter pub add flutter_localizations --sdk=flutter
+  flutter pub add intl:any
+```
 
 - Set up multi language: [See more here](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization)
 

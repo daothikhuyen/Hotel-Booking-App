@@ -8,7 +8,7 @@ import 'package:hotel_booking_app/core/utils/validator.dart';
 import 'package:hotel_booking_app/core/widgets/alter/diaglog.dart';
 import 'package:hotel_booking_app/core/widgets/alter/snack_bar.dart';
 import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
-import 'package:hotel_booking_app/core/widgets/texfield.dart';
+import 'package:hotel_booking_app/core/widgets/textfield.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
 import 'package:hotel_booking_app/features/auth/widgets/circular_checkbox%20.dart';
 import 'package:hotel_booking_app/features/auth/widgets/socail_section.dart';

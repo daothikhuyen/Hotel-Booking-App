@@ -2,8 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
+import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
 import 'package:hotel_booking_app/features/auth/sign_in.dart';
+import 'package:hotel_booking_app/features/detail/detail_screen.dart';
 import 'package:hotel_booking_app/features/home/home_screen.dart';
 import 'package:hotel_booking_app/features/layout/layout_scaffold.dart';
 import 'package:hotel_booking_app/features/my_booking/my_booking_screen.dart';
@@ -26,6 +28,12 @@ final goRouter = GoRouter(
       path: PageRoutes.signIn,
       builder: (context, state) => const SignIn(),
     ),
+    GoRoute(
+      path: PageRoutes.detailPage,
+      builder:
+          (context, state) =>
+              DetailScreen(hotel: (state.extra ?? Hotel) as Hotel),
+    ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         // the UI shell
@@ -41,7 +49,9 @@ final goRouter = GoRouter(
                 // child route
                 GoRoute(
                   path: PageRoutes.detailPage,
-                  builder: (context, state) => const MyBookingScreen(),
+                  builder:
+                      (context, state) =>
+                          DetailScreen(hotel: (state.extra ?? Hotel) as Hotel),
                 ),
               ],
             ),
@@ -49,7 +59,6 @@ final goRouter = GoRouter(
         ),
         // second branch (B)
         StatefulShellBranch(
-          // navigatorKey: _shellNavigatorBKey,
           routes: [
             GoRoute(
               path: PageRoutes.myBooking,

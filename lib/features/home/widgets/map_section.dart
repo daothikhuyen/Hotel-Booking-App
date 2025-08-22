@@ -4,7 +4,8 @@ import 'package:hotel_booking_app/core/widgets/cards/header_card.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 
 class MapSection extends StatelessWidget {
-  const MapSection({super.key});
+  const MapSection({required this.title, super.key});
+  final String title ;
 
   @override
   Widget build(BuildContext context) {

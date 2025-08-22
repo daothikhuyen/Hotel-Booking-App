@@ -75,9 +75,23 @@
   "notification": "Notification",
   "close": "Close",
   "oK": "OK",
+  "signOutFailed": "Sign Out failed",
   "signInFailed": "Sign in failed. Please try again.",
   "signUpFailed": "Sign up failed. Please try again.",
   "networkError": "Network error. Check your connection.",
   "userNotExisted": "You are not logged in. Log in to the app",
-  "hotelNotExisted": "Data does not exist"
+  "hotelNotExisted": "Data does not exist",
+ "tagHotel": "Hotels",
+  "titleDetail": "Detail",
+  "commonFacilities": "Common Facilities",
+  "price": "Price",
+  "buttonBooking": "Booking Now",
+  "restaurant": "Restaurant",
+  "swimmingPool": "Swimming \n Pool",
+  "timeHours" : "24-Hours \n Front Desk",
+  "description": "Description",
+  "location": "Location",
+  "reviews": "Reviews",
+  "descriptionHotel": "The ideal place for those looking for a luxurious and tranquil holiday experience with stunning sea views. The ideal place for those looking for a luxurious and tranquil holiday experience with stunning sea views"
+
 }

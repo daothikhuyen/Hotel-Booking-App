@@ -177,6 +177,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get oK => 'OK';
 
   @override
+  String get signOutFailed => 'Sign Out failed';
+
+  @override
   String get signUpFailed => 'Sign up failed. Please try again.';
 
   @override
@@ -187,4 +190,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get hotelNotExisted => 'Data does not exist';
+
+  @override
+  String get titleDetail => 'Detail';
+
+  @override
+  String get commonFacilities => 'Common Facilities';
+
+  @override
+  String get price => 'Price';
+
+  @override
+  String get buttonBooking => 'Booking Now';
+
+  @override
+  String get restaurant => 'Restaurant';
+
+  @override
+  String get swimmingPool => 'Swimming \n Pool';
+
+  @override
+  String get timeHours => '24-Hours \n Front Desk';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get location => 'Location';
+
+  @override
+  String get reviews => 'Reviews';
+
+  @override
+  String get descriptionHotel => 'The ideal place for those looking for a luxurious and tranquil holiday experience with stunning sea views. The ideal place for those looking for a luxurious and tranquil holiday experience with stunning sea views';
 }

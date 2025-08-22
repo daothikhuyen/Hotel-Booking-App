@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/widgets/cards/best_today_card.dart';
 import 'package:hotel_booking_app/core/widgets/cards/header_card.dart';
 import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
@@ -10,13 +12,15 @@ class ListHorizontal extends StatelessWidget {
   const ListHorizontal(
     this.listHotels,
     this.title,
-    this.textButton, {
+    this.textButton,
+    this.number, {
     super.key,
   });
 
   final List<Hotel> listHotels;
   final String title;
   final String textButton;
+  final int number;
 
   @override
   Widget build(BuildContext context) {
@@ -34,17 +38,22 @@ class ListHorizontal extends StatelessWidget {
                     child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
-                      itemCount: hotels.length,
+                      itemCount: number,
                       itemBuilder: (context, index) {
                         final hotel = hotels[index];
-                        return BestTodayItem(
-                          linkImage: hotel.image,
-                          name: hotel.name,
-                          address: hotel.location,
-                          currentPrice: hotel.currentPrice ?? 0,
-                          lastPrice: hotel.lastPrice ?? 0,
-                          ratting: hotel.ratting ?? 0,
-                          traffic: hotel.traffic ?? 0,
+                        return GestureDetector(
+                          onTap: () {
+                            context.push(PageRoutes.detailPage, extra: hotel);
+                          },
+                          child: BestTodayItem(
+                            linkImage: hotel.image,
+                            name: hotel.name,
+                            address: hotel.location,
+                            currentPrice: hotel.currentPrice ?? 0,
+                            lastPrice: hotel.lastPrice ?? 0,
+                            ratting: hotel.ratting ?? 0,
+                            traffic: hotel.traffic ?? 0,
+                          ),
                         );
                       },
                     ),

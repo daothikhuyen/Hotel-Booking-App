@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:hotel_booking_app/core/exceptions/app_exception.dart';
+import 'package:hotel_booking_app/core/utils/app_exception.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
