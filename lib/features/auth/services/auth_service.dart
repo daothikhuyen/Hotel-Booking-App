@@ -7,6 +7,7 @@ import 'package:hotel_booking_app/core/firestore_collections.dart';
 import 'package:hotel_booking_app/core/utils/app_exception.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
+import 'package:hotel_booking_app/features/auth/helpers/auth_provider.dart';
 import 'package:hotel_booking_app/features/auth/helpers/local_storage_helper.dart';
 import 'package:provider/provider.dart';
 
@@ -44,7 +45,7 @@ class AuthService {
             .doc(currentUser?.uid)
             .set(hbUser.toJson());
       }
-    } on FirebaseAuthException {
+    } on FirebaseAuthException catch (e) {
       throw AppException(message: context.l10n.signUpFailed);
     }
   }
@@ -96,7 +97,7 @@ class AuthService {
       await auth.signInWithCredential(credential);
 
       return;
-    } on FirebaseAuthException {
+    } on FirebaseAuthException catch (e) {
       throw AppException(message: context.l10n.signInFailed);
     }
   }
