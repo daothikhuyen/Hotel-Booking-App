@@ -1,33 +1,93 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/firestore_collections.dart';
+import 'package:hotel_booking_app/core/utils/app_exception.dart';
+import 'package:hotel_booking_app/data/model/user.dart';
+import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
+import 'package:hotel_booking_app/features/auth/helpers/auth_provider.dart';
+import 'package:hotel_booking_app/features/auth/helpers/local_storage_helper.dart';
+import 'package:provider/provider.dart';
 
 class AuthService {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth auth = FirebaseAuth.instance;
 
+  HBUser? hbUser;
   User? get currentUser => auth.currentUser;
 
   Stream<User?> get authStateChanges => auth.authStateChanges();
 
-  // Get current user
-  Future<User?> getCurrentUser() async {
-    return auth.currentUser;
-  }
-
-  Future<String> signInUser(String email, String password) async {
+  Future<void> signUpUser({
+    required BuildContext context,
+    required String id,
+    required String email,
+    required String location,
+  }) async {
     try {
-      await auth.signInWithEmailAndPassword(email: email, password: password);
-      return 'sucess';
+      final userDoc =
+          await _firestore
+              .collection(FirestoreCollections.users)
+              .doc(currentUser?.uid)
+              .get();
+
+      if (!userDoc.exists) {
+        final hbUser = HBUser(
+          uid: id,
+          email: email,
+          displayName: email.split('@')[0],
+          location: location,
+        );
+        return await _firestore
+            .collection('users')
+            .doc(currentUser?.uid)
+            .set(hbUser.toJson());
+      }
     } on FirebaseAuthException catch (e) {
-      return 'Login failed';
+      throw AppException(message: context.l10n.signUpFailed);
     }
   }
 
-  Future<String> signInUserWithGoogle() async {
+  Future<void> signInUser(
+    BuildContext context,
+    String email,
+    String password,
+  ) async {
     try {
-      final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
+      final credentail = await auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
 
-      final GoogleSignInAuthentication gAuth = await gUser!.authentication;
+      final snapshot =
+          await _firestore
+              .collection(FirestoreCollections.users)
+              .doc(credentail.user?.uid)
+              .get();
+
+      if (snapshot.exists && snapshot.data() != null) {
+        final user = HBUser.fromJson(
+          snapshot.data() ?? {},
+          credentail.user?.uid ?? '0',
+        );
+
+        await LocalStorageHelper.saveUser(user);
+        Provider.of<AuthController>(context, listen: false).setUser(user);
+        return;
+      }
+    } on FirebaseAuthException catch (e) {
+      debugPrint('Error SignIn :${e.message}');
+      throw AppException(message: context.l10n.signInFailed);
+    }
+  }
+
+  Future<void> signInUserWithGoogle(BuildContext context) async {
+    try {
+      final gUser = await GoogleSignIn().signIn();
+
+      final gAuth = await gUser!.authentication;
 
       final credential = GoogleAuthProvider.credential(
         accessToken: gAuth.accessToken,
@@ -36,16 +96,19 @@ class AuthService {
 
       await auth.signInWithCredential(credential);
 
-      return 'sucess';
-    } catch (e) {
-      if (kDebugMode) {
-        print(e.toString());
-      }
-      return 'Google Login Failed';
+      return;
+    } on FirebaseAuthException catch (e) {
+      throw AppException(message: context.l10n.signInFailed);
     }
   }
 
-  Future<void> signOut() async {
-    await auth.signOut();
+  Future<void> signOut(BuildContext context) async {
+    try {
+      await LocalStorageHelper.removeUser();
+      await auth.signOut();
+      return ;
+    } on FirebaseException {
+      throw AppException(message: context.l10n.signOutFailed);
+    }
   }
 }

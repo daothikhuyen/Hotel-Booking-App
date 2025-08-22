@@ -12,7 +12,7 @@
   "mybooking": "Lịch sử",
   "nearYou": "Khách sạn gần bạn",
   "openMap": "Mở Map",
-  "night": "đêm",
+  "night": "/đêm",
   "noAccount": "Bạn không có tài khoản?",
   "titleSplash": "Tìm Kỳ Nghỉ Hoàn Hảo Của Bạn, Mọi Lúc, Mọi Nơi",
   "onboardingDescOne": "Luôn tham gia khóa học lớn và tôi \n đang theo học nhiều loại ngay bây giờ. Một phần tử \n chính xác,laoreet id. ",
@@ -39,6 +39,7 @@
   "textFooterFour" : "Điều kiện sử dụng",
   "signUp" : "Đăng Kí",
   "register": "Đăng Kí",
+  "signOutFailed": "Đăng xuất thất bại",
   "signInFailed": "Đăng nhập không thành công",
   "signInSucess": "Đăng nhập thành công",
   "errorEmptyEmail": "Vui lòng nhập email của bạn",
@@ -47,6 +48,40 @@
   "errorPasswordFormat": "Mật khẩu phải dài ít nhất 6 kí tự",
   "tagAll": "Tất cả",
   "tagApartement": "Căn hộ\n",
+  "tagHotel": "Khách sạn",
+  "traffic": "({traffic})",
+    "@traffic": {
+    "placeholders": {
+      "traffic": {
+        "type": "int"
+      }
+    }
+  },
+  "currentPrice": "${currentPrice}",
+  "@currentPrice": {
+    "placeholders": {
+      "currentPrice": {
+        "type": "double"
+      }
+    }
+  },
+  "lastPrice": "${lastPrice}",
+  "@lastPrice": {
+    "placeholders": {
+      "lastPrice": {
+        "type": "double"
+      }
+    }
+  },
+  "notification": "Thông Báo",
+  "close": "Đóng",
+  "oK": "Đồng ý",
+  "signInFailed": "Đăng nhập không thành công. Hãy thử lại.",
+  "signUpFailed": "Đăng ký thất bại. Hãy thử lại.",
+  "networkError": "Lỗi mạng. Kiểm tra kết nối của bạn.",
+  "userNotExisted": "Bạn chưa đăng nhập, Vui lòng đăng nhập ứng dụng",
+  "hotelNotExisted": "Dữ liệu không tồn tại",
+
   "tagHotel": "Khách sạn",
   "titleDetail": "Chi Tiết",
   "commonFacilities": "Cơ sở chung",

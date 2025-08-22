@@ -28,8 +28,7 @@
 
 
 - **Demo**
-  
- https://github.com/user-attachments/assets/dac7bc57-74db-4196-9060-a1dd0e8c3f63
+https://github.com/user-attachments/assets/d1e7f3c0-3862-4cfc-9002-8e79a6e69f6d
 
 ## Technologies Used
 - Visual studio code

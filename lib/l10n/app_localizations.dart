@@ -66,8 +66,8 @@ abstract class AppLocalizations {
 
   final String localeName;
 
-  static AppLocalizations? of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(context, AppLocalizations);
+  static AppLocalizations of(BuildContext context) {
+    return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
   }
 
   static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
@@ -170,7 +170,7 @@ abstract class AppLocalizations {
   /// No description provided for @night.
   ///
   /// In en, this message translates to:
-  /// **'night'**
+  /// **'/night'**
   String get night;
 
   /// No description provided for @noAccount.
@@ -332,7 +332,7 @@ abstract class AppLocalizations {
   /// No description provided for @signInFailed.
   ///
   /// In en, this message translates to:
-  /// **'Sign in failed'**
+  /// **'Sign in failed. Please try again.'**
   String get signInFailed;
 
   /// No description provided for @signInSucess.
@@ -383,6 +383,72 @@ abstract class AppLocalizations {
   /// **'Hotels'**
   String get tagHotel;
 
+  /// No description provided for @traffic.
+  ///
+  /// In en, this message translates to:
+  /// **'({traffic})'**
+  String traffic(int traffic);
+
+  /// No description provided for @currentPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'\${currentPrice}'**
+  String currentPrice(double currentPrice);
+
+  /// No description provided for @lastPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'\${lastPrice}'**
+  String lastPrice(double lastPrice);
+
+  /// No description provided for @notification.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification'**
+  String get notification;
+
+  /// No description provided for @close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get close;
+
+  /// No description provided for @oK.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get oK;
+
+  /// No description provided for @signOutFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Out failed'**
+  String get signOutFailed;
+
+  /// No description provided for @signUpFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up failed. Please try again.'**
+  String get signUpFailed;
+
+  /// No description provided for @networkError.
+  ///
+  /// In en, this message translates to:
+  /// **'Network error. Check your connection.'**
+  String get networkError;
+
+  /// No description provided for @userNotExisted.
+  ///
+  /// In en, this message translates to:
+  /// **'You are not logged in. Log in to the app'**
+  String get userNotExisted;
+
+  /// No description provided for @hotelNotExisted.
+  ///
+  /// In en, this message translates to:
+  /// **'Data does not exist'**
+  String get hotelNotExisted;
+
   /// No description provided for @titleDetail.
   ///
   /// In en, this message translates to:
@@ -416,13 +482,13 @@ abstract class AppLocalizations {
   /// No description provided for @swimmingPool.
   ///
   /// In en, this message translates to:
-  /// **'Swimming\\n Pool'**
+  /// **'Swimming \n Pool'**
   String get swimmingPool;
 
   /// No description provided for @timeHours.
   ///
   /// In en, this message translates to:
-  /// **'24-Hours\\n Front Desk'**
+  /// **'24-Hours \n Front Desk'**
   String get timeHours;
 
   /// No description provided for @description.

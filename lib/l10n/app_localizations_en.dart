@@ -45,7 +45,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get openMap => 'Open Map';
 
   @override
-  String get night => 'night';
+  String get night => '/night';
 
   @override
   String get noAccount => 'Don’t have an account?';
@@ -126,7 +126,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get register => 'Register';
 
   @override
-  String get signInFailed => 'Sign in failed';
+  String get signInFailed => 'Sign in failed. Please try again.';
 
   @override
   String get signInSucess => 'Sign in sucess';
@@ -153,6 +153,45 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tagHotel => 'Hotels';
 
   @override
+  String traffic(int traffic) {
+    return '($traffic)';
+  }
+
+  @override
+  String currentPrice(double currentPrice) {
+    return '\$$currentPrice';
+  }
+
+  @override
+  String lastPrice(double lastPrice) {
+    return '\$$lastPrice';
+  }
+
+  @override
+  String get notification => 'Notification';
+
+  @override
+  String get close => 'Close';
+
+  @override
+  String get oK => 'OK';
+
+  @override
+  String get signOutFailed => 'Sign Out failed';
+
+  @override
+  String get signUpFailed => 'Sign up failed. Please try again.';
+
+  @override
+  String get networkError => 'Network error. Check your connection.';
+
+  @override
+  String get userNotExisted => 'You are not logged in. Log in to the app';
+
+  @override
+  String get hotelNotExisted => 'Data does not exist';
+
+  @override
   String get titleDetail => 'Detail';
 
   @override
@@ -168,10 +207,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get restaurant => 'Restaurant';
 
   @override
-  String get swimmingPool => 'Swimming\\n Pool';
+  String get swimmingPool => 'Swimming \n Pool';
 
   @override
-  String get timeHours => '24-Hours\\n Front Desk';
+  String get timeHours => '24-Hours \n Front Desk';
 
   @override
   String get description => 'Description';

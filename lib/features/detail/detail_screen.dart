@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
+import 'package:hotel_booking_app/core/widgets/custom_app_bar.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/features/detail/widgets/bottom_bar.dart';
-import 'package:hotel_booking_app/core/widgets/custom_app_bar.dart';
 import 'package:hotel_booking_app/features/detail/widgets/popup_card.dart';
 import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
 import 'package:provider/provider.dart';
 
 class DetailScreen extends StatefulWidget {
-  const DetailScreen({super.key, required this.hotel});
+  const DetailScreen({required this.hotel, super.key});
 
   final Hotel hotel;
 
@@ -27,7 +27,7 @@ class _DetailScreenState extends State<DetailScreen> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       final controller = Provider.of<HotelController>(context, listen: false);
-      final recomended = await controller.fetchRecomendedHotels();
+      final recomended = await controller.fetchRecomendedHotels(context);
 
       setState(() {
         hotelRecomended = recomended;
@@ -35,7 +35,7 @@ class _DetailScreenState extends State<DetailScreen> {
     });
   }
 
-  void onScrollChange(bool scrolled) {
+  void onScrollChange({required bool scrolled}) {
     setState(() {
       isScrolled = scrolled;
     });
@@ -49,17 +49,18 @@ class _DetailScreenState extends State<DetailScreen> {
       body: Stack(
         // fit: StackFit.expand,
         children: [
-          widget.hotel.image.isNotEmpty
-              ? Container(
-                height: 374,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(widget.hotel.image),
-                    fit: BoxFit.cover,
-                  ),
+          if (widget.hotel.image.isNotEmpty)
+            Container(
+              height: 374,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(widget.hotel.image),
+                  fit: BoxFit.cover,
                 ),
-              )
-              : Skeleton(width: double.infinity, height: 374),
+              ),
+            )
+          else
+            const Skeleton(width: double.infinity, height: 374),
 
           Container(
             height: 374,
@@ -85,5 +86,3 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 }
-
-

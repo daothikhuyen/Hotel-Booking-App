@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
-import 'package:hotel_booking_app/l10n/app_localizations.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
-    super.key,
-    required this.isScrolled,
+    required this.isScrolled, super.key,
   });
 
   final bool isScrolled;
@@ -31,15 +29,14 @@ class CustomAppBar extends StatelessWidget {
                   boxShadow: [
                     BoxShadow(
                       color: context.colorScheme.onTertiary,
-                      offset: Offset(0, -1),
+                      offset: const Offset(0, -1),
                       blurRadius: 10,
-                      spreadRadius: 0,
                     ),
                   ],
                 )
-                : BoxDecoration(),
+                : const BoxDecoration(),
         child: Padding(
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
             top: 40,
             bottom: 10,
             right: 20,
@@ -62,12 +59,11 @@ class CustomAppBar extends StatelessWidget {
               ),
               Expanded(
                 child: Text(
-                  AppLocalizations.of(context)!.titleDetail,
-                  style: CustomTextStyles.bodySemiboldLarge(
+                  context.l10n.titleDetail,
+                  style: HBTextStyles.bodySemiboldLarge(
                     isScrolled
                           ? context.colorScheme.onSurfaceVariant
                           : context.colorScheme.onSecondary,
-                    letterSpacing: 0.5,
                   ),
                   textAlign: TextAlign.center,
                 ),

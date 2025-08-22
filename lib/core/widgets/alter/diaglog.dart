@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 
-class Alert {
-  Future<void> diaglogBuilder(BuildContext context, String title, String desc) {
+class HBDiaglog {
+  Future<void> diaglogBuilder(
+    BuildContext context,
+    String title,
+    String desc,
+    VoidCallback action,
+  ) {
     return showDialog(
       context: context,
       builder: (context) {
@@ -16,9 +21,10 @@ class Alert {
             style: TextStyle(color: context.colorScheme.onSurfaceVariant),
           ),
           actions: [
+            TextButton(onPressed: () => action, child: Text(context.l10n.oK)),
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Close'),
+              child: Text(context.l10n.close),
             ),
           ],
         );
@@ -26,19 +32,10 @@ class Alert {
     );
   }
 
-  void showSnackBar(BuildContext context, String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        action: SnackBarAction(label: 'Oki', onPressed: () {}),
-      ),
-    );
-  }
-
   void showLoading(BuildContext context) {
     showDialog(
       context: context,
-      barrierDismissible: false, 
+      barrierDismissible: false,
       builder: (context) {
         return const Center(child: CircularProgressIndicator());
       },
