@@ -8,7 +8,7 @@ import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
-class ListHorizontal extends StatelessWidget {
+class ListHorizontal extends StatefulWidget {
   const ListHorizontal(
     this.listHotels,
     this.title,
@@ -23,24 +23,33 @@ class ListHorizontal extends StatelessWidget {
   final int number;
 
   @override
+  State<ListHorizontal> createState() => _ListHorizontalState();
+}
+
+class _ListHorizontalState extends State<ListHorizontal> {
+  
+  @override
   Widget build(BuildContext context) {
-    final hotels = listHotels;
     return Column(
       children: [
-        HeaderCard(title: title, titleBtn: textButton, onPressed: () {}),
+        HeaderCard(
+          title: widget.title,
+          titleBtn: widget.textButton,
+          onPressed: () {},
+        ),
         // list hotel
         Padding(
           padding: const EdgeInsets.only(bottom: 20),
           child:
-              hotels.isNotEmpty
+              widget.listHotels.isNotEmpty
                   ? SizedBox(
                     height: 102,
                     child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
-                      itemCount: number,
+                      itemCount: widget.number,
                       itemBuilder: (context, index) {
-                        final hotel = hotels[index];
+                        final hotel = widget.listHotels[index];
                         return GestureDetector(
                           onTap: () {
                             context.push(PageRoutes.detailPage, extra: hotel);

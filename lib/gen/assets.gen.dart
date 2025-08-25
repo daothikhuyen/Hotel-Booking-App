@@ -114,12 +114,30 @@ class $AssetsImagesIconGen {
   /// File path: assets/images/icon/Vector.svg
   String get vector => 'assets/images/icon/Vector.svg';
 
+  /// File path: assets/images/icon/akar-icons_minus.svg
+  String get akarIconsMinus => 'assets/images/icon/akar-icons_minus.svg';
+
   /// File path: assets/images/icon/apartement.png
   AssetGenImage get apartement =>
       const AssetGenImage('assets/images/icon/apartement.png');
 
   /// File path: assets/images/icon/building.svg
   String get building => 'assets/images/icon/building.svg';
+
+  /// File path: assets/images/icon/buliding.svg
+  String get buliding => 'assets/images/icon/buliding.svg';
+
+  /// File path: assets/images/icon/calendar.svg
+  String get calendar => 'assets/images/icon/calendar.svg';
+
+  /// File path: assets/images/icon/call.svg
+  String get call => 'assets/images/icon/call.svg';
+
+  /// File path: assets/images/icon/discount_shape.svg
+  String get discountShape => 'assets/images/icon/discount_shape.svg';
+
+  /// File path: assets/images/icon/empty-wallet.svg
+  String get emptyWallet => 'assets/images/icon/empty-wallet.svg';
 
   /// File path: assets/images/icon/home.svg
   String get home => 'assets/images/icon/home.svg';
@@ -131,8 +149,14 @@ class $AssetsImagesIconGen {
   /// File path: assets/images/icon/location.svg
   String get location => 'assets/images/icon/location.svg';
 
+  /// File path: assets/images/icon/plus.svg
+  String get plus => 'assets/images/icon/plus.svg';
+
   /// File path: assets/images/icon/solar_star-bold.svg
   String get solarStarBold => 'assets/images/icon/solar_star-bold.svg';
+
+  /// File path: assets/images/icon/user.svg
+  String get user => 'assets/images/icon/user.svg';
 
   /// File path: assets/images/icon/villa.png
   AssetGenImage get villa =>
@@ -160,12 +184,20 @@ class $AssetsImagesIconGen {
     search,
     stroke4,
     vector,
+    akarIconsMinus,
     apartement,
     building,
+    buliding,
+    calendar,
+    call,
+    discountShape,
+    emptyWallet,
     home,
     hotel,
     location,
+    plus,
     solarStarBold,
+    user,
     villa,
     wind2,
     wind,

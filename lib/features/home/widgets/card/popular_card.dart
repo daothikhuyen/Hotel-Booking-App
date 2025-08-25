@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
+import 'package:hotel_booking_app/core/utils/format.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 
 class PopularCard extends StatefulWidget {
@@ -93,8 +94,9 @@ class _PopularCardState extends State<PopularCard> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        context.l10n.currentPrice(widget.currentPrice) +
-                            context.l10n.night,
+                        context.l10n.price(
+                              formatCurrency(widget.currentPrice),
+                            ) +context.l10n.night,
                         style: HBTextStyles.bodyMediumXSmall(
                           context.colorScheme.onPrimary,
                         ),

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class HBUser {
   HBUser({
@@ -11,7 +10,7 @@ class HBUser {
   });
 
   factory HBUser.fromJson(Map<String, dynamic> json, String id) {
-    debugPrint(json['email']);
+
     return HBUser(
       uid: id,
       email: json['email'],

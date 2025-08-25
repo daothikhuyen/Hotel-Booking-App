@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/core/utils/app_exception.dart';
 import 'package:hotel_booking_app/core/firestore_collections.dart';
+import 'package:hotel_booking_app/core/utils/app_exception.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 
 class HotelService {
@@ -51,10 +51,11 @@ class HotelService {
           snapshot.docs.map((doc) {
             return Hotel.fromJson(doc.data(), doc.id);
           }).toList();
+        
 
       final filtered =
           hotels.where((hotel) {
-            return (hotel.lastPrice! - hotel.currentPrice!) > 50;
+            return ((hotel.lastPrice??0) - (hotel.currentPrice ?? 0)) > 50;
           }).toList();
 
       return filtered;

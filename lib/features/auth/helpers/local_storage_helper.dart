@@ -31,10 +31,11 @@ class LocalStorageHelper {
 
   static Future<void> removeUser() async {
     try {
+      
       final prefs = await SharedPreferences.getInstance();
       await prefs.remove(_keyUser);
     } on Exception catch (e) {
-      throw AppException(message: e.toString());
+      throw AppException(message: 'Error removerUser: $e');
     }
   }
 }

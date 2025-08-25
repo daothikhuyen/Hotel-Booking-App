@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
+import 'package:hotel_booking_app/core/utils/format.dart';
+import 'package:hotel_booking_app/core/widgets/alter/diaglog.dart';
 import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
+import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
+import 'package:hotel_booking_app/features/auth/sign_in.dart';
 import 'package:hotel_booking_app/features/detail/detail_screen.dart';
+import 'package:provider/provider.dart';
 
 class ButtomBar extends StatelessWidget {
-  const ButtomBar({
-    required this.widget,
-    super.key,
-  });
+  const ButtomBar({required this.widget, super.key});
 
   final DetailScreen widget;
 
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<AuthController>(context);
+    final user = userProvider.currentUser;
+
     return Positioned(
       bottom: 0,
       left: 0,
@@ -25,10 +32,7 @@ class ButtomBar extends StatelessWidget {
           color: context.colorScheme.surface,
           borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
           border: Border(
-            top: BorderSide(
-              width: 0.5,
-              color: context.colorScheme.outline,
-            ),
+            top: BorderSide(width: 0.5, color: context.colorScheme.outline),
           ),
           boxShadow: [
             BoxShadow(
@@ -38,7 +42,7 @@ class ButtomBar extends StatelessWidget {
             ),
           ],
         ),
-        height: 90,
+        height: 95,
         child: Row(
           children: [
             Expanded(
@@ -47,25 +51,52 @@ class ButtomBar extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                     context.l10n.price,
+                    context.l10n.titlePrice,
                     style: HBTextStyles.bodyRegularSmall(
                       context.colorScheme.tertiary,
                     ),
                   ),
-                  if (widget.hotel.currentPrice != 0) Text(
-                    context.l10n.currentPrice(widget.hotel.currentPrice?? 0),
-                    style: HBTextStyles.headingThree(
-                      context.colorScheme.inverseSurface,
-                    ),
-                  ) else const Skeleton(width: 7, height: 30),
+                  if (widget.hotel.currentPrice != 0)
+                    Text(
+                      context.l10n.price(
+                        formatCurrency(widget.hotel.currentPrice ?? 0.000),
+                      ),
+                      style: HBTextStyles.headingThree(
+                        context.colorScheme.inverseSurface,
+                      ),
+                    )
+                  else
+                    const Skeleton(width: 7, height: 30),
                 ],
               ),
             ),
             Expanded(
               flex: 2,
               child: PrimaryBtn(
-                textButton:  context.l10n.buttonBooking,
-                onPressed: () {},
+                size: 56,
+                textButton: context.l10n.buttonBooking,
+                onPressed: () {
+                  if (user != null) {
+                    context.push(
+                      PageRoutes.requestBooking,
+                      extra: widget.hotel,
+                    );
+                  } else {
+                    HBDiaglog().diaglogBuilder(
+                      context: context,
+                      title: context.l10n.notification,
+                      desc: context.l10n.userNotExisted,
+                      action: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignIn(),
+                          ),
+                        );
+                      },
+                    );
+                  }
+                },
                 bold: true,
               ),
             ),

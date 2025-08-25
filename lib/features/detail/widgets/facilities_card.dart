@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 
 class FacilitiesCard extends StatelessWidget {
-  const FacilitiesCard({super.key, required this.icon, required this.title});
+  const FacilitiesCard({required this.icon, required this.title, super.key});
 
   final String icon;
   final String title;
@@ -18,10 +18,7 @@ class FacilitiesCard extends StatelessWidget {
           child: CircleAvatar(
             radius: 24,
             backgroundColor: context.colorScheme.secondary,
-            child: SvgPicture.asset(
-              icon,
-              fit: BoxFit.contain,
-            ),
+            child: SvgPicture.asset(icon),
           ),
         ),
         Text(

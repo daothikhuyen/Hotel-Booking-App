@@ -65,7 +65,7 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            context.push(PageRoutes.homePage);
+            context.go(PageRoutes.homePage);
           },
           icon: Icon(Icons.arrow_back, color: context.iconTheme.color),
         ),
@@ -158,6 +158,7 @@ class _SignInState extends State<SignIn> {
                 ),
                 const SizedBox(height: 20),
                 PrimaryBtn(
+                  size: 56,
                   textButton: context.l10n.signIn,
                   onPressed: () => authController.signIn(
                     context: context,

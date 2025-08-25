@@ -12,7 +12,7 @@ class MapSection extends StatelessWidget {
     return Column(
       children: [
         HeaderCard(
-          title: context.l10n.nearYou,
+          title: title,
           titleBtn: context.l10n.openMap,
           onPressed: () {
             // TODOs: Handle action open map latter

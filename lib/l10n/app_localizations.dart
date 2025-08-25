@@ -389,17 +389,11 @@ abstract class AppLocalizations {
   /// **'({traffic})'**
   String traffic(int traffic);
 
-  /// No description provided for @currentPrice.
+  /// No description provided for @price.
   ///
   /// In en, this message translates to:
-  /// **'\${currentPrice}'**
-  String currentPrice(double currentPrice);
-
-  /// No description provided for @lastPrice.
-  ///
-  /// In en, this message translates to:
-  /// **'\${lastPrice}'**
-  String lastPrice(double lastPrice);
+  /// **'{price}'**
+  String price(String price);
 
   /// No description provided for @notification.
   ///
@@ -440,7 +434,7 @@ abstract class AppLocalizations {
   /// No description provided for @userNotExisted.
   ///
   /// In en, this message translates to:
-  /// **'You are not logged in. Log in to the app'**
+  /// **'You are not logged in.\n Please log in to continue booking'**
   String get userNotExisted;
 
   /// No description provided for @hotelNotExisted.
@@ -461,11 +455,11 @@ abstract class AppLocalizations {
   /// **'Common Facilities'**
   String get commonFacilities;
 
-  /// No description provided for @price.
+  /// No description provided for @titlePrice.
   ///
   /// In en, this message translates to:
   /// **'Price'**
-  String get price;
+  String get titlePrice;
 
   /// No description provided for @buttonBooking.
   ///
@@ -482,13 +476,13 @@ abstract class AppLocalizations {
   /// No description provided for @swimmingPool.
   ///
   /// In en, this message translates to:
-  /// **'Swimming \n Pool'**
+  /// **'Swimming\n Pool'**
   String get swimmingPool;
 
   /// No description provided for @timeHours.
   ///
   /// In en, this message translates to:
-  /// **'24-Hours \n Front Desk'**
+  /// **'24-Hours\n Front Desk'**
   String get timeHours;
 
   /// No description provided for @description.
@@ -514,6 +508,162 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The ideal place for those looking for a luxurious and tranquil holiday experience with stunning sea views. The ideal place for those looking for a luxurious and tranquil holiday experience with stunning sea views'**
   String get descriptionHotel;
+
+  /// No description provided for @titleRequestBooking.
+  ///
+  /// In en, this message translates to:
+  /// **'Request to book'**
+  String get titleRequestBooking;
+
+  /// No description provided for @date.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get date;
+
+  /// No description provided for @checkIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Check - In'**
+  String get checkIn;
+
+  /// No description provided for @checkOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Check - Out'**
+  String get checkOut;
+
+  /// No description provided for @guest.
+  ///
+  /// In en, this message translates to:
+  /// **'Guest'**
+  String get guest;
+
+  /// No description provided for @payWith.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay With'**
+  String get payWith;
+
+  /// No description provided for @edit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
+
+  /// No description provided for @paymentDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Details'**
+  String get paymentDetails;
+
+  /// No description provided for @total.
+  ///
+  /// In en, this message translates to:
+  /// **'Total: {total} Night'**
+  String total(int total);
+
+  /// No description provided for @cleaningFee.
+  ///
+  /// In en, this message translates to:
+  /// **'Cleaning Fee'**
+  String get cleaningFee;
+
+  /// No description provided for @serviceFee.
+  ///
+  /// In en, this message translates to:
+  /// **'Service Fee'**
+  String get serviceFee;
+
+  /// No description provided for @totalPayment.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Payment'**
+  String get totalPayment;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @apply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get apply;
+
+  /// No description provided for @selectDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Date'**
+  String get selectDate;
+
+  /// No description provided for @titleCheckOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Checkout'**
+  String get titleCheckOut;
+
+  /// No description provided for @roomType.
+  ///
+  /// In en, this message translates to:
+  /// **'Room Type'**
+  String get roomType;
+
+  /// No description provided for @phone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get phone;
+
+  /// No description provided for @priceDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Price Details'**
+  String get priceDetails;
+
+  /// No description provided for @yourBooking.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Booking'**
+  String get yourBooking;
+
+  /// No description provided for @adminFee.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin Fee'**
+  String get adminFee;
+
+  /// No description provided for @totalPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Price'**
+  String get totalPrice;
+
+  /// No description provided for @promo.
+  ///
+  /// In en, this message translates to:
+  /// **'Promo'**
+  String get promo;
+
+  /// No description provided for @selectPayment.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Payment'**
+  String get selectPayment;
+
+  /// No description provided for @select.
+  ///
+  /// In en, this message translates to:
+  /// **'Select'**
+  String get select;
+
+  /// No description provided for @startDateMustBeFuture.
+  ///
+  /// In en, this message translates to:
+  /// **'Start date must be in the future'**
+  String get startDateMustBeFuture;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

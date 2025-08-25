@@ -10,7 +10,7 @@ import 'package:hotel_booking_app/data/data/hotel_data.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
-class ListVertical extends StatelessWidget {
+class ListVertical extends StatefulWidget {
   const ListVertical(
     this.listHotels,
     this.title,
@@ -25,13 +25,22 @@ class ListVertical extends StatelessWidget {
   final int number;
 
   @override
+  State<ListVertical> createState() => _ListVerticalState();
+}
+
+class _ListVerticalState extends State<ListVertical> {
+
+  @override
   Widget build(BuildContext context) {
-    final hotels = listHotels;
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: Column(
         children: [
-          HeaderCard(title: title, titleBtn: textButton, onPressed: () {}),
+          HeaderCard(
+            title: widget.title,
+            titleBtn: widget.textButton,
+            onPressed: () {},
+          ),
           const SizedBox(height: 5),
           // category list
           const CategoryList(),
@@ -41,9 +50,9 @@ class ListVertical extends StatelessWidget {
             padding: const EdgeInsets.only(top: 15, right: 8),
             child: Column(
               children:
-                  listHotels.isNotEmpty
-                      ? List.generate(listHotels.length, (index) {
-                        final hotel = hotels[index];
+                  widget.listHotels.isNotEmpty
+                      ? List.generate(widget.number, (index) {
+                        final hotel =  widget.listHotels[index];
                         return Column(
                           children: [
                             GestureDetector(
