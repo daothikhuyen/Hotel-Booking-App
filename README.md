@@ -26,6 +26,10 @@
 
 <img src="./assets/images/image_project/detail_1.png" width="200"/>  <img src="./assets/images/image_project/detail_2.png" width="200"/> 
 
+- **Request to book**
+
+<img src="./assets/images/image_project/request_1.png" width="200"/>  <img src="./assets/images/image_project/request_2.png" width="200"/>  <img src="./assets/images/image_project/request_3.png" width="200"/> 
+
 
 - **Demo**
 https://github.com/user-attachments/assets/d1e7f3c0-3862-4cfc-9002-8e79a6e69f6d
@@ -38,12 +42,21 @@ https://github.com/user-attachments/assets/d1e7f3c0-3862-4cfc-9002-8e79a6e69f6d
 
 ## Installation
 
-- Set up multi language: [See more here](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization)
+- Set up flutter gen: [See more here](https://pub.dev/packages/flutter_gen)
 ```bash
-  flutter pub add flutter_localizations --sdk=flutter
-  flutter pub add intl:any
+  dart pub global activate flutter_gen
 ```
+- Add build_runner and FlutterGen to your package's pubspec.yaml file:
+```bash
+  dev_dependencies:
+  build_runner:
+  flutter_gen_runner:
+```
+- User flutter gen 
+```bash
+  flutter pub run build_runner build --delete-conflicting-outputs
 
+```
 - Set up multi language: [See more here](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization)
 
 ```bash

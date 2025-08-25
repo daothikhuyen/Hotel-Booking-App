@@ -158,13 +158,8 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String currentPrice(double currentPrice) {
-    return '\$$currentPrice';
-  }
-
-  @override
-  String lastPrice(double lastPrice) {
-    return '\$$lastPrice';
+  String price(String price) {
+    return '$price';
   }
 
   @override
@@ -186,7 +181,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get networkError => 'Network error. Check your connection.';
 
   @override
-  String get userNotExisted => 'You are not logged in. Log in to the app';
+  String get userNotExisted => 'You are not logged in.\n Please log in to continue booking';
 
   @override
   String get hotelNotExisted => 'Data does not exist';
@@ -198,7 +193,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get commonFacilities => 'Common Facilities';
 
   @override
-  String get price => 'Price';
+  String get titlePrice => 'Price';
 
   @override
   String get buttonBooking => 'Booking Now';
@@ -207,10 +202,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get restaurant => 'Restaurant';
 
   @override
-  String get swimmingPool => 'Swimming \n Pool';
+  String get swimmingPool => 'Swimming\n Pool';
 
   @override
-  String get timeHours => '24-Hours \n Front Desk';
+  String get timeHours => '24-Hours\n Front Desk';
 
   @override
   String get description => 'Description';
@@ -223,4 +218,84 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get descriptionHotel => 'The ideal place for those looking for a luxurious and tranquil holiday experience with stunning sea views. The ideal place for those looking for a luxurious and tranquil holiday experience with stunning sea views';
+
+  @override
+  String get titleRequestBooking => 'Request to book';
+
+  @override
+  String get date => 'Date';
+
+  @override
+  String get checkIn => 'Check - In';
+
+  @override
+  String get checkOut => 'Check - Out';
+
+  @override
+  String get guest => 'Guest';
+
+  @override
+  String get payWith => 'Pay With';
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String get paymentDetails => 'Payment Details';
+
+  @override
+  String total(int total) {
+    return 'Total: $total Night';
+  }
+
+  @override
+  String get cleaningFee => 'Cleaning Fee';
+
+  @override
+  String get serviceFee => 'Service Fee';
+
+  @override
+  String get totalPayment => 'Total Payment';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get apply => 'Apply';
+
+  @override
+  String get selectDate => 'Select Date';
+
+  @override
+  String get titleCheckOut => 'Checkout';
+
+  @override
+  String get roomType => 'Room Type';
+
+  @override
+  String get phone => 'Phone';
+
+  @override
+  String get priceDetails => 'Price Details';
+
+  @override
+  String get yourBooking => 'Your Booking';
+
+  @override
+  String get adminFee => 'Admin Fee';
+
+  @override
+  String get totalPrice => 'Total Price';
+
+  @override
+  String get promo => 'Promo';
+
+  @override
+  String get selectPayment => 'Select Payment';
+
+  @override
+  String get select => 'Select';
+
+  @override
+  String get startDateMustBeFuture => 'Start date must be in the future';
 }

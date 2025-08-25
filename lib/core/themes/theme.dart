@@ -8,7 +8,7 @@ ThemeData lightMode = ThemeData(
     primary: AppColors.primaryLight,
     secondary: AppColors.secondary50,
     onSecondary: AppColors.greyscale0,
-    onSurface: AppColors.greyscale0,
+    onSurface: AppColors.greyscale900, // color text
     error: AppColors.error100,
     onError: AppColors.alter100,
     outline: AppColors.greyscale200, // border
@@ -32,9 +32,9 @@ ThemeData darkMode = ThemeData(
     onPrimary: AppColors.greyscale0,
     secondary: AppColors.secondary50,
     onSecondary: AppColors.greyscale0,
-    surface: AppColors.greyscale900,
+    onSurface: AppColors.greyscale900,
     outline: AppColors.borderDark,
-    onSurfaceVariant: AppColors.greyscale0,
+    onSurfaceVariant: AppColors.greyscale900,
     error: AppColors.error100,
   ),
   iconTheme: const IconThemeData(
@@ -123,6 +123,22 @@ class HBTextStyles {
     return GoogleFonts.jost().copyWith(
       fontSize: 12,
       fontWeight: FontWeight.w400,
+      color: color,
+    );
+  }
+
+  static TextStyle bodySemiboldXLarge(Color color) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 20,
+      fontWeight: FontWeight.w600,
+      color: color,
+    );
+  }
+
+  static TextStyle bodyMediumXLarge(Color color) {
+    return GoogleFonts.jost().copyWith(
+      fontSize: 20,
+      fontWeight: FontWeight.w500,
       color: color,
     );
   }

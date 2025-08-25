@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
+import 'package:hotel_booking_app/core/utils/format.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 
 class RecomendedItem extends StatelessWidget {
@@ -25,97 +26,101 @@ class RecomendedItem extends StatelessWidget {
     return SizedBox(
       height: 85,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              Container(
-                width: 85,
-                height: 85,
-                margin: const EdgeInsets.only(right: 8, left: 3),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(13),
-                  image: DecorationImage(
-                    image:
-                        linkImage != ''
-                            ? NetworkImage(linkImage!)
-                            : AssetImage(Assets.images.home.frameOne.path)
-                                as ImageProvider,
-                    fit: BoxFit.cover,
-                  ),
-                ),
+          Container(
+            width: 85,
+            height: 85,
+            margin: const EdgeInsets.only(right: 8, left: 3),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(13),
+              image: DecorationImage(
+                image:
+                    linkImage != ''
+                        ? NetworkImage(linkImage!)
+                        : AssetImage(Assets.images.home.frameOne.path)
+                            as ImageProvider,
+                fit: BoxFit.cover,
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-
-                children: [
-                  Text(
-                    name,
-                    style: HBTextStyles.bodySemiboldSmall(
-                      context.colorScheme.onSurfaceVariant,
+            ),
+          ),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+            
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      name,
+                      style: HBTextStyles.bodySemiboldSmall(
+                        context.colorScheme.onSurfaceVariant,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      SvgPicture.asset(
-                        Assets.images.icon.vector,
-                        colorFilter: ColorFilter.mode(
-                          context.colorScheme.onSurfaceVariant.withValues(
-                            alpha: 0.7,
+                    Padding(
+                      padding: const EdgeInsets.only(right: 15),
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(
+                            Assets.images.icon.solarStarBold,
+                            width: 16,
+                            height: 16,
                           ),
-                          BlendMode.srcIn,
+                          const SizedBox(width: 4),
+                          Text(
+                            ratting,
+                            style: HBTextStyles.bodySemiboldSmall(
+                              context.colorScheme.onSurfaceVariant,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  children: [
+                    SvgPicture.asset(
+                      Assets.images.icon.vector,
+                      colorFilter: ColorFilter.mode(
+                        context.colorScheme.onSurfaceVariant.withValues(
+                          alpha: 0.7,
+                        ),
+                        BlendMode.srcIn,
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    Text(
+                      location,
+                      style: HBTextStyles.bodyRegularXSmall(
+                        context.colorScheme.onSurfaceVariant.withValues(
+                          alpha: 0.7,
                         ),
                       ),
-                      const SizedBox(width: 4),
-                      Text(
-                        location,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: context.l10n.price(
+                          formatCurrency(currentPrice / 1000),
+                        ),
+                        style: HBTextStyles.bodySemiboldSmall(
+                          context.colorScheme.primary,
+                        ),
+                      ),
+                      TextSpan(
+                        text: context.l10n.night,
                         style: HBTextStyles.bodyRegularXSmall(
-                          context.colorScheme.onSurfaceVariant.withValues(
-                            alpha: 0.7,
-                          ),
+                          context.colorScheme.onSurfaceVariant,
                         ),
                       ),
                     ],
-                  ),
-                  const SizedBox(height: 8),
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: context.l10n.currentPrice(currentPrice),
-                          style: HBTextStyles.bodySemiboldSmall(
-                            context.colorScheme.primary,
-                          ),
-                        ),
-                        TextSpan(
-                          text: context.l10n.night,
-                          style: HBTextStyles.bodyRegularXSmall(
-                            context.colorScheme.onSurfaceVariant,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 15),
-            child: Row(
-              children: [
-                SvgPicture.asset(
-                  Assets.images.icon.solarStarBold,
-                  width: 16,
-                  height: 16,
-                ),
-                const SizedBox(width: 4),
-                Text(
-                  ratting,
-                  style: HBTextStyles.bodySemiboldSmall(
-                    context.colorScheme.onSurfaceVariant,
                   ),
                 ),
               ],

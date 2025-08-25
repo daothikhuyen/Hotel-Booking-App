@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
+import 'package:hotel_booking_app/core/widgets/alter/page_alter_null.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
 import 'package:hotel_booking_app/features/auth/sign_in.dart';
@@ -10,9 +11,11 @@ import 'package:hotel_booking_app/features/home/home_screen.dart';
 import 'package:hotel_booking_app/features/layout/layout_scaffold.dart';
 import 'package:hotel_booking_app/features/my_booking/my_booking_screen.dart';
 import 'package:hotel_booking_app/features/onboarding/onboarding_screen.dart';
+import 'package:hotel_booking_app/features/request_booking/booking_screen.dart';
+import 'package:hotel_booking_app/features/request_booking/check_out.dart';
 
 final AuthController authController = AuthController();
-final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'HomeScreen');
+final _rootNavigatorKey = GlobalKey<NavigatorState>();
 
 // the one and only GoRouter instance
 final goRouter = GoRouter(
@@ -26,13 +29,40 @@ final goRouter = GoRouter(
     ),
     GoRoute(
       path: PageRoutes.signIn,
+      parentNavigatorKey: _rootNavigatorKey,
       builder: (context, state) => const SignIn(),
     ),
     GoRoute(
       path: PageRoutes.detailPage,
+      parentNavigatorKey: _rootNavigatorKey,
       builder:
           (context, state) =>
               DetailScreen(hotel: (state.extra ?? Hotel) as Hotel),
+    ),
+    GoRoute(
+      path: PageRoutes.checkout,
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) {
+        final hotel = state.extra;
+
+        if (hotel is Hotel) {
+          return CheckOut(hotel: hotel);
+        }
+
+        return const PageAlterNull();
+      },
+    ),
+    GoRoute(
+      path: PageRoutes.requestBooking,
+      builder: (context, state) {
+        final hotel = state.extra;
+
+        if (hotel is Hotel) {
+          return BookingScreen(hotel: hotel);
+        }
+
+        return const PageAlterNull();
+      },
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
@@ -45,15 +75,6 @@ final goRouter = GoRouter(
             GoRoute(
               path: PageRoutes.homePage,
               builder: (context, state) => const HomeScreen(),
-              routes: [
-                // child route
-                GoRoute(
-                  path: PageRoutes.detailPage,
-                  builder:
-                      (context, state) =>
-                          DetailScreen(hotel: (state.extra ?? Hotel) as Hotel),
-                ),
-              ],
             ),
           ],
         ),

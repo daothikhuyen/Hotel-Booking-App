@@ -57,19 +57,11 @@
       }
     }
   },
-  "currentPrice": "${currentPrice}",
-  "@currentPrice": {
+  "price": "{price}",
+  "@price": {
     "placeholders": {
-      "currentPrice": {
-        "type": "double"
-      }
-    }
-  },
-  "lastPrice": "${lastPrice}",
-  "@lastPrice": {
-    "placeholders": {
-      "lastPrice": {
-        "type": "double"
+      "price": {
+        "type": "String"
       }
     }
   },
@@ -79,13 +71,13 @@
   "signInFailed": "Đăng nhập không thành công. Hãy thử lại.",
   "signUpFailed": "Đăng ký thất bại. Hãy thử lại.",
   "networkError": "Lỗi mạng. Kiểm tra kết nối của bạn.",
-  "userNotExisted": "Bạn chưa đăng nhập, Vui lòng đăng nhập ứng dụng",
+  "userNotExisted": "Bạn chưa đăng nhập.\n Vui lòng đăng nhập tiếp tục đặt phòng",
   "hotelNotExisted": "Dữ liệu không tồn tại",
 
   "tagHotel": "Khách sạn",
   "titleDetail": "Chi Tiết",
   "commonFacilities": "Cơ sở chung",
-  "price": "Giá khách sạn",
+  "titlePrice": "Giá khách sạn",
   "buttonBooking": "Đặt ngay",
   "restaurant": "Nhà hàng ",
   "swimmingPool": "Hồ Bơi",
@@ -93,6 +85,38 @@
   "description": "Mô tả",
   "location": "Vị trí",
   "reviews": "Bình luận",
-  "descriptionHotel": "Nơi lý tưởng cho những ai đang tìm kiếm trải nghiệm nghỉ dưỡng sang trọng và yên tĩnh với tầm nhìn ra biển tuyệt đẹp.Nơi lý tưởng cho những ai đang tìm kiếm trải nghiệm nghỉ dưỡng sang trọng và yên tĩnh với tầm nhìn ra biển tuyệt đẹp"
-
+  "descriptionHotel": "Nơi lý tưởng cho những ai đang tìm kiếm trải nghiệm nghỉ dưỡng sang trọng và yên tĩnh với tầm nhìn ra biển tuyệt đẹp.Nơi lý tưởng cho những ai đang tìm kiếm trải nghiệm nghỉ dưỡng sang trọng và yên tĩnh với tầm nhìn ra biển tuyệt đẹp",
+  "titleRequestBooking": "Đặt phòng",
+  "date": "Ngày",
+  "checkIn": "Ngày vào",
+  "checkOut": "Ngày ra",
+  "guest" : "Khách",
+  "payWith": "Phương thức trả tiền",
+  "edit": "Chỉnh sửa",
+  "paymentDetails": "Chi tiết",
+  "total": "Tổng: {total} Đêm",
+    "@total": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "cleaningFee": "Phí vệ sinh",
+  "serviceFee": "Phí dịch vụ",
+  "totalPayment": "Tổng thanh toán",
+  "cancel": "Thoát",
+  "apply": "Chấp nhận",
+  "selectDate": "Chọn ngày",
+  "titleCheckOut": "Thông tin chi tiết",
+  "roomType": "Loại Phòng",
+  "phone": "SĐT",
+  "priceDetails": "Bảng giá",
+  "yourBooking" : "Thông tin",
+  "adminFee": "Phí quản lí",
+  "totalPrice": "Tổng tiền",
+  "promo": "Quảng cáo",
+  "selectPayment": "Phương thức trả tiền",
+   "select": "Lựa chọn",
+  "startDateMustBeFuture": "Ngày vào phải ở trong tương lai"
 }
