@@ -43,20 +43,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-<<<<<<< HEAD
-
-  flutter_gen_runner:
-  build_runner:
-
-  flutter_lints: ^5.0.0
-
-flutter_gen:
-  assets:
-    enabled: true
-    package_parameter_enabled: true
-    line_length: 80
-    output: lib/gen/assets.gen.dart
-=======
 
   build_runner:
   flutter_gen_runner:
@@ -69,7 +55,6 @@ flutter_gen:
   assets:
     enabled: true
 
->>>>>>> feature/section_request_booking
 
 flutter:
   uses-material-design: true

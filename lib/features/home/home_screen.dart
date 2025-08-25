@@ -22,7 +22,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final AuthController authController = AuthController();
   int selectedIndex = 0;
 
   List<Hotel> hotelPopular = [];

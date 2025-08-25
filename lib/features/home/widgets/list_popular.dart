@@ -19,11 +19,6 @@ class ListPopular extends StatefulWidget {
 class _ListPopularState extends State<ListPopular> {
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 13),

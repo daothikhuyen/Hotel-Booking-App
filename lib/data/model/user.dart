@@ -1,3 +1,4 @@
+
 class HBUser {
   HBUser({
     required this.uid,
@@ -12,7 +13,6 @@ class HBUser {
     return HBUser(
       uid: id,
       email: json['email'],
-      displayName: json['displayName'],
       numberPhone: json['numberPhone'],
       location: json['location'],
       photoURL: json['photoUrl'],

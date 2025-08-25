@@ -7,24 +7,15 @@ import 'package:hotel_booking_app/features/onboarding/onboarding_screen.dart';
 import 'package:hotel_booking_app/firebase_options.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(
     DevicePreview(
-        builder: (context) => const MyApp(), // Wrap your app
-      ),
-    // ChangeNotifierProvider(
-    //   create: (context) => ThemeProvider(),
-    //   child: DevicePreview(
-    //     enabled: !kReleaseMode,
-    //     builder: (context) => MyApp(), // Wrap your app
-    //   ),
-    // ),
+      builder: (context) => const MyApp(), // Wrap your app
+    ),
   );
-  // runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

@@ -13,9 +13,6 @@ class Booking {
     required this.totalPrice,
   });
 
-  factory Booking.fromJson(String source) =>
-      Booking.fromMap(json.decode(source) as Map<String, dynamic>);
-
   factory Booking.fromMap(Map<String, dynamic> map) {
     return Booking(
       id: map['id'] as String,
@@ -29,6 +26,9 @@ class Booking {
       totalPrice: map['totalPrice'] as double,
     );
   }
+
+  factory Booking.fromJson(String source) =>
+      Booking.fromMap(json.decode(source) as Map<String, dynamic>);
   
   String id;
   String userId;

@@ -14,6 +14,7 @@ import 'package:hotel_booking_app/features/detail/widgets/read_more.dart';
 import 'package:hotel_booking_app/features/detail/widgets/review_card.dart';
 import 'package:hotel_booking_app/features/home/widgets/map_section.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
+
 class PopupCard extends StatelessWidget {
   const PopupCard({
     required this.widget,
