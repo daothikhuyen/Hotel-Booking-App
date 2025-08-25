@@ -37,11 +37,7 @@ class _OnboardingScreen2State extends State<OnboardingScreen> {
               curve: Curves.linear,
             );
           } else {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => const SignIn()),
-            // );
-            context.go(PageRoutes.signIn);
+            context.push(PageRoutes.signIn);
           }
         },
       );

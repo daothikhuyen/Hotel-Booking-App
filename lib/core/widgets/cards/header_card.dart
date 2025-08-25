@@ -25,7 +25,7 @@ class HeaderCard extends StatelessWidget {
         children: [
           Text(
             title,
-            style: HBTextStyles.bodySemiboldSmall(
+            style: HBTextStyles.bodySemiboldLarge(
               context.colorScheme.onSurfaceVariant,
             ),
           ),

@@ -12,6 +12,7 @@ import 'package:hotel_booking_app/features/home/widgets/list_popular.dart';
 import 'package:hotel_booking_app/features/home/widgets/map_section.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 import 'package:provider/provider.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -27,28 +28,37 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Hotel> hotelPopular = [];
   List<Hotel> hotelRecomended = [];
   List<Hotel> hotelBestToday = [];
+  late final HotelController controller;
 
   @override
   void initState() {
     super.initState();
+    controller = Provider.of<HotelController>(context, listen: false);
+  }
 
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      final controller = Provider.of<HotelController>(context, listen: false);
-      final popular = await controller.fetchMostPopularHotels(context);
-      final recomended = await controller.fetchRecomendedHotels(context);
-      final bestToday = await controller.fetchBestToday(context);
+  Future<void> _loadPopularHotels() async {
+    final popular = await controller.fetchMostPopularHotels(context);
+    setState(() {
+      hotelPopular = popular;
+    });
+  }
 
-      setState(() {
-        hotelPopular = popular;
-        hotelRecomended = recomended;
-        hotelBestToday = bestToday;
-      });
+  Future<void> _loadRecomendedHotels() async {
+    final recommended = await controller.fetchRecomendedHotels(context);
+    setState(() {
+      hotelRecomended = recommended;
+    });
+  }
+
+  Future<void> _loadBestTodayHotels() async {
+    final bestToday = await controller.fetchBestToday(context);
+    setState(() {
+      hotelBestToday = bestToday;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final controller = Provider.of<HotelController>(context, listen: false);
     final userProvider = Provider.of<AuthController>(context);
     final user = userProvider.currentUser;
 
@@ -131,22 +141,51 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   // Most Popular
-                  ListPopular(hotelPopular),
+                  VisibilityDetector(
+                    key: const Key('popular-section'),
+                    onVisibilityChanged: (info) {
+                      if (info.visibleFraction > 0.1 && hotelPopular.isEmpty) {
+                        _loadPopularHotels();
+                      }
+                    },
+                    child: ListPopular(
+                      hotelPopular,
+                      hotelPopular.length < 3 ? hotelPopular.length : 3,
+                    ),
+                  ),
+
                   // Recommendex For You
-                  ListVertical(
-                    hotelRecomended,
-                    context.l10n.homeRecommended,
-                    context.l10n.seeAll,
-                    hotelRecomended.length < 3 ? hotelRecomended.length : 3,
+                  VisibilityDetector(
+                    key: const Key('recommended-section'),
+                    onVisibilityChanged: (info) {
+                      if (info.visibleFraction > 0.1 && hotelPopular.isEmpty) {
+                        _loadRecomendedHotels();
+                      }
+                    },
+                    child: ListVertical(
+                      hotelRecomended,
+                      context.l10n.homeRecommended,
+                      context.l10n.seeAll,
+                      hotelRecomended.length < 3 ? hotelRecomended.length : 3,
+                    ),
                   ),
                   // Map
                   MapSection(title: context.l10n.nearYou),
                   // Best Today
-                  ListHorizontal(
-                    hotelBestToday,
-                    context.l10n.bestToday,
-                    context.l10n.seeAll,
-                    hotelBestToday.length < 3 ? hotelBestToday.length : 3,
+                  VisibilityDetector(
+                    key: const Key('bestToday-section'),
+                    onVisibilityChanged: (info) {
+                      if (info.visibleFraction > 0.1 &&
+                          hotelBestToday.isEmpty) {
+                        _loadBestTodayHotels();
+                      }
+                    },
+                    child: ListHorizontal(
+                      hotelBestToday,
+                      context.l10n.bestToday,
+                      context.l10n.seeAll,
+                      hotelBestToday.length < 3 ? hotelBestToday.length : 2,
+                    ),
                   ),
                 ],
               ),

@@ -158,13 +158,8 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String currentPrice(double currentPrice) {
-    return '\$$currentPrice';
-  }
-
-  @override
-  String lastPrice(double lastPrice) {
-    return '\$$lastPrice';
+  String price(String price) {
+    return '$price';
   }
 
   @override
@@ -186,7 +181,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get networkError => 'Lỗi mạng. Kiểm tra kết nối của bạn.';
 
   @override
-  String get userNotExisted => 'Bạn chưa đăng nhập, Vui lòng đăng nhập ứng dụng';
+  String get userNotExisted => 'Bạn chưa đăng nhập.\n Vui lòng đăng nhập tiếp tục đặt phòng';
 
   @override
   String get hotelNotExisted => 'Dữ liệu không tồn tại';
@@ -198,7 +193,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get commonFacilities => 'Cơ sở chung';
 
   @override
-  String get price => 'Giá khách sạn';
+  String get titlePrice => 'Giá khách sạn';
 
   @override
   String get buttonBooking => 'Đặt ngay';
@@ -223,4 +218,84 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get descriptionHotel => 'Nơi lý tưởng cho những ai đang tìm kiếm trải nghiệm nghỉ dưỡng sang trọng và yên tĩnh với tầm nhìn ra biển tuyệt đẹp.Nơi lý tưởng cho những ai đang tìm kiếm trải nghiệm nghỉ dưỡng sang trọng và yên tĩnh với tầm nhìn ra biển tuyệt đẹp';
+
+  @override
+  String get titleRequestBooking => 'Đặt phòng';
+
+  @override
+  String get date => 'Ngày';
+
+  @override
+  String get checkIn => 'Ngày vào';
+
+  @override
+  String get checkOut => 'Ngày ra';
+
+  @override
+  String get guest => 'Khách';
+
+  @override
+  String get payWith => 'Phương thức trả tiền';
+
+  @override
+  String get edit => 'Chỉnh sửa';
+
+  @override
+  String get paymentDetails => 'Chi tiết';
+
+  @override
+  String total(int total) {
+    return 'Tổng: $total Đêm';
+  }
+
+  @override
+  String get cleaningFee => 'Phí vệ sinh';
+
+  @override
+  String get serviceFee => 'Phí dịch vụ';
+
+  @override
+  String get totalPayment => 'Tổng thanh toán';
+
+  @override
+  String get cancel => 'Thoát';
+
+  @override
+  String get apply => 'Chấp nhận';
+
+  @override
+  String get selectDate => 'Chọn ngày';
+
+  @override
+  String get titleCheckOut => 'Thông tin chi tiết';
+
+  @override
+  String get roomType => 'Loại Phòng';
+
+  @override
+  String get phone => 'SĐT';
+
+  @override
+  String get priceDetails => 'Bảng giá';
+
+  @override
+  String get yourBooking => 'Thông tin';
+
+  @override
+  String get adminFee => 'Phí quản lí';
+
+  @override
+  String get totalPrice => 'Tổng tiền';
+
+  @override
+  String get promo => 'Quảng cáo';
+
+  @override
+  String get selectPayment => 'Phương thức trả tiền';
+
+  @override
+  String get select => 'Lựa chọn';
+
+  @override
+  String get startDateMustBeFuture => 'Ngày vào phải ở trong tương lai';
 }

@@ -4,6 +4,7 @@ class Hotel {
     required this.image,
     required this.name,
     required this.location,
+    required this.roomType,
     required this.currentPrice,
     required this.lastPrice,
     this.ratting,
@@ -24,6 +25,7 @@ class Hotel {
       image: json['image'],
       name: json['name'],
       location: json['location'],
+      roomType: json['roomType'],
       currentPrice: parseDouble(json['currentPrice']),
       lastPrice: parseDouble(json['lastPrice']),
       ratting: parseDouble(json['ratting']),
@@ -35,6 +37,7 @@ class Hotel {
   String image;
   String name;
   String location;
+  String roomType;
   double? currentPrice;
   double? lastPrice;
   double? ratting;
@@ -47,4 +50,5 @@ class Hotel {
     if (value is String) return double.tryParse(value);
     return null;
   }
+
 }

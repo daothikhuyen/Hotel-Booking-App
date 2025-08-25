@@ -8,14 +8,16 @@ import 'package:hotel_booking_app/features/home/widgets/card/popular_card.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class ListPopular extends StatefulWidget {
-  const ListPopular(this.hotelPopular, {super.key});
-  final List<Hotel> hotelPopular;
+  const ListPopular(this.listHotels, this.number, {super.key});
+  final List<Hotel> listHotels;
+  final int number;
 
   @override
   State<ListPopular> createState() => _ListPopularState();
 }
 
 class _ListPopularState extends State<ListPopular> {
+
   @override
   void initState() {
     super.initState();
@@ -23,8 +25,6 @@ class _ListPopularState extends State<ListPopular> {
 
   @override
   Widget build(BuildContext context) {
-    final hotels = widget.hotelPopular;
-
     return Padding(
       padding: const EdgeInsets.only(bottom: 13),
       child: Column(
@@ -36,15 +36,15 @@ class _ListPopularState extends State<ListPopular> {
           ),
           const SizedBox(height: 5),
 
-          if (hotels.isNotEmpty)
+          if (widget.listHotels.isNotEmpty)
             SizedBox(
               height: 221,
               child: ListView.builder(
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                itemCount: hotels.length,
+                itemCount: widget.number,
                 itemBuilder: (context, index) {
-                  final hotel = hotels[index];
+                  final hotel = widget.listHotels[index];
                   return GestureDetector(
                     onTap: () {
                       context.push(PageRoutes.detailPage, extra: hotel);
@@ -53,7 +53,7 @@ class _ListPopularState extends State<ListPopular> {
                       linkImage: hotel.image,
                       name: hotel.name,
                       location: hotel.location,
-                      currentPrice: hotel.currentPrice ?? 0.000,
+                      currentPrice: (hotel.currentPrice ?? 0.000) / 1000,
                       ratting: hotel.ratting ?? 0,
                     ),
                   );

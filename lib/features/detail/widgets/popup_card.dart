@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
+import 'package:hotel_booking_app/core/utils/translation_helper.dart';
 import 'package:hotel_booking_app/core/widgets/cards/header_card.dart';
 import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
 import 'package:hotel_booking_app/core/widgets/list/list_horizontal.dart';
@@ -62,6 +63,7 @@ class PopupCard extends StatelessWidget {
                             )
                           else
                             const Skeleton(width: 50, height: 10),
+                          const SizedBox(height: 4,),
                           Row(
                             children: [
                               Padding(
@@ -125,8 +127,11 @@ class PopupCard extends StatelessWidget {
                     children:
                         facilities.map((facility) {
                           return FacilitiesCard(
-                            icon: facility['icon']!,
-                            title: facility['title']!,
+                            icon: facility['icon'] ?? '',
+                            title: getTranslatedText(
+                              context,
+                              facility['title'] ?? '',
+                            ),
                           );
                         }).toList(),
                   ),

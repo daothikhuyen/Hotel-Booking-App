@@ -4,7 +4,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hotel_booking_app/core/routes/app_routes.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
-import 'package:hotel_booking_app/features/auth/helpers/local_storage_helper.dart';
 import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
 import 'package:hotel_booking_app/features/home/controller/navigation_controller.dart';
 import 'package:hotel_booking_app/firebase_options.dart';
@@ -14,20 +13,12 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  final localUser = await LocalStorageHelper.getUserData();
-  await authController.isLoggedIn();
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => HotelController()),
         ChangeNotifierProvider(create: (context) => NavigationController()),
-        ChangeNotifierProvider(
-          create: (_) {
-            final userController= AuthController();
-            if (localUser != null) userController.setUser(localUser);
-            return userController;
-          },
-        ),
+        ChangeNotifierProvider(create: (context) => AuthController()),
       ],
       child: const MyApp(),
     ),
@@ -56,16 +47,6 @@ class MyApp extends StatelessWidget {
         Locale('vi'), // Spanish
       ],
       locale: const Locale('en'),
-      // home: StreamBuilder(
-      //   stream: AuthService().authStateChanges,
-      //   builder: (context, snapshot) {
-      //     if (snapshot.hasData) {
-      //       return const MainHomeScreen();
-      //     } else {
-      //       return const OnboardingScreen();
-      //     }
-      //   },
-      // ),
     );
   }
 }

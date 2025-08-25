@@ -98,7 +98,7 @@ class HeaderBar extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(context, animationRouter(const SignIn()));
                 },
-                bold: false,
+                bold: false, size: 56,
               ),
             ),
           Row(

@@ -7,7 +7,6 @@ import 'package:hotel_booking_app/core/firestore_collections.dart';
 import 'package:hotel_booking_app/core/utils/app_exception.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
-import 'package:hotel_booking_app/features/auth/helpers/auth_provider.dart';
 import 'package:hotel_booking_app/features/auth/helpers/local_storage_helper.dart';
 import 'package:provider/provider.dart';
 
@@ -45,7 +44,7 @@ class AuthService {
             .doc(currentUser?.uid)
             .set(hbUser.toJson());
       }
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException{
       throw AppException(message: context.l10n.signUpFailed);
     }
   }
@@ -77,8 +76,7 @@ class AuthService {
         Provider.of<AuthController>(context, listen: false).setUser(user);
         return;
       }
-    } on FirebaseAuthException catch (e) {
-      debugPrint('Error SignIn :${e.message}');
+    } on FirebaseAuthException{
       throw AppException(message: context.l10n.signInFailed);
     }
   }
@@ -97,16 +95,14 @@ class AuthService {
       await auth.signInWithCredential(credential);
 
       return;
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException {
       throw AppException(message: context.l10n.signInFailed);
     }
   }
 
   Future<void> signOut(BuildContext context) async {
     try {
-      await LocalStorageHelper.removeUser();
       await auth.signOut();
-      return ;
     } on FirebaseException {
       throw AppException(message: context.l10n.signOutFailed);
     }

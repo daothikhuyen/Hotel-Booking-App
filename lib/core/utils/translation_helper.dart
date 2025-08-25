@@ -31,6 +31,10 @@ String getTranslatedText(BuildContext context, String key) {
       return context.l10n.tagHotel;
     case 'Apartement':
       return context.l10n.tagApartement;
+    case 'Swimming Pool':
+      return context.l10n.swimmingPool;
+    case '24-Hours Front Desk':
+      return context.l10n.timeHours;
     default:
       return key;
   }

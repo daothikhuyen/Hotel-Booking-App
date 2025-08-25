@@ -51,10 +51,11 @@ class HotelService {
           snapshot.docs.map((doc) {
             return Hotel.fromJson(doc.data(), doc.id);
           }).toList();
+        
 
       final filtered =
           hotels.where((hotel) {
-            return (hotel.lastPrice! - hotel.currentPrice!) > 50;
+            return ((hotel.lastPrice??0) - (hotel.currentPrice ?? 0)) > 50;
           }).toList();
 
       return filtered;

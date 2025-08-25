@@ -48,7 +48,8 @@ class OnboardingCard extends StatelessWidget {
                   getTranslatedText(context, title),
                   textAlign: TextAlign.center,
                   style: HBTextStyles.headingThree(
-                    context.colorScheme.onSurface,
+                    context.colorScheme.onSecondary,
+                    
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -56,7 +57,7 @@ class OnboardingCard extends StatelessWidget {
                   getTranslatedText(context, desc),
                   textAlign: TextAlign.center,
                   style: HBTextStyles.bodyRegularSmall(
-                    context.colorScheme.onSurface.withValues(alpha: 0.7),
+                    context.colorScheme.onSecondary.withValues(alpha: 0.7),
                     letterSpacing: 0.5,
                   ),
                 ),
@@ -64,6 +65,7 @@ class OnboardingCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 30, top: 40),
                   child: PrimaryBtn(
+                    size: 56,
                     textButton: getTranslatedText(context, textButton),
                     onPressed: onPressed,
                     bold: true,

@@ -6,8 +6,8 @@ import 'package:hotel_booking_app/core/utils/app_exception.dart';
 import 'package:hotel_booking_app/core/widgets/alter/diaglog.dart';
 import 'package:hotel_booking_app/core/widgets/alter/snack_bar.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
+import 'package:hotel_booking_app/features/auth/helpers/local_storage_helper.dart';
 import 'package:hotel_booking_app/features/auth/services/auth_service.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController extends ChangeNotifier {
   final HBSnackBar snackBar = HBSnackBar();
@@ -25,16 +25,20 @@ class AuthController extends ChangeNotifier {
     notifyListeners();
   }
 
-  void clearUser() {
+  Future<void> clearUser() async {
     _currentUser = null;
+    _isSignIn = false;
+    await LocalStorageHelper.removeUser();
     notifyListeners();
   }
 
-  Future<void> isLoggedIn() async {
-    final prefs = await SharedPreferences.getInstance();
-    _isSignIn = prefs.getString('currentUser')?.isNotEmpty ?? false;
-    notifyListeners();
-  }
+Future<void> isLoggedIn() async {
+  final user = await LocalStorageHelper.getUserData();
+  debugPrint('User${user?.toJson()}');
+  _isSignIn = user != null;
+  notifyListeners();
+}
+
 
   // sign in with email and password
   Future<void> signIn({
@@ -48,7 +52,6 @@ class AuthController extends ChangeNotifier {
         diaglog.showLoading(context);
         await AuthService().signInUser(context, email, password);
         await context.push(PageRoutes.homePage);
-        
       } on AppException catch (e) {
         snackBar.showSnackBar(context, e.message);
       } finally {
@@ -71,10 +74,15 @@ class AuthController extends ChangeNotifier {
 
   Future<void> signOut(BuildContext context) async {
     try {
+      diaglog.showLoading(context);
+      await clearUser();
       await authService.signOut(context);
-      return;
+      await Future.microtask(() => context.go(PageRoutes.signIn));
+      notifyListeners();
     } on AppException {
       throw AppException(message: context.l10n.signOutFailed);
+    } finally {
+      Navigator.pop(context);
     }
   }
 }
