@@ -21,8 +21,7 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (context) => HotelController()),
         ChangeNotifierProvider(create: (context) => NavigationController()),
-        // ChangeNotifierProvider(create: (context) => AuthController()),
-                ChangeNotifierProvider(
+        ChangeNotifierProvider(
           create: (_) {
             final userController= AuthController();
             if (localUser != null) userController.setUser(localUser);

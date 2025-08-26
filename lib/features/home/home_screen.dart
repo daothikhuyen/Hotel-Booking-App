@@ -60,6 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final userProvider = Provider.of<AuthController>(context);
     final user = userProvider.currentUser;
+    debugPrint('user ${user?.displayName??'hi'}');
 
     return Scaffold(
       body: CustomScrollView(
