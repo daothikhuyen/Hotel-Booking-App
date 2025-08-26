@@ -31,7 +31,7 @@ class CategoryItem extends StatelessWidget {
             !isSelected
                 ? Border.all(
                   width: 1.01,
-                  color: context.colorScheme.outline.withValues(alpha: 0.3),
+                  color: context.colorScheme.outline.withValues(alpha: 0.5),
                 )
                 : null,
         borderRadius: BorderRadius.circular(8),
@@ -59,7 +59,7 @@ class CategoryItem extends StatelessWidget {
             getTranslatedText(context, title),
             style: HBTextStyles.bodyRegularSmall(
               !isSelected
-                  ? context.colorScheme.inverseSurface
+                  ? context.colorScheme.tertiary
                   : context.colorScheme.onPrimary,
             ),
           ),

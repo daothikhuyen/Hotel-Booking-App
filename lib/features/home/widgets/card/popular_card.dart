@@ -66,6 +66,7 @@ class _PopularCardState extends State<PopularCard> {
               child: SvgPicture.asset(Assets.images.icon.heart),
             ),
           ),
+          
           Positioned(
             bottom: 0,
             left: 0,
@@ -86,7 +87,7 @@ class _PopularCardState extends State<PopularCard> {
                   Text(
                     widget.location,
                     style: HBTextStyles.bodyMediumXSmall(
-                      context.colorScheme.onPrimary.withValues(alpha: 0.7),
+                      context.colorScheme.onPrimary,
                     ),
                   ),
                   const SizedBox(height: 5),
@@ -95,9 +96,9 @@ class _PopularCardState extends State<PopularCard> {
                     children: [
                       Text(
                         context.l10n.price(
-                              formatCurrency(widget.currentPrice),
+                              formatPrice(widget.currentPrice),
                             ) +context.l10n.night,
-                        style: HBTextStyles.bodyMediumXSmall(
+                        style: HBTextStyles.bodySemiboldSmall(
                           context.colorScheme.onPrimary,
                         ),
                       ),

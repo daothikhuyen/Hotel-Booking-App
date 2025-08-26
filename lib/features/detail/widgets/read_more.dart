@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:readmore/readmore.dart';
 
 class ReadMore extends StatefulWidget {
@@ -22,12 +23,8 @@ class _ReadMoreState extends State<ReadMore> {
       trimLines: widget.trimLines,
       trimCollapsedText: 'Read more',
       trimExpandedText: 'Read less',
-      moreStyle: context.textTheme.labelLarge!.copyWith(
-        color: context.colorScheme.primary,
-      ),
-      lessStyle:context.textTheme.labelLarge!.copyWith(
-        color: context.colorScheme.primary,
-      ),
+      moreStyle: HBTextStyles.bodySemiboldSmall(context.colorScheme.primary),
+      lessStyle:HBTextStyles.bodySemiboldSmall(context.colorScheme.primary),
     );
   }
 }

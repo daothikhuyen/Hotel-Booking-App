@@ -108,7 +108,7 @@ class RecomendedItem extends StatelessWidget {
                     children: [
                       TextSpan(
                         text: context.l10n.price(
-                          formatCurrency(currentPrice / 1000),
+                          formatPrice(currentPrice / 1000),
                         ),
                         style: HBTextStyles.bodySemiboldSmall(
                           context.colorScheme.primary,

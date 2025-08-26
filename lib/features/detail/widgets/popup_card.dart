@@ -12,20 +12,42 @@ import 'package:hotel_booking_app/features/detail/detail_screen.dart';
 import 'package:hotel_booking_app/features/detail/widgets/facilities_card.dart';
 import 'package:hotel_booking_app/features/detail/widgets/read_more.dart';
 import 'package:hotel_booking_app/features/detail/widgets/review_card.dart';
+import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
 import 'package:hotel_booking_app/features/home/widgets/map_section.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
+import 'package:provider/provider.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
-class PopupCard extends StatelessWidget {
+class PopupCard extends StatefulWidget {
   const PopupCard({
     required this.widget,
-    required this.hotelRecomended,
     required this.onScrollChange,
     super.key,
   });
 
   final DetailScreen widget;
-  final List<Hotel> hotelRecomended;
   final Function({required bool scrolled}) onScrollChange;
+
+  @override
+  State<PopupCard> createState() => _PopupCardState();
+}
+
+class _PopupCardState extends State<PopupCard> {
+  late final HotelController controller;
+  List<Hotel> hotelRecomended = [];
+
+  @override
+  void initState() {
+    super.initState();
+    controller = Provider.of<HotelController>(context, listen: false);
+  }
+
+  Future<void> _loadBestTodayHotels() async {
+    final bestToday = await controller.fetchRecomendedHotels(context);
+    setState(() {
+      hotelRecomended = bestToday;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +57,7 @@ class PopupCard extends StatelessWidget {
       maxChildSize: 0.99,
       builder: (context, scrollController) {
         scrollController.addListener(() {
-          onScrollChange(scrolled: scrollController.offset > 50);
+          widget.onScrollChange(scrolled: scrollController.offset > 50);
         });
         return Container(
           decoration: BoxDecoration(
@@ -54,9 +76,9 @@ class PopupCard extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          if (widget.hotel.name.isNotEmpty)
+                          if (widget.widget.hotel.name.isNotEmpty)
                             Text(
-                              widget.hotel.name,
+                              widget.widget.hotel.name,
                               style: HBTextStyles.bodySemiboldLarge(
                                 context.colorScheme.inverseSurface,
                               ),
@@ -64,7 +86,7 @@ class PopupCard extends StatelessWidget {
                             )
                           else
                             const Skeleton(width: 50, height: 10),
-                          const SizedBox(height: 4,),
+                          const SizedBox(height: 4),
                           Row(
                             children: [
                               Padding(
@@ -76,9 +98,9 @@ class PopupCard extends StatelessWidget {
                                 ),
                               ),
 
-                              if (widget.hotel.location.isNotEmpty)
+                              if (widget.widget.hotel.location.isNotEmpty)
                                 Text(
-                                  widget.hotel.location,
+                                  widget.widget.hotel.location,
                                   style: HBTextStyles.bodyRegularSmall(
                                     context.colorScheme.onTertiary,
                                   ),
@@ -95,7 +117,7 @@ class PopupCard extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                '${widget.hotel.ratting}',
+                                '${widget.widget.hotel.ratting}',
                                 style: HBTextStyles.bodySemiboldXSmall(
                                   context.colorScheme.onSurfaceVariant,
                                 ),
@@ -157,12 +179,22 @@ class PopupCard extends StatelessWidget {
                   ),
                   const ReviewCard(number: 2),
 
-                  ListHorizontal(
-                    hotelRecomended,
-                    context.l10n.homeRecommended,
-                    context.l10n.seeAll,
-                    3,
+                  VisibilityDetector(
+                    key: const Key('recommednedDetail-section'),
+                    onVisibilityChanged: (info) {
+                      if (info.visibleFraction > 0.1 &&
+                          hotelRecomended.isEmpty) {
+                        _loadBestTodayHotels();
+                      }
+                    },
+                    child: ListHorizontal(
+                      hotelRecomended,
+                      context.l10n.homeRecommended,
+                      context.l10n.seeAll,
+                      3,
+                    ),
                   ),
+
                   const SizedBox(height: 80),
                 ],
               ),

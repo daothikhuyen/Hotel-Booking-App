@@ -235,6 +235,11 @@ class AppLocalizationsVi extends AppLocalizations {
   String get guest => 'Khách';
 
   @override
+  String numberGuest(int number) {
+    return '${number}Người(1 Room)';
+  }
+
+  @override
   String get payWith => 'Phương thức trả tiền';
 
   @override
@@ -298,4 +303,16 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get startDateMustBeFuture => 'Ngày vào phải ở trong tương lai';
+
+  @override
+  String get notifiBookingFailure => 'Vui lòng chọn đầy đủ thông tin';
+
+  @override
+  String get notifiBookingSucess => 'Bạn đã đặt phòng thành công';
+
+  @override
+  String get paymentComplete => 'Thanh Toán Thành Công';
+
+  @override
+  String get contentPaymentComplete => 'Ngay cả ngày mai không sợ hãi et. Cà chua ngày mai để thiết lập.';
 }

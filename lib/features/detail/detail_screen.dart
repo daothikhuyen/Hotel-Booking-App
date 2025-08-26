@@ -5,9 +5,6 @@ import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/features/detail/widgets/bottom_bar.dart';
 import 'package:hotel_booking_app/features/detail/widgets/popup_card.dart';
-import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
-import 'package:provider/provider.dart';
-import 'package:visibility_detector/visibility_detector.dart';
 
 class DetailScreen extends StatefulWidget {
   const DetailScreen({required this.hotel, super.key});
@@ -19,22 +16,7 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  List<Hotel> hotelRecomended = [];
   bool isScrolled = false;
-  late final HotelController controller;
-
-  @override
-  void initState() {
-    super.initState();
-    controller = Provider.of<HotelController>(context, listen: false);
-  }
-
-  Future<void> _loadBestTodayHotels() async {
-    final bestToday = await controller.fetchRecomendedHotels(context);
-    setState(() {
-      hotelRecomended = bestToday;
-    });
-  }
 
   void onScrollChange({required bool scrolled}) {
     setState(() {
@@ -69,20 +51,10 @@ class _DetailScreenState extends State<DetailScreen> {
           ),
 
           // body detail
-          VisibilityDetector(
-            key: const Key('recommednedDetail-section'),
-            onVisibilityChanged: (info) {
-              if (info.visibleFraction > 0.1 && hotelRecomended.isEmpty) {
-                _loadBestTodayHotels();
-              }
-            },
-            child: PopupCard(
+          PopupCard(
               widget: widget,
-              hotelRecomended: hotelRecomended,
               onScrollChange: onScrollChange,
             ),
-          ),
-
           // header detail
           Positioned(
             top: 0,

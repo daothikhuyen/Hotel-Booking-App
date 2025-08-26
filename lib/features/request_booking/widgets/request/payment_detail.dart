@@ -4,19 +4,21 @@ import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/core/utils/format.dart';
 import 'package:hotel_booking_app/core/widgets/cards/header_card.dart';
-import 'package:hotel_booking_app/data/model/hotel.dart';
+import 'package:hotel_booking_app/features/request_booking/helpers/booking_helper.dart';
 
 class PaymentDetail extends StatefulWidget {
   const PaymentDetail({
-    required this.hotel,
+    required this.nightlyRate,
+    required this.serviceFee,
+    required this.cleaningFree,
     required this.nightsCount,
-    required this.guestCount,
     super.key,
   });
 
-  final Hotel hotel;
+  final double nightlyRate;
+  final double serviceFee;
+  final double cleaningFree;
   final int nightsCount;
-  final int guestCount;
 
   @override
   State<PaymentDetail> createState() => _PaymentDetailState();
@@ -64,23 +66,19 @@ class _PaymentDetailState extends State<PaymentDetail> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  context.l10n.price(
-                    formatCurrency(
-                      (widget.hotel.currentPrice ?? 0.000) * widget.nightsCount,
-                    ),
-                  ),
+                  context.l10n.price(formatPrice(widget.nightlyRate)),
                   style: HBTextStyles.bodyRegularLarge(
                     context.colorScheme.onSurfaceVariant,
                   ),
                 ),
                 Text(
-                  context.l10n.price(r'$5'),
+                  context.l10n.price(formatPrice(widget.cleaningFree)),
                   style: HBTextStyles.bodyRegularLarge(
                     context.colorScheme.onSurfaceVariant,
                   ),
                 ),
                 Text(
-                  context.l10n.price('\$${5 * widget.guestCount}'),
+                  context.l10n.price(formatPrice(widget.serviceFee)),
                   style: HBTextStyles.bodyRegularLarge(
                     context.colorScheme.onSurfaceVariant,
                   ),
@@ -101,10 +99,12 @@ class _PaymentDetailState extends State<PaymentDetail> {
             ),
             Text(
               context.l10n.price(
-                formatCurrency(
-                  (widget.hotel.currentPrice ?? 0) * widget.nightsCount +
-                      (widget.guestCount * 5) +
-                      5,
+                formatPrice(
+                  calculatorTotalPrice(
+                    widget.nightlyRate,
+                    widget.cleaningFree,
+                    widget.serviceFee,
+                  ),
                 ),
               ),
               style: HBTextStyles.bodySemiboldXLarge(

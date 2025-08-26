@@ -8,7 +8,6 @@ import 'package:hotel_booking_app/core/widgets/alter/snack_bar.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
 import 'package:hotel_booking_app/features/auth/helpers/local_storage_helper.dart';
 import 'package:hotel_booking_app/features/auth/services/auth_service.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController extends ChangeNotifier {
   final HBSnackBar snackBar = HBSnackBar();
@@ -35,7 +34,6 @@ class AuthController extends ChangeNotifier {
 
 Future<void> isLoggedIn() async {
   final user = await LocalStorageHelper.getUserData();
-  debugPrint('User${user?.toJson()}');
   _isSignIn = user != null;
   notifyListeners();
 }

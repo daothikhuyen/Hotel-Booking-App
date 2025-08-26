@@ -40,8 +40,17 @@ class $AssetsImagesGen {
   /// File path: assets/images/splash.png
   AssetGenImage get splash => const AssetGenImage('assets/images/splash.png');
 
+  /// File path: assets/images/sucess.png
+  AssetGenImage get sucess => const AssetGenImage('assets/images/sucess.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [android12splash, brand, logoApp, splash];
+  List<AssetGenImage> get values => [
+    android12splash,
+    brand,
+    logoApp,
+    splash,
+    sucess,
+  ];
 }
 
 class $AssetsImagesAvatarGen {
