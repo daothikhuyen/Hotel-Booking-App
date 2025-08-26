@@ -69,7 +69,6 @@ class AuthService {
       if (snapshot.exists && snapshot.data() != null) {
         final user = HBUser.fromJson(
           snapshot.data() ?? {},
-          credentail.user?.uid ?? '0',
         );
 
         await LocalStorageHelper.saveUser(user);

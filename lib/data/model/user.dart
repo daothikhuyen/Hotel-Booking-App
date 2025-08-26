@@ -1,5 +1,6 @@
 
 class HBUser {
+  
   HBUser({
     required this.uid,
     required this.email,
@@ -9,9 +10,10 @@ class HBUser {
     this.photoURL,
   });
 
-  factory HBUser.fromJson(Map<String, dynamic> json, String id) {
+  factory HBUser.fromJson(Map<String, dynamic> json) {
+
     return HBUser(
-      uid: id,
+      uid: json['uid'],
       email: json['email'],
       numberPhone: json['numberPhone'],
       location: json['location'],

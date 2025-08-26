@@ -235,6 +235,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get guest => 'Guest';
 
   @override
+  String numberGuest(int number) {
+    return '${number}Guests(1 Room)';
+  }
+
+  @override
   String get payWith => 'Pay With';
 
   @override
@@ -298,4 +303,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get startDateMustBeFuture => 'Start date must be in the future';
+
+  @override
+  String get notifiBookingFailure => 'Please select complete information';
+
+  @override
+  String get notifiBookingSucess => 'You have successfully booked a room';
+
+  @override
+  String get paymentComplete => 'Payment Complete';
+
+  @override
+  String get contentPaymentComplete => 'Etiam cras nec metus laoreet. Faucibus \n iaculis cras ut posuere.';
 }

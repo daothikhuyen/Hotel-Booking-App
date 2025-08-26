@@ -34,7 +34,6 @@ class AuthController extends ChangeNotifier {
 
 Future<void> isLoggedIn() async {
   final user = await LocalStorageHelper.getUserData();
-  debugPrint('User${user?.toJson()}');
   _isSignIn = user != null;
   notifyListeners();
 }

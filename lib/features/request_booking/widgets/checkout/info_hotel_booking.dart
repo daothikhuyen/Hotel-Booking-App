@@ -3,23 +3,31 @@ import 'package:flutter_dash/flutter_dash.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
+import 'package:hotel_booking_app/core/utils/format.dart';
+import 'package:hotel_booking_app/data/model/booking.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 
-class InfoHotelBooking extends StatelessWidget {
-  const InfoHotelBooking({
-    super.key,
-  });
+class InfoHotelBooking extends StatefulWidget {
+  const InfoHotelBooking({required this.booking, super.key});
+
+  final Booking booking;
+
+  @override
+  State<InfoHotelBooking> createState() => _InfoHotelBookingState();
+}
+
+class _InfoHotelBookingState extends State<InfoHotelBooking> {
+  String dateBooking = '';
 
   @override
   Widget build(BuildContext context) {
+    final booking = widget.booking;
+
     return Container(
       padding: const EdgeInsets.all(18),
       margin: const EdgeInsets.only(top: 23),
       decoration: BoxDecoration(
-        border: Border.all(
-          width: 1.02,
-          color: context.colorScheme.outline,
-        ),
+        border: Border.all(width: 1.02, color: context.colorScheme.outline),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
@@ -27,9 +35,7 @@ class InfoHotelBooking extends StatelessWidget {
         children: [
           Text(
             context.l10n.yourBooking,
-            style: HBTextStyles.bodySemiboldMedium(
-              context.colorScheme.primary,
-            ),
+            style: HBTextStyles.bodySemiboldMedium(context.colorScheme.primary),
           ),
           const SizedBox(height: 10),
           Row(
@@ -43,8 +49,9 @@ class InfoHotelBooking extends StatelessWidget {
                       SvgPicture.asset(
                         Assets.images.icon.calendar,
                         colorFilter: ColorFilter.mode(
-                          context.colorScheme.onSurfaceVariant
-                              .withValues(alpha: 0.7),
+                          context.colorScheme.onSurfaceVariant.withValues(
+                            alpha: 0.7,
+                          ),
                           BlendMode.srcIn,
                         ),
                       ),
@@ -52,8 +59,9 @@ class InfoHotelBooking extends StatelessWidget {
                       SvgPicture.asset(
                         Assets.images.icon.profile,
                         colorFilter: ColorFilter.mode(
-                          context.colorScheme.onSurfaceVariant
-                              .withValues(alpha: 0.7),
+                          context.colorScheme.onSurfaceVariant.withValues(
+                            alpha: 0.7,
+                          ),
                           BlendMode.srcIn,
                         ),
                       ),
@@ -61,8 +69,9 @@ class InfoHotelBooking extends StatelessWidget {
                       SvgPicture.asset(
                         Assets.images.icon.building,
                         colorFilter: ColorFilter.mode(
-                          context.colorScheme.onSurfaceVariant
-                              .withValues(alpha: 0.7),
+                          context.colorScheme.onSurfaceVariant.withValues(
+                            alpha: 0.7,
+                          ),
                           BlendMode.srcIn,
                         ),
                       ),
@@ -70,8 +79,9 @@ class InfoHotelBooking extends StatelessWidget {
                       SvgPicture.asset(
                         Assets.images.icon.call,
                         colorFilter: ColorFilter.mode(
-                          context.colorScheme.onSurfaceVariant
-                              .withValues(alpha: 0.7),
+                          context.colorScheme.onSurfaceVariant.withValues(
+                            alpha: 0.7,
+                          ),
                           BlendMode.srcIn,
                         ),
                       ),
@@ -116,28 +126,28 @@ class InfoHotelBooking extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    '12-14 Nov 2024',
+                    formatBookingDate(booking.checkIn, booking.checkOut),
                     style: HBTextStyles.bodyMediumMedium(
                       context.colorScheme.onSurface,
                     ),
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    '2 Guests(1 Room)',
+                    context.l10n.numberGuest(booking.guests),
                     style: HBTextStyles.bodyMediumMedium(
                       context.colorScheme.onSurface,
                     ),
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    'Queen Room',
+                    booking.hotel.roomType,
                     style: HBTextStyles.bodyMediumMedium(
                       context.colorScheme.onSurface,
                     ),
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    '0837665551',
+                    booking.user.numberPhone?? '0834007781',
                     style: HBTextStyles.bodyMediumMedium(
                       context.colorScheme.onSurface,
                     ),
@@ -153,9 +163,7 @@ class InfoHotelBooking extends StatelessWidget {
                 return Dash(
                   length: constraints.maxWidth,
                   dashLength: 9,
-                  dashColor: context.colorScheme.primary.withValues(
-                    alpha: 0.7,
-                  ),
+                  dashColor: context.colorScheme.primary.withValues(alpha: 0.7),
                 );
               },
             ),
@@ -184,7 +192,14 @@ class InfoHotelBooking extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        context.l10n.adminFee,
+                        context.l10n.cleaningFee,
+                        style: HBTextStyles.bodyMediumMedium(
+                          context.colorScheme.onSurface,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        context.l10n.serviceFee,
                         style: HBTextStyles.bodyMediumMedium(
                           context.colorScheme.onSurface,
                         ),
@@ -202,21 +217,28 @@ class InfoHotelBooking extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        context.l10n.price(r'$139.000'),
+                        context.l10n.price(formatPrice(booking.nightlyRate)),
                         style: HBTextStyles.bodySemiboldMedium(
                           context.colorScheme.onSurface,
                         ),
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        context.l10n.price(r'$2.50'),
+                        context.l10n.price(formatPrice(booking.cleaningFee)),
                         style: HBTextStyles.bodySemiboldMedium(
                           context.colorScheme.onSurface,
                         ),
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        context.l10n.price(r'$141.150'),
+                        context.l10n.price(formatPrice(booking.serviceFee)),
+                        style: HBTextStyles.bodySemiboldMedium(
+                          context.colorScheme.onSurface,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        context.l10n.price(formatPrice(booking.totalPrice)),
                         style: HBTextStyles.bodySemiboldMedium(
                           context.colorScheme.onSurface,
                         ),

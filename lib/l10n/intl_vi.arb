@@ -91,6 +91,14 @@
   "checkIn": "Ngày vào",
   "checkOut": "Ngày ra",
   "guest" : "Khách",
+  "numberGuest" : "{number}Người(1 Room)",
+  "@numberGuest": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
   "payWith": "Phương thức trả tiền",
   "edit": "Chỉnh sửa",
   "paymentDetails": "Chi tiết",
@@ -118,5 +126,9 @@
   "promo": "Quảng cáo",
   "selectPayment": "Phương thức trả tiền",
    "select": "Lựa chọn",
-  "startDateMustBeFuture": "Ngày vào phải ở trong tương lai"
+  "startDateMustBeFuture": "Ngày vào phải ở trong tương lai",
+  "notifiBookingFailure" : "Vui lòng chọn đầy đủ thông tin",
+  "notifiBookingSucess": "Bạn đã đặt phòng thành công",
+  "paymentComplete": "Thanh Toán Thành Công",
+  "contentPaymentComplete": "Ngay cả ngày mai không sợ hãi et. Cà chua ngày mai để thiết lập."
 }

@@ -49,7 +49,7 @@ class BestTodayItem extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(13),
               image: DecorationImage(
-                image:NetworkImage(linkImage),
+                image: NetworkImage(linkImage),
                 fit: BoxFit.cover,
               ),
             ),
@@ -71,7 +71,9 @@ class BestTodayItem extends StatelessWidget {
                   SvgPicture.asset(
                     Assets.images.icon.location,
                     colorFilter: ColorFilter.mode(
-                      context.colorScheme.tertiary,
+                      context.colorScheme.onSurfaceVariant.withValues(
+                        alpha: 0.7,
+                      ),
                       BlendMode.srcIn,
                     ),
                   ),
@@ -79,7 +81,7 @@ class BestTodayItem extends StatelessWidget {
                   Text(
                     address,
                     style: HBTextStyles.bodyRegularSmall(
-                      context.colorScheme.tertiary,
+                      context.colorScheme.onTertiary,
                     ),
                   ),
                 ],
@@ -110,14 +112,14 @@ class BestTodayItem extends StatelessWidget {
 
                   const SizedBox(width: 15),
                   Text(
-                    context.l10n.price(formatCurrency( currentPrice/1000)),
+                    context.l10n.price(formatPrice(currentPrice / 1000)),
                     style: HBTextStyles.bodySemiboldSmall(
                       context.colorScheme.onSurfaceVariant,
                     ),
                   ),
                   const SizedBox(width: 15),
                   Text(
-                    context.l10n.price(formatCurrency( lastPrice/1000)),
+                    context.l10n.price(formatPrice(lastPrice / 1000)),
                     style: HBTextStyles.bodyMediumXSmall(
                       context.colorScheme.error,
                       decoration: TextDecoration.lineThrough,

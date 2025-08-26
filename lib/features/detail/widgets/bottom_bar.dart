@@ -59,7 +59,7 @@ class ButtomBar extends StatelessWidget {
                   if (widget.hotel.currentPrice != 0)
                     Text(
                       context.l10n.price(
-                        formatCurrency(widget.hotel.currentPrice ?? 0.000),
+                        formatPrice(widget.hotel.currentPrice ?? 0.000),
                       ),
                       style: HBTextStyles.headingThree(
                         context.colorScheme.inverseSurface,
@@ -86,6 +86,8 @@ class ButtomBar extends StatelessWidget {
                       context: context,
                       title: context.l10n.notification,
                       desc: context.l10n.userNotExisted,
+                      isAction: true,
+                      isClose: true,
                       action: () {
                         Navigator.push(
                           context,

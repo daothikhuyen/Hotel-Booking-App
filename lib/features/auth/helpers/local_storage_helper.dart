@@ -21,7 +21,7 @@ class LocalStorageHelper {
       final prefs = await SharedPreferences.getInstance();
       final data = prefs.getString(_keyUser);
       if (data != null) {
-        return HBUser.fromJson(jsonDecode(data), 'uid-if-needed');
+        return HBUser.fromJson(jsonDecode(data));
       }
       return null;
     } on Exception catch (e) {
@@ -31,7 +31,6 @@ class LocalStorageHelper {
 
   static Future<void> removeUser() async {
     try {
-      
       final prefs = await SharedPreferences.getInstance();
       await prefs.remove(_keyUser);
     } on Exception catch (e) {

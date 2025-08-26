@@ -5,6 +5,7 @@ class PageRoutes {
   static const String homePage = '/home';
   static const String detailPage = '/detail';
   static const String requestBooking = '/booking';
-    static const String checkout = '/checkout';
+  static const String checkout = '/checkout';
   static const String myBooking = '/myBooking';
+  static const String bookingSucess = '/bookingSucess';
 }

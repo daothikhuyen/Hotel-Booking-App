@@ -539,6 +539,12 @@ abstract class AppLocalizations {
   /// **'Guest'**
   String get guest;
 
+  /// No description provided for @numberGuest.
+  ///
+  /// In en, this message translates to:
+  /// **'{number}Guests(1 Room)'**
+  String numberGuest(int number);
+
   /// No description provided for @payWith.
   ///
   /// In en, this message translates to:
@@ -664,6 +670,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Start date must be in the future'**
   String get startDateMustBeFuture;
+
+  /// No description provided for @notifiBookingFailure.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select complete information'**
+  String get notifiBookingFailure;
+
+  /// No description provided for @notifiBookingSucess.
+  ///
+  /// In en, this message translates to:
+  /// **'You have successfully booked a room'**
+  String get notifiBookingSucess;
+
+  /// No description provided for @paymentComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Complete'**
+  String get paymentComplete;
+
+  /// No description provided for @contentPaymentComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Etiam cras nec metus laoreet. Faucibus \n iaculis cras ut posuere.'**
+  String get contentPaymentComplete;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -13,10 +13,11 @@ ThemeData lightMode = ThemeData(
     onError: AppColors.alter100,
     outline: AppColors.greyscale200, // border
     onSurfaceVariant: AppColors.greyscale900, //subscript
-    tertiary: AppColors.greyscale500,
-    onTertiary: AppColors.greyscale200,
+    tertiary: AppColors.greyscale600,
+    onTertiary: AppColors.greyscale500,
     inversePrimary: AppColors.primary300,
     inverseSurface: AppColors.greyscale900,
+    onInverseSurface: AppColors.greyscale500,
   ),
   iconTheme: const IconThemeData(
     color: AppColors.greyscale900, // private color icon
@@ -36,6 +37,7 @@ ThemeData darkMode = ThemeData(
     outline: AppColors.borderDark,
     onSurfaceVariant: AppColors.greyscale900,
     error: AppColors.error100,
+    onInverseSurface: AppColors.greyscale500,
   ),
   iconTheme: const IconThemeData(
     color: AppColors.iconDart, // private color icon

@@ -10,7 +10,8 @@ import 'package:intl/intl.dart';
 class DatePicker extends StatefulWidget {
   const DatePicker({super.key, this.onDateSelected});
 
-  final void Function(String start, String end, int nightCount)? onDateSelected;
+  final void Function(DateTime start, DateTime end, int nightCount)?
+  onDateSelected;
 
   @override
   State<DatePicker> createState() => _DatePickerState();
@@ -43,8 +44,8 @@ class _DatePickerState extends State<DatePicker> {
         final seectedDate = widget.onDateSelected;
         if (seectedDate != null) {
           seectedDate(
-            formatEndDate ?? today.toString(),
-            formatEndDate ?? today.toString(),
+            startDate ?? DateTime.now(),
+            endDate ?? DateTime.now(),
             nightCount ?? 0,
           );
         }

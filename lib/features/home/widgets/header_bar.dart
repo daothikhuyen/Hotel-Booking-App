@@ -25,6 +25,7 @@ class HeaderBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authController = Provider.of<AuthController>(context, listen: false);
+    
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(

@@ -90,11 +90,19 @@
   "checkIn": "Check - In",
   "checkOut": "Check - Out",
   "guest" : "Guest",
+  "numberGuest" : "{number}Guests(1 Room)",
+  "@numberGuest": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
   "payWith": "Pay With",
   "edit": "Edit",
   "paymentDetails": "Payment Details",
   "total": "Total: {total} Night",
-    "@total": {
+  "@total": {
     "placeholders": {
       "total": {
         "type": "int"
@@ -117,5 +125,9 @@
   "promo": "Promo",
   "selectPayment": "Select Payment",
   "select": "Select",
-  "startDateMustBeFuture": "Start date must be in the future"
+  "startDateMustBeFuture": "Start date must be in the future",
+  "notifiBookingFailure" : "Please select complete information",
+  "notifiBookingSucess": "You have successfully booked a room",
+  "paymentComplete": "Payment Complete",
+   "contentPaymentComplete": "Etiam cras nec metus laoreet. Faucibus \n iaculis cras ut posuere."
 }
