@@ -4,6 +4,7 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 @widgetbook.UseCase(name: 'Default', type: LayoutScaffold)
 Widget buildMainHomeUseCase(BuildContext context) {
-  return Center(child: LayoutScaffold(navigationShell: null,));
+  return Center();
 }
+
   

@@ -6,8 +6,8 @@ class BuildDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
+    return SizedBox(
+      // margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
       width: double.infinity,
       height: 1,
       child: DecoratedBox(

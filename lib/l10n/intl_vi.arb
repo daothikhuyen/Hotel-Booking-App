@@ -130,5 +130,6 @@
   "notifiBookingFailure" : "Vui lòng chọn đầy đủ thông tin",
   "notifiBookingSucess": "Bạn đã đặt phòng thành công",
   "paymentComplete": "Thanh Toán Thành Công",
-  "contentPaymentComplete": "Ngay cả ngày mai không sợ hãi et. Cà chua ngày mai để thiết lập."
+  "contentPaymentComplete": "Ngay cả ngày mai không sợ hãi et. Cà chua ngày mai để thiết lập.",
+  "search": "Tìm kiếm..."
 }

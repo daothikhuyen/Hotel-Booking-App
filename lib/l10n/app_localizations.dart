@@ -694,6 +694,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Etiam cras nec metus laoreet. Faucibus \n iaculis cras ut posuere.'**
   String get contentPaymentComplete;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search...'**
+  String get search;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

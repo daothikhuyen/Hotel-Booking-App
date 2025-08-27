@@ -28,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Hotel> hotelRecomended = [];
   List<Hotel> hotelBestToday = [];
   late final HotelController controller;
+  bool _hasLoadedPopular = false;
 
   @override
   void initState() {
@@ -60,19 +61,21 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final userProvider = Provider.of<AuthController>(context);
     final user = userProvider.currentUser;
-    debugPrint('user ${user?.displayName??'hi'}');
+    debugPrint('user ${user?.displayName ?? 'hi'}');
 
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            backgroundColor: context.colorScheme.surface,
             expandedHeight: 75,
             toolbarHeight: 75,
             elevation: 0,
-            shadowColor: Colors.black54,
+            shadowColor: context.colorScheme.onSurfaceVariant.withValues(
+              alpha: 0.4,
+            ),
             pinned: true,
             automaticallyImplyLeading: false,
+            surfaceTintColor: Colors.transparent,
             flexibleSpace: FlexibleSpaceBar(
               background: Center(
                 child: Padding(
@@ -144,8 +147,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   VisibilityDetector(
                     key: const Key('popular-section'),
                     onVisibilityChanged: (info) {
-                      if (info.visibleFraction > 0.1 && hotelPopular.isEmpty) {
+                      if (info.visibleFraction > 0.1 &&
+                          hotelPopular.isEmpty &&
+                          !_hasLoadedPopular) {
                         _loadPopularHotels();
+                        _hasLoadedPopular = true;
                       }
                     },
                     child: ListPopular(
@@ -158,7 +164,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   VisibilityDetector(
                     key: const Key('recommended-section'),
                     onVisibilityChanged: (info) {
-                      if (info.visibleFraction > 0.1 && hotelPopular.isEmpty) {
+                      if (info.visibleFraction > 0.1 &&
+                          hotelRecomended.isEmpty) {
                         _loadRecomendedHotels();
                       }
                     },

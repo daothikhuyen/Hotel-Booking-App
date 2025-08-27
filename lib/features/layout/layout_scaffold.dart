@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/core/utils/translation_helper.dart';
 import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
 import 'package:hotel_booking_app/data/model/destination.dart';
@@ -41,40 +42,52 @@ class _LayoutScaffoldState extends State<LayoutScaffold> {
   @override
   Widget build(BuildContext context) => Scaffold(
     body: widget.navigationShell,
-    bottomNavigationBar: NavigationBarTheme(
-      data: NavigationBarThemeData(
-        labelTextStyle: WidgetStateProperty.resolveWith<TextStyle?>((states) {
-          if (states.contains(WidgetState.selected)) {
-            return TextStyle(color: context.colorScheme.primary);
-          }
-          return TextStyle(color: context.colorScheme.onSurfaceVariant);
-        }),
+    bottomNavigationBar: Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: context.colorScheme.outline,
+            offset: const Offset(0, -5),
+            blurRadius: 60,
+          ),
+        ],
       ),
-      child: NavigationBar(
-        selectedIndex: widget.navigationShell.currentIndex,
-        backgroundColor: context.colorScheme.surface,
-        indicatorColor: Colors.transparent,
-        onDestinationSelected: widget.navigationShell.goBranch,
-        destinations:
-            listDestination.length >= 2
-                ? listDestination.map<NavigationDestination>((d) {
-                  return NavigationDestination(
-                    icon: SvgPicture.asset(d.icon),
-                    selectedIcon: SvgPicture.asset(
-                      d.icon,
-                      colorFilter: ColorFilter.mode(
-                        context.colorScheme.primary,
-                        BlendMode.srcIn,
+      child: NavigationBarTheme(
+        data: NavigationBarThemeData(
+          labelTextStyle: WidgetStateProperty.resolveWith<TextStyle?>((states) {
+            if (states.contains(WidgetState.selected)) {
+              return HBTextStyles.bodySemiboldSmall(
+                context.colorScheme.primary,
+              );
+            }
+            return HBTextStyles.bodyMediumSmall(context.colorScheme.onTertiary);
+          }),
+        ),
+        child: NavigationBar(
+          selectedIndex: widget.navigationShell.currentIndex,
+          indicatorColor: Colors.transparent,
+          onDestinationSelected: widget.navigationShell.goBranch,
+          destinations:
+              listDestination.length >= 2
+                  ? listDestination.map<NavigationDestination>((d) {
+                    return NavigationDestination(
+                      icon: SvgPicture.asset(d.icon),
+                      selectedIcon: SvgPicture.asset(
+                        d.icon,
+                        colorFilter: ColorFilter.mode(
+                          context.colorScheme.primary,
+                          BlendMode.srcIn,
+                        ),
+                        fit: BoxFit.cover,
                       ),
-                      fit: BoxFit.cover,
-                    ),
-                    label: getTranslatedText(context, d.labelKey),
-                  );
-                }).toList()
-                : [
-                  const Skeleton(width: double.infinity, height: 30),
-                  const Skeleton(width: double.infinity, height: 30),
-                ],
+                      label: getTranslatedText(context, d.labelKey),
+                    );
+                  }).toList()
+                  : [
+                    const Skeleton(width: double.infinity, height: 30),
+                    const Skeleton(width: double.infinity, height: 30),
+                  ],
+        ),
       ),
     ),
   );

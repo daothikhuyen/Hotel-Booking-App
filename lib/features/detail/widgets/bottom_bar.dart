@@ -31,14 +31,11 @@ class ButtomBar extends StatelessWidget {
         decoration: BoxDecoration(
           color: context.colorScheme.surface,
           borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
-          border: Border(
-            top: BorderSide(width: 0.5, color: context.colorScheme.outline),
-          ),
           boxShadow: [
             BoxShadow(
-              color: context.colorScheme.onTertiary,
-              offset: const Offset(0, -1),
-              blurRadius: 10,
+              color: context.colorScheme.outline,
+              offset: const Offset(0, -5),
+              blurRadius: 60,
             ),
           ],
         ),

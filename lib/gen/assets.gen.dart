@@ -90,6 +90,9 @@ class $AssetsImagesIconGen {
   /// File path: assets/images/icon/Document.svg
   String get document => 'assets/images/icon/Document.svg';
 
+  /// File path: assets/images/icon/Filter.svg
+  String get filter => 'assets/images/icon/Filter.svg';
+
   /// File path: assets/images/icon/Frame.svg
   String get frame => 'assets/images/icon/Frame.svg';
 
@@ -110,6 +113,9 @@ class $AssetsImagesIconGen {
 
   /// File path: assets/images/icon/Icon - Google.svg
   String get iconGoogle => 'assets/images/icon/Icon - Google.svg';
+
+  /// File path: assets/images/icon/Icon - Search.svg
+  String get iconSearch => 'assets/images/icon/Icon - Search.svg';
 
   /// File path: assets/images/icon/Profile.svg
   String get profile => 'assets/images/icon/Profile.svg';
@@ -182,6 +188,7 @@ class $AssetsImagesIconGen {
     a24Support,
     a3dRotate,
     document,
+    filter,
     frame,
     frameArrow,
     group,
@@ -189,6 +196,7 @@ class $AssetsImagesIconGen {
     iconApple,
     iconFacebook,
     iconGoogle,
+    iconSearch,
     profile,
     search,
     stroke4,

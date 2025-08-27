@@ -110,6 +110,7 @@ class _SignInState extends State<SignIn> {
                   controller: _email,
                   hintText: context.l10n.enterEmail,
                   validator: (v) => validatorEmail(context, v),
+                  color: context.colorScheme.outline,
                 ),
                 const SizedBox(height: 15),
                 Text(
@@ -124,6 +125,7 @@ class _SignInState extends State<SignIn> {
                   hintText: context.l10n.enterPassword,
                   isPassword: true,
                   validator: (v) => validatePassword(context, v),
+                  color: context.colorScheme.outline,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 15),

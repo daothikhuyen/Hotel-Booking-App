@@ -41,7 +41,7 @@ class Booking {
     };
   }
 
-  factory Booking.fromMap(Map<String, dynamic> map) {
+  factory Booking.fromJson(Map<String, dynamic> map) {
     final hotelMap = map['hotel'] as Map<String, dynamic>;
     final userMap = map['user'] as Map<String, dynamic>;
 
@@ -58,9 +58,5 @@ class Booking {
       user: HBUser.fromJson(userMap),
     );
   }
-
-  factory Booking.fromJson(String source) =>
-      Booking.fromMap(json.decode(source) as Map<String, dynamic>);
-
 
 }

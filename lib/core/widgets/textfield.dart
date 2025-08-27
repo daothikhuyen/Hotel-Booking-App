@@ -7,6 +7,7 @@ class HBTexField extends StatefulWidget {
   const HBTexField({
     required this.controller,
     required this.hintText,
+    required this.color,
     this.validator,
     this.isPassword = false,
     this.keyboardType = TextInputType.text,
@@ -19,6 +20,7 @@ class HBTexField extends StatefulWidget {
   final bool isPassword;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
+  final Color color;
 
   @override
   State<HBTexField> createState() => _HBTexFieldState();
@@ -46,7 +48,7 @@ class _HBTexFieldState extends State<HBTexField> {
         hintText: widget.hintText,
         hintStyle:  HBTextStyles.bodySemiboldSmall(hintColor),
         filled: true,
-        fillColor: context.colorScheme.onTertiary,
+        fillColor: widget.color,
         border: InputBorder.none,
         enabledBorder: _border(Colors.transparent),
         focusedBorder: _border(Colors.transparent),

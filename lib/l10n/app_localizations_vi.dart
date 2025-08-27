@@ -315,4 +315,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get contentPaymentComplete => 'Ngay cả ngày mai không sợ hãi et. Cà chua ngày mai để thiết lập.';
+
+  @override
+  String get search => 'Tìm kiếm...';
 }

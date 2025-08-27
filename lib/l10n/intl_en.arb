@@ -129,5 +129,6 @@
   "notifiBookingFailure" : "Please select complete information",
   "notifiBookingSucess": "You have successfully booked a room",
   "paymentComplete": "Payment Complete",
-   "contentPaymentComplete": "Etiam cras nec metus laoreet. Faucibus \n iaculis cras ut posuere."
+  "contentPaymentComplete": "Etiam cras nec metus laoreet. Faucibus \n iaculis cras ut posuere.",
+  "search": "Search..."
 }

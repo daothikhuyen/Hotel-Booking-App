@@ -315,4 +315,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get contentPaymentComplete => 'Etiam cras nec metus laoreet. Faucibus \n iaculis cras ut posuere.';
+
+  @override
+  String get search => 'Search...';
 }

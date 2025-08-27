@@ -16,7 +16,7 @@ class HBAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Color color;
 
   @override
-  Size get preferredSize => const Size.fromHeight(45);
+  Size get preferredSize => const Size.fromHeight(50);
 
   @override
   Widget build(BuildContext context) {
