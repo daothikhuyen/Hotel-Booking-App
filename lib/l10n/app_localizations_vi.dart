@@ -27,6 +27,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get homeRecommended => 'Đề xuất cho bạn';
 
   @override
+  String get detailRecommended => 'Đề xuất';
+
+  @override
   String get locationTitle => 'Bạn có thể thay đổi vị trí của mình để \n hiển thị các biệt thự gần đó';
 
   @override
@@ -235,8 +238,8 @@ class AppLocalizationsVi extends AppLocalizations {
   String get guest => 'Khách';
 
   @override
-  String numberGuest(int number) {
-    return '${number}Người(1 Room)';
+  String numberGuest(int numberGuest, int numberRoom) {
+    return '$numberGuest Người ($numberRoom Phòng)';
   }
 
   @override
@@ -318,4 +321,10 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get search => 'Tìm kiếm...';
+
+  @override
+  String get booked => 'Đã đặt';
+
+  @override
+  String get history => 'Lịch sử';
 }

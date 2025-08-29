@@ -47,6 +47,7 @@ Future<List<DateTime?>?> datePicker(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.transparent,
                           elevation: 0,
+                          shadowColor: Colors.transparent,
                         ),
                         child: Text(
                           context.l10n.cancel,
@@ -56,6 +57,7 @@ Future<List<DateTime?>?> datePicker(
                         ),
                       ),
                     ),
+                    const SizedBox(width: 5,),
                     Expanded(
                       child: PrimaryBtn(
                         size: 40,

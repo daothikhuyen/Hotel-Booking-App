@@ -7,7 +7,6 @@ import 'package:hotel_booking_app/core/utils/translation_helper.dart';
 import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
 import 'package:hotel_booking_app/data/model/destination.dart';
 import 'package:hotel_booking_app/features/home/controller/navigation_controller.dart';
-import 'package:provider/provider.dart';
 
 class LayoutScaffold extends StatefulWidget {
   const LayoutScaffold({required this.navigationShell, Key? key})
@@ -21,21 +20,18 @@ class LayoutScaffold extends StatefulWidget {
 
 class _LayoutScaffoldState extends State<LayoutScaffold> {
   List<Destination> listDestination = [];
+  final controller = NavigationController();
 
   @override
   void initState() {
     super.initState();
+    _loadNavigationBar();
+  }
 
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      final controller = Provider.of<NavigationController>(
-        context,
-        listen: false,
-      );
-      final destinations = await controller.fetchNavigationBar();
-
-      setState(() {
-        listDestination = destinations;
-      });
+  Future<void> _loadNavigationBar() async {
+    final destinations = await controller.fetchNavigationBar();
+    setState(() {
+      listDestination = destinations;
     });
   }
 

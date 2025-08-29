@@ -6,6 +6,7 @@
   "forgotPassword": "Forgot Password",
   "home": "Home",
   "homeRecommended": "Recommended for you",
+  "detailRecommended": "Recommended",
   "locationTitle": "You Can Change Your Location to\n show nearby villas",
   "message": "Message",
   "mostPopular": "Most Popular",
@@ -86,14 +87,17 @@
   "reviews": "Reviews",
   "descriptionHotel": "The ideal place for those looking for a luxurious and tranquil holiday experience with stunning sea views. The ideal place for those looking for a luxurious and tranquil holiday experience with stunning sea views",
   "titleRequestBooking": "Request to book",
-  "date": "Date",
+  "date": "Dates",
   "checkIn": "Check - In",
   "checkOut": "Check - Out",
   "guest" : "Guest",
-  "numberGuest" : "{number}Guests(1 Room)",
+  "numberGuest" : "{numberGuest} Guests({numberRoom} Room)",
   "@numberGuest": {
     "placeholders": {
-      "number": {
+      "numberGuest": {
+        "type": "int"
+      },
+      "numberRoom": {
         "type": "int"
       }
     }
@@ -130,5 +134,7 @@
   "notifiBookingSucess": "You have successfully booked a room",
   "paymentComplete": "Payment Complete",
   "contentPaymentComplete": "Etiam cras nec metus laoreet. Faucibus \n iaculis cras ut posuere.",
-  "search": "Search..."
+  "search": "Search...",
+  "booked": "Booked",
+  "history": "History"
 }

@@ -41,21 +41,29 @@ class Booking {
     };
   }
 
-  factory Booking.fromJson(Map<String, dynamic> map) {
-    final hotelMap = map['hotel'] as Map<String, dynamic>;
-    final userMap = map['user'] as Map<String, dynamic>;
+  factory Booking.fromJson(Map<String, dynamic> josn, String  uid) {
+    final hotelJson = josn['hotel'] as Map<String, dynamic>;
+    final userJson= josn['user'] as Map<String, dynamic>;
+    
+    double? parseDouble(dynamic value) {
+      if (value == null) return null;
+      if (value is double) return value;
+      if (value is int) return value.toDouble();
+      if (value is String) return double.tryParse(value);
+      return null;
+    }
 
     return Booking(
-      uid: map['uid'] as String,
-      checkIn: DateTime.fromMillisecondsSinceEpoch(map['checkIn'] as int),
-      checkOut: DateTime.fromMillisecondsSinceEpoch(map['checkOut'] as int),
-      guests: map['guests'] as int,
-      nightlyRate: map['price'] as double,
-      cleaningFee: map['cleaningFee'] as double,
-      serviceFee: map['serviceFee'] as double,
-      totalPrice: map['totalPrice'] as double,
-      hotel: Hotel.fromJson(hotelMap, hotelMap['id']),
-      user: HBUser.fromJson(userMap),
+      uid: uid,
+      checkIn: DateTime.fromMillisecondsSinceEpoch(josn['checkIn'] as int),
+      checkOut: DateTime.fromMillisecondsSinceEpoch(josn['checkOut'] as int),
+      guests: (josn['guests'] as int?) ?? 0,
+      nightlyRate:parseDouble(josn['price']) ?? 0,
+      cleaningFee:parseDouble(josn['cleaningFee']) ?? 0,
+      serviceFee: parseDouble(josn['serviceFee']) ?? 0,
+      totalPrice: parseDouble(josn['totalPrice']) ?? 0,
+      hotel: Hotel.fromJson(hotelJson, hotelJson['id']),
+      user: HBUser.fromJson(userJson),
     );
   }
 

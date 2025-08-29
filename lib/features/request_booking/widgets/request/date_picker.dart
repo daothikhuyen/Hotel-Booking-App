@@ -77,8 +77,8 @@ class _DatePickerState extends State<DatePicker> {
                   margin: const EdgeInsets.only(left: 5, right: 8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: context.colorScheme.onTertiary.withValues(
-                      alpha: 0.2,
+                    color: context.colorScheme.outline.withValues(
+                      alpha: 0.20,
                     ),
                   ),
                   child: Column(
@@ -106,7 +106,7 @@ class _DatePickerState extends State<DatePicker> {
                       Text(
                         formatStartDate ?? today.toString(),
                         style: HBTextStyles.bodyRegularMedium(
-                          context.colorScheme.tertiary,
+                          context.colorScheme.onTertiary,
                         ),
                       ),
                     ],
@@ -124,8 +124,8 @@ class _DatePickerState extends State<DatePicker> {
                   margin: const EdgeInsets.only(right: 5, left: 8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: context.colorScheme.onTertiary.withValues(
-                      alpha: 0.2,
+                    color: context.colorScheme.outline.withValues(
+                      alpha: 0.20,
                     ),
                   ),
                   child: Column(
@@ -153,7 +153,7 @@ class _DatePickerState extends State<DatePicker> {
                       Text(
                         formatEndDate ?? today.toString(),
                         style: HBTextStyles.bodyRegularMedium(
-                          context.colorScheme.tertiary,
+                          context.colorScheme.onTertiary,
                         ),
                       ),
                     ],

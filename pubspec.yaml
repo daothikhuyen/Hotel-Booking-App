@@ -24,6 +24,7 @@ dependencies:
   calendar_date_picker2: ^2.0.1
   visibility_detector: ^0.4.0+2
   flutter_dash: ^1.0.0
+  infinite_scroll_pagination: ^5.1.1
 
   # firebase
   firebase_core: ^4.0.0

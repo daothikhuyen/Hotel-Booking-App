@@ -7,7 +7,7 @@ import 'package:hotel_booking_app/data/model/booking.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
 import 'package:hotel_booking_app/features/auth/sign_in.dart';
-import 'package:hotel_booking_app/features/detail/detail_screen.dart';
+import 'package:hotel_booking_app/features/hotel_detail/detail_screen.dart';
 import 'package:hotel_booking_app/features/home/home_screen.dart';
 import 'package:hotel_booking_app/features/layout/layout_scaffold.dart';
 import 'package:hotel_booking_app/features/my_booking/my_booking_screen.dart';

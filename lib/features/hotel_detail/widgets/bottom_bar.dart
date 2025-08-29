@@ -9,7 +9,7 @@ import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
 import 'package:hotel_booking_app/features/auth/sign_in.dart';
-import 'package:hotel_booking_app/features/detail/detail_screen.dart';
+import 'package:hotel_booking_app/features/hotel_detail/detail_screen.dart';
 import 'package:provider/provider.dart';
 
 class ButtomBar extends StatelessWidget {
@@ -27,7 +27,7 @@ class ButtomBar extends StatelessWidget {
       left: 0,
       right: 0,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
         decoration: BoxDecoration(
           color: context.colorScheme.surface,
           borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),

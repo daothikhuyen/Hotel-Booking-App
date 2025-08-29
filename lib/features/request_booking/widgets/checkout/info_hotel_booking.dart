@@ -133,7 +133,7 @@ class _InfoHotelBookingState extends State<InfoHotelBooking> {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    context.l10n.numberGuest(booking.guests),
+                    context.l10n.numberGuest(booking.guests,1),
                     style: HBTextStyles.bodyMediumMedium(
                       context.colorScheme.onSurface,
                     ),

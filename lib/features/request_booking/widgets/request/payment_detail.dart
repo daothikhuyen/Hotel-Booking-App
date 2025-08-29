@@ -87,7 +87,10 @@ class _PaymentDetailState extends State<PaymentDetail> {
             ),
           ],
         ),
-        const BuildDivider(),
+        const Padding(
+          padding: EdgeInsets.symmetric(vertical: 15),
+          child: BuildDivider(),
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

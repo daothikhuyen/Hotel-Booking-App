@@ -6,6 +6,7 @@
   "forgotPassword": "Quên mật khẩu",
   "home": "Trang chủ",
   "homeRecommended": "Đề xuất cho bạn",
+  "detailRecommended": "Đề xuất",
   "locationTitle": "Bạn có thể thay đổi vị trí của mình để \n hiển thị các biệt thự gần đó",
   "message": "Tin nhắn",
   "mostPopular": "Phổ biến nhất",
@@ -91,10 +92,13 @@
   "checkIn": "Ngày vào",
   "checkOut": "Ngày ra",
   "guest" : "Khách",
-  "numberGuest" : "{number}Người(1 Room)",
+  "numberGuest" : "{numberGuest} Người ({numberRoom} Phòng)",
   "@numberGuest": {
     "placeholders": {
-      "number": {
+      "numberGuest": {
+        "type": "int"
+      },
+      "numberRoom": {
         "type": "int"
       }
     }
@@ -131,5 +135,7 @@
   "notifiBookingSucess": "Bạn đã đặt phòng thành công",
   "paymentComplete": "Thanh Toán Thành Công",
   "contentPaymentComplete": "Ngay cả ngày mai không sợ hãi et. Cà chua ngày mai để thiết lập.",
-  "search": "Tìm kiếm..."
+  "search": "Tìm kiếm...",
+  "booked": "Đã đặt",
+  "history": "Lịch sử"
 }

@@ -31,7 +31,6 @@ Widget buildRecomendedItemUseCase(BuildContext context) {
       ),
       ratting: context.knobs.string(label: 'Ratting', initialValue: '4.5'),
       guest:context.knobs.int.input(label: 'Guest', initialValue: 100),
-      numberRoom: context.knobs.int.input(label: 'Number Room', initialValue: 2)
     ),
   );
 }

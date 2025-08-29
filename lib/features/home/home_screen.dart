@@ -27,13 +27,12 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Hotel> hotelPopular = [];
   List<Hotel> hotelRecomended = [];
   List<Hotel> hotelBestToday = [];
-  late final HotelController controller;
+  final controller = HotelController();
   bool _hasLoadedPopular = false;
 
   @override
   void initState() {
     super.initState();
-    controller = Provider.of<HotelController>(context, listen: false);
   }
 
   Future<void> _loadPopularHotels() async {
@@ -61,7 +60,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final userProvider = Provider.of<AuthController>(context);
     final user = userProvider.currentUser;
-    debugPrint('user ${user?.displayName ?? 'hi'}');
 
     return Scaffold(
       body: CustomScrollView(
@@ -177,7 +175,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   // Map
-                  MapSection(title: context.l10n.nearYou),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 18),
+                    child: MapSection(title: context.l10n.nearYou),
+                  ),
                   // Best Today
                   VisibilityDetector(
                     key: const Key('bestToday-section'),

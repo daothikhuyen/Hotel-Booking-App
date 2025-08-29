@@ -48,6 +48,6 @@ Booking buildBooking(
     serviceFee: svcFee,
     totalPrice: total,
     nightlyRate: nightlyRate,
-    uid: '',
+    uid: '', 
   );
 }

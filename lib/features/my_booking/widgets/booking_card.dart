@@ -14,7 +14,6 @@ class BookingCard extends StatelessWidget {
     required this.ratting,
     required this.dateTime,
     required this.guest,
-    required this.numberRoom,
     super.key,
     this.linkImage,
   });
@@ -26,7 +25,6 @@ class BookingCard extends StatelessWidget {
   final String ratting;
   final String dateTime;
   final int guest;
-  final int numberRoom;
 
   @override
   Widget build(BuildContext context) {
@@ -98,16 +96,14 @@ class BookingCard extends StatelessWidget {
                     SvgPicture.asset(
                       Assets.images.icon.vector,
                       colorFilter: ColorFilter.mode(
-                        context.colorScheme.onSurfaceVariant.withValues(
-                          alpha: 0.7,
-                        ),
+                        context.colorScheme.onTertiary,
                         BlendMode.srcIn,
                       ),
                     ),
-                    const SizedBox(width: 3),
+                    const SizedBox(width: 4),
                     Text(
                       location,
-                      style: HBTextStyles.bodyRegularMedium(
+                      style: HBTextStyles.bodyRegularSmall(
                         context.colorScheme.onTertiary,
                       ),
                     ),
@@ -156,7 +152,7 @@ class BookingCard extends StatelessWidget {
                         ],
                       ),
                       Text(
-                        '12-14 Nov 2024',
+                        dateTime,
                         style: HBTextStyles.bodySemiboldSmall(
                           context.colorScheme.onSurfaceVariant,
                         ),
@@ -183,7 +179,7 @@ class BookingCard extends StatelessWidget {
                         ],
                       ),
                       Text(
-                        '2 Guest(1 Room)',
+                        context.l10n.numberGuest(guest, 1),
                         style: HBTextStyles.bodySemiboldSmall(
                           context.colorScheme.onSurfaceVariant,
                         ),

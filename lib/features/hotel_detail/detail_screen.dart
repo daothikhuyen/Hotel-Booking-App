@@ -3,8 +3,8 @@ import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
-import 'package:hotel_booking_app/features/detail/widgets/bottom_bar.dart';
-import 'package:hotel_booking_app/features/detail/widgets/popup_card.dart';
+import 'package:hotel_booking_app/features/hotel_detail/widgets/bottom_bar.dart';
+import 'package:hotel_booking_app/features/hotel_detail/widgets/popup_card.dart';
 
 class DetailScreen extends StatefulWidget {
   const DetailScreen({required this.hotel, super.key});
@@ -51,10 +51,7 @@ class _DetailScreenState extends State<DetailScreen> {
           ),
 
           // body detail
-          PopupCard(
-              widget: widget,
-              onScrollChange: onScrollChange,
-            ),
+          PopupCard(widget: widget, onScrollChange: onScrollChange),
           // header detail
           Positioned(
             top: 0,

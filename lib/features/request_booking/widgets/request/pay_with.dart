@@ -27,14 +27,20 @@ class _PayWithState extends State<PayWith> {
       children: [
         HeaderCard(title: context.l10n.payWith, onPressed: () {}, titleBtn: ''),
         Container(
-          height: 64,
+          height: 65,
+          margin: const EdgeInsets.only(bottom: 10),
           decoration: BoxDecoration(
             border: Border.all(width: 1.01, color: context.colorScheme.outline),
-            color: context.colorScheme.onTertiary.withValues(alpha: 0.1),
-            borderRadius: BorderRadius.circular(13),
+            color: context.colorScheme.outline.withValues(alpha: 0.1),
+            borderRadius: BorderRadius.circular(18),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(4),
+            padding: const EdgeInsets.only(
+              left: 10,
+              right: 4,
+              top: 5,
+              bottom: 5,
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -49,21 +55,25 @@ class _PayWithState extends State<PayWith> {
                       size: 50,
                       onPressed: () {},
                     ),
-                    Column(
-                      children: [
-                        Text(
-                          widget.nameBank,
-                          style: HBTextStyles.bodyMediumMedium(
-                            context.colorScheme.inverseSurface,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 12),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.nameBank,
+                            style: HBTextStyles.title(
+                              context.colorScheme.onSurface,
+                            ),
                           ),
-                        ),
-                        Text(
-                          widget.accountNumber,
-                          style: HBTextStyles.bodyRegularSmall(
-                            context.colorScheme.tertiary,
+                          Text(
+                            widget.accountNumber,
+                            style: HBTextStyles.bodyRegularSmall(
+                              context.colorScheme.tertiary,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),

@@ -19,7 +19,7 @@ class MapSection extends StatelessWidget {
           },
         ),
         Container(
-          margin: const EdgeInsets.only(top: 10, bottom: 10, right: 18),
+          margin: const EdgeInsets.only(top: 10, bottom: 10),
           height: 167,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),

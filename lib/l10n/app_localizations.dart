@@ -131,6 +131,12 @@ abstract class AppLocalizations {
   /// **'Recommended for you'**
   String get homeRecommended;
 
+  /// No description provided for @detailRecommended.
+  ///
+  /// In en, this message translates to:
+  /// **'Recommended'**
+  String get detailRecommended;
+
   /// No description provided for @locationTitle.
   ///
   /// In en, this message translates to:
@@ -518,7 +524,7 @@ abstract class AppLocalizations {
   /// No description provided for @date.
   ///
   /// In en, this message translates to:
-  /// **'Date'**
+  /// **'Dates'**
   String get date;
 
   /// No description provided for @checkIn.
@@ -542,8 +548,8 @@ abstract class AppLocalizations {
   /// No description provided for @numberGuest.
   ///
   /// In en, this message translates to:
-  /// **'{number}Guests(1 Room)'**
-  String numberGuest(int number);
+  /// **'{numberGuest} Guests({numberRoom} Room)'**
+  String numberGuest(int numberGuest, int numberRoom);
 
   /// No description provided for @payWith.
   ///
@@ -700,6 +706,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Search...'**
   String get search;
+
+  /// No description provided for @booked.
+  ///
+  /// In en, this message translates to:
+  /// **'Booked'**
+  String get booked;
+
+  /// No description provided for @history.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get history;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

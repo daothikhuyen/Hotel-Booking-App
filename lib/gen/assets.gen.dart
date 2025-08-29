@@ -154,6 +154,9 @@ class $AssetsImagesIconGen {
   /// File path: assets/images/icon/empty-wallet.svg
   String get emptyWallet => 'assets/images/icon/empty-wallet.svg';
 
+  /// File path: assets/images/icon/home (1).svg
+  String get home1 => 'assets/images/icon/home (1).svg';
+
   /// File path: assets/images/icon/home.svg
   String get home => 'assets/images/icon/home.svg';
 
@@ -209,6 +212,7 @@ class $AssetsImagesIconGen {
     call,
     discountShape,
     emptyWallet,
+    home1,
     home,
     hotel,
     location,

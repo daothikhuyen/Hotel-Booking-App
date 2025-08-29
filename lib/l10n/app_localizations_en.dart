@@ -27,6 +27,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeRecommended => 'Recommended for you';
 
   @override
+  String get detailRecommended => 'Recommended';
+
+  @override
   String get locationTitle => 'You Can Change Your Location to\n show nearby villas';
 
   @override
@@ -223,7 +226,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get titleRequestBooking => 'Request to book';
 
   @override
-  String get date => 'Date';
+  String get date => 'Dates';
 
   @override
   String get checkIn => 'Check - In';
@@ -235,8 +238,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get guest => 'Guest';
 
   @override
-  String numberGuest(int number) {
-    return '${number}Guests(1 Room)';
+  String numberGuest(int numberGuest, int numberRoom) {
+    return '$numberGuest Guests($numberRoom Room)';
   }
 
   @override
@@ -318,4 +321,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get search => 'Search...';
+
+  @override
+  String get booked => 'Booked';
+
+  @override
+  String get history => 'History';
 }
