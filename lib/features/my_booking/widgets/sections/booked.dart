@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/utils/format.dart';
 import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
 import 'package:hotel_booking_app/data/model/booking.dart';
@@ -63,19 +65,24 @@ class _BookedState extends State<Booked> {
                   itemBuilder: (context, item, index) {
                     final myBooking = item;
                     final hotel = myBooking.hotel;
-                    return Container(
-                      margin: const EdgeInsets.symmetric(vertical: 8),
-                      child: BookingCard(
-                        linkImage: hotel.image,
-                        name: hotel.name,
-                        location: hotel.location,
-                        currentPrice: hotel.currentPrice ?? 0,
-                        ratting: hotel.ratting.toString(),
-                        dateTime: formatBookingDate(
-                          myBooking.checkIn,
-                          myBooking.checkOut,
+                    return GestureDetector(
+                      onTap: () {
+                        context.push(PageRoutes.bookingDetail, extra:myBooking);
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(vertical: 8),
+                        child: BookingCard(
+                          linkImage: hotel.image,
+                          name: hotel.name,
+                          location: hotel.location,
+                          currentPrice: hotel.currentPrice ?? 0,
+                          ratting: hotel.ratting.toString(),
+                          dateTime: formatBookingDate(
+                            myBooking.checkIn,
+                            myBooking.checkOut,
+                          ),
+                          guest: myBooking.guests,
                         ),
-                        guest: myBooking.guests,
                       ),
                     );
                   },

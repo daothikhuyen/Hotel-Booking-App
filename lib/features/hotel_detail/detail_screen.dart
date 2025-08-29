@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
@@ -61,6 +62,7 @@ class _DetailScreenState extends State<DetailScreen> {
               isScrolled: isScrolled,
               title: context.l10n.titleDetail,
               color: context.colorScheme.onSecondary,
+              onPressed: () => context.pop(),
             ),
           ),
 

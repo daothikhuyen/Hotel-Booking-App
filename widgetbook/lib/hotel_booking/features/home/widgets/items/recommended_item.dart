@@ -3,10 +3,10 @@ import 'package:hotel_booking_app/core/widgets/cards/recomended_card.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
-@widgetbook.UseCase(name: 'Default', type: RecomendedItem)
+@widgetbook.UseCase(name: 'Default', type: RecomendedCard)
 Widget buildRecomendedItemUseCase(BuildContext context) {
   return Center(
-    child: RecomendedItem(
+    child: RecomendedCard(
             linkImage: context.knobs.stringOrNull(
         label: 'Link Image', 
         initialValue: 'assets/images/home/FrameOne.png',

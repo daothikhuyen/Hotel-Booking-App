@@ -5,8 +5,8 @@ import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/core/utils/format.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 
-class RecomendedItem extends StatelessWidget {
-  const RecomendedItem({
+class RecomendedCard extends StatelessWidget {
+  const RecomendedCard({
     required this.name,
     required this.location,
     required this.currentPrice,

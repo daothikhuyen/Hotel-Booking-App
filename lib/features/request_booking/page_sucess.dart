@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/core/widgets/app_bar.dart';
@@ -14,6 +15,7 @@ class PageSucess extends StatelessWidget {
         isScrolled: false,
         title: context.l10n.titleCheckOut,
         color: context.colorScheme.onSurfaceVariant,
+        onPressed: () => context.pop(),
       ),
       body: Center(
         child: Column(

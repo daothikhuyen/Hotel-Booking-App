@@ -327,4 +327,10 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get history => 'Lịch sử';
+
+  @override
+  String get bookingDetail => 'Chi tiết đặt chổ';
+
+  @override
+  String get yourHotel => 'Your Hotel';
 }

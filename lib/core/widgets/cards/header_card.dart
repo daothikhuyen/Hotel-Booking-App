@@ -9,12 +9,13 @@ class HeaderCard extends StatelessWidget {
     required this.title,
     required this.onPressed,
     required this.titleBtn,
-    super.key,
+    super.key, this.color,
   });
 
   final String title;
   final String titleBtn;
   final VoidCallback onPressed;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +26,8 @@ class HeaderCard extends StatelessWidget {
         children: [
           Text(
             title,
-            style: HBTextStyles.bodySemiboldLarge(
-              context.colorScheme.onSurfaceVariant,
+            style: HBTextStyles.bodySemiboldMedium(
+              color ?? context.colorScheme.onSurfaceVariant,
             ),
           ),
           TextButton(
@@ -34,7 +35,7 @@ class HeaderCard extends StatelessWidget {
             child: Text(
               titleBtn,
               style: GoogleFonts.plusJakartaSans(
-                textStyle: HBTextStyles.bodyMediumXSmall(
+                textStyle: HBTextStyles.bodySemiboldSmall(
                   context.colorScheme.primary,
                 ),
               ),

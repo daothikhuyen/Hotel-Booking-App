@@ -3,10 +3,10 @@ import 'package:hotel_booking_app/core/widgets/cards/best_today_card.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
-@widgetbook.UseCase(name: 'Default', type: BestTodayItem)
+@widgetbook.UseCase(name: 'Default', type: BestTodayCard)
 Widget buildBestTodayItemUseCase(BuildContext context) {
   return Center(
-    child: BestTodayItem(
+    child: BestTodayCard(
       linkImage: context.knobs.string(
         label: 'Link Image',
         initialValue: 'assets/images/home/FrameOne.png',

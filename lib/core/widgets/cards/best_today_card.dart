@@ -5,8 +5,8 @@ import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/core/utils/format.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 
-class BestTodayItem extends StatelessWidget {
-  const BestTodayItem({
+class BestTodayCard extends StatelessWidget {
+  const BestTodayCard({
     required this.name,
     required this.address,
     required this.currentPrice,

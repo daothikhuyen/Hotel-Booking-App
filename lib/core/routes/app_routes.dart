@@ -7,8 +7,9 @@ import 'package:hotel_booking_app/data/model/booking.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
 import 'package:hotel_booking_app/features/auth/sign_in.dart';
-import 'package:hotel_booking_app/features/hotel_detail/detail_screen.dart';
+import 'package:hotel_booking_app/features/booking_detail/booking_detail_screen.dart';
 import 'package:hotel_booking_app/features/home/home_screen.dart';
+import 'package:hotel_booking_app/features/hotel_detail/detail_screen.dart';
 import 'package:hotel_booking_app/features/layout/layout_scaffold.dart';
 import 'package:hotel_booking_app/features/my_booking/my_booking_screen.dart';
 import 'package:hotel_booking_app/features/onboarding/onboarding_screen.dart';
@@ -45,6 +46,19 @@ final goRouter = GoRouter(
         }
         return const PageAlterNull();
       } ,       
+    ),
+    GoRoute(
+      path: PageRoutes.bookingDetail,
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state){
+        final booking = state.extra;
+
+        if(booking is Booking){
+          return BookingDetailScreen(booking: booking,);
+        }
+
+         return const PageAlterNull();
+      },
     ),
     GoRoute(
       path: PageRoutes.checkout,

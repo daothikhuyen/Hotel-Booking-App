@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
 

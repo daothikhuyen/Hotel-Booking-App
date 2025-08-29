@@ -62,7 +62,7 @@ class _ListVerticalState extends State<ListVertical> {
                                   extra: hotel,
                                 );
                               },
-                              child: RecomendedItem(
+                              child: RecomendedCard(
                                 linkImage: hotel.image,
                                 name: hotel.name,
                                 location: hotel.location,

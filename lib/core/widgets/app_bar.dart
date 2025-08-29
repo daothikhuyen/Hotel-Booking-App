@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 
@@ -8,12 +7,14 @@ class HBAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     required this.isScrolled,
     required this.color,
-    super.key,
+    required this.onPressed,
+    super.key, 
   });
 
   final bool isScrolled;
   final String title;
   final Color color;
+  final VoidCallback onPressed;
 
   @override
   Size get preferredSize => const Size.fromHeight(50);
@@ -51,9 +52,7 @@ class HBAppBar extends StatelessWidget implements PreferredSizeWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             GestureDetector(
-              onTap: () {
-                context.pop();
-              },
+              onTap: onPressed,
               child: Icon(
                 Icons.arrow_back,
                 color:
