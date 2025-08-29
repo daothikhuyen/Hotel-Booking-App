@@ -8,14 +8,13 @@ import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
 import 'package:hotel_booking_app/core/widgets/list/list_horizontal.dart';
 import 'package:hotel_booking_app/data/data/facilities.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
+import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
+import 'package:hotel_booking_app/features/home/widgets/map_section.dart';
 import 'package:hotel_booking_app/features/hotel_detail/detail_screen.dart';
 import 'package:hotel_booking_app/features/hotel_detail/widgets/facilities_card.dart';
 import 'package:hotel_booking_app/features/hotel_detail/widgets/read_more.dart';
 import 'package:hotel_booking_app/features/hotel_detail/widgets/review_card.dart';
-import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
-import 'package:hotel_booking_app/features/home/widgets/map_section.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:provider/provider.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class PopupCard extends StatefulWidget {

@@ -32,7 +32,7 @@
 
 - **My booking**
   
-<img src="./assets/images/image_project/my_booking_1.png" width="200"/> 
+<img src="./assets/images/image_project/my_booking_1.png" width="200"/> <img src="./assets/images/image_project/my_booking_2.png" width="200"/> 
 
 
 - **Demo**

@@ -54,7 +54,7 @@ class _ListHorizontalState extends State<ListHorizontal> {
                           onTap: () {
                             context.push(PageRoutes.detailPage, extra: hotel);
                           },
-                          child: BestTodayItem(
+                          child: BestTodayCard(
                             linkImage: hotel.image,
                             name: hotel.name,
                             address: hotel.location,

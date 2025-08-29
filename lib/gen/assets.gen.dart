@@ -71,11 +71,15 @@ class $AssetsImagesHomeGen {
   AssetGenImage get frameOne =>
       const AssetGenImage('assets/images/home/FrameOne.png');
 
+  /// File path: assets/images/home/Map (2).png
+  AssetGenImage get map2 =>
+      const AssetGenImage('assets/images/home/Map (2).png');
+
   /// File path: assets/images/home/Map.png
   AssetGenImage get map => const AssetGenImage('assets/images/home/Map.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [frameOne, map];
+  List<AssetGenImage> get values => [frameOne, map2, map];
 }
 
 class $AssetsImagesIconGen {
@@ -135,6 +139,10 @@ class $AssetsImagesIconGen {
   /// File path: assets/images/icon/apartement.png
   AssetGenImage get apartement =>
       const AssetGenImage('assets/images/icon/apartement.png');
+
+  /// File path: assets/images/icon/barcode.png
+  AssetGenImage get barcode =>
+      const AssetGenImage('assets/images/icon/barcode.png');
 
   /// File path: assets/images/icon/building.svg
   String get building => 'assets/images/icon/building.svg';
@@ -206,6 +214,7 @@ class $AssetsImagesIconGen {
     vector,
     akarIconsMinus,
     apartement,
+    barcode,
     building,
     buliding,
     calendar,

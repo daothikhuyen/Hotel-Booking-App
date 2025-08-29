@@ -8,4 +8,5 @@ class PageRoutes {
   static const String checkout = '/checkout';
   static const String myBooking = '/myBooking';
   static const String bookingSucess = '/bookingSucess';
+    static const String bookingDetail = '/bookingDetail';
 }

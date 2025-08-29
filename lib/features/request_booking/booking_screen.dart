@@ -39,6 +39,7 @@ class _BookingScreenState extends State<BookingScreen> {
         isScrolled: false,
         title: context.l10n.titleRequestBooking,
         color: context.colorScheme.onSurfaceVariant,
+        onPressed: () => context.pop(),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,7 +111,7 @@ class _BookingScreenState extends State<BookingScreen> {
                 userProvider,
                 nightCount,
               );
-              context.go(PageRoutes.checkout, extra: booking);
+              context.push(PageRoutes.checkout, extra: booking);
             }
           },
           bold: true,

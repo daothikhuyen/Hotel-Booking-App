@@ -136,5 +136,8 @@
   "contentPaymentComplete": "Etiam cras nec metus laoreet. Faucibus \n iaculis cras ut posuere.",
   "search": "Search...",
   "booked": "Booked",
-  "history": "History"
+  "history": "History",
+  "bookingDetail": "Booking Detail",
+  "yourHotel": "Your Hotel"
+
 }

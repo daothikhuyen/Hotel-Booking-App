@@ -327,4 +327,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get history => 'History';
+
+  @override
+  String get bookingDetail => 'Booking Detail';
+
+  @override
+  String get yourHotel => 'Your Hotel';
 }

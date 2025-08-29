@@ -718,6 +718,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'History'**
   String get history;
+
+  /// No description provided for @bookingDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking Detail'**
+  String get bookingDetail;
+
+  /// No description provided for @yourHotel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Hotel'**
+  String get yourHotel;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
@@ -28,12 +29,13 @@ class _CheckOutState extends State<CheckOut> {
         isScrolled: false,
         title: context.l10n.titleCheckOut,
         color: context.colorScheme.onSurfaceVariant,
+        onPressed: () => context.pop(),
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 18, right: 18, top: 25),
         child: Column(
           children: [
-            RecomendedItem(
+            RecomendedCard(
               name:hotel.name,
               location:hotel.location,
               currentPrice:hotel.currentPrice ?? 0,
