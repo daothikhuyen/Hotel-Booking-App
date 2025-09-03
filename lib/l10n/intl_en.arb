@@ -65,7 +65,6 @@
       }
     }
   },
-  "notification": "Notification",
   "close": "Close",
   "oK": "OK",
   "signOutFailed": "Sign Out failed",
@@ -138,6 +137,16 @@
   "booked": "Booked",
   "history": "History",
   "bookingDetail": "Booking Detail",
-  "yourHotel": "Your Hotel"
-
+  "yourHotel": "Your Hotel",
+  "yourCard": "Your Card",
+  "security": "Security",
+  "notification": "Notification",
+  "languages": "Languages",
+  "help_support": "Help and Support",
+  "setting": "Setting",
+  "logout": "Logout",
+  "cancel": "Cancel",
+  "noData": "No Hotel Data",
+  "areYouSure": "Are You Sure",
+  "doYouWantToLogout": "Do You Want To Logout"
 }

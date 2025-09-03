@@ -34,9 +34,12 @@
   
 <img src="./assets/images/image_project/my_booking_1.png" width="200"/> <img src="./assets/images/image_project/my_booking_2.png" width="200"/> 
 
+- **Profile**
+
+<img src="./assets/images/image_project/profile_2.png" width="200"/> <img src="./assets/images/image_project/profile_1.png" width="200"/> 
 
 - **Demo**
-https://github.com/user-attachments/assets/d1e7f3c0-3862-4cfc-9002-8e79a6e69f6d
+[Video demo project](https://github.com/user-attachments/assets/f72ec06e-a718-4f56-a7bc-3fb4bfd39cd0)
 
 ## Technologies Used
 - Visual studio code

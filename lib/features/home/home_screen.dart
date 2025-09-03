@@ -62,144 +62,149 @@ class _HomeScreenState extends State<HomeScreen> {
     final user = userProvider.currentUser;
 
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            expandedHeight: 75,
-            toolbarHeight: 75,
-            elevation: 0,
-            shadowColor: context.colorScheme.onSurfaceVariant.withValues(
-              alpha: 0.4,
-            ),
-            pinned: true,
-            automaticallyImplyLeading: false,
-            surfaceTintColor: Colors.transparent,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 18, top: 30),
-                  child: SizedBox(
-                    height: 60,
-                    child: HeaderBar(
-                      linkImage: user?.photoURL ?? '',
-                      userName: user?.displayName ?? '',
-                      location: user?.location ?? '', // location now
+      body: RefreshIndicator(
+        onRefresh: () async{
+          //TODOS:...
+        },
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              expandedHeight: 75,
+              toolbarHeight: 75,
+              elevation: 0,
+              shadowColor: context.colorScheme.onSurfaceVariant.withValues(
+                alpha: 0.4,
+              ),
+              pinned: true,
+              automaticallyImplyLeading: false,
+              surfaceTintColor: Colors.transparent,
+              flexibleSpace: FlexibleSpaceBar(
+                background: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 18, top: 30),
+                    child: SizedBox(
+                      height: 60,
+                      child: HeaderBar(
+                        linkImage: user?.photoURL ?? '',
+                        userName: user?.displayName ?? '',
+                        location: user?.location ?? '', // location now
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 18, top: 8),
-              child: Column(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(right: 16),
-                    width: double.infinity,
-                    height: 72,
-                    decoration: BoxDecoration(
-                      color: context.colorScheme.secondary,
-                      border: Border.all(
-                        width: 1.02,
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 18, top: 8),
+                child: Column(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(right: 16),
+                      width: double.infinity,
+                      height: 72,
+                      decoration: BoxDecoration(
                         color: context.colorScheme.secondary,
+                        border: Border.all(
+                          width: 1.02,
+                          color: context.colorScheme.secondary,
+                        ),
+                        borderRadius: BorderRadius.circular(15),
                       ),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                        // left: 5,
-                        right: 20,
-                        top: 16,
-                        bottom: 16,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              CircleAvatar(
-                                radius: 32,
-                                backgroundColor:
-                                    context.colorScheme.onSecondary,
-                                child: SvgPicture.asset(
-                                  Assets.images.icon.frame,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          // left: 5,
+                          right: 20,
+                          top: 16,
+                          bottom: 16,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                CircleAvatar(
+                                  radius: 32,
+                                  backgroundColor:
+                                      context.colorScheme.onSecondary,
+                                  child: SvgPicture.asset(
+                                    Assets.images.icon.frame,
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                context.l10n.locationTitle,
-                                style: HBTextStyles.bodyRegularSmall(
-                                  context.colorScheme.inverseSurface,
+                                Text(
+                                  context.l10n.locationTitle,
+                                  style: HBTextStyles.bodyRegularSmall(
+                                    context.colorScheme.inverseSurface,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-
-                          SvgPicture.asset(Assets.images.icon.frameArrow),
-                        ],
+                              ],
+                            ),
+        
+                            SvgPicture.asset(Assets.images.icon.frameArrow),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  // Most Popular
-                  VisibilityDetector(
-                    key: const Key('popular-section'),
-                    onVisibilityChanged: (info) {
-                      if (info.visibleFraction > 0.1 &&
-                          hotelPopular.isEmpty &&
-                          !_hasLoadedPopular) {
-                        _loadPopularHotels();
-                        _hasLoadedPopular = true;
-                      }
-                    },
-                    child: ListPopular(
-                      hotelPopular,
-                      hotelPopular.length < 3 ? hotelPopular.length : 3,
+                    // Most Popular
+                    VisibilityDetector(
+                      key: const Key('popular-section'),
+                      onVisibilityChanged: (info) {
+                        if (info.visibleFraction > 0.1 &&
+                            hotelPopular.isEmpty &&
+                            !_hasLoadedPopular) {
+                          _loadPopularHotels();
+                          _hasLoadedPopular = true;
+                        }
+                      },
+                      child: ListPopular(
+                        hotelPopular,
+                        hotelPopular.length < 3 ? hotelPopular.length : 3,
+                      ),
                     ),
-                  ),
-
-                  // Recommendex For You
-                  VisibilityDetector(
-                    key: const Key('recommended-section'),
-                    onVisibilityChanged: (info) {
-                      if (info.visibleFraction > 0.1 &&
-                          hotelRecomended.isEmpty) {
-                        _loadRecomendedHotels();
-                      }
-                    },
-                    child: ListVertical(
-                      hotelRecomended,
-                      context.l10n.homeRecommended,
-                      context.l10n.seeAll,
-                      hotelRecomended.length < 3 ? hotelRecomended.length : 3,
+        
+                    // Recommendex For You
+                    VisibilityDetector(
+                      key: const Key('recommended-section'),
+                      onVisibilityChanged: (info) {
+                        if (info.visibleFraction > 0.1 &&
+                            hotelRecomended.isEmpty) {
+                          _loadRecomendedHotels();
+                        }
+                      },
+                      child: ListVertical(
+                        hotelRecomended,
+                        context.l10n.homeRecommended,
+                        context.l10n.seeAll,
+                        hotelRecomended.length < 3 ? hotelRecomended.length : 3,
+                      ),
                     ),
-                  ),
-                  // Map
-                  Padding(
-                    padding: const EdgeInsets.only(right: 18),
-                    child: MapSection(title: context.l10n.nearYou),
-                  ),
-                  // Best Today
-                  VisibilityDetector(
-                    key: const Key('bestToday-section'),
-                    onVisibilityChanged: (info) {
-                      if (info.visibleFraction > 0.1 &&
-                          hotelBestToday.isEmpty) {
-                        _loadBestTodayHotels();
-                      }
-                    },
-                    child: ListHorizontal(
-                      hotelBestToday,
-                      context.l10n.bestToday,
-                      context.l10n.seeAll,
-                      hotelBestToday.length < 3 ? hotelBestToday.length : 2,
+                    // Map
+                    Padding(
+                      padding: const EdgeInsets.only(right: 18),
+                      child: MapSection(title: context.l10n.nearYou),
                     ),
-                  ),
-                ],
+                    // Best Today
+                    VisibilityDetector(
+                      key: const Key('bestToday-section'),
+                      onVisibilityChanged: (info) {
+                        if (info.visibleFraction > 0.1 &&
+                            hotelBestToday.isEmpty) {
+                          _loadBestTodayHotels();
+                        }
+                      },
+                      child: ListHorizontal(
+                        hotelBestToday,
+                        context.l10n.bestToday,
+                        context.l10n.seeAll,
+                        hotelBestToday.length < 3 ? hotelBestToday.length : 2,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

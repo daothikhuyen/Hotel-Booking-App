@@ -21,6 +21,7 @@ class _MyBookingScreenState extends State<MyBookingScreen>
     with TickerProviderStateMixin {
   late final TabController tabController;
 
+
   @override
   void initState() {
     super.initState();
@@ -134,9 +135,9 @@ class _MyBookingScreenState extends State<MyBookingScreen>
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: TabBarView(
             controller: tabController,
-            children: const <Widget>[
-              Booked(),
-              Center(child: Text('Page History')),
+            children: <Widget>[
+              const Booked(),
+              Center(child: Text(context.l10n.history)),
             ],
           ),
         ),

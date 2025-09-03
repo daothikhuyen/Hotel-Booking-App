@@ -401,12 +401,6 @@ abstract class AppLocalizations {
   /// **'{price}'**
   String price(String price);
 
-  /// No description provided for @notification.
-  ///
-  /// In en, this message translates to:
-  /// **'Notification'**
-  String get notification;
-
   /// No description provided for @close.
   ///
   /// In en, this message translates to:
@@ -730,6 +724,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your Hotel'**
   String get yourHotel;
+
+  /// No description provided for @yourCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Card'**
+  String get yourCard;
+
+  /// No description provided for @security.
+  ///
+  /// In en, this message translates to:
+  /// **'Security'**
+  String get security;
+
+  /// No description provided for @notification.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification'**
+  String get notification;
+
+  /// No description provided for @languages.
+  ///
+  /// In en, this message translates to:
+  /// **'Languages'**
+  String get languages;
+
+  /// No description provided for @help_support.
+  ///
+  /// In en, this message translates to:
+  /// **'Help and Support'**
+  String get help_support;
+
+  /// No description provided for @setting.
+  ///
+  /// In en, this message translates to:
+  /// **'Setting'**
+  String get setting;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
+
+  /// No description provided for @noData.
+  ///
+  /// In en, this message translates to:
+  /// **'No Hotel Data'**
+  String get noData;
+
+  /// No description provided for @areYouSure.
+  ///
+  /// In en, this message translates to:
+  /// **'Are You Sure'**
+  String get areYouSure;
+
+  /// No description provided for @doYouWantToLogout.
+  ///
+  /// In en, this message translates to:
+  /// **'Do You Want To Logout'**
+  String get doYouWantToLogout;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

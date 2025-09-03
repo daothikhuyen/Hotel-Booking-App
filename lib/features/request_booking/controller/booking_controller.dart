@@ -6,7 +6,7 @@ import 'package:hotel_booking_app/core/utils/app_exception.dart';
 import 'package:hotel_booking_app/data/model/booking.dart';
 import 'package:hotel_booking_app/features/request_booking/services/booking_service.dart';
 
-class BookingController {
+class BookingController extends ChangeNotifier{
   final user = FirebaseAuth.instance.currentUser;
   final BookingService _service = BookingService();
 
@@ -14,6 +14,7 @@ class BookingController {
     try {
       if (user != null) {
         await _service.saveBooking(booking);
+        notifyListeners();
         await context.push(PageRoutes.bookingSucess);
       }
     } on AppException catch (e) {

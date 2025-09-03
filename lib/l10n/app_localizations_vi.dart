@@ -166,9 +166,6 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get notification => 'Thông Báo';
-
-  @override
   String get close => 'Đóng';
 
   @override
@@ -332,5 +329,35 @@ class AppLocalizationsVi extends AppLocalizations {
   String get bookingDetail => 'Chi tiết đặt chổ';
 
   @override
-  String get yourHotel => 'Your Hotel';
+  String get yourHotel => 'Khách sạn của bạn';
+
+  @override
+  String get yourCard => 'Thẻ của bạn';
+
+  @override
+  String get security => 'Bảo vệ';
+
+  @override
+  String get notification => 'Thông báo';
+
+  @override
+  String get languages => 'Ngôn ngữ';
+
+  @override
+  String get help_support => 'Giúp đỡ và Hỗ trợ';
+
+  @override
+  String get setting => 'Cài đặt';
+
+  @override
+  String get logout => 'Đăng xuất';
+
+  @override
+  String get noData => 'Hiện tại chưa có lịch sử nào!';
+
+  @override
+  String get areYouSure => 'Bạn chắc chắn';
+
+  @override
+  String get doYouWantToLogout => 'Bạn muốn đăng xuất';
 }

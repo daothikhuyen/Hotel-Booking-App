@@ -77,7 +77,13 @@ class _PayWithState extends State<PayWith> {
                     ),
                   ],
                 ),
-                SecondBtn(titleBtn: context.l10n.edit),
+                SecondBtn(
+                  titleBtn: context.l10n.edit,
+                  color: context.colorScheme.primary,
+                  onPressed: () {
+                    //TODOS:...
+                  },
+                ),
               ],
             ),
           ),

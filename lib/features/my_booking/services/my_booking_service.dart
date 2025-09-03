@@ -7,24 +7,40 @@ import 'package:hotel_booking_app/data/model/booking.dart';
 class MyBookingService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth auth = FirebaseAuth.instance;
+  static const int limit = 3;
 
   User? get currentUser => auth.currentUser;
+  DocumentSnapshot? _lastDoc;
 
-  List<Booking> myBooking = [];
-
-  Future<List<Booking>> fetchMyBooking() async {
+  Future<List<Booking>> fetchMyBooking({bool isLoadMore = false}) async {
     try {
-      final snapshot =
-          await _firestore.collection(FirestoreCollections.booking).where(
+      if(currentUser == null) return [];
+      var query =
+          _firestore.collection(FirestoreCollections.booking).where(
             'user.uid', isEqualTo: currentUser?.uid,
-          ).get();
+          ).limit(limit);
+
+      if(isLoadMore && _lastDoc != null){
+        query = query.startAfterDocument(_lastDoc!);
+      }
+
+      final snapshot = await query.get();
+
+      if(snapshot.docs.isNotEmpty){
+        _lastDoc = snapshot.docs.last;
+      }
 
       final booking = snapshot.docs.map((doc) {
         return Booking.fromJson(doc.data(),doc.id);
       }).toList();
+
       return booking;
     } on FirebaseException catch (e) {
       throw AppException(message: 'fetchBooking ${e.message}');
     }
+  }
+
+  void reset(){
+    _lastDoc = null;
   }
 }

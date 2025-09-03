@@ -82,9 +82,8 @@ class HeaderBar extends StatelessWidget {
                             Text(
                               location,
                               style: GoogleFonts.plusJakartaSans(
-                                textStyle: HBTextStyles.bodyRegularXSmall(
-                                  context.colorScheme.onSurfaceVariant
-                                      .withValues(alpha: 0.7),
+                                textStyle: HBTextStyles.bodyRegularSmall(
+                                  context.colorScheme.tertiary,
                                 ),
                               ),
                             ),
@@ -132,8 +131,8 @@ class HeaderBar extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               GestureDetector(
-                onTap: () async {
-                  await authController.signOut(context);
+                onTap: () {
+                  //TODOS:...
                 }, // temporary
                 child: Container(
                   width: 40,

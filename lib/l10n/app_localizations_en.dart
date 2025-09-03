@@ -166,9 +166,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get notification => 'Notification';
-
-  @override
   String get close => 'Close';
 
   @override
@@ -333,4 +330,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get yourHotel => 'Your Hotel';
+
+  @override
+  String get yourCard => 'Your Card';
+
+  @override
+  String get security => 'Security';
+
+  @override
+  String get notification => 'Notification';
+
+  @override
+  String get languages => 'Languages';
+
+  @override
+  String get help_support => 'Help and Support';
+
+  @override
+  String get setting => 'Setting';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get noData => 'No Hotel Data';
+
+  @override
+  String get areYouSure => 'Are You Sure';
+
+  @override
+  String get doYouWantToLogout => 'Do You Want To Logout';
 }

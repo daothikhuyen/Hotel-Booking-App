@@ -44,7 +44,7 @@ class AuthService {
             .doc(currentUser?.uid)
             .set(hbUser.toJson());
       }
-    } on FirebaseAuthException{
+    } on FirebaseAuthException {
       throw AppException(message: context.l10n.signUpFailed);
     }
   }
@@ -67,15 +67,13 @@ class AuthService {
               .get();
 
       if (snapshot.exists && snapshot.data() != null) {
-        final user = HBUser.fromJson(
-          snapshot.data() ?? {},
-        );
+        final user = HBUser.fromJson(snapshot.data() ?? {});
 
         await LocalStorageHelper.saveUser(user);
         Provider.of<AuthController>(context, listen: false).setUser(user);
         return;
       }
-    } on FirebaseAuthException{
+    } on FirebaseAuthException {
       throw AppException(message: context.l10n.signInFailed);
     }
   }
@@ -91,7 +89,28 @@ class AuthService {
         idToken: gAuth.idToken,
       );
 
-      await auth.signInWithCredential(credential);
+      final snapshot = await auth.signInWithCredential(credential);
+
+      if (snapshot.user != null) {
+
+        final docSnapshot =
+            await FirebaseFirestore.instance
+                .collection('users')
+                .doc(snapshot.user!.uid)
+                .get();
+        if (docSnapshot.exists) {
+          final user = HBUser.fromJson(docSnapshot.data() ?? {});
+          await LocalStorageHelper.saveUser(user);
+          Provider.of<AuthController>(context, listen: false).setUser(user);
+        } else {
+          await signUpUser(
+            context: context,
+            id: snapshot.user?.uid ?? '',
+            email: snapshot.user?.email ?? '',
+            location: 'San Francico',
+          );
+        }
+      }
 
       return;
     } on FirebaseAuthException {

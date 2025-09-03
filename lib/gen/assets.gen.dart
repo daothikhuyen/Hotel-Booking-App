@@ -133,6 +133,12 @@ class $AssetsImagesIconGen {
   /// File path: assets/images/icon/Vector.svg
   String get vector => 'assets/images/icon/Vector.svg';
 
+  /// File path: assets/images/icon/Wallet.svg
+  String get wallet => 'assets/images/icon/Wallet.svg';
+
+  /// File path: assets/images/icon/Work.svg
+  String get work => 'assets/images/icon/Work.svg';
+
   /// File path: assets/images/icon/akar-icons_minus.svg
   String get akarIconsMinus => 'assets/images/icon/akar-icons_minus.svg';
 
@@ -156,8 +162,14 @@ class $AssetsImagesIconGen {
   /// File path: assets/images/icon/call.svg
   String get call => 'assets/images/icon/call.svg';
 
+  /// File path: assets/images/icon/danger_circle.svg
+  String get dangerCircle => 'assets/images/icon/danger_circle.svg';
+
   /// File path: assets/images/icon/discount_shape.svg
   String get discountShape => 'assets/images/icon/discount_shape.svg';
+
+  /// File path: assets/images/icon/edit_square.svg
+  String get editSquare => 'assets/images/icon/edit_square.svg';
 
   /// File path: assets/images/icon/empty-wallet.svg
   String get emptyWallet => 'assets/images/icon/empty-wallet.svg';
@@ -172,11 +184,26 @@ class $AssetsImagesIconGen {
   AssetGenImage get hotel =>
       const AssetGenImage('assets/images/icon/hotel.png');
 
+  /// File path: assets/images/icon/language.svg
+  String get language => 'assets/images/icon/language.svg';
+
+  /// File path: assets/images/icon/layer_two.svg
+  String get layerTwo => 'assets/images/icon/layer_two.svg';
+
   /// File path: assets/images/icon/location.svg
   String get location => 'assets/images/icon/location.svg';
 
+  /// File path: assets/images/icon/notifi.svg
+  String get notifi => 'assets/images/icon/notifi.svg';
+
   /// File path: assets/images/icon/plus.svg
   String get plus => 'assets/images/icon/plus.svg';
+
+  /// File path: assets/images/icon/question.svg
+  String get question => 'assets/images/icon/question.svg';
+
+  /// File path: assets/images/icon/shield_done.svg
+  String get shieldDone => 'assets/images/icon/shield_done.svg';
 
   /// File path: assets/images/icon/solar_star-bold.svg
   String get solarStarBold => 'assets/images/icon/solar_star-bold.svg';
@@ -212,6 +239,8 @@ class $AssetsImagesIconGen {
     search,
     stroke4,
     vector,
+    wallet,
+    work,
     akarIconsMinus,
     apartement,
     barcode,
@@ -219,13 +248,20 @@ class $AssetsImagesIconGen {
     buliding,
     calendar,
     call,
+    dangerCircle,
     discountShape,
+    editSquare,
     emptyWallet,
     home1,
     home,
     hotel,
+    language,
+    layerTwo,
     location,
+    notifi,
     plus,
+    question,
+    shieldDone,
     solarStarBold,
     user,
     villa,

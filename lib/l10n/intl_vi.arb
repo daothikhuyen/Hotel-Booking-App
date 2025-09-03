@@ -139,5 +139,16 @@
   "booked": "Đã đặt",
   "history": "Lịch sử",
   "bookingDetail": "Chi tiết đặt chổ",
-  "yourHotel": "Your Hotel"
+  "yourHotel": "Khách sạn của bạn",
+  "yourCard": "Thẻ của bạn",
+  "security": "Bảo vệ",
+  "notification": "Thông báo",
+  "languages": "Ngôn ngữ",
+  "help_support": "Giúp đỡ và Hỗ trợ",
+  "setting": "Cài đặt",
+  "logout": "Đăng xuất",
+  "cancel": "Thoát",
+  "noData": "Hiện tại chưa có lịch sử nào!",
+  "areYouSure": "Bạn chắc chắn",
+  "doYouWantToLogout": "Bạn muốn đăng xuất"
 }

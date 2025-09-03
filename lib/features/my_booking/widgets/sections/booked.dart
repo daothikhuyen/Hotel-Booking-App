@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/utils/format.dart';
-import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
-import 'package:hotel_booking_app/data/model/booking.dart';
+import 'package:hotel_booking_app/core/widgets/alter/page_alter_null.dart';
 import 'package:hotel_booking_app/features/my_booking/controller/my_booking_controller.dart';
 import 'package:hotel_booking_app/features/my_booking/widgets/booking_card.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:shimmer_animation/shimmer_animation.dart';
+import 'package:hotel_booking_app/features/my_booking/widgets/sections/booking_skeleton.dart';
 
 class Booked extends StatefulWidget {
   const Booked({super.key});
@@ -17,120 +14,94 @@ class Booked extends StatefulWidget {
   State<Booked> createState() => _BookedState();
 }
 
-class _BookedState extends State<Booked> {
+class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin{
   final controller = MyBookingController();
-  bool isLoading = false;
-  List<Booking> listBooking = [];
+  final _scrollController = ScrollController();
+  bool isLoading = true;
 
-  late final _pagingController = PagingController<int, Booking>(
-    getNextPageKey:
-        (state) => state.lastPageIsEmpty ? null : state.nextIntPageKey,
-    fetchPage: (pageKey) async {
-      final mybooking = await MyBookingController().fetchMyBooking();
-
-      return mybooking;
-    },
-  );
+    
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
     super.initState();
-    _loadMoreData();
+    loadData();
+
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels >=
+              _scrollController.position.maxScrollExtent - 200 &&
+          !controller.isLoading &&
+          controller.hasMore) {
+        controller.fetchMyBooking(loadMore: true);
+      }
+    });
   }
 
-  Future<void> _loadMoreData() async {
-    final mybooking = await controller.fetchMyBooking();
-    if (isLoading) return;
-    setState(() {
-      listBooking = mybooking;
+  Future<void> loadData() async {
+    await controller.fetchMyBooking().then((value) {
+      setState(() {
+        isLoading = false;
+      });
     });
   }
 
   @override
   void dispose() {
     super.dispose();
-    _pagingController.dispose();
+    _scrollController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return listBooking.isNotEmpty
-        ? PagingListener(
-          controller: _pagingController,
-          builder:
-              (context, state, fetchNextPage) => PagedListView<int, Booking>(
-                state: state,
-                fetchNextPage: fetchNextPage,
-                builderDelegate: PagedChildBuilderDelegate(
-                  itemBuilder: (context, item, index) {
-                    final myBooking = item;
-                    final hotel = myBooking.hotel;
-                    return GestureDetector(
-                      onTap: () {
-                        context.push(PageRoutes.bookingDetail, extra:myBooking);
-                      },
-                      child: Container(
-                        margin: const EdgeInsets.symmetric(vertical: 8),
-                        child: BookingCard(
-                          linkImage: hotel.image,
-                          name: hotel.name,
-                          location: hotel.location,
-                          currentPrice: hotel.currentPrice ?? 0,
-                          ratting: hotel.ratting.toString(),
-                          dateTime: formatBookingDate(
-                            myBooking.checkIn,
-                            myBooking.checkOut,
-                          ),
-                          guest: myBooking.guests,
-                        ),
-                      ),
-                    );
+    super.build(context);
+    return RefreshIndicator(
+      onRefresh: () async {
+        controller.reset();
+        isLoading = true;
+        await loadData();
+      },
+      child: AnimatedBuilder(
+        animation: controller,
+        builder: (context, _) {
+          if (isLoading) return const BookingSkeleton();
+          if (controller.listBooking.isEmpty) return const PageAlterNull();
+          return ListView.builder(
+            controller: _scrollController,
+            itemCount: controller.listBooking.length + 1,
+            itemBuilder: (context, index) {
+              if (index < controller.listBooking.length) {
+                final hotel = controller.listBooking[index].hotel;
+                final myBooking = controller.listBooking[index];
+                return GestureDetector(
+                  onTap: () {
+                    context.push(PageRoutes.bookingDetail, extra: myBooking);
                   },
-                  firstPageErrorIndicatorBuilder:
-                      (context) => const SizedBox.shrink(),
-                  noMoreItemsIndicatorBuilder:
-                      (context) => const SizedBox.shrink(),
-                ),
-              ),
-        )
-        : ListView.builder(
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            return Shimmer(
-              interval: const Duration(seconds: 5),
-              colorOpacity: 0,
-              child: Container(
-                margin: const EdgeInsets.symmetric(vertical: 8),
-                height: 176,
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 1.3,
-                    color: context.colorScheme.outline.withValues(alpha: 0.5),
-                  ),
-                  borderRadius: BorderRadius.circular(18),
-                ),
-                child: const Row(
-                  children: [
-                    Skeleton(width: 96, height: 152),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: 8),
-                          Skeleton(width: 200, height: 30),
-                          SizedBox(height: 8),
-                          Skeleton(width: 200, height: 30),
-                          SizedBox(height: 8),
-                          Skeleton(width: 200, height: 30),
-                        ],
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(vertical: 8),
+                    child: BookingCard(
+                      linkImage: hotel.image,
+                      name: hotel.name,
+                      location: hotel.location,
+                      currentPrice: hotel.currentPrice ?? 0,
+                      ratting: hotel.ratting.toString(),
+                      dateTime: formatBookingDate(
+                        myBooking.checkIn,
+                        myBooking.checkOut,
                       ),
+                      guest: myBooking.guests,
                     ),
-                  ],
-                ),
-              ),
-            );
-          },
-        );
+                  ),
+                );
+              } else {
+                return controller.hasMore
+                    ? const Center(child: CircularProgressIndicator())
+                    : const SizedBox.shrink();
+              }
+            },
+          );
+        },
+      ),
+    );
   }
 }

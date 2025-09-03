@@ -13,6 +13,7 @@ import 'package:hotel_booking_app/features/hotel_detail/detail_screen.dart';
 import 'package:hotel_booking_app/features/layout/layout_scaffold.dart';
 import 'package:hotel_booking_app/features/my_booking/my_booking_screen.dart';
 import 'package:hotel_booking_app/features/onboarding/onboarding_screen.dart';
+import 'package:hotel_booking_app/features/profile/profile_screen.dart';
 import 'package:hotel_booking_app/features/request_booking/booking_screen.dart';
 import 'package:hotel_booking_app/features/request_booking/check_out.dart';
 import 'package:hotel_booking_app/features/request_booking/page_sucess.dart';
@@ -110,6 +111,22 @@ final goRouter = GoRouter(
             GoRoute(
               path: PageRoutes.myBooking,
               builder: (context, state) => const MyBookingScreen(),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: PageRoutes.homePage,
+              builder: (context, state) => const HomeScreen(),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: PageRoutes.profile,
+              builder: (context, state) => const ProfileScreen(),
             ),
           ],
         ),

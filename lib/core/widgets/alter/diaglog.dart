@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/themes/theme.dart';
+import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
+import 'package:hotel_booking_app/core/widgets/buttons/second_btn.dart';
+import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
+import 'package:hotel_booking_app/gen/assets.gen.dart';
+import 'package:provider/provider.dart';
 
 class HBDiaglog {
   Future<void> diaglogBuilder({
@@ -51,6 +59,69 @@ class HBDiaglog {
       barrierDismissible: false,
       builder: (context) {
         return const Center(child: CircularProgressIndicator());
+      },
+    );
+  }
+
+  Future<void> showSignOutDialog(BuildContext context) {
+    final authController = Provider.of<AuthController>(context, listen: false);
+
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return Dialog(
+          child: Container(
+            padding: const EdgeInsets.only(top: 35, left: 20, right: 20),
+            height: 311,
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(18)),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SvgPicture.asset(Assets.images.icon.question),
+                const SizedBox(height: 18,),
+                Text(
+                  context.l10n.areYouSure,
+                  style: HBTextStyles.bodySemiboldLarge(
+                    context.colorScheme.onSurface,
+                  ),
+                ),
+                Text(
+                  context.l10n.doYouWantToLogout,
+                  style: HBTextStyles.bodyRegularSmall(
+                    context.colorScheme.onSurface,
+                  ),
+                ),
+                const SizedBox(height: 18,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: SecondBtn(
+                        titleBtn: context.l10n.logout,
+                        color: context.colorScheme.error,
+                        radiusSize: 12,
+                        size: 46, 
+                        onPressed: () async{ 
+                          await authController.signOut(context);
+                         },
+                      ),
+                    ),
+                    Expanded(
+                      child: PrimaryBtn(
+                        textButton: context.l10n.cancel,
+                        onPressed: () {
+                          context.pop(context);
+                        },
+                        bold: true,
+                        size: 46,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
       },
     );
   }

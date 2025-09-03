@@ -1,0 +1,41 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/themes/theme.dart';
+
+class OptionCard extends StatelessWidget {
+  const OptionCard({required this.title, required this.image, super.key});
+
+  final String title;
+  final String image;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SvgPicture.asset(image, width: 24, height: 24),
+        const SizedBox(width: 18),
+        Expanded(
+          child: Container(
+            height: 48,
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  width: 1.01,
+                  color: context.colorScheme.outline.withValues(alpha: 0.5),
+                ),
+              ),
+            ),
+            child: Text(
+              title,
+              style: HBTextStyles.bodySemiboldMedium(
+                context.colorScheme.onSurface,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}

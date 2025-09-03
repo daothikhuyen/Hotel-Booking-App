@@ -38,7 +38,6 @@ Future<void> isLoggedIn() async {
   notifyListeners();
 }
 
-
   // sign in with email and password
   Future<void> signIn({
     required BuildContext context,
@@ -50,7 +49,7 @@ Future<void> isLoggedIn() async {
       try {
         diaglog.showLoading(context);
         await AuthService().signInUser(context, email, password);
-        await context.push(PageRoutes.homePage);
+        context.replace(PageRoutes.homePage);
       } on AppException catch (e) {
         snackBar.showSnackBar(context, e.message);
       } finally {
@@ -63,7 +62,7 @@ Future<void> isLoggedIn() async {
     try {
       diaglog.showLoading(context);
       await AuthService().signInUserWithGoogle(context);
-      await context.push(PageRoutes.homePage);
+       context.replace(PageRoutes.homePage);
     } on AppException catch (e) {
       snackBar.showSnackBar(context, e.message);
     } finally {
@@ -76,11 +75,11 @@ Future<void> isLoggedIn() async {
       diaglog.showLoading(context);
       await clearUser();
       await authService.signOut(context);
-      await Future.microtask(() => context.go(PageRoutes.signIn));
+      await Future.microtask(() => context.replace(PageRoutes.signIn));
       notifyListeners();
     } on AppException {
       throw AppException(message: context.l10n.signOutFailed);
-    } finally {
+    } finally{
       Navigator.pop(context);
     }
   }

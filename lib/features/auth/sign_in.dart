@@ -183,10 +183,7 @@ class _SignInState extends State<SignIn> {
                       ),
                       TextButton(
                         onPressed:
-                            () => Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (_) => const SignIn()),
-                            ),
+                            () => context.push(PageRoutes.signIn),
                         child: Text(
                           context.l10n.signUp,
                           style: GoogleFonts.roboto(

@@ -27,48 +27,53 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var hotel = widget.hotel;
     return Scaffold(
-      body: Stack(
-        // fit: StackFit.expand,
-        children: [
-          if (widget.hotel.image.isNotEmpty)
+      body: RefreshIndicator(
+        onRefresh: () async{
+          hotel = widget.hotel;
+        },
+        child: Stack(
+          children: [
+            if (hotel.image.isNotEmpty)
+              Container(
+                height: 374,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(hotel.image),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              )
+            else
+              const Skeleton(width: double.infinity, height: 374),
+        
             Container(
               height: 374,
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(widget.hotel.image),
-                  fit: BoxFit.cover,
-                ),
+                color: context.colorScheme.inverseSurface.withValues(alpha: 0.35),
               ),
-            )
-          else
-            const Skeleton(width: double.infinity, height: 374),
-
-          Container(
-            height: 374,
-            decoration: BoxDecoration(
-              color: context.colorScheme.inverseSurface.withValues(alpha: 0.35),
             ),
-          ),
-
-          // body detail
-          PopupCard(widget: widget, onScrollChange: onScrollChange),
-          // header detail
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: HBAppBar(
-              isScrolled: isScrolled,
-              title: context.l10n.titleDetail,
-              color: context.colorScheme.onSecondary,
-              onPressed: () => context.pop(),
+        
+            // body detail
+            PopupCard(widget: widget, onScrollChange: onScrollChange),
+            // header detail
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: HBAppBar(
+                isScrolled: isScrolled,
+                title: context.l10n.titleDetail,
+                color: context.colorScheme.onSecondary,
+                onPressed: () => context.pop(),
+              ),
             ),
-          ),
-
-          // booking bottom bar
-          ButtomBar(widget: widget),
-        ],
+        
+            // booking bottom bar
+            ButtomBar(widget: widget),
+          ],
+        ),
       ),
     );
   }
