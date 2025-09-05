@@ -7,14 +7,14 @@ import 'package:hotel_booking_app/features/my_booking/controller/my_booking_cont
 import 'package:hotel_booking_app/features/my_booking/widgets/booking_card.dart';
 import 'package:hotel_booking_app/features/my_booking/widgets/sections/booking_skeleton.dart';
 
-class Booked extends StatefulWidget {
-  const Booked({super.key});
+class History extends StatefulWidget {
+  const History({super.key});
 
   @override
-  State<Booked> createState() => _BookedState();
+  State<History> createState() => _HistoryState();
 }
 
-class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin{
+class _HistoryState extends State<History> with AutomaticKeepAliveClientMixin{
   final controller = MyBookingController();
   final _scrollController = ScrollController();
   bool isLoading = true;
@@ -33,13 +33,13 @@ class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin{
               _scrollController.position.maxScrollExtent - 200 &&
           !controller.isLoading &&
           controller.hasMore) {
-        controller.fetchMyBooking(table: 'booked', loadMore: true);
+        controller.fetchMyBooking(table: 'history', loadMore: true);
       }
     });
   }
 
   Future<void> loadData() async {
-    await controller.fetchMyBooking(table: 'booked').then((value) {
+    await controller.fetchMyBooking(table: 'history').then((value) {
       setState(() {
         isLoading = false;
       });

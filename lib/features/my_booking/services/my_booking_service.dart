@@ -12,35 +12,47 @@ class MyBookingService {
   User? get currentUser => auth.currentUser;
   DocumentSnapshot? _lastDoc;
 
-  Future<List<Booking>> fetchMyBooking({bool isLoadMore = false}) async {
+  Future<List<Booking>> fetchMyBooking({
+    required bool isHistory,
+    bool isLoadMore = false,
+  }) async {
+    final now = Timestamp.now().millisecondsSinceEpoch;
     try {
-      if(currentUser == null) return [];
-      var query =
-          _firestore.collection(FirestoreCollections.booking).where(
-            'user.uid', isEqualTo: currentUser?.uid,
-          ).limit(limit);
+      if (currentUser == null) return [];
+      var query = _firestore
+          .collection(FirestoreCollections.booking)
+          .where('user.uid', isEqualTo: currentUser?.uid)
+          .orderBy('checkOut', descending: false)
+          .limit(limit);
 
-      if(isLoadMore && _lastDoc != null){
+      if (isHistory) {
+        query = query.where('checkOut', isLessThan: now);
+      } else {
+        query = query.where('checkOut', isGreaterThan: now);
+      }
+
+      if (isLoadMore && _lastDoc != null) {
         query = query.startAfterDocument(_lastDoc!);
       }
 
       final snapshot = await query.get();
 
-      if(snapshot.docs.isNotEmpty){
+      if (snapshot.docs.isNotEmpty) {
         _lastDoc = snapshot.docs.last;
       }
 
-      final booking = snapshot.docs.map((doc) {
-        return Booking.fromJson(doc.data(),doc.id);
-      }).toList();
+      final booking =
+          snapshot.docs.map((doc) {
+            return Booking.fromJson(doc.data(), doc.id);
+          }).toList();
 
       return booking;
     } on FirebaseException catch (e) {
-      throw AppException(message: 'fetchBooking ${e.message}');
+      throw AppException(message: 'fetchMyBooking ${e.message}');
     }
   }
 
-  void reset(){
+  void reset() {
     _lastDoc = null;
   }
 }

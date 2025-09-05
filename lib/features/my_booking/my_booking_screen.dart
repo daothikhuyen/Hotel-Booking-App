@@ -7,6 +7,7 @@ import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/core/widgets/textfield.dart';
 import 'package:hotel_booking_app/features/my_booking/widgets/sections/booked.dart';
+import 'package:hotel_booking_app/features/my_booking/widgets/sections/history.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 
 class MyBookingScreen extends StatefulWidget {
@@ -135,9 +136,9 @@ class _MyBookingScreenState extends State<MyBookingScreen>
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: TabBarView(
             controller: tabController,
-            children: <Widget>[
-              const Booked(),
-              Center(child: Text(context.l10n.history)),
+            children: const <Widget>[
+              Booked(),
+              History(),
             ],
           ),
         ),

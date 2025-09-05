@@ -1,6 +1,7 @@
 // private navigators
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hotel_booking_app/core/routes/animation.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/widgets/alter/page_alter_null.dart';
 import 'package:hotel_booking_app/data/model/booking.dart';
@@ -34,61 +35,62 @@ final goRouter = GoRouter(
     GoRoute(
       path: PageRoutes.signIn,
       parentNavigatorKey: _rootNavigatorKey,
-      builder: (context, state) => const SignIn(),
+      pageBuilder: (context, state) => animationRouter(const SignIn(), state),
     ),
     GoRoute(
       path: PageRoutes.detailPage,
       parentNavigatorKey: _rootNavigatorKey,
-      builder:(context, state) {
+      pageBuilder: (context, state) {
         final hotel = state.extra;
 
         if (hotel is Hotel) {
-          return DetailScreen(hotel: hotel);
+          return animationRouter(DetailScreen(hotel: hotel), state);
         }
-        return const PageAlterNull();
-      } ,       
+        return animationRouter(const PageAlterNull(), state);
+      },
     ),
     GoRoute(
       path: PageRoutes.bookingDetail,
       parentNavigatorKey: _rootNavigatorKey,
-      builder: (context, state){
+      pageBuilder: (context, state) {
         final booking = state.extra;
 
-        if(booking is Booking){
-          return BookingDetailScreen(booking: booking,);
+        if (booking is Booking) {
+          return animationRouter(BookingDetailScreen(booking: booking), state);
         }
 
-         return const PageAlterNull();
+        return animationRouter(const PageAlterNull(), state);
       },
     ),
     GoRoute(
       path: PageRoutes.checkout,
       parentNavigatorKey: _rootNavigatorKey,
-      builder: (context, state) {
+      pageBuilder: (context, state) {
         final booking = state.extra;
 
         if (booking is Booking) {
-          return CheckOut(booking: booking);
+          return animationRouter(CheckOut(booking: booking), state);
         }
 
-        return const PageAlterNull();
+        return animationRouter(const PageAlterNull(), state);
       },
     ),
     GoRoute(
       path: PageRoutes.bookingSucess,
       parentNavigatorKey: _rootNavigatorKey,
-      builder:(context, state) => const PageSucess(),
+      pageBuilder:
+          (context, state) => animationRouter(const PageSucess(), state),
     ),
     GoRoute(
       path: PageRoutes.requestBooking,
-      builder: (context, state) {
+      pageBuilder: (context, state) {
         final hotel = state.extra;
 
         if (hotel is Hotel) {
-          return BookingScreen(hotel: hotel);
+          return animationRouter(BookingScreen(hotel: hotel), state);
         }
 
-        return const PageAlterNull();
+        return animationRouter(const PageAlterNull(), state);
       },
     ),
     StatefulShellRoute.indexedStack(
@@ -101,7 +103,9 @@ final goRouter = GoRouter(
           routes: [
             GoRoute(
               path: PageRoutes.homePage,
-              builder: (context, state) => const HomeScreen(),
+              pageBuilder:
+                  (context, state) =>
+                      animationRouter(const HomeScreen(), state),
             ),
           ],
         ),
@@ -110,7 +114,9 @@ final goRouter = GoRouter(
           routes: [
             GoRoute(
               path: PageRoutes.myBooking,
-              builder: (context, state) => const MyBookingScreen(),
+              pageBuilder:
+                  (context, state) =>
+                      animationRouter(const MyBookingScreen(), state),
             ),
           ],
         ),
@@ -126,7 +132,9 @@ final goRouter = GoRouter(
           routes: [
             GoRoute(
               path: PageRoutes.profile,
-              builder: (context, state) => const ProfileScreen(),
+              pageBuilder:
+                  (context, state) =>
+                      animationRouter(const ProfileScreen(), state),
             ),
           ],
         ),
