@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/features/home/widgets/card/popular_card.dart';
+import 'package:hotel_booking_app/gen/assets.gen.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
@@ -9,7 +10,7 @@ Widget buildMostPopularItemUseCase(BuildContext context) {
     child: PopularCard(
       linkImage: context.knobs.stringOrNull(
         label: 'Link Image', 
-        initialValue: 'assets/images/home/FrameOne.png',
+        initialValue: Assets.images.home.frameOne.path,
       ),
       name: context.knobs.string(
         label: 'Title',

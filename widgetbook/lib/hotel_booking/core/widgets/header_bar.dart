@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/features/home/widgets/header_bar.dart';
+import 'package:hotel_booking_app/gen/assets.gen.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
@@ -9,7 +10,7 @@ Widget buildHeaderBarUseCase(BuildContext context) {
     child: HeaderBar(
       linkImage: context.knobs.string(
         label: 'Link Image',
-        initialValue: 'assets/images/avatar/Ellipse.png',
+        initialValue:  Assets.images.avatar.ellipse.path,
       ),
       userName: context.knobs.string(
         label: 'User Name',

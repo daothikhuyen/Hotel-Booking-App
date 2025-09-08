@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
-import 'package:hotel_booking_app/features/onboarding/onboarding_screen.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/routes/app_router.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Future.delayed(const Duration(seconds: 2), () {
       if (!mounted) return;
-      Navigator.push(context, animationRouter(const OnboardingScreen()));
+      context.push(PageRoutes.onBoarding);
     });
   }
 

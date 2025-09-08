@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/features/my_booking/widgets/booking_card.dart';
+import 'package:hotel_booking_app/gen/assets.gen.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 @widgetbook.UseCase(name: 'Default', type: BookingCard)
-Widget buildRecomendedItemUseCase(BuildContext context) {
+Widget buildBookingCardUseCase(BuildContext context) {
   return Container(
     padding: EdgeInsets.all(18),
     child: BookingCard(
             linkImage: context.knobs.stringOrNull(
         label: 'Link Image', 
-        initialValue: 'assets/images/home/FrameOne.png',
+        initialValue:  Assets.images.home.frameOne.path,
       ),
       name: context.knobs.string(
         label: 'Title',

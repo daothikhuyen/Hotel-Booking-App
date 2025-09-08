@@ -6,8 +6,8 @@ import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/core/widgets/textfield.dart';
-import 'package:hotel_booking_app/features/my_booking/widgets/sections/booked.dart';
-import 'package:hotel_booking_app/features/my_booking/widgets/sections/history.dart';
+import 'package:hotel_booking_app/features/my_booking/sections/booked.dart';
+import 'package:hotel_booking_app/features/my_booking/sections/history.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 
 class MyBookingScreen extends StatefulWidget {

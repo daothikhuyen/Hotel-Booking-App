@@ -22,18 +22,6 @@ class WidgetbookApp extends StatelessWidget {
     return Widgetbook.material(
       directories: directories,
       addons: [
-        // ViewportAddon([
-        //   IosViewports.iPad
-        // ]),
-        // ignore: deprecated_member_use
-        DeviceFrameAddon(
-          devices: [
-            Devices.ios.iPhoneSE,
-            Devices.ios.iPhone13,
-            Devices.android.smallTablet,
-            Devices.android.samsungGalaxyS20
-          ],
-        ),
         InspectorAddon(),
         AlignmentAddon(),
         ZoomAddon(),

@@ -4,8 +4,10 @@ import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
+import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
+import 'package:hotel_booking_app/features/hotel_detail/section/popup_card.dart';
 import 'package:hotel_booking_app/features/hotel_detail/widgets/bottom_bar.dart';
-import 'package:hotel_booking_app/features/hotel_detail/widgets/popup_card.dart';
+import 'package:provider/provider.dart';
 
 class DetailScreen extends StatefulWidget {
   const DetailScreen({required this.hotel, super.key});
@@ -27,10 +29,13 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<AuthController>(context);
+    final user = userProvider.currentUser;
     var hotel = widget.hotel;
+
     return Scaffold(
       body: RefreshIndicator(
-        onRefresh: () async{
+        onRefresh: () async {
           hotel = widget.hotel;
         },
         child: Stack(
@@ -47,14 +52,16 @@ class _DetailScreenState extends State<DetailScreen> {
               )
             else
               const Skeleton(width: double.infinity, height: 374),
-        
+
             Container(
               height: 374,
               decoration: BoxDecoration(
-                color: context.colorScheme.inverseSurface.withValues(alpha: 0.35),
+                color: context.colorScheme.inverseSurface.withValues(
+                  alpha: 0.35,
+                ),
               ),
             ),
-        
+
             // body detail
             PopupCard(widget: widget, onScrollChange: onScrollChange),
             // header detail
@@ -69,9 +76,9 @@ class _DetailScreenState extends State<DetailScreen> {
                 onPressed: () => context.pop(),
               ),
             ),
-        
+
             // booking bottom bar
-            ButtomBar(widget: widget),
+            BottomBar(hotel: widget.hotel, user: user),
           ],
         ),
       ),

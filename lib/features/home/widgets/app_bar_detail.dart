@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
-import 'package:hotel_booking_app/features/auth/sign_in.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/routes/app_router.dart';
 
 class HeaderBar extends StatelessWidget {
   const HeaderBar({
@@ -96,7 +96,7 @@ class HeaderBar extends StatelessWidget {
               child: PrimaryBtn(
                 textButton: context.l10n.signIn,
                 onPressed: () {
-                  Navigator.push(context, animationRouter(const SignIn()));
+                  context.replace(PageRoutes.signIn);
                 },
                 bold: false, size: 56,
               ),

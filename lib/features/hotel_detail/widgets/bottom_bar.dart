@@ -7,20 +7,18 @@ import 'package:hotel_booking_app/core/utils/format.dart';
 import 'package:hotel_booking_app/core/widgets/alter/diaglog.dart';
 import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
-import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
+import 'package:hotel_booking_app/data/model/hotel.dart';
+import 'package:hotel_booking_app/data/model/user.dart';
 import 'package:hotel_booking_app/features/auth/sign_in.dart';
-import 'package:hotel_booking_app/features/hotel_detail/detail_screen.dart';
-import 'package:provider/provider.dart';
 
-class ButtomBar extends StatelessWidget {
-  const ButtomBar({required this.widget, super.key});
+class BottomBar extends StatelessWidget {
+  const BottomBar({required this.hotel, super.key, this.user});
 
-  final DetailScreen widget;
+  final Hotel hotel;
+  final HBUser? user;
 
   @override
   Widget build(BuildContext context) {
-    final userProvider = Provider.of<AuthController>(context);
-    final user = userProvider.currentUser;
 
     return Positioned(
       bottom: 0,
@@ -53,10 +51,10 @@ class ButtomBar extends StatelessWidget {
                       context.colorScheme.tertiary,
                     ),
                   ),
-                  if (widget.hotel.currentPrice != 0)
+                  if (hotel.currentPrice != 0)
                     Text(
                       context.l10n.price(
-                        formatPrice(widget.hotel.currentPrice ?? 0.000),
+                        formatPrice(hotel.currentPrice ?? 0.000),
                       ),
                       style: HBTextStyles.headingThree(
                         context.colorScheme.inverseSurface,
@@ -76,7 +74,7 @@ class ButtomBar extends StatelessWidget {
                   if (user != null) {
                     context.push(
                       PageRoutes.requestBooking,
-                      extra: widget.hotel,
+                      extra: hotel,
                     );
                   } else {
                     HBDiaglog().diaglogBuilder(

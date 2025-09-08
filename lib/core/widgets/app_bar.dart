@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 
 class HBAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -69,8 +71,11 @@ class HBAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
             GestureDetector(
+              onTap: () {
+                context.go(PageRoutes.homePage);
+              },
               child: Icon(
-                Icons.more_vert,
+                Icons.home_outlined,
                 color:
                     isScrolled ? context.colorScheme.onSurfaceVariant : color,
               ),

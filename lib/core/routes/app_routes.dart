@@ -30,7 +30,8 @@ final goRouter = GoRouter(
   routes: [
     GoRoute(
       path: PageRoutes.onBoarding,
-      builder: (context, state) => const OnboardingScreen(),
+      pageBuilder:
+          (context, state) => animationRouter(const OnboardingScreen(), state),
     ),
     GoRoute(
       path: PageRoutes.signIn,

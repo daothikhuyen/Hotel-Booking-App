@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hotel_booking_app/core/exceptions/app_exception.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
-import 'package:hotel_booking_app/core/utils/app_exception.dart';
 import 'package:hotel_booking_app/core/widgets/alter/diaglog.dart';
 import 'package:hotel_booking_app/core/widgets/alter/snack_bar.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
@@ -49,7 +49,7 @@ Future<void> isLoggedIn() async {
       try {
         diaglog.showLoading(context);
         await AuthService().signInUser(context, email, password);
-        context.replace(PageRoutes.homePage);
+        context.go(PageRoutes.homePage);
       } on AppException catch (e) {
         snackBar.showSnackBar(context, e.message);
       } finally {
@@ -62,7 +62,7 @@ Future<void> isLoggedIn() async {
     try {
       diaglog.showLoading(context);
       await AuthService().signInUserWithGoogle(context);
-       context.replace(PageRoutes.homePage);
+       context.go(PageRoutes.homePage);
     } on AppException catch (e) {
       snackBar.showSnackBar(context, e.message);
     } finally {
@@ -73,9 +73,9 @@ Future<void> isLoggedIn() async {
   Future<void> signOut(BuildContext context) async {
     try {
       diaglog.showLoading(context);
+      context.replace(PageRoutes.signIn);
       await clearUser();
       await authService.signOut(context);
-      await Future.microtask(() => context.replace(PageRoutes.signIn));
       notifyListeners();
     } on AppException {
       throw AppException(message: context.l10n.signOutFailed);

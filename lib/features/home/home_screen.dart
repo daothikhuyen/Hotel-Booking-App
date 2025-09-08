@@ -57,6 +57,12 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    controller.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<AuthController>(context);
     final user = userProvider.currentUser;

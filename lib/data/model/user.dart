@@ -1,12 +1,5 @@
 
 class HBUser {
-
-  String uid;
-  String email;
-  String? displayName;
-  String? numberPhone;
-  String? location;
-  String? photoURL;
   
   HBUser({
     required this.uid,
@@ -28,6 +21,13 @@ class HBUser {
       photoURL: json['photoUrl'],
     );
   }
+
+  String uid;
+  String email;
+  String? displayName;
+  String? numberPhone;
+  String? location;
+  String? photoURL;
 
   Map<String, dynamic> toJson() {
     return {

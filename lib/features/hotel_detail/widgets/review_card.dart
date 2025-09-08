@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
-import 'package:hotel_booking_app/features/hotel_detail/widgets/read_more.dart';
+import 'package:hotel_booking_app/features/hotel_detail/section/read_more.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 
 class ReviewCard extends StatelessWidget {
@@ -65,9 +65,9 @@ class ReviewCard extends StatelessWidget {
                     const Padding(
                       padding: EdgeInsets.only(right: 10, top: 5),
                       child: ReadMore(
-                        text:
+                        text:// commnet of user
                             'Amazing!  The room is good than the picture.' 
-                            ' Thanks for amazing experience!',
+                            ' Thanks for amazing experience!', 
                       ),
                     ),
                   ],

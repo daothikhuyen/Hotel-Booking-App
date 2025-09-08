@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:hotel_booking_app/core/utils/app_exception.dart';
+import 'package:hotel_booking_app/core/exceptions/app_exception.dart';
 import 'package:hotel_booking_app/data/model/destination.dart';
 import 'package:hotel_booking_app/features/home/services/navigation_service.dart';
 

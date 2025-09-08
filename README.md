@@ -7,7 +7,11 @@
 - Be able to debug (with simulator & physical device) & and develop with some available tools from recommendation.
 - Responsive & Theme
 - Basic State Management & Storages
-
+  
+## Test Accounts
+- User test 1 : 
+  - Email: daothikhuyen30@gmail.com 
+  - Password: 123456789
 ## UI: Hotel Booking App
 
 - **OnBoarding and Splash**
@@ -53,12 +57,6 @@
 ```bash
   dart pub global activate flutter_gen
 ```
-- Add build_runner and FlutterGen to your package's pubspec.yaml file:
-```bash
-  dev_dependencies:
-  build_runner:
-  flutter_gen_runner:
-```
 - User flutter gen 
 ```bash
   flutter pub run build_runner build --delete-conflicting-outputs
@@ -71,26 +69,18 @@
 ```
 ### Run Widgetbook
 
-- Set up Widgetbook project: [See more her](https://docs.widgetbook.io/guides/quick-start)
-```bash
-  flutter create widgetbook --empty
-  flutter create widgetbook --empty --platforms=web,macos
-```
 - Built file main.directories.g in widgetbook
   
 ```bash
   flutter pub run build_runner build
 ```
 
-- Move to folder
+- Run widgetbook
 ```bash
-  cd widgetbook
+  B1: cd widgetbook
+  B2: flutter run
 ```
 
-- Run project
-```bash
-  flutter run
-```
 ### Run Hotel Booking App 
 - Move to project branch
 

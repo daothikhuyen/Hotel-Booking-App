@@ -1,3 +1,2 @@
-# widgetbook
+# Hotel Booking App - Flutter Practice - WidegtBook
 
-A new Flutter project.

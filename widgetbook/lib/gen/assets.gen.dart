@@ -14,15 +14,8 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/android12splash.png
-  AssetGenImage get android12splash =>
-      const AssetGenImage('assets/images/android12splash.png');
-
   /// Directory path: assets/images/avatar
   $AssetsImagesAvatarGen get avatar => const $AssetsImagesAvatarGen();
-
-  /// File path: assets/images/brand.png
-  AssetGenImage get brand => const AssetGenImage('assets/images/brand.png');
 
   /// Directory path: assets/images/home
   $AssetsImagesHomeGen get home => const $AssetsImagesHomeGen();
@@ -30,27 +23,15 @@ class $AssetsImagesGen {
   /// Directory path: assets/images/icon
   $AssetsImagesIconGen get icon => const $AssetsImagesIconGen();
 
-  /// File path: assets/images/logoApp.png
-  AssetGenImage get logoApp => const AssetGenImage('assets/images/logoApp.png');
+  /// File path: assets/images/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
   /// Directory path: assets/images/onboarding
   $AssetsImagesOnboardingGen get onboarding =>
       const $AssetsImagesOnboardingGen();
 
-  /// File path: assets/images/splash.png
-  AssetGenImage get splash => const AssetGenImage('assets/images/splash.png');
-
-  /// File path: assets/images/sucess.png
-  AssetGenImage get sucess => const AssetGenImage('assets/images/sucess.png');
-
   /// List of all assets
-  List<AssetGenImage> get values => [
-    android12splash,
-    brand,
-    logoApp,
-    splash,
-    sucess,
-  ];
+  List<AssetGenImage> get values => [logo];
 }
 
 class $AssetsImagesAvatarGen {
@@ -71,31 +52,18 @@ class $AssetsImagesHomeGen {
   AssetGenImage get frameOne =>
       const AssetGenImage('assets/images/home/FrameOne.png');
 
-  /// File path: assets/images/home/Map (2).png
-  AssetGenImage get map2 =>
-      const AssetGenImage('assets/images/home/Map (2).png');
-
   /// File path: assets/images/home/Map.png
   AssetGenImage get map => const AssetGenImage('assets/images/home/Map.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [frameOne, map2, map];
+  List<AssetGenImage> get values => [frameOne, map];
 }
 
 class $AssetsImagesIconGen {
   const $AssetsImagesIconGen();
 
-  /// File path: assets/images/icon/24-support.svg
-  String get a24Support => 'assets/images/icon/24-support.svg';
-
-  /// File path: assets/images/icon/3d-rotate.svg
-  String get a3dRotate => 'assets/images/icon/3d-rotate.svg';
-
   /// File path: assets/images/icon/Document.svg
   String get document => 'assets/images/icon/Document.svg';
-
-  /// File path: assets/images/icon/Filter.svg
-  String get filter => 'assets/images/icon/Filter.svg';
 
   /// File path: assets/images/icon/Frame.svg
   String get frame => 'assets/images/icon/Frame.svg';
@@ -118,8 +86,8 @@ class $AssetsImagesIconGen {
   /// File path: assets/images/icon/Icon - Google.svg
   String get iconGoogle => 'assets/images/icon/Icon - Google.svg';
 
-  /// File path: assets/images/icon/Icon - Search.svg
-  String get iconSearch => 'assets/images/icon/Icon - Search.svg';
+  /// File path: assets/images/icon/Profile copy.svg
+  String get profileCopy => 'assets/images/icon/Profile copy.svg';
 
   /// File path: assets/images/icon/Profile.svg
   String get profile => 'assets/images/icon/Profile.svg';
@@ -133,49 +101,12 @@ class $AssetsImagesIconGen {
   /// File path: assets/images/icon/Vector.svg
   String get vector => 'assets/images/icon/Vector.svg';
 
-  /// File path: assets/images/icon/Wallet.svg
-  String get wallet => 'assets/images/icon/Wallet.svg';
-
-  /// File path: assets/images/icon/Work.svg
-  String get work => 'assets/images/icon/Work.svg';
-
-  /// File path: assets/images/icon/akar-icons_minus.svg
-  String get akarIconsMinus => 'assets/images/icon/akar-icons_minus.svg';
-
   /// File path: assets/images/icon/apartement.png
   AssetGenImage get apartement =>
       const AssetGenImage('assets/images/icon/apartement.png');
 
-  /// File path: assets/images/icon/barcode.png
-  AssetGenImage get barcode =>
-      const AssetGenImage('assets/images/icon/barcode.png');
-
-  /// File path: assets/images/icon/building.svg
-  String get building => 'assets/images/icon/building.svg';
-
-  /// File path: assets/images/icon/buliding.svg
-  String get buliding => 'assets/images/icon/buliding.svg';
-
   /// File path: assets/images/icon/calendar.svg
   String get calendar => 'assets/images/icon/calendar.svg';
-
-  /// File path: assets/images/icon/call.svg
-  String get call => 'assets/images/icon/call.svg';
-
-  /// File path: assets/images/icon/danger_circle.svg
-  String get dangerCircle => 'assets/images/icon/danger_circle.svg';
-
-  /// File path: assets/images/icon/discount_shape.svg
-  String get discountShape => 'assets/images/icon/discount_shape.svg';
-
-  /// File path: assets/images/icon/edit_square.svg
-  String get editSquare => 'assets/images/icon/edit_square.svg';
-
-  /// File path: assets/images/icon/empty-wallet.svg
-  String get emptyWallet => 'assets/images/icon/empty-wallet.svg';
-
-  /// File path: assets/images/icon/home (1).svg
-  String get home1 => 'assets/images/icon/home (1).svg';
 
   /// File path: assets/images/icon/home.svg
   String get home => 'assets/images/icon/home.svg';
@@ -184,52 +115,19 @@ class $AssetsImagesIconGen {
   AssetGenImage get hotel =>
       const AssetGenImage('assets/images/icon/hotel.png');
 
-  /// File path: assets/images/icon/house-regular.svg
-  String get houseRegular => 'assets/images/icon/house-regular.svg';
-
-  /// File path: assets/images/icon/language.svg
-  String get language => 'assets/images/icon/language.svg';
-
-  /// File path: assets/images/icon/layer_two.svg
-  String get layerTwo => 'assets/images/icon/layer_two.svg';
-
   /// File path: assets/images/icon/location.svg
   String get location => 'assets/images/icon/location.svg';
 
-  /// File path: assets/images/icon/notifi.svg
-  String get notifi => 'assets/images/icon/notifi.svg';
-
-  /// File path: assets/images/icon/plus.svg
-  String get plus => 'assets/images/icon/plus.svg';
-
-  /// File path: assets/images/icon/question.svg
-  String get question => 'assets/images/icon/question.svg';
-
-  /// File path: assets/images/icon/shield_done.svg
-  String get shieldDone => 'assets/images/icon/shield_done.svg';
-
   /// File path: assets/images/icon/solar_star-bold.svg
   String get solarStarBold => 'assets/images/icon/solar_star-bold.svg';
-
-  /// File path: assets/images/icon/user.svg
-  String get user => 'assets/images/icon/user.svg';
 
   /// File path: assets/images/icon/villa.png
   AssetGenImage get villa =>
       const AssetGenImage('assets/images/icon/villa.png');
 
-  /// File path: assets/images/icon/wind-2.svg
-  String get wind2 => 'assets/images/icon/wind-2.svg';
-
-  /// File path: assets/images/icon/wind.svg
-  String get wind => 'assets/images/icon/wind.svg';
-
   /// List of all assets
   List<dynamic> get values => [
-    a24Support,
-    a3dRotate,
     document,
-    filter,
     frame,
     frameArrow,
     group,
@@ -237,40 +135,18 @@ class $AssetsImagesIconGen {
     iconApple,
     iconFacebook,
     iconGoogle,
-    iconSearch,
+    profileCopy,
     profile,
     search,
     stroke4,
     vector,
-    wallet,
-    work,
-    akarIconsMinus,
     apartement,
-    barcode,
-    building,
-    buliding,
     calendar,
-    call,
-    dangerCircle,
-    discountShape,
-    editSquare,
-    emptyWallet,
-    home1,
     home,
     hotel,
-    houseRegular,
-    language,
-    layerTwo,
     location,
-    notifi,
-    plus,
-    question,
-    shieldDone,
     solarStarBold,
-    user,
     villa,
-    wind2,
-    wind,
   ];
 }
 

@@ -1,13 +1,4 @@
 class Hotel {
-  String id;
-  String image;
-  String name;
-  String location;
-  String roomType;
-  double? currentPrice;
-  double? lastPrice;
-  double? ratting;
-  int? traffic;
 
   Hotel({
     required this.id,
@@ -20,14 +11,6 @@ class Hotel {
     this.ratting,
     this.traffic,
   });
-
-  double? parseDouble(dynamic value) {
-    if (value == null) return null;
-    if (value is double) return value;
-    if (value is int) return value.toDouble();
-    if (value is String) return double.tryParse(value);
-    return null;
-  }
 
   factory Hotel.fromJson(Map<String, dynamic> json, String id) {
     double? parseDouble(dynamic value) {
@@ -49,6 +32,23 @@ class Hotel {
       ratting: parseDouble(json['ratting']),
       traffic: (json['traffic'] as int?) ?? 0,
     );
+  }
+  String id;
+  String image;
+  String name;
+  String location;
+  String roomType;
+  double? currentPrice;
+  double? lastPrice;
+  double? ratting;
+  int? traffic;
+
+  double? parseDouble(dynamic value) {
+    if (value == null) return null;
+    if (value is double) return value;
+    if (value is int) return value.toDouble();
+    if (value is String) return double.tryParse(value);
+    return null;
   }
 
     Map<String, dynamic> toJson() {

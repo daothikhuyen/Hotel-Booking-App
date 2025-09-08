@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/widgets/cards/best_today_card.dart';
+import 'package:hotel_booking_app/gen/assets.gen.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
@@ -9,7 +10,7 @@ Widget buildBestTodayItemUseCase(BuildContext context) {
     child: BestTodayCard(
       linkImage: context.knobs.string(
         label: 'Link Image',
-        initialValue: 'assets/images/home/FrameOne.png',
+        initialValue:  Assets.images.home.frameOne.path,
       ),
       name: context.knobs.string(
         label: 'Title',
