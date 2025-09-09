@@ -350,7 +350,7 @@ abstract class AppLocalizations {
   /// No description provided for @errorEmptyEmail.
   ///
   /// In en, this message translates to:
-  /// **'Please entern your email'**
+  /// **'Please enter your email'**
   String get errorEmptyEmail;
 
   /// No description provided for @errorEmptyPassword.
@@ -784,6 +784,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Do You Want To Logout'**
   String get doYouWantToLogout;
+
+  /// No description provided for @nightlyRate.
+  ///
+  /// In en, this message translates to:
+  /// **'Nightly Rate'**
+  String get nightlyRate;
+
+  /// No description provided for @nightsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Nights Count'**
+  String get nightsCount;
+
+  /// No description provided for @nameBank.
+  ///
+  /// In en, this message translates to:
+  /// **'Name Bank'**
+  String get nameBank;
+
+  /// No description provided for @title.
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get title;
+
+  /// No description provided for @linkImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Link Image'**
+  String get linkImage;
+
+  /// No description provided for @ratting.
+  ///
+  /// In en, this message translates to:
+  /// **'Rating'**
+  String get ratting;
+
+  /// No description provided for @name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get name;
+
+  /// No description provided for @isCheckBox.
+  ///
+  /// In en, this message translates to:
+  /// **'Is Checkbox'**
+  String get isCheckBox;
+
+  /// No description provided for @isScrolled.
+  ///
+  /// In en, this message translates to:
+  /// **'Is Scrolled'**
+  String get isScrolled;
+
+  /// No description provided for @hintText.
+  ///
+  /// In en, this message translates to:
+  /// **'Hint Text'**
+  String get hintText;
+
+  /// No description provided for @titleButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Title Button'**
+  String get titleButton;
+
+  /// No description provided for @trafic.
+  ///
+  /// In en, this message translates to:
+  /// **'Traffic'**
+  String get trafic;
+
+  /// No description provided for @lastPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Price'**
+  String get lastPrice;
+
+  /// No description provided for @bold.
+  ///
+  /// In en, this message translates to:
+  /// **'Bold'**
+  String get bold;
+
+  /// No description provided for @buttonPressed.
+  ///
+  /// In en, this message translates to:
+  /// **'Button Pressed'**
+  String get buttonPressed;
+
+  /// No description provided for @overlayMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Overlay Message'**
+  String get overlayMessage;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

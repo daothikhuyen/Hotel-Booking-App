@@ -150,5 +150,21 @@
   "cancel": "Thoát",
   "noData": "Hiện tại chưa có lịch sử nào!",
   "areYouSure": "Bạn chắc chắn",
-  "doYouWantToLogout": "Bạn muốn đăng xuất"
+  "doYouWantToLogout": "Bạn muốn đăng xuất",
+  "nightlyRate": "Giá/đêm",
+  "nightsCount": "Số đêm",
+  "nameBank": "Tên ngân hàng",
+  "title": "Tiêu đề",
+  "linkImage": "Link ảnh",
+  "ratting": "Đánh giá",
+  "name": "Tên",
+  "isCheckBox": "Kiểm tra checkbox",
+  "isScrolled": "Kiểm tra Scroll",
+  "hintText": "Gợi ý văn bản",
+  "titleButton": "Tên nút",
+  "trafic" : "Lưu lượng",
+  "lastPrice": "Giá cũ",
+  "bold": "In đậm",
+  "buttonPressed": "Nhấn nút",
+  "overlayMessage": "Thông báo"
 }

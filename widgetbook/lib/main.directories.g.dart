@@ -15,6 +15,12 @@ import 'package:widgetbook_hotel_booking_app/hotel_booking/core/theme/color.dart
     as _widgetbook_hotel_booking_app_hotel_booking_core_theme_color;
 import 'package:widgetbook_hotel_booking_app/hotel_booking/core/theme/text_style.dart'
     as _widgetbook_hotel_booking_app_hotel_booking_core_theme_text_style;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/alter/loading.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_alter_loading;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/alter/snack_bar.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_alter_snack_bar;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/app_bar.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_app_bar;
 import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/button/primary_btn.dart'
     as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_button_primary_btn;
 import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/button/second_btn.dart'
@@ -33,6 +39,12 @@ import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/category
     as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_category_category_item;
 import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/category/category_list.dart'
     as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_category_category_list;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/list/list_horizontal.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_list_list_horizontal;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/list/list_vertical.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_list_list_vertical;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/text_field.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_text_field;
 import 'package:widgetbook_hotel_booking_app/hotel_booking/features/auth/widgets/circular_checkbox.dart'
     as _widgetbook_hotel_booking_app_hotel_booking_features_auth_widgets_circular_checkbox;
 import 'package:widgetbook_hotel_booking_app/hotel_booking/features/auth/widgets/social_item.dart'
@@ -87,18 +99,41 @@ final directories = <_widgetbook.WidgetbookNode>[
   _widgetbook.WidgetbookFolder(
     name: 'core',
     children: [
-      _widgetbook.WidgetbookLeafComponent(
-        name: 'BuildDivider',
-        useCase: _widgetbook.WidgetbookUseCase(
-          name: 'Default',
-          builder:
-              _widgetbook_hotel_booking_app_hotel_booking_core_widgets_cards_build_divider
-                  .buildBuildDividerUseCase,
-        ),
-      ),
       _widgetbook.WidgetbookFolder(
         name: 'widgets',
         children: [
+          _widgetbook.WidgetbookLeafComponent(
+            name: 'HBAppBar',
+            useCase: _widgetbook.WidgetbookUseCase(
+              name: 'Default',
+              builder:
+                  _widgetbook_hotel_booking_app_hotel_booking_core_widgets_app_bar
+                      .buildHBAppBarUseCase,
+            ),
+          ),
+          _widgetbook.WidgetbookLeafComponent(
+            name: 'HBTexField',
+            useCase: _widgetbook.WidgetbookUseCase(
+              name: 'Default',
+              builder:
+                  _widgetbook_hotel_booking_app_hotel_booking_core_widgets_text_field
+                      .buildHBTextFieldUseCase,
+            ),
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'alter',
+            children: [
+              _widgetbook.WidgetbookLeafComponent(
+                name: 'HBSnackBar',
+                useCase: _widgetbook.WidgetbookUseCase(
+                  name: 'Default',
+                  builder:
+                      _widgetbook_hotel_booking_app_hotel_booking_core_widgets_alter_snack_bar
+                          .hbSnackBarUseCase,
+                ),
+              ),
+            ],
+          ),
           _widgetbook.WidgetbookFolder(
             name: 'buttons',
             children: [
@@ -131,7 +166,16 @@ final directories = <_widgetbook.WidgetbookNode>[
                   name: 'Default',
                   builder:
                       _widgetbook_hotel_booking_app_hotel_booking_core_widgets_cards_best_today_card
-                          .buildBestTodayItemUseCase,
+                          .buildBestTodayCardUseCase,
+                ),
+              ),
+              _widgetbook.WidgetbookLeafComponent(
+                name: 'BuildDivider',
+                useCase: _widgetbook.WidgetbookUseCase(
+                  name: 'Default',
+                  builder:
+                      _widgetbook_hotel_booking_app_hotel_booking_core_widgets_cards_build_divider
+                          .buildBuildDividerUseCase,
                 ),
               ),
               _widgetbook.WidgetbookLeafComponent(
@@ -149,7 +193,7 @@ final directories = <_widgetbook.WidgetbookNode>[
                   name: 'Default',
                   builder:
                       _widgetbook_hotel_booking_app_hotel_booking_core_widgets_cards_recommended_card
-                          .buildRecomendedItemUseCase,
+                          .buildRecomendedCardUseCase,
                 ),
               ),
               _widgetbook.WidgetbookLeafComponent(
@@ -182,6 +226,29 @@ final directories = <_widgetbook.WidgetbookNode>[
                   builder:
                       _widgetbook_hotel_booking_app_hotel_booking_core_widgets_category_category_list
                           .buildCategoryListUseCase,
+                ),
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookFolder(
+            name: 'list',
+            children: [
+              _widgetbook.WidgetbookLeafComponent(
+                name: 'ListHorizontal',
+                useCase: _widgetbook.WidgetbookUseCase(
+                  name: 'Default',
+                  builder:
+                      _widgetbook_hotel_booking_app_hotel_booking_core_widgets_list_list_horizontal
+                          .buildListVerticalUseCase,
+                ),
+              ),
+              _widgetbook.WidgetbookLeafComponent(
+                name: 'ListVertical',
+                useCase: _widgetbook.WidgetbookUseCase(
+                  name: 'Default',
+                  builder:
+                      _widgetbook_hotel_booking_app_hotel_booking_core_widgets_list_list_vertical
+                          .buildListVerticalUseCase,
                 ),
               ),
             ],
@@ -467,6 +534,20 @@ final directories = <_widgetbook.WidgetbookNode>[
             ],
           ),
         ],
+      ),
+    ],
+  ),
+  _widgetbook.WidgetbookFolder(
+    name: 'material',
+    children: [
+      _widgetbook.WidgetbookLeafComponent(
+        name: 'CircularProgressIndicator',
+        useCase: _widgetbook.WidgetbookUseCase(
+          name: 'Default',
+          builder:
+              _widgetbook_hotel_booking_app_hotel_booking_core_widgets_alter_loading
+                  .buildLoadingUseCase,
+        ),
       ),
     ],
   ),

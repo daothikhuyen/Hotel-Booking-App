@@ -66,31 +66,3 @@ Widget buildTextStyleUseCase(BuildContext context) {
     ),
   );
 }
-
-// [
-//           const Text('Font Styles', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-//           const SizedBox(height: 16),
-//           Wrap(
-//             spacing: 20,
-//             runSpacing: 20,
-//             children: fontStyle.map((item) {
-//               return Container(
-//                 padding: const EdgeInsets.all(12),
-//                 width: 160,
-//                 decoration: BoxDecoration(
-//                   border: Border.all(width: 1, color: Colors.grey.shade400),
-//                   borderRadius: BorderRadius.circular(8),
-//                 ),
-//                 child: Column(
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   children: [
-
-//                     Text(item.name, style: item.style(defaultColor)),
-//                     const SizedBox(height: 4),
-//                     Text(item.description, style: const TextStyle(fontSize: 12, color: Colors.grey)),
-//                   ],
-//                 ),
-//               );
-//             }).toList(),
-//           ),
-//         ],

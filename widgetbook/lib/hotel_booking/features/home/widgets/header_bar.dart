@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/features/home/widgets/header_bar.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 import 'package:widgetbook/widgetbook.dart';
@@ -9,15 +10,15 @@ Widget buildHeaderBarUseCase(BuildContext context) {
   return Center(
     child: HeaderBar(
       linkImage: context.knobs.string(
-        label: 'Link Image',
+        label: context.l10n.linkImage,
         initialValue:  Assets.images.avatar.ellipse.path,
       ),
       userName: context.knobs.string(
-        label: 'User Name',
+        label: context.l10n.name,
         initialValue: 'John Doe',
       ),
       location: context.knobs.string(
-        label: 'Address',
+        label: context.l10n.location,
         initialValue: '123 Main St, Springfield',
       ),
     ),

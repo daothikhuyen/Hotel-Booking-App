@@ -36,7 +36,7 @@ class RecomendedCard extends StatelessWidget {
               image: DecorationImage(
                 image:
                     linkImage != ''
-                        ? NetworkImage(linkImage!)
+                        ? NetworkImage(linkImage?? '')
                         : AssetImage(Assets.images.home.frameOne.path)
                             as ImageProvider,
                 fit: BoxFit.cover,

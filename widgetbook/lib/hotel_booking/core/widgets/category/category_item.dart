@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/widgets/category/category_item.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 import 'package:widgetbook/widgetbook.dart';
@@ -9,7 +10,7 @@ Widget buildCategoryItemUseCase(BuildContext context) {
   return Center(
     child: CategoryItem(
       title:  context.knobs.string(
-        label: 'Address',
+        label: context.l10n.location,
         initialValue: 'Los Angeles, CA',
       ),
       linkImage: context.knobs.stringOrNull(
@@ -17,7 +18,7 @@ Widget buildCategoryItemUseCase(BuildContext context) {
         initialValue:  Assets.images.icon.villa.path,
       ),
       isSelected:  context.knobs.boolean(
-      label: 'Selected',
+      label: context.l10n.select,
       initialValue: false,
     ),
     ),

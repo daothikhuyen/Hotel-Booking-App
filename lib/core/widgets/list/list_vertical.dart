@@ -29,7 +29,6 @@ class ListVertical extends StatefulWidget {
 }
 
 class _ListVerticalState extends State<ListVertical> {
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -44,15 +43,16 @@ class _ListVerticalState extends State<ListVertical> {
           const SizedBox(height: 5),
           // category list
           const CategoryList(),
+          const SizedBox(height: 10),
 
           // list hotel
           Padding(
-            padding: const EdgeInsets.only(top: 15, right: 8),
+            padding: const EdgeInsets.only(top: 18, right: 8),
             child: Column(
               children:
                   widget.listHotels.isNotEmpty
                       ? List.generate(widget.number, (index) {
-                        final hotel =  widget.listHotels[index];
+                        final hotel = widget.listHotels[index];
                         return Column(
                           children: [
                             GestureDetector(
@@ -72,7 +72,13 @@ class _ListVerticalState extends State<ListVertical> {
                             ),
                             // create horizontal line
                             if (index < hotelData.length - 1)
-                              const BuildDivider()
+                              const Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 5,
+                                  vertical: 20,
+                                ),
+                                child: BuildDivider(),
+                              )
                             else
                               const SizedBox.shrink(),
                           ],

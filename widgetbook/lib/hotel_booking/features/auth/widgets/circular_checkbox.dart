@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/features/auth/widgets/circular_checkbox%20.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
@@ -13,7 +14,7 @@ Widget buildCircularCheckbocUseCase(BuildContext context) {
       max: 100,
     ),
     isCheckbox: context.knobs.boolean(
-      label: 'Is Checkbox',
+      label: context.l10n.isCheckBox,
       initialValue: false,
     ),
   );

@@ -4,5 +4,8 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 @widgetbook.UseCase(name: 'Default', type: CounterCard)
 Widget buildCounterCardUseCase(BuildContext context) {
-  return CounterCard();
+  return Padding(
+    padding: const EdgeInsets.all(18.0),
+    child: CounterCard(),
+  );
 }

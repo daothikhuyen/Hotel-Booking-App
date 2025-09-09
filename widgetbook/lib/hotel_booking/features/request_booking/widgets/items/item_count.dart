@@ -8,7 +8,7 @@ import 'package:widgetbook_hotel_booking_app/gen/assets.gen.dart';
 Widget buildItemCountUseCase(BuildContext context) {
   return ItemCounter(
     icon: Assets.images.icon.calendar,
-    color: context.colorScheme.primary,
+    color: context.colorScheme.outline,
     background: context.colorScheme.primary,
     size: 40,
     onPressed: () {},

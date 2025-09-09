@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/core/build_divider.dart';
+import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/widgets/cards/header_card.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
@@ -9,14 +9,14 @@ Widget buildHeaderBarUseCase(BuildContext context) {
   return Center(
     child: HeaderCard(
       title: context.knobs.string(
-        label: 'Title',
+        label: context.l10n.title,
         initialValue: 'Recommended For you',
       ),
       onPressed: () {
         
       },
       titleBtn: context.knobs.string(
-        label: 'Title Button',
+        label: context.l10n.titleButton,
         initialValue: 'All See',
       ),
     ),

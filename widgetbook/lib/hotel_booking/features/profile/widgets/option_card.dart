@@ -7,14 +7,17 @@ import 'package:widgetbook_hotel_booking_app/gen/assets.gen.dart';
 
 @widgetbook.UseCase(name: 'Default', type: OptionCard)
 Widget buildOptionCardUseCase(BuildContext context) {
-  return OptionCard(
-    title: context.knobs.string(
-      label: 'Title',
-      initialValue: context.l10n.yourCard,
-    ),
-    image: context.knobs.string(
-      label: 'Link Image',
-      initialValue: Assets.images.icon.calendar,
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: OptionCard(
+      title: context.knobs.string(
+        label: context.l10n.title,
+        initialValue: context.l10n.yourCard,
+      ),
+      image: context.knobs.string(
+        label: 'Link Image',
+        initialValue: Assets.images.icon.calendar,
+      ),
     ),
   );
 }

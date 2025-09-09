@@ -135,7 +135,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get signInSucess => 'Sign in sucess';
 
   @override
-  String get errorEmptyEmail => 'Please entern your email';
+  String get errorEmptyEmail => 'Please enter your email';
 
   @override
   String get errorEmptyPassword => 'Please enter your password';
@@ -360,4 +360,52 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get doYouWantToLogout => 'Do You Want To Logout';
+
+  @override
+  String get nightlyRate => 'Nightly Rate';
+
+  @override
+  String get nightsCount => 'Nights Count';
+
+  @override
+  String get nameBank => 'Name Bank';
+
+  @override
+  String get title => 'Title';
+
+  @override
+  String get linkImage => 'Link Image';
+
+  @override
+  String get ratting => 'Rating';
+
+  @override
+  String get name => 'Name';
+
+  @override
+  String get isCheckBox => 'Is Checkbox';
+
+  @override
+  String get isScrolled => 'Is Scrolled';
+
+  @override
+  String get hintText => 'Hint Text';
+
+  @override
+  String get titleButton => 'Title Button';
+
+  @override
+  String get trafic => 'Traffic';
+
+  @override
+  String get lastPrice => 'Last Price';
+
+  @override
+  String get bold => 'Bold';
+
+  @override
+  String get buttonPressed => 'Button Pressed';
+
+  @override
+  String get overlayMessage => 'Overlay Message';
 }

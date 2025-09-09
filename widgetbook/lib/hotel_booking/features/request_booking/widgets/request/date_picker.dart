@@ -4,5 +4,13 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 @widgetbook.UseCase(name: 'Default', type: DatePicker)
 Widget buildDatePickerUseCase(BuildContext context) {
-  return DatePicker();
+  return Padding(
+    padding: const EdgeInsets.all(18.0),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        DatePicker(),
+      ],
+    ),
+  );
 }

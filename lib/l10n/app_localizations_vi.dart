@@ -360,4 +360,52 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get doYouWantToLogout => 'Bạn muốn đăng xuất';
+
+  @override
+  String get nightlyRate => 'Giá/đêm';
+
+  @override
+  String get nightsCount => 'Số đêm';
+
+  @override
+  String get nameBank => 'Tên ngân hàng';
+
+  @override
+  String get title => 'Tiêu đề';
+
+  @override
+  String get linkImage => 'Link ảnh';
+
+  @override
+  String get ratting => 'Đánh giá';
+
+  @override
+  String get name => 'Tên';
+
+  @override
+  String get isCheckBox => 'Kiểm tra checkbox';
+
+  @override
+  String get isScrolled => 'Kiểm tra Scroll';
+
+  @override
+  String get hintText => 'Gợi ý văn bản';
+
+  @override
+  String get titleButton => 'Tên nút';
+
+  @override
+  String get trafic => 'Lưu lượng';
+
+  @override
+  String get lastPrice => 'Giá cũ';
+
+  @override
+  String get bold => 'In đậm';
+
+  @override
+  String get buttonPressed => 'Nhấn nút';
+
+  @override
+  String get overlayMessage => 'Thông báo';
 }

@@ -1,0 +1,36 @@
+// Called api on firebase . Here is example of virtual data
+final List<Map<String, String>> hotelData = [
+  {
+    'id': '1234',
+    'image': 'assets/images/home/FrameOne.png',
+    'name': 'The Horizon Retreat',
+    'location': 'Los Angeles, CA',
+    'currentPrice': '450',
+    'lastPrice': '450',
+    'roomType': 'vip',
+    'trffic': '120',
+    'ratting': '4.5',
+  },
+  {
+    'id': '1234',
+    'image': 'assets/images/onboarding/03 - On Boarding #2.png',
+    'name': 'Ocean Breeze Suites',
+    'location': 'Miami, FL',
+    'currentPrice': '380',
+    'lastPrice': '450',
+    'roomType': 'vip',
+    'trffic': '120',
+    'ratting': '4.2',
+  },
+  {
+    'id': '1234',
+    'image': 'assets/images/onboarding/04 - On Boarding #3.png',
+    'name': 'Mountain View Lodge',
+    'location': 'Denver, CO',
+    'currentPrice': '500',
+    'lastPrice': '450',
+    'roomType': 'vip',
+    'trffic': '120',
+    'ratting': '4.8',
+  },
+];
