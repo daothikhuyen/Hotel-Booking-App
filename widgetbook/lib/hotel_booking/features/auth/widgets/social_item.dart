@@ -8,7 +8,7 @@ import 'package:widgetbook_hotel_booking_app/gen/assets.gen.dart';
 Widget buildSocailItemUseCase(BuildContext context) {
   return SocialItem(
     linkIcon: context.knobs.string(
-      label: 'Link Image',
+      label: 'Link Minage',
       initialValue: Assets.images.icon.iconApple,
     ),
     onPressed: () {

@@ -1,0 +1,154 @@
+{
+  "@@locale": "vi",
+  "agreeTerm": "Bằng cách đăng ký, bạn đồng ý với Điều khoản và Điều kiện sử dụng của chúng tôi",
+  "bestToday": "Tốt nhất hôm nay 🔥",
+  "checkbox": "Nhớ tôi",
+  "forgotPassword": "Quên mật khẩu",
+  "home": "Trang chủ",
+  "homeRecommended": "Đề xuất cho bạn",
+  "detailRecommended": "Đề xuất",
+  "locationTitle": "Bạn có thể thay đổi vị trí của mình để \n hiển thị các biệt thự gần đó",
+  "message": "Tin nhắn",
+  "mostPopular": "Phổ biến nhất",
+  "mybooking": "Lịch sử",
+  "nearYou": "Khách sạn gần bạn",
+  "openMap": "Mở Map",
+  "night": "/đêm",
+  "noAccount": "Bạn không có tài khoản?",
+  "titleSplash": "Tìm Kỳ Nghỉ Hoàn Hảo Của Bạn, Mọi Lúc, Mọi Nơi",
+  "onboardingDescOne": "Luôn tham gia khóa học lớn và tôi \n đang theo học nhiều loại ngay bây giờ. Một phần tử \n chính xác,laoreet id. ",
+  "onboardingDescTwo": "Luôn tham gia khóa học và tôi đang \n theo học khác nhau ngay bây giờ. Các yếu tố \n công bằng, chúng tôi không cần phải làm gì. ",
+  "onboardingDescThree": "Lorem Ipsum chỉ đơn giản là văn bản giả của ngành in \n và sắp chữ.",
+  "onboardingContiune": "Tiếp tục",
+  "onboardingStarted": "Bắt đầu",
+  "onboardingTitleOne": "Sang trọng và thoải mái, Chỉ \n với một cú chạm",
+  "onboardingTitleTwo": "Đặt phòng một cách dễ dàng, đầy với phong cách",
+  "onboardingTitleThree": "Khám phá khách sạn \n mơ ước của bạn",
+  "enterEmail": "Nhập địa chỉ email của bạn",
+  "enterPassword": "Nhập mật khẩu của bạn",
+  "emailAddress": "Địa chỉ email",
+  "password": "Mật khẩu",
+  "profile": "Hồ sơ",
+  "seeAll": "Xem tất cả",
+  "signIn": "Đăng Nhập",
+  "signInDesc": "Lorem rất cà rốt, cà chua",
+  "signInTitle": "Hãy Đăng Nhập Nhá Bạn",
+  "orSignIn": "Đăng Nhập Với",
+  "textFooterOne": "Bằng cách đăng ký, bạn đồng ý với",
+  "textFooterTwo": "các điều khoảng",
+  "textFooterThree" : " và ",
+  "textFooterFour" : "Điều kiện sử dụng",
+  "signUp" : "Đăng Kí",
+  "register": "Đăng Kí",
+  "signOutFailed": "Đăng xuất thất bại",
+  "signInFailed": "Đăng nhập không thành công",
+  "signInSucess": "Đăng nhập thành công",
+  "errorEmptyEmail": "Vui lòng nhập email của bạn",
+  "errorEmptyPassword": "Vui lòng nhập mật khẩu của bạn",
+  "errorEmailFormat": "Định dạng email không hợp lệ",
+  "errorPasswordFormat": "Mật khẩu phải dài ít nhất 6 kí tự",
+  "tagAll": "Tất cả",
+  "tagApartement": "Căn hộ\n",
+  "tagHotel": "Khách sạn",
+  "traffic": "({traffic})",
+    "@traffic": {
+    "placeholders": {
+      "traffic": {
+        "type": "int"
+      }
+    }
+  },
+  "price": "{price}",
+  "@price": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "notification": "Thông Báo",
+  "close": "Đóng",
+  "oK": "Đồng ý",
+  "signInFailed": "Đăng nhập không thành công. Hãy thử lại.",
+  "signUpFailed": "Đăng ký thất bại. Hãy thử lại.",
+  "networkError": "Lỗi mạng. Kiểm tra kết nối của bạn.",
+  "userNotExisted": "Bạn chưa đăng nhập.\n Vui lòng đăng nhập tiếp tục đặt phòng",
+  "hotelNotExisted": "Dữ liệu không tồn tại",
+
+  "tagHotel": "Khách sạn",
+  "titleDetail": "Chi Tiết",
+  "commonFacilities": "Cơ sở chung",
+  "titlePrice": "Giá khách sạn",
+  "buttonBooking": "Đặt ngay",
+  "restaurant": "Nhà hàng ",
+  "swimmingPool": "Hồ Bơi",
+  "timeHours" : "Quầy Lễ \n Tân 24h",
+  "description": "Mô tả",
+  "location": "Vị trí",
+  "reviews": "Bình luận",
+  "descriptionHotel": "Nơi lý tưởng cho những ai đang tìm kiếm trải nghiệm nghỉ dưỡng sang trọng và yên tĩnh với tầm nhìn ra biển tuyệt đẹp.Nơi lý tưởng cho những ai đang tìm kiếm trải nghiệm nghỉ dưỡng sang trọng và yên tĩnh với tầm nhìn ra biển tuyệt đẹp",
+  "titleRequestBooking": "Đặt phòng",
+  "date": "Ngày",
+  "checkIn": "Ngày vào",
+  "checkOut": "Ngày ra",
+  "guest" : "Khách",
+  "numberGuest" : "{numberGuest} Người ({numberRoom} Phòng)",
+  "@numberGuest": {
+    "placeholders": {
+      "numberGuest": {
+        "type": "int"
+      },
+      "numberRoom": {
+        "type": "int"
+      }
+    }
+  },
+  "payWith": "Phương thức trả tiền",
+  "edit": "Chỉnh sửa",
+  "paymentDetails": "Chi tiết",
+  "total": "Tổng: {total} Đêm",
+    "@total": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "cleaningFee": "Phí vệ sinh",
+  "serviceFee": "Phí dịch vụ",
+  "totalPayment": "Tổng thanh toán",
+  "cancel": "Thoát",
+  "apply": "Chấp nhận",
+  "selectDate": "Chọn ngày",
+  "titleCheckOut": "Thông tin chi tiết",
+  "roomType": "Loại Phòng",
+  "phone": "SĐT",
+  "priceDetails": "Bảng giá",
+  "yourBooking" : "Thông tin",
+  "adminFee": "Phí quản lí",
+  "totalPrice": "Tổng tiền",
+  "promo": "Quảng cáo",
+  "selectPayment": "Phương thức trả tiền",
+   "select": "Lựa chọn",
+  "startDateMustBeFuture": "Ngày vào phải ở trong tương lai",
+  "notifiBookingFailure" : "Vui lòng chọn đầy đủ thông tin",
+  "notifiBookingSucess": "Bạn đã đặt phòng thành công",
+  "paymentComplete": "Thanh Toán Thành Công",
+  "contentPaymentComplete": "Ngay cả ngày mai không sợ hãi et. Cà chua ngày mai để thiết lập.",
+  "search": "Tìm kiếm...",
+  "booked": "Đã đặt",
+  "history": "Lịch sử",
+  "bookingDetail": "Chi tiết đặt chổ",
+  "yourHotel": "Khách sạn của bạn",
+  "yourCard": "Thẻ của bạn",
+  "security": "Bảo vệ",
+  "notification": "Thông báo",
+  "languages": "Ngôn ngữ",
+  "help_support": "Giúp đỡ và Hỗ trợ",
+  "setting": "Cài đặt",
+  "logout": "Đăng xuất",
+  "cancel": "Thoát",
+  "noData": "Hiện tại chưa có lịch sử nào!",
+  "areYouSure": "Bạn chắc chắn",
+  "doYouWantToLogout": "Bạn muốn đăng xuất"
+}

@@ -4,7 +4,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 @widgetbook.UseCase(name: 'Default', type: SecondBtn)
-Widget buildPrimaryBtnUseCase(BuildContext context) {
+Widget buildSecondBtnUseCase(BuildContext context) {
   return Center(child: SecondBtn(
     size:  double.parse(
         context.knobs.double

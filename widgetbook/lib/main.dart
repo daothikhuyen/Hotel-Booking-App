@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
-import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
+import 'package:widgetbook_hotel_booking_app/l10n/app_localizations.dart';
 import 'package:widgetbook_hotel_booking_app/main.directories.g.dart';
+
 void main() {
   runApp(const WidgetbookApp());
 }
@@ -31,8 +32,14 @@ class WidgetbookApp extends StatelessWidget {
         ),
         MaterialThemeAddon(
           themes: [
-            WidgetbookTheme(name: 'Light', data: lightMode),
-            WidgetbookTheme(name: 'Dark', data: darkMode),
+            WidgetbookTheme(
+              name: 'Light',
+              data: lightMode,
+            ),
+            WidgetbookTheme(
+              name: 'Dark',
+              data: darkMode
+            ),
           ],
         ),
       ],

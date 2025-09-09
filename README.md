@@ -12,6 +12,13 @@
 - User test 1 : 
   - Email: daothikhuyen30@gmail.com 
   - Password: 123456789
+  
+## Function
+- Login
+- Hotel Booking (Select date, number of guests)
+- View your booked rooms, booking history
+- Logout
+
 ## UI: Hotel Booking App
 
 - **OnBoarding and Splash**

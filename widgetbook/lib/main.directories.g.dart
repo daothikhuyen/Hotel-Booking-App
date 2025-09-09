@@ -11,26 +11,38 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:widgetbook/widgetbook.dart' as _widgetbook;
-import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/common/category_item.dart'
-    as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_common_category_item;
-import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/common/primary_btn.dart'
-    as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_common_primary_btn;
-import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/common/second_btn.dart'
-    as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_common_second_btn;
-import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/header_bar.dart'
-    as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_header_bar;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/core/theme/color.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_core_theme_color;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/core/theme/text_style.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_core_theme_text_style;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/button/primary_btn.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_button_primary_btn;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/button/second_btn.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_button_second_btn;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/cards/best_today_card.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_cards_best_today_card;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/cards/build_divider.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_cards_build_divider;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/cards/header_card.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_cards_header_card;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/cards/recommended_card.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_cards_recommended_card;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/cards/skeleton.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_cards_skeleton;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/category/category_item.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_category_category_item;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/category/category_list.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_category_category_list;
 import 'package:widgetbook_hotel_booking_app/hotel_booking/features/auth/widgets/circular_checkbox.dart'
     as _widgetbook_hotel_booking_app_hotel_booking_features_auth_widgets_circular_checkbox;
 import 'package:widgetbook_hotel_booking_app/hotel_booking/features/auth/widgets/social_item.dart'
     as _widgetbook_hotel_booking_app_hotel_booking_features_auth_widgets_social_item;
 import 'package:widgetbook_hotel_booking_app/hotel_booking/features/home/main_home.dart'
     as _widgetbook_hotel_booking_app_hotel_booking_features_home_main_home;
-import 'package:widgetbook_hotel_booking_app/hotel_booking/features/home/widgets/items/best_today_item.dart'
-    as _widgetbook_hotel_booking_app_hotel_booking_features_home_widgets_items_best_today_item;
-import 'package:widgetbook_hotel_booking_app/hotel_booking/features/home/widgets/items/most_popular_item.dart'
-    as _widgetbook_hotel_booking_app_hotel_booking_features_home_widgets_items_most_popular_item;
-import 'package:widgetbook_hotel_booking_app/hotel_booking/features/home/widgets/items/recommended_item.dart'
-    as _widgetbook_hotel_booking_app_hotel_booking_features_home_widgets_items_recommended_item;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/features/home/widgets/cards/most_popular_card.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_features_home_widgets_cards_most_popular_card;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/features/home/widgets/header_bar.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_features_home_widgets_header_bar;
 import 'package:widgetbook_hotel_booking_app/hotel_booking/features/hotel_detail/widgets/bottom_bar.dart'
     as _widgetbook_hotel_booking_app_hotel_booking_features_hotel_detail_widgets_bottom_bar;
 import 'package:widgetbook_hotel_booking_app/hotel_booking/features/hotel_detail/widgets/facilities_card.dart'
@@ -43,11 +55,47 @@ import 'package:widgetbook_hotel_booking_app/hotel_booking/features/my_booking/w
     as _widgetbook_hotel_booking_app_hotel_booking_features_my_booking_widgets_my_booking_card;
 import 'package:widgetbook_hotel_booking_app/hotel_booking/features/onBoarding/widgets/onboarding_card.dart'
     as _widgetbook_hotel_booking_app_hotel_booking_features_onBoarding_widgets_onboarding_card;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/features/profile/widgets/option_card.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_features_profile_widgets_option_card;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/features/profile/widgets/setting_section.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_features_profile_widgets_setting_section;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/features/request_booking/widgets/checkout/info_hotel_booking.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_features_request_booking_widgets_checkout_info_hotel_booking;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/features/request_booking/widgets/checkout/promo_card.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_features_request_booking_widgets_checkout_promo_card;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/features/request_booking/widgets/items/item_count.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_features_request_booking_widgets_items_item_count;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/features/request_booking/widgets/request/counter_card.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_features_request_booking_widgets_request_counter_card;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/features/request_booking/widgets/request/date_picker.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_features_request_booking_widgets_request_date_picker;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/features/request_booking/widgets/request/pay_with.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_features_request_booking_widgets_request_pay_with;
+import 'package:widgetbook_hotel_booking_app/hotel_booking/features/request_booking/widgets/request/payment_detail.dart'
+    as _widgetbook_hotel_booking_app_hotel_booking_features_request_booking_widgets_request_payment_detail;
 
 final directories = <_widgetbook.WidgetbookNode>[
+  _widgetbook.WidgetbookLeafComponent(
+    name: 'Color',
+    useCase: _widgetbook.WidgetbookUseCase(
+      name: 'Default',
+      builder:
+          _widgetbook_hotel_booking_app_hotel_booking_core_theme_color
+              .buildColorPaletteUseCase,
+    ),
+  ),
   _widgetbook.WidgetbookFolder(
     name: 'core',
     children: [
+      _widgetbook.WidgetbookLeafComponent(
+        name: 'BuildDivider',
+        useCase: _widgetbook.WidgetbookUseCase(
+          name: 'Default',
+          builder:
+              _widgetbook_hotel_booking_app_hotel_booking_core_widgets_cards_build_divider
+                  .buildBuildDividerUseCase,
+        ),
+      ),
       _widgetbook.WidgetbookFolder(
         name: 'widgets',
         children: [
@@ -59,7 +107,7 @@ final directories = <_widgetbook.WidgetbookNode>[
                 useCase: _widgetbook.WidgetbookUseCase(
                   name: 'Default',
                   builder:
-                      _widgetbook_hotel_booking_app_hotel_booking_core_widgets_common_primary_btn
+                      _widgetbook_hotel_booking_app_hotel_booking_core_widgets_button_primary_btn
                           .buildPrimaryBtnUseCase,
                 ),
               ),
@@ -68,8 +116,8 @@ final directories = <_widgetbook.WidgetbookNode>[
                 useCase: _widgetbook.WidgetbookUseCase(
                   name: 'Default',
                   builder:
-                      _widgetbook_hotel_booking_app_hotel_booking_core_widgets_common_second_btn
-                          .buildPrimaryBtnUseCase,
+                      _widgetbook_hotel_booking_app_hotel_booking_core_widgets_button_second_btn
+                          .buildSecondBtnUseCase,
                 ),
               ),
             ],
@@ -82,8 +130,17 @@ final directories = <_widgetbook.WidgetbookNode>[
                 useCase: _widgetbook.WidgetbookUseCase(
                   name: 'Default',
                   builder:
-                      _widgetbook_hotel_booking_app_hotel_booking_features_home_widgets_items_best_today_item
+                      _widgetbook_hotel_booking_app_hotel_booking_core_widgets_cards_best_today_card
                           .buildBestTodayItemUseCase,
+                ),
+              ),
+              _widgetbook.WidgetbookLeafComponent(
+                name: 'HeaderCard',
+                useCase: _widgetbook.WidgetbookUseCase(
+                  name: 'Default',
+                  builder:
+                      _widgetbook_hotel_booking_app_hotel_booking_core_widgets_cards_header_card
+                          .buildHeaderBarUseCase,
                 ),
               ),
               _widgetbook.WidgetbookLeafComponent(
@@ -91,8 +148,17 @@ final directories = <_widgetbook.WidgetbookNode>[
                 useCase: _widgetbook.WidgetbookUseCase(
                   name: 'Default',
                   builder:
-                      _widgetbook_hotel_booking_app_hotel_booking_features_home_widgets_items_recommended_item
+                      _widgetbook_hotel_booking_app_hotel_booking_core_widgets_cards_recommended_card
                           .buildRecomendedItemUseCase,
+                ),
+              ),
+              _widgetbook.WidgetbookLeafComponent(
+                name: 'Skeleton',
+                useCase: _widgetbook.WidgetbookUseCase(
+                  name: 'Default',
+                  builder:
+                      _widgetbook_hotel_booking_app_hotel_booking_core_widgets_cards_skeleton
+                          .buildSkeletonUseCase,
                 ),
               ),
             ],
@@ -105,8 +171,17 @@ final directories = <_widgetbook.WidgetbookNode>[
                 useCase: _widgetbook.WidgetbookUseCase(
                   name: 'Default',
                   builder:
-                      _widgetbook_hotel_booking_app_hotel_booking_core_widgets_common_category_item
-                          .buildFilterBarUseCase,
+                      _widgetbook_hotel_booking_app_hotel_booking_core_widgets_category_category_item
+                          .buildCategoryItemUseCase,
+                ),
+              ),
+              _widgetbook.WidgetbookLeafComponent(
+                name: 'CategoryList',
+                useCase: _widgetbook.WidgetbookUseCase(
+                  name: 'Default',
+                  builder:
+                      _widgetbook_hotel_booking_app_hotel_booking_core_widgets_category_category_list
+                          .buildCategoryListUseCase,
                 ),
               ),
             ],
@@ -157,7 +232,7 @@ final directories = <_widgetbook.WidgetbookNode>[
                 useCase: _widgetbook.WidgetbookUseCase(
                   name: 'Default',
                   builder:
-                      _widgetbook_hotel_booking_app_hotel_booking_core_widgets_header_bar
+                      _widgetbook_hotel_booking_app_hotel_booking_features_home_widgets_header_bar
                           .buildHeaderBarUseCase,
                 ),
               ),
@@ -169,7 +244,7 @@ final directories = <_widgetbook.WidgetbookNode>[
                     useCase: _widgetbook.WidgetbookUseCase(
                       name: 'Default',
                       builder:
-                          _widgetbook_hotel_booking_app_hotel_booking_features_home_widgets_items_most_popular_item
+                          _widgetbook_hotel_booking_app_hotel_booking_features_home_widgets_cards_most_popular_card
                               .buildMostPopularItemUseCase,
                     ),
                   ),
@@ -276,6 +351,136 @@ final directories = <_widgetbook.WidgetbookNode>[
             ],
           ),
         ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'profile',
+        children: [
+          _widgetbook.WidgetbookFolder(
+            name: 'widgets',
+            children: [
+              _widgetbook.WidgetbookLeafComponent(
+                name: 'OptionCard',
+                useCase: _widgetbook.WidgetbookUseCase(
+                  name: 'Default',
+                  builder:
+                      _widgetbook_hotel_booking_app_hotel_booking_features_profile_widgets_option_card
+                          .buildOptionCardUseCase,
+                ),
+              ),
+              _widgetbook.WidgetbookLeafComponent(
+                name: 'SettingSection',
+                useCase: _widgetbook.WidgetbookUseCase(
+                  name: 'Default',
+                  builder:
+                      _widgetbook_hotel_booking_app_hotel_booking_features_profile_widgets_setting_section
+                          .buildSettingSectionUseCase,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookFolder(
+        name: 'request_booking',
+        children: [
+          _widgetbook.WidgetbookFolder(
+            name: 'widgets',
+            children: [
+              _widgetbook.WidgetbookFolder(
+                name: 'checkout',
+                children: [
+                  _widgetbook.WidgetbookLeafComponent(
+                    name: 'InfoHotelBooking',
+                    useCase: _widgetbook.WidgetbookUseCase(
+                      name: 'Default',
+                      builder:
+                          _widgetbook_hotel_booking_app_hotel_booking_features_request_booking_widgets_checkout_info_hotel_booking
+                              .buildInfoHotelUseCase,
+                    ),
+                  ),
+                  _widgetbook.WidgetbookLeafComponent(
+                    name: 'PromoCard',
+                    useCase: _widgetbook.WidgetbookUseCase(
+                      name: 'Default',
+                      builder:
+                          _widgetbook_hotel_booking_app_hotel_booking_features_request_booking_widgets_checkout_promo_card
+                              .buildPromoCardUseCase,
+                    ),
+                  ),
+                ],
+              ),
+              _widgetbook.WidgetbookFolder(
+                name: 'items',
+                children: [
+                  _widgetbook.WidgetbookLeafComponent(
+                    name: 'ItemCounter',
+                    useCase: _widgetbook.WidgetbookUseCase(
+                      name: 'Default',
+                      builder:
+                          _widgetbook_hotel_booking_app_hotel_booking_features_request_booking_widgets_items_item_count
+                              .buildItemCountUseCase,
+                    ),
+                  ),
+                ],
+              ),
+              _widgetbook.WidgetbookFolder(
+                name: 'request',
+                children: [
+                  _widgetbook.WidgetbookLeafComponent(
+                    name: 'CounterCard',
+                    useCase: _widgetbook.WidgetbookUseCase(
+                      name: 'Default',
+                      builder:
+                          _widgetbook_hotel_booking_app_hotel_booking_features_request_booking_widgets_request_counter_card
+                              .buildCounterCardUseCase,
+                    ),
+                  ),
+                  _widgetbook.WidgetbookLeafComponent(
+                    name: 'DatePicker',
+                    useCase: _widgetbook.WidgetbookUseCase(
+                      name: 'Default',
+                      builder:
+                          _widgetbook_hotel_booking_app_hotel_booking_features_request_booking_widgets_request_date_picker
+                              .buildDatePickerUseCase,
+                    ),
+                  ),
+                  _widgetbook.WidgetbookLeafComponent(
+                    name: 'PayWith',
+                    useCase: _widgetbook.WidgetbookUseCase(
+                      name: 'Default',
+                      builder:
+                          _widgetbook_hotel_booking_app_hotel_booking_features_request_booking_widgets_request_pay_with
+                              .buildPayWithUseCase,
+                    ),
+                  ),
+                  _widgetbook.WidgetbookLeafComponent(
+                    name: 'PaymentDetail',
+                    useCase: _widgetbook.WidgetbookUseCase(
+                      name: 'Default',
+                      builder:
+                          _widgetbook_hotel_booking_app_hotel_booking_features_request_booking_widgets_request_payment_detail
+                              .buildPaymentDetailUseCase,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+    ],
+  ),
+  _widgetbook.WidgetbookFolder(
+    name: 'widgets',
+    children: [
+      _widgetbook.WidgetbookLeafComponent(
+        name: 'Text',
+        useCase: _widgetbook.WidgetbookUseCase(
+          name: 'Default',
+          builder:
+              _widgetbook_hotel_booking_app_hotel_booking_core_theme_text_style
+                  .buildTextStyleUseCase,
+        ),
       ),
     ],
   ),
