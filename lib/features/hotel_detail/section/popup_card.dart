@@ -7,7 +7,6 @@ import 'package:hotel_booking_app/core/widgets/cards/header_card.dart';
 import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
 import 'package:hotel_booking_app/core/widgets/list/list_horizontal.dart';
 import 'package:hotel_booking_app/data/data/facilities.dart';
-import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
 import 'package:hotel_booking_app/features/home/widgets/map_section.dart';
 import 'package:hotel_booking_app/features/hotel_detail/detail_screen.dart';
@@ -15,6 +14,7 @@ import 'package:hotel_booking_app/features/hotel_detail/section/read_more.dart';
 import 'package:hotel_booking_app/features/hotel_detail/widgets/facilities_card.dart';
 import 'package:hotel_booking_app/features/hotel_detail/widgets/review_card.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
+import 'package:provider/provider.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class PopupCard extends StatefulWidget {
@@ -32,23 +32,25 @@ class PopupCard extends StatefulWidget {
 }
 
 class _PopupCardState extends State<PopupCard> {
-  late final HotelController controller = HotelController();
-  List<Hotel> hotelRecomended = [];
+  // late final HotelController controller = HotelController();
+  // List<Hotel> hotelRecomended = [];
 
   @override
   void initState() {
     super.initState();
   }
 
-  Future<void> _loadBestTodayHotels() async {
-    final bestToday = await controller.fetchRecomendedHotels(context);
-    setState(() {
-      hotelRecomended = bestToday;
-    });
-  }
+  // Future<void> _loadBestTodayHotels() async {
+  //   final bestToday = await controller.fetchRecomendedHotels(context);
+  //   setState(() {
+  //     hotelRecomended = bestToday;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
+    final controller = Provider.of<HotelController>(context);
+
     return DraggableScrollableSheet(
       initialChildSize: 0.7,
       minChildSize: 0.7,
@@ -215,12 +217,12 @@ class _PopupCardState extends State<PopupCard> {
                       key: const Key('recommednedDetail-section'),
                       onVisibilityChanged: (info) {
                         if (info.visibleFraction > 0.1 &&
-                            hotelRecomended.isEmpty) {
-                          _loadBestTodayHotels();
+                            controller.listRecomended.isEmpty) {
+                          controller.fetchRecomendedHotels(context);
                         }
                       },
                       child: ListHorizontal(
-                        hotelRecomended,
+                        controller.listRecomended,
                         context.l10n.detailRecommended,
                         context.l10n.seeAll,
                         3,

@@ -5,7 +5,9 @@ import 'package:hotel_booking_app/core/routes/app_routes.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
 import 'package:hotel_booking_app/features/auth/helpers/local_storage_helper.dart';
+import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
 import 'package:hotel_booking_app/features/my_booking/controller/my_booking_controller.dart';
+import 'package:hotel_booking_app/features/request_booking/controller/booking_controller.dart';
 import 'package:hotel_booking_app/firebase_options.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +20,8 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (context) => HotelController(),),
+        ChangeNotifierProvider(create: (context) => BookingController(),),// request booking
         ChangeNotifierProvider(create: (context) => MyBookingController(),),
         ChangeNotifierProvider(
           create: (_) {

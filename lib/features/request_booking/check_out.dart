@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/core/widgets/cards/recomended_card.dart';
 import 'package:hotel_booking_app/data/model/booking.dart';
+import 'package:hotel_booking_app/features/my_booking/controller/my_booking_controller.dart';
 import 'package:hotel_booking_app/features/request_booking/controller/booking_controller.dart';
 import 'package:hotel_booking_app/features/request_booking/widgets/checkout/info_hotel_booking.dart';
 import 'package:hotel_booking_app/features/request_booking/widgets/checkout/promo_card.dart';
+import 'package:provider/provider.dart';
 
 class CheckOut extends StatefulWidget {
   const CheckOut({required this.booking, super.key});
@@ -19,9 +22,10 @@ class CheckOut extends StatefulWidget {
 }
 
 class _CheckOutState extends State<CheckOut> {
-
   @override
   Widget build(BuildContext context) {
+    final myBookingController = Provider.of<MyBookingController>(context);
+    final controller = Provider.of<BookingController>(context);
     final hotel = widget.booking.hotel;
 
     return Scaffold(
@@ -36,16 +40,16 @@ class _CheckOutState extends State<CheckOut> {
         child: Column(
           children: [
             RecomendedCard(
-              name:hotel.name,
-              location:hotel.location,
-              currentPrice:hotel.currentPrice ?? 0,
-              linkImage:hotel.image,
-              ratting:hotel.ratting.toString(),
+              name: hotel.name,
+              location: hotel.location,
+              currentPrice: hotel.currentPrice ?? 0,
+              linkImage: hotel.image,
+              ratting: hotel.ratting.toString(),
             ),
 
             InfoHotelBooking(booking: widget.booking),
             // promo
-            const SizedBox(height: 18,),
+            const SizedBox(height: 18),
             const PromoCard(),
           ],
         ),
@@ -56,7 +60,13 @@ class _CheckOutState extends State<CheckOut> {
         child: PrimaryBtn(
           textButton: context.l10n.selectPayment,
           onPressed: () {
-            BookingController().createBooking(context, widget.booking);
+            controller.createBooking(context, widget.booking).then((value) {
+              myBookingController.fetchMyBooking(
+                table: 'booked',
+                loadMore: true,
+              );
+              context.push(PageRoutes.bookingSucess);
+            });
           },
           bold: true,
           size: 56,

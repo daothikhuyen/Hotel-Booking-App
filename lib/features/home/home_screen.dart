@@ -4,7 +4,6 @@ import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/core/widgets/list/list_horizontal.dart';
 import 'package:hotel_booking_app/core/widgets/list/list_vertical.dart';
-import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
 import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
 import 'package:hotel_booking_app/features/home/widgets/header_bar.dart';
@@ -23,11 +22,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
-
-  List<Hotel> hotelPopular = [];
-  List<Hotel> hotelRecomended = [];
-  List<Hotel> hotelBestToday = [];
-  final controller = HotelController();
   bool _hasLoadedPopular = false;
 
   @override
@@ -35,42 +29,16 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
-  Future<void> _loadPopularHotels() async {
-    final popular = await controller.fetchMostPopularHotels(context);
-    setState(() {
-      hotelPopular = popular;
-    });
-  }
-
-  Future<void> _loadRecomendedHotels() async {
-    final recommended = await controller.fetchRecomendedHotels(context);
-    setState(() {
-      hotelRecomended = recommended;
-    });
-  }
-
-  Future<void> _loadBestTodayHotels() async {
-    final bestToday = await controller.fetchBestToday(context);
-    setState(() {
-      hotelBestToday = bestToday;
-    });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    controller.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
+    final controller = Provider.of<HotelController>(context);
     final userProvider = Provider.of<AuthController>(context);
     final user = userProvider.currentUser;
 
     return Scaffold(
       body: RefreshIndicator(
-        onRefresh: () async{
-          //TODOS:...
+        onRefresh: () async {
+          controller.reset();
         },
         child: CustomScrollView(
           slivers: [
@@ -145,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ],
                             ),
-        
+
                             SvgPicture.asset(Assets.images.icon.frameArrow),
                           ],
                         ),
@@ -153,35 +121,38 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     // Most Popular
                     VisibilityDetector(
-                      key: const Key('popular-section'),
+                      key: UniqueKey(),
                       onVisibilityChanged: (info) {
-                        if (info.visibleFraction > 0.1 &&
-                            hotelPopular.isEmpty &&
-                            !_hasLoadedPopular) {
-                          _loadPopularHotels();
+                        if (info.visibleFraction >= 0.1 &&
+                            controller.listPopular.isEmpty) {
+                          controller.fetchMostPopularHotels(context);
                           _hasLoadedPopular = true;
                         }
                       },
                       child: ListPopular(
-                        hotelPopular,
-                        hotelPopular.length < 3 ? hotelPopular.length : 3,
+                        controller.listPopular,
+                        controller.listPopular.length < 3
+                            ? controller.listPopular.length
+                            : 3,
                       ),
                     ),
-        
+
                     // Recommendex For You
                     VisibilityDetector(
                       key: const Key('recommended-section'),
                       onVisibilityChanged: (info) {
                         if (info.visibleFraction > 0.1 &&
-                            hotelRecomended.isEmpty) {
-                          _loadRecomendedHotels();
+                            controller.listRecomended.isEmpty) {
+                          controller.fetchRecomendedHotels(context);
                         }
                       },
                       child: ListVertical(
-                        hotelRecomended,
+                        controller.listRecomended,
                         context.l10n.homeRecommended,
                         context.l10n.seeAll,
-                        hotelRecomended.length < 3 ? hotelRecomended.length : 3,
+                        controller.listRecomended.length < 3
+                            ? controller.listRecomended.length
+                            : 3,
                       ),
                     ),
                     // Map
@@ -194,15 +165,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       key: const Key('bestToday-section'),
                       onVisibilityChanged: (info) {
                         if (info.visibleFraction > 0.1 &&
-                            hotelBestToday.isEmpty) {
-                          _loadBestTodayHotels();
+                            controller.listBestToday.isEmpty) {
+                          controller.fetchBestToday(context);
                         }
                       },
                       child: ListHorizontal(
-                        hotelBestToday,
+                        controller.listBestToday,
                         context.l10n.bestToday,
                         context.l10n.seeAll,
-                        hotelBestToday.length < 3 ? hotelBestToday.length : 2,
+                        controller.listBestToday.length < 3
+                            ? controller.listBestToday.length
+                            : 2,
                       ),
                     ),
                   ],

@@ -126,7 +126,10 @@ class _ListVerticalState extends State<ListVertical> {
             ),
 
             if (index < 4 - 1)
-              const BuildDivider()
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 5, vertical: 20),
+                child: BuildDivider(),
+              )
             else
               const SizedBox.shrink(),
           ],

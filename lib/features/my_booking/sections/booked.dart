@@ -6,6 +6,7 @@ import 'package:hotel_booking_app/core/widgets/alter/page_alter_null.dart';
 import 'package:hotel_booking_app/features/my_booking/controller/my_booking_controller.dart';
 import 'package:hotel_booking_app/features/my_booking/widgets/booking_card.dart';
 import 'package:hotel_booking_app/features/my_booking/widgets/booking_skeleton.dart';
+import 'package:provider/provider.dart';
 
 class Booked extends StatefulWidget {
   const Booked({super.key});
@@ -14,31 +15,33 @@ class Booked extends StatefulWidget {
   State<Booked> createState() => _BookedState();
 }
 
-class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin{
-  final controller = MyBookingController();
+class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin {
   final _scrollController = ScrollController();
   bool isLoading = true;
+  late MyBookingController controller;
 
-    
   @override
   bool get wantKeepAlive => true;
 
   @override
   void initState() {
     super.initState();
-    loadData();
 
-    _scrollController.addListener(() {
-      if (_scrollController.position.pixels >=
-              _scrollController.position.maxScrollExtent - 200 &&
-          !controller.isLoading &&
-          controller.hasMore) {
-        controller.fetchMyBooking(table: 'booked', loadMore: true);
-      }
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller =  Provider.of<MyBookingController>(context, listen: false);
+      loadData();
+      _scrollController.addListener(() {
+        if (_scrollController.position.pixels >=
+                _scrollController.position.maxScrollExtent - 200 &&
+            !controller.isLoading &&
+            controller.hasMore) {
+          controller.fetchMyBooking(table: 'booked', loadMore: true);
+        }
+      });
     });
   }
 
-  Future<void> loadData() async {
+    Future<void> loadData() async {
     await controller.fetchMyBooking(table: 'booked').then((value) {
       setState(() {
         isLoading = false;
@@ -50,12 +53,12 @@ class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin{
   void dispose() {
     super.dispose();
     _scrollController.dispose();
-    controller.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    final controller = Provider.of<MyBookingController>(context); 
 
     return RefreshIndicator(
       onRefresh: () async {

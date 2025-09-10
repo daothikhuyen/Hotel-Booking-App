@@ -1,37 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/exceptions/app_exception.dart';
+import 'package:hotel_booking_app/core/widgets/alter/snack_bar.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/features/home/services/hotel_service.dart';
 
 class HotelController extends ChangeNotifier {
-  List<Hotel> hotels = [];
+  List<Hotel> listPopular = [];
+  List<Hotel> listRecomended = [];
+  List<Hotel> listBestToday = [];
 
   bool loading = false;
   String? error;
 
   final HotelService _service = HotelService();
 
-  Future<List<Hotel>> fetchHotel(Future<List<Hotel>> serviceMethod) async {
+  Future<void> fetchHotel(
+    BuildContext context,
+    Future<List<Hotel>> serviceMethod,
+    Function(List<Hotel>) data,
+  ) async {
     try {
       loading = true;
       notifyListeners();
-      hotels = await serviceMethod;
+      data(await serviceMethod);
     } on AppException catch (e) {
-      throw AppException(message: e.message);
+      HBSnackBar().showSnackBar(context, e.message);
     } finally {
       loading = false;
       notifyListeners();
     }
-
-    return hotels;
   }
 
-  Future<List<Hotel>> fetchMostPopularHotels(BuildContext context) =>
-      fetchHotel(_service.fetchMostPopularHotels(context));
+  Future<void> fetchMostPopularHotels(BuildContext context) => fetchHotel(
+    context,
+    _service.fetchMostPopularHotels(context),
+    (data) => listPopular = data,
+  );
 
-  Future<List<Hotel>> fetchRecomendedHotels(BuildContext context) =>
-      fetchHotel(_service.fetchRecomendedHotels(context));
+  Future<void> fetchRecomendedHotels(BuildContext context) => fetchHotel(
+    context,
+    _service.fetchRecomendedHotels(context),
+    (data) => listRecomended = data,
+  );
 
-  Future<List<Hotel>> fetchBestToday(BuildContext context) =>
-      fetchHotel(_service.fetchBestToday(context));
+  Future<void> fetchBestToday(BuildContext context) => fetchHotel(
+    context,
+    _service.fetchBestToday(context),
+    (data) => listBestToday = data,
+  );
+
+  void reset(){
+    listPopular.clear();
+    listRecomended.clear();
+    listBestToday.clear();
+    notifyListeners();
+  }
 }

@@ -15,7 +15,6 @@ class MyBookingController with ChangeNotifier {
     bool loadMore = false,
   }) async {
     try {
-      debugPrint('Fetching bookings from table: $table, loadMore: $loadMore');
       final List<Booking> newBookings;
       if (isLoading) return;
 
@@ -43,8 +42,6 @@ class MyBookingController with ChangeNotifier {
       } else {
         listBooking = newBookings;
       }
-
-      debugPrint('Total bookings fetched: ${listBooking.length}');
 
       isLoading = false;
       notifyListeners();
