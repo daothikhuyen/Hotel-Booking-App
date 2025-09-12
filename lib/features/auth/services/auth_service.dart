@@ -95,7 +95,7 @@ class AuthService {
 
         final docSnapshot =
             await FirebaseFirestore.instance
-                .collection('users')
+                .collection(FirestoreCollections.users)
                 .doc(snapshot.user!.uid)
                 .get();
         if (docSnapshot.exists) {

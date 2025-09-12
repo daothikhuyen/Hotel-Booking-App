@@ -1,5 +1,5 @@
 # Hotel Booking App - Flutter Practice
-- TimeLine: 06/08/2025 - 
+- TimeLine: 06/08/2025 - 31/08/2025
 - Figma : [link](https://www.figma.com/design/nzprKFBUGynpvB8ajK3DIU/Grand-Hotel---Hotel-Booking-App-Ui-Kits--Simplifies-hotel-bookings-with-a-few-clicks---Community-?node-id=32162-2785&m=dev&t=x60u1swFy0KEC216-1)
 
 ## Targets

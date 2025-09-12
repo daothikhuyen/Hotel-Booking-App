@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/exceptions/app_exception.dart';
-import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/widgets/alter/diaglog.dart';
 import 'package:hotel_booking_app/core/widgets/alter/snack_bar.dart';
@@ -77,10 +76,9 @@ Future<void> isLoggedIn() async {
       await clearUser();
       await authService.signOut(context);
       notifyListeners();
-    } on AppException {
-      throw AppException(message: context.l10n.signOutFailed);
-    } finally{
-      Navigator.pop(context);
-    }
+    } on AppException catch (e){
+      context.pop();
+      snackBar.showSnackBar(context,e.message);
+    } 
   }
 }

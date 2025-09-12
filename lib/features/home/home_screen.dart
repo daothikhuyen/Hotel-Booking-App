@@ -22,7 +22,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
-  bool _hasLoadedPopular = false;
 
   @override
   void initState() {
@@ -126,7 +125,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         if (info.visibleFraction >= 0.1 &&
                             controller.listPopular.isEmpty) {
                           controller.fetchMostPopularHotels(context);
-                          _hasLoadedPopular = true;
                         }
                       },
                       child: ListPopular(

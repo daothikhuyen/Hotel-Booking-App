@@ -5,8 +5,8 @@ import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/core/utils/translation_helper.dart';
 import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
-import 'package:hotel_booking_app/data/model/destination.dart';
 import 'package:hotel_booking_app/features/home/controller/navigation_controller.dart';
+import 'package:provider/provider.dart';
 
 class LayoutScaffold extends StatefulWidget {
   const LayoutScaffold({required this.navigationShell, Key? key})
@@ -19,72 +19,77 @@ class LayoutScaffold extends StatefulWidget {
 }
 
 class _LayoutScaffoldState extends State<LayoutScaffold> {
-  List<Destination> listDestination = [];
-  final controller = NavigationController();
+  late NavigationController controller;
 
   @override
   void initState() {
     super.initState();
-    _loadNavigationBar();
-  }
-
-  Future<void> _loadNavigationBar() async {
-    final destinations = await controller.fetchNavigationBar();
-    setState(() {
-      listDestination = destinations;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller = Provider.of<NavigationController>(context, listen: false);
+      controller.fetchNavigationBar(context);
     });
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-    body: widget.navigationShell,
-    bottomNavigationBar: Container(
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: context.colorScheme.outline,
-            offset: const Offset(0, -5),
-            blurRadius: 60,
-          ),
-        ],
-      ),
-      child: NavigationBarTheme(
-        data: NavigationBarThemeData(
-          labelTextStyle: WidgetStateProperty.resolveWith<TextStyle?>((states) {
-            if (states.contains(WidgetState.selected)) {
-              return HBTextStyles.bodySemiboldSmall(
-                context.colorScheme.primary,
+  Widget build(BuildContext context) {
+    final controller = Provider.of<NavigationController>(context);
+
+    return Scaffold(
+      body: widget.navigationShell,
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: context.colorScheme.outline,
+              offset: const Offset(0, -5),
+              blurRadius: 60,
+            ),
+          ],
+        ),
+        child: NavigationBarTheme(
+          data: NavigationBarThemeData(
+            labelTextStyle: WidgetStateProperty.resolveWith<TextStyle?>((
+              states,
+            ) {
+              if (states.contains(WidgetState.selected)) {
+                return HBTextStyles.bodySemiboldSmall(
+                  context.colorScheme.primary,
+                );
+              }
+              return HBTextStyles.bodyMediumSmall(
+                context.colorScheme.onTertiary,
               );
-            }
-            return HBTextStyles.bodyMediumSmall(context.colorScheme.onTertiary);
-          }),
-        ),
-        child: NavigationBar(
-          selectedIndex: widget.navigationShell.currentIndex,
-          indicatorColor: Colors.transparent,
-          onDestinationSelected: widget.navigationShell.goBranch,
-          destinations:
-              listDestination.length >= 2
-                  ? listDestination.map<NavigationDestination>((d) {
-                    return NavigationDestination(
-                      icon: SvgPicture.asset(d.icon),
-                      selectedIcon: SvgPicture.asset(
-                        d.icon,
-                        colorFilter: ColorFilter.mode(
-                          context.colorScheme.primary,
-                          BlendMode.srcIn,
+            }),
+          ),
+          child: NavigationBar(
+            selectedIndex: widget.navigationShell.currentIndex,
+            indicatorColor: Colors.transparent,
+            onDestinationSelected: widget.navigationShell.goBranch,
+            destinations:
+                controller.listDestinations.length >= 2
+                    ? controller.listDestinations.map<NavigationDestination>((
+                      d,
+                    ) {
+                      return NavigationDestination(
+                        icon: SvgPicture.asset(d.icon),
+                        selectedIcon: SvgPicture.asset(
+                          d.icon,
+                          colorFilter: ColorFilter.mode(
+                            context.colorScheme.primary,
+                            BlendMode.srcIn,
+                          ),
+                          fit: BoxFit.cover,
                         ),
-                        fit: BoxFit.cover,
-                      ),
-                      label: getTranslatedText(context, d.labelKey),
-                    );
-                  }).toList()
-                  : [
-                    const Skeleton(width: double.infinity, height: 30),
-                    const Skeleton(width: double.infinity, height: 30),
-                  ],
+                        label: getTranslatedText(context, d.labelKey),
+                      );
+                    }).toList()
+                    : [
+                      const Skeleton(width: double.infinity, height: 30),
+                      const Skeleton(width: double.infinity, height: 30),
+                    ],
+          ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }

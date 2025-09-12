@@ -1,8 +1,10 @@
 // Called api on firebase . Here is example of virtual data
+import 'package:widgetbook_hotel_booking_app/gen/assets.gen.dart';
+
 final List<Map<String, String>> hotelData = [
   {
     'id': '1234',
-    'image': 'assets/images/home/FrameOne.png',
+    'image': 'http://res.cloudinary.com/dfa17qrac/image/upload/v1755243539/images/mgppcv00ezxvztuspqaj.jpg',
     'name': 'The Horizon Retreat',
     'location': 'Los Angeles, CA',
     'currentPrice': '450',
@@ -13,7 +15,7 @@ final List<Map<String, String>> hotelData = [
   },
   {
     'id': '1234',
-    'image': 'assets/images/onboarding/03 - On Boarding #2.png',
+    'image': 'http://res.cloudinary.com/dfa17qrac/image/upload/v1755243539/images/mgppcv00ezxvztuspqaj.jpg',
     'name': 'Ocean Breeze Suites',
     'location': 'Miami, FL',
     'currentPrice': '380',
@@ -24,7 +26,7 @@ final List<Map<String, String>> hotelData = [
   },
   {
     'id': '1234',
-    'image': 'assets/images/onboarding/04 - On Boarding #3.png',
+    'image': 'http://res.cloudinary.com/dfa17qrac/image/upload/v1755243539/images/mgppcv00ezxvztuspqaj.jpg',
     'name': 'Mountain View Lodge',
     'location': 'Denver, CO',
     'currentPrice': '500',

@@ -147,7 +147,7 @@ class _InfoHotelBookingState extends State<InfoHotelBooking> {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    booking.user.numberPhone?? '0834007781',
+                    booking.user.numberPhone ?? '0834007781',
                     style: HBTextStyles.bodyMediumMedium(
                       context.colorScheme.onSurface,
                     ),

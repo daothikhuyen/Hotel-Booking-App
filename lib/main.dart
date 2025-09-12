@@ -6,6 +6,7 @@ import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
 import 'package:hotel_booking_app/features/auth/helpers/local_storage_helper.dart';
 import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
+import 'package:hotel_booking_app/features/home/controller/navigation_controller.dart';
 import 'package:hotel_booking_app/features/my_booking/controller/my_booking_controller.dart';
 import 'package:hotel_booking_app/features/request_booking/controller/booking_controller.dart';
 import 'package:hotel_booking_app/firebase_options.dart';
@@ -21,6 +22,7 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => HotelController(),),
+        ChangeNotifierProvider(create: (context) => NavigationController(),),
         ChangeNotifierProvider(create: (context) => BookingController(),),// request booking
         ChangeNotifierProvider(create: (context) => MyBookingController(),),
         ChangeNotifierProvider(
@@ -42,7 +44,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Flutter Demo',
+      title: 'Hotel Booking App',
       routerConfig: goRouter,
       debugShowCheckedModeBanner: false,
       theme: lightMode,
