@@ -6,6 +6,7 @@ import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/utils/format.dart';
 import 'package:hotel_booking_app/core/widgets/alter/page_alter_null.dart';
 import 'package:hotel_booking_app/data/model/booking.dart';
+import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
 import 'package:hotel_booking_app/features/my_booking/controller/my_booking_controller.dart';
 import 'package:hotel_booking_app/features/my_booking/widgets/booking_card.dart';
 import 'package:hotel_booking_app/features/my_booking/widgets/booking_skeleton.dart';
@@ -22,28 +23,11 @@ class Booked extends StatefulWidget {
 class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin {
   final _scrollController = ScrollController();
   bool isLoading = true;
+  bool _initialized = false;
   late MyBookingController controller;
 
   @override
   bool get wantKeepAlive => true;
-
-  @override
-  void initState() {
-    super.initState();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      controller =  Provider.of<MyBookingController>(context, listen: false);
-      loadData();
-      _scrollController.addListener(() {
-        if (_scrollController.position.pixels >=
-                _scrollController.position.maxScrollExtent - 200 &&
-            !controller.isLoading &&
-            controller.hasMore) {
-          controller.fetchMyBooking(table: 'booked', loadMore: true);
-        }
-      });
-    });
-  }
 
     Future<void> loadData() async {
     await controller.fetchMyBooking(table: 'booked').then((value) {
@@ -57,6 +41,35 @@ class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin {
   void dispose() {
     super.dispose();
     _scrollController.dispose();
+  }
+
+   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final authController = Provider.of<AuthController>(context);
+    controller = Provider.of<MyBookingController>(context, listen: false);
+
+    if (authController.currentUser != null && !_initialized) {
+      loadData();
+      _scrollController.addListener(() {
+        if (_scrollController.position.pixels >=
+                _scrollController.position.maxScrollExtent - 200 &&
+            !controller.isLoading &&
+            controller.hasMore) {
+          controller.fetchMyBooking(table: 'booked', loadMore: true);
+        }
+      });
+      _initialized = true;
+    }
+
+    // Khi logout
+    if (authController.currentUser == null) {
+      controller.reset();
+      setState(() {
+        isLoading = false;
+        _initialized = false;
+      });
+    }
   }
 
   @override
