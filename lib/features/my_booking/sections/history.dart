@@ -3,20 +3,23 @@ import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/utils/format.dart';
 import 'package:hotel_booking_app/core/widgets/alter/page_alter_null.dart';
+import 'package:hotel_booking_app/data/model/booking.dart';
 import 'package:hotel_booking_app/features/my_booking/controller/my_booking_controller.dart';
 import 'package:hotel_booking_app/features/my_booking/widgets/booking_card.dart';
 import 'package:hotel_booking_app/features/my_booking/widgets/booking_skeleton.dart';
+import 'package:provider/provider.dart';
 
 class History extends StatefulWidget {
-  const History({super.key});
+  const History({required this.listHistoryBokked, super.key});
+  final List<Booking> listHistoryBokked;
 
   @override
   State<History> createState() => _HistoryState();
 }
 
 class _HistoryState extends State<History> with AutomaticKeepAliveClientMixin{
-  final controller = MyBookingController();
   final _scrollController = ScrollController();
+  late MyBookingController controller;
   bool isLoading = true;
 
     
@@ -26,15 +29,18 @@ class _HistoryState extends State<History> with AutomaticKeepAliveClientMixin{
   @override
   void initState() {
     super.initState();
-    loadData();
 
-    _scrollController.addListener(() {
-      if (_scrollController.position.pixels >=
-              _scrollController.position.maxScrollExtent - 200 &&
-          !controller.isLoading &&
-          controller.hasMore) {
-        controller.fetchMyBooking(table: 'history', loadMore: true);
-      }
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller =  Provider.of<MyBookingController>(context, listen: false);
+      loadData();
+      _scrollController.addListener(() {
+        if (_scrollController.position.pixels >=
+                _scrollController.position.maxScrollExtent - 200 &&
+            !controller.isLoading &&
+            controller.hasMore) {
+          controller.fetchMyBooking(table: 'booked', loadMore: true);
+        }
+      });
     });
   }
 
@@ -55,6 +61,8 @@ class _HistoryState extends State<History> with AutomaticKeepAliveClientMixin{
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    final controller = Provider.of<MyBookingController>(context); 
+
     return RefreshIndicator(
       onRefresh: () async {
         controller.reset();
