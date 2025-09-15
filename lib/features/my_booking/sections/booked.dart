@@ -1,15 +1,19 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/utils/format.dart';
 import 'package:hotel_booking_app/core/widgets/alter/page_alter_null.dart';
+import 'package:hotel_booking_app/data/model/booking.dart';
 import 'package:hotel_booking_app/features/my_booking/controller/my_booking_controller.dart';
 import 'package:hotel_booking_app/features/my_booking/widgets/booking_card.dart';
 import 'package:hotel_booking_app/features/my_booking/widgets/booking_skeleton.dart';
 import 'package:provider/provider.dart';
 
 class Booked extends StatefulWidget {
-  const Booked({super.key});
+  const Booked({required this.booked, super.key});
+  final List<Booking> booked;
 
   @override
   State<Booked> createState() => _BookedState();

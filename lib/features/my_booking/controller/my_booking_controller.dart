@@ -18,8 +18,10 @@ class MyBookingController with ChangeNotifier {
       final List<Booking> newBookings;
       if (isLoading) return;
 
-      isLoading = true;
-      notifyListeners();
+      if (loadMore) {
+        isLoading = true;
+        notifyListeners();
+      }
 
       if (table == 'booked') {
         newBookings = await _service.fetchMyBooking(
@@ -47,6 +49,34 @@ class MyBookingController with ChangeNotifier {
       notifyListeners();
     } on AppException catch (e) {
       throw AppException(code: e.hashCode, message: 'Error ${e.message}');
+    }
+  }
+
+  Future<List<Booking>> searchBooked({
+    required String text,
+    required bool isHistory,
+  }) async {
+    try {
+      hasMore = false;
+      notifyListeners();
+      if (text.isEmpty) {
+        await fetchMyBooking(table: isHistory ? 'history' : 'booked');
+      } else {
+        final booked = await _service.searchBooked(
+          text: text,
+          isHistory: isHistory,
+        );
+         debugPrint('isHistory $booked');
+        listBooking = booked;
+        notifyListeners();
+        return booked;
+      }
+      return [];
+    } on AppException catch (e) {
+      throw AppException(
+        code: e.hashCode,
+        message: 'Error search booked ${e.message}',
+      );
     }
   }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/exceptions/app_exception.dart';
 import 'package:hotel_booking_app/core/widgets/alter/snack_bar.dart';
+import 'package:hotel_booking_app/data/model/booking.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/features/home/services/hotel_service.dart';
 
