@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/exceptions/app_exception.dart';
 import 'package:hotel_booking_app/core/firestore_collections.dart';
 import 'package:hotel_booking_app/data/model/booking.dart';

@@ -107,6 +107,18 @@ abstract class AppLocalizations {
   /// **'Best Today 🔥'**
   String get bestToday;
 
+  /// No description provided for @all.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get all;
+
+  /// No description provided for @hotel.
+  ///
+  /// In en, this message translates to:
+  /// **'Hotel'**
+  String get hotel;
+
   /// No description provided for @checkbox.
   ///
   /// In en, this message translates to:

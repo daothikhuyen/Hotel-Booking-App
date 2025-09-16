@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
@@ -75,7 +76,7 @@ class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final controller = Provider.of<MyBookingController>(context); 
+    final controller = Provider.of<MyBookingController>(context);
 
     return RefreshIndicator(
       onRefresh: () async {
