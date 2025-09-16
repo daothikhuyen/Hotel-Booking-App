@@ -31,7 +31,7 @@
 
 - **Home**
 
-<img src="./assets/images/image_project/home2.png" width="200"/>  <img src="./assets/images/image_project/home_1.png" width="200"/> 
+<img src="./assets/images/image_project/home2.png" width="200"/>  <img src="./assets/images/image_project/home_1.png" width="200"/> <img src="./assets/images/image_project/home3.png" width="200"/> 
 
 - **Detail**
 

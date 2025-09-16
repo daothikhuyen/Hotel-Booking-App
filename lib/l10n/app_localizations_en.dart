@@ -15,6 +15,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bestToday => 'Best Today 🔥';
 
   @override
+  String get all => 'All';
+
+  @override
+  String get hotel => 'Hotel';
+
+  @override
   String get checkbox => 'Remember Me';
 
   @override

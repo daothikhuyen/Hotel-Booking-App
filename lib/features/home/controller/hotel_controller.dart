@@ -6,11 +6,14 @@ import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/features/home/services/hotel_service.dart';
 
 class HotelController extends ChangeNotifier {
+  List<Hotel> listAll = [];
   List<Hotel> listPopular = [];
   List<Hotel> listRecomended = [];
   List<Hotel> listBestToday = [];
 
-  bool loading = false;
+  bool isLoading = false;
+  bool hasMore = true;
+  static const int limit = 10;
   String? error;
 
   final HotelService _service = HotelService();
@@ -18,39 +21,79 @@ class HotelController extends ChangeNotifier {
   Future<void> fetchHotel(
     BuildContext context,
     Future<List<Hotel>> serviceMethod,
-    Function(List<Hotel>) data,
-  ) async {
+    Function(List<Hotel>) data, {
+    bool loadMore = false,
+  }) async {
     try {
-      loading = true;
-      notifyListeners();
+      if (isLoading) return;
+
+      if (loadMore) {
+        isLoading = true;
+        notifyListeners();
+      }
+
       data(await serviceMethod);
     } on AppException catch (e) {
       HBSnackBar().showSnackBar(context, e.message);
     } finally {
-      loading = false;
+      isLoading = false;
       notifyListeners();
     }
   }
 
-  Future<void> fetchMostPopularHotels(BuildContext context) => fetchHotel(
-    context,
-    _service.fetchMostPopularHotels(context),
-    (data) => listPopular = data,
-  );
+  Future<void> fetchAll(BuildContext context, {bool loadMore = false}) {
+    return fetchHotel(
+      context,
+      _service.fetchAll(context, loadMore: loadMore, limit: limit),
+      (data) => {
+        listAll = data,
+        if (data.length < limit) {hasMore = false},
+        notifyListeners(),
+      },
+    );
+  }
 
-  Future<void> fetchRecomendedHotels(BuildContext context) => fetchHotel(
+  Future<void> fetchMostPopularHotels(
+    BuildContext context, {
+    bool loadMore = false,
+    int limit = limit,
+  }) {
+    return fetchHotel(
+      context,
+      _service.fetchMostPopularHotels(
+        context,
+        loadMore: loadMore,
+        limit: limit,
+      ),
+      (data) => {
+        listPopular = data,
+        if (data.length < limit) {hasMore = false},
+        notifyListeners(),
+      },
+    );
+  }
+
+  Future<void> fetchRecomendedHotels(
+    BuildContext context, {
+    int limit = limit,
+    bool loadMore = false,
+  }) => fetchHotel(
     context,
-    _service.fetchRecomendedHotels(context),
+    _service.fetchRecomendedHotels(context, limit: limit, loadMore: loadMore),
     (data) => listRecomended = data,
   );
 
-  Future<void> fetchBestToday(BuildContext context) => fetchHotel(
+  Future<void> fetchBestToday(
+    BuildContext context, {
+    int limit = limit,
+    bool loadMore = false,
+  }) => fetchHotel(
     context,
-    _service.fetchBestToday(context),
+    _service.fetchBestToday(context, limit: limit, loadMore: loadMore),
     (data) => listBestToday = data,
   );
 
-  void reset(){
+  void reset() {
     listPopular.clear();
     listRecomended.clear();
     listBestToday.clear();

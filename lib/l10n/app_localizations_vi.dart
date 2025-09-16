@@ -15,6 +15,12 @@ class AppLocalizationsVi extends AppLocalizations {
   String get bestToday => 'Tốt nhất hôm nay 🔥';
 
   @override
+  String get all => 'Tất cả';
+
+  @override
+  String get hotel => 'Khách Sạn';
+
+  @override
   String get checkbox => 'Nhớ tôi';
 
   @override

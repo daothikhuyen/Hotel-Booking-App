@@ -6,6 +6,7 @@ import 'package:hotel_booking_app/features/my_booking/services/my_booking_servic
 class MyBookingController with ChangeNotifier {
   bool isLoading = false;
   bool hasMore = true;
+  bool isEmpty = true;
   List<Booking> listBooking = [];
 
   final MyBookingService _service = MyBookingService();
@@ -78,6 +79,11 @@ class MyBookingController with ChangeNotifier {
         message: 'Error search booked ${e.message}',
       );
     }
+  }
+
+  void loading({required bool value}) {
+    isEmpty = value;
+    notifyListeners();
   }
 
   void reset() {
