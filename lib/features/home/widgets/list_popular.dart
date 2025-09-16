@@ -17,7 +17,6 @@ class ListPopular extends StatefulWidget {
 }
 
 class _ListPopularState extends State<ListPopular> {
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,7 +26,9 @@ class _ListPopularState extends State<ListPopular> {
           HeaderCard(
             title: context.l10n.mostPopular,
             titleBtn: context.l10n.seeAll,
-            onPressed: () {},
+            onPressed: () {
+              context.push(PageRoutes.seeAllPage, extra: 1);
+            },
           ),
           const SizedBox(height: 5),
 

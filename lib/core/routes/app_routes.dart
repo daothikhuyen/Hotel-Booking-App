@@ -18,6 +18,7 @@ import 'package:hotel_booking_app/features/profile/profile_screen.dart';
 import 'package:hotel_booking_app/features/request_booking/booking_screen.dart';
 import 'package:hotel_booking_app/features/request_booking/check_out.dart';
 import 'package:hotel_booking_app/features/request_booking/page_sucess.dart';
+import 'package:hotel_booking_app/features/seeAll/see_all_screen.dart';
 
 final AuthController authController = AuthController();
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -92,6 +93,13 @@ final goRouter = GoRouter(
         }
 
         return animationRouter(const PageAlterNull(), state);
+      },
+    ),
+    GoRoute(
+      path: PageRoutes.seeAllPage,
+      pageBuilder: (context, state) {
+        final index = int.tryParse(state.extra?.toString() ?? '');
+        return animationRouter(SeeAllScreen(index: index ?? 0), state);
       },
     ),
     StatefulShellRoute.indexedStack(

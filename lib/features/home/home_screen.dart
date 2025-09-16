@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
+import 'package:hotel_booking_app/core/widgets/cards/header_card.dart';
+import 'package:hotel_booking_app/core/widgets/category/category_list.dart';
 import 'package:hotel_booking_app/core/widgets/list/list_horizontal.dart';
 import 'package:hotel_booking_app/core/widgets/list/list_vertical.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
@@ -124,14 +128,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       onVisibilityChanged: (info) {
                         if (info.visibleFraction >= 0.1 &&
                             controller.listPopular.isEmpty) {
-                          controller.fetchMostPopularHotels(context);
+                          controller.fetchMostPopularHotels(context, limit: 4);
                         }
                       },
-                      child: ListPopular(
-                        controller.listPopular,
-                        controller.listPopular.length < 3
-                            ? controller.listPopular.length
-                            : 3,
+                      child: Column(
+                        children: [
+                          ListPopular(
+                            controller.listPopular,
+                            controller.listPopular.length < 3
+                                ? controller.listPopular.length
+                                : 3,
+                          ),
+                        ],
                       ),
                     ),
 
@@ -141,16 +149,34 @@ class _HomeScreenState extends State<HomeScreen> {
                       onVisibilityChanged: (info) {
                         if (info.visibleFraction > 0.1 &&
                             controller.listRecomended.isEmpty) {
-                          controller.fetchRecomendedHotels(context);
+                          controller.fetchRecomendedHotels(context, limit: 3);
                         }
                       },
-                      child: ListVertical(
-                        controller.listRecomended,
-                        context.l10n.homeRecommended,
-                        context.l10n.seeAll,
-                        controller.listRecomended.length < 3
-                            ? controller.listRecomended.length
-                            : 3,
+                      child: Column(
+                        children: [
+                          HeaderCard(
+                            title: context.l10n.homeRecommended,
+                            titleBtn: context.l10n.seeAll,
+                            onPressed: () {
+                              context.push(
+                                PageRoutes.seeAllPage,
+                                extra: 2,
+                              );
+                            },
+                          ),
+                          const SizedBox(height: 5),
+                          // category list
+                          const CategoryList(),
+                          const SizedBox(height: 10),
+                          ListVertical(
+                            controller.listRecomended,
+                            context.l10n.homeRecommended,
+                            context.l10n.seeAll,
+                            controller.listRecomended.length < 3
+                                ? controller.listRecomended.length
+                                : 3,
+                          ),
+                        ],
                       ),
                     ),
                     // Map
@@ -164,7 +190,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onVisibilityChanged: (info) {
                         if (info.visibleFraction > 0.1 &&
                             controller.listBestToday.isEmpty) {
-                          controller.fetchBestToday(context);
+                          controller.fetchBestToday(context, limit: 4);
                         }
                       },
                       child: ListHorizontal(

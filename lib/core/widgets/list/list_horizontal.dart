@@ -27,7 +27,6 @@ class ListHorizontal extends StatefulWidget {
 }
 
 class _ListHorizontalState extends State<ListHorizontal> {
-  
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -35,7 +34,9 @@ class _ListHorizontalState extends State<ListHorizontal> {
         HeaderCard(
           title: widget.title,
           titleBtn: widget.textButton,
-          onPressed: () {},
+          onPressed: () {
+            context.push(PageRoutes.seeAllPage, extra: 3);
+          },
         ),
         // list hotel
         Padding(

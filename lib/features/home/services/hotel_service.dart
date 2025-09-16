@@ -8,15 +8,29 @@ class HotelService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   List<Hotel> hotels = [];
+  DocumentSnapshot? _lastDoc;
 
   /// Get list of hotels with rating >= 4.5
-  Future<List<Hotel>> fetchMostPopularHotels(BuildContext context) async {
+  Future<List<Hotel>> fetchMostPopularHotels(
+    BuildContext context, {
+    required int limit,
+    bool loadMore = false,
+  }) async {
     try {
-      final snapshot =
-          await _firestore
-              .collection(FirestoreCollections.hotels)
-              .where('traffic', isGreaterThanOrEqualTo: 500)
-              .get();
+      var query = _firestore
+          .collection(FirestoreCollections.hotels)
+          .where('traffic', isGreaterThanOrEqualTo: 500)
+          .limit(limit);
+
+      if (loadMore && _lastDoc != null) {
+        query = query.startAfterDocument(_lastDoc!);
+      }
+
+      final snapshot = await query.get();
+
+      if (snapshot.docs.isNotEmpty) {
+        _lastDoc = snapshot.docs.last;
+      }
 
       return snapshot.docs.map((doc) {
         return Hotel.fromJson(doc.data(), doc.id);
@@ -26,13 +40,26 @@ class HotelService {
     }
   }
 
-  Future<List<Hotel>> fetchRecomendedHotels(BuildContext context) async {
+  Future<List<Hotel>> fetchRecomendedHotels(
+    BuildContext context, {
+    required int limit,
+    bool loadMore = false,
+  }) async {
     try {
-      final snapshot =
-          await _firestore
-              .collection(FirestoreCollections.hotels)
-              .where('ratting', isGreaterThanOrEqualTo: 4.5)
-              .get();
+      var query = _firestore
+          .collection(FirestoreCollections.hotels)
+          .where('ratting', isGreaterThanOrEqualTo: 4.5)
+          .limit(limit);
+
+      if (loadMore && _lastDoc != null) {
+        query = query.startAfterDocument(_lastDoc!);
+      }
+
+      final snapshot = await query.get();
+
+      if (snapshot.docs.isNotEmpty) {
+        _lastDoc = snapshot.docs.last;
+      }
 
       return snapshot.docs.map((doc) {
         return Hotel.fromJson(doc.data(), doc.id);
@@ -42,25 +69,68 @@ class HotelService {
     }
   }
 
-  Future<List<Hotel>> fetchBestToday(BuildContext context) async {
+  Future<List<Hotel>> fetchBestToday(
+    BuildContext context, {
+    required int limit,
+    bool loadMore = false,
+  }) async {
     try {
-      final snapshot =
-          await _firestore.collection(FirestoreCollections.hotels).get();
+      Query<Map<String, dynamic>> query = _firestore.collection(
+        FirestoreCollections.hotels,
+      );
 
-      hotels =
+      if (loadMore && _lastDoc != null) {
+        query = query.startAfterDocument(_lastDoc!);
+      }
+
+      final snapshot = await query.get();
+
+      if (snapshot.docs.isNotEmpty) {
+        _lastDoc = snapshot.docs.last;
+      }
+
+      final hotels =
           snapshot.docs.map((doc) {
             return Hotel.fromJson(doc.data(), doc.id);
           }).toList();
-        
 
+      // Lọc best today
       final filtered =
           hotels.where((hotel) {
-            return ((hotel.lastPrice??0) - (hotel.currentPrice ?? 0)) > 50;
+            return ((hotel.lastPrice ?? 0) - (hotel.currentPrice ?? 0)) > 50;
           }).toList();
 
-      return filtered;
+      return filtered.take(limit).toList();
     } on FirebaseException catch (e) {
       throw AppException(message: 'Best hotel ${e.message}');
+    }
+  }
+
+  Future<List<Hotel>> fetchAll(
+    BuildContext context, {
+    required int limit,
+    bool loadMore = false,
+  }) async {
+    try {
+      var query = _firestore
+          .collection(FirestoreCollections.hotels)
+          .limit(limit);
+
+      if (loadMore && _lastDoc != null) {
+        query = query.startAfterDocument(_lastDoc!);
+      }
+
+      final snapshot = await query.get();
+
+      if (snapshot.docs.isNotEmpty) {
+        _lastDoc = snapshot.docs.last;
+      }
+
+      return snapshot.docs.map((doc) {
+        return Hotel.fromJson(doc.data(), doc.id);
+      }).toList();
+    } on FirebaseException catch (e) {
+      throw AppException(message: 'all ${e.message}');
     }
   }
 }

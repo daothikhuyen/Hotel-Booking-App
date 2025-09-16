@@ -1,11 +1,13 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/utils/format.dart';
 import 'package:hotel_booking_app/core/widgets/alter/page_alter_null.dart';
 import 'package:hotel_booking_app/data/model/booking.dart';
+import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
 import 'package:hotel_booking_app/features/my_booking/controller/my_booking_controller.dart';
 import 'package:hotel_booking_app/features/my_booking/widgets/booking_card.dart';
 import 'package:hotel_booking_app/features/my_booking/widgets/booking_skeleton.dart';
@@ -32,7 +34,7 @@ class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      controller =  Provider.of<MyBookingController>(context, listen: false);
+      controller = Provider.of<MyBookingController>(context, listen: false);
       loadData();
       _scrollController.addListener(() {
         if (_scrollController.position.pixels >=
@@ -45,7 +47,7 @@ class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin {
     });
   }
 
-    Future<void> loadData() async {
+  Future<void> loadData() async {
     await controller.fetchMyBooking(table: 'booked').then((value) {
       setState(() {
         isLoading = false;
@@ -62,7 +64,7 @@ class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final controller = Provider.of<MyBookingController>(context); 
+    final controller = Provider.of<MyBookingController>(context);
 
     return RefreshIndicator(
       onRefresh: () async {
