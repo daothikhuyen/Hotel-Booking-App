@@ -88,6 +88,7 @@
   "description": "Mô tả",
   "location": "Vị trí",
   "reviews": "Bình luận",
+  "noReviews": "Chưa có bình luận",
   "descriptionHotel": "Nơi lý tưởng cho những ai đang tìm kiếm trải nghiệm nghỉ dưỡng sang trọng và yên tĩnh với tầm nhìn ra biển tuyệt đẹp.Nơi lý tưởng cho những ai đang tìm kiếm trải nghiệm nghỉ dưỡng sang trọng và yên tĩnh với tầm nhìn ra biển tuyệt đẹp",
   "titleRequestBooking": "Đặt phòng",
   "date": "Ngày",
@@ -138,6 +139,24 @@
   "paymentComplete": "Thanh Toán Thành Công",
   "contentPaymentComplete": "Ngay cả ngày mai không sợ hãi et. Cà chua ngày mai để thiết lập.",
   "search": "Tìm kiếm...",
+  "titleSearch": "Tìm Kiếm",
+  "perNight": "Mỗi đêm",
+  "bed": "{bed} phòng ngủ",
+  "@bed": {
+    "placeholders": {
+      "bed": {
+        "type": "int"
+      }
+    }
+  },
+  "bathroom": "{bathroom} phòng tắm",
+  "@bathroom": {
+    "placeholders": {
+      "bathroom": {
+        "type": "int"
+      }
+    }
+  },
   "booked": "Đã đặt",
   "history": "Lịch sử",
   "bookingDetail": "Chi tiết đặt chổ",

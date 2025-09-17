@@ -11,8 +11,8 @@ import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart
 import 'package:hotel_booking_app/features/home/widgets/map_section.dart';
 import 'package:hotel_booking_app/features/hotel_detail/detail_screen.dart';
 import 'package:hotel_booking_app/features/hotel_detail/section/read_more.dart';
+import 'package:hotel_booking_app/features/hotel_detail/section/review_section.dart';
 import 'package:hotel_booking_app/features/hotel_detail/widgets/facilities_card.dart';
-import 'package:hotel_booking_app/features/hotel_detail/widgets/review_card.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 import 'package:provider/provider.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -32,24 +32,16 @@ class PopupCard extends StatefulWidget {
 }
 
 class _PopupCardState extends State<PopupCard> {
-  // late final HotelController controller = HotelController();
-  // List<Hotel> hotelRecomended = [];
 
   @override
   void initState() {
     super.initState();
   }
 
-  // Future<void> _loadBestTodayHotels() async {
-  //   final bestToday = await controller.fetchRecomendedHotels(context);
-  //   setState(() {
-  //     hotelRecomended = bestToday;
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     final controller = Provider.of<HotelController>(context);
+    final hotel = widget.widget.hotel;
 
     return DraggableScrollableSheet(
       initialChildSize: 0.7,
@@ -82,9 +74,9 @@ class _PopupCardState extends State<PopupCard> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    if (widget.widget.hotel.name.isNotEmpty)
+                                    if (hotel.name.isNotEmpty)
                                       Text(
-                                        widget.widget.hotel.name,
+                                        hotel.name,
                                         style: HBTextStyles.bodySemiboldLarge(
                                           context.colorScheme.inverseSurface,
                                         ),
@@ -106,13 +98,9 @@ class _PopupCardState extends State<PopupCard> {
                                           ),
                                         ),
 
-                                        if (widget
-                                            .widget
-                                            .hotel
-                                            .location
-                                            .isNotEmpty)
+                                        if (hotel.location.isNotEmpty)
                                           Text(
-                                            widget.widget.hotel.location,
+                                            hotel.location,
                                             style:
                                                 HBTextStyles.bodyRegularSmall(
                                                   context
@@ -132,7 +120,7 @@ class _PopupCardState extends State<PopupCard> {
                                           ),
                                         ),
                                         Text(
-                                          '${widget.widget.hotel.ratting}',
+                                          '${hotel.ratting}',
                                           style:
                                               HBTextStyles.bodySemiboldXSmall(
                                                 context
@@ -204,7 +192,7 @@ class _PopupCardState extends State<PopupCard> {
                               onPressed: () {},
                               titleBtn: context.l10n.seeAll,
                             ),
-                            const ReviewCard(number: 2),
+                            ReviewSection(number: 2, idHotel: hotel.id),
                           ],
                         ),
                       ),

@@ -7,6 +7,7 @@ import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart'
 import 'package:hotel_booking_app/features/auth/helpers/local_storage_helper.dart';
 import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
 import 'package:hotel_booking_app/features/home/controller/navigation_controller.dart';
+import 'package:hotel_booking_app/features/hotel_detail/controller/hotel_detail_controller.dart';
 import 'package:hotel_booking_app/features/my_booking/controller/my_booking_controller.dart';
 import 'package:hotel_booking_app/features/request_booking/controller/booking_controller.dart';
 import 'package:hotel_booking_app/firebase_options.dart';
@@ -16,18 +17,21 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-    final localUser = await LocalStorageHelper.getUserData();
+  final localUser = await LocalStorageHelper.getUserData();
   await authController.isLoggedIn();
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => HotelController(),),
-        ChangeNotifierProvider(create: (context) => NavigationController(),),
-        ChangeNotifierProvider(create: (context) => BookingController(),),// request booking
-        ChangeNotifierProvider(create: (context) => MyBookingController(),),
+        ChangeNotifierProvider(create: (context) => HotelController()),
+        ChangeNotifierProvider(create: (context) => NavigationController()),
+        ChangeNotifierProvider(create: (context) => HotelDetailController()),
+        ChangeNotifierProvider(
+          create: (context) => BookingController(),
+        ), // request booking
+        ChangeNotifierProvider(create: (context) => MyBookingController()),
         ChangeNotifierProvider(
           create: (_) {
-            final userController= AuthController();
+            final userController = AuthController();
             if (localUser != null) userController.setUser(localUser);
             return userController;
           },

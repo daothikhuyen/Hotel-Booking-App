@@ -44,7 +44,6 @@ class _MyBookingScreenState extends State<MyBookingScreen>
 
     _debounce = Timer(const Duration(milliseconds: 400), () async {
       final text = search.text;
-      debugPrint('tabController ${tabController.index}');
       booked = await searchController.searchBooked(
         text: text,
         isHistory: tabController.index == 1,

@@ -3,19 +3,27 @@ class Comment {
   Comment({
     required this.idUser,
     required this.idHotel,
-    required this.comment,
+    required this.content,
     required this.rating,
   });
   factory Comment.fromJson(Map<String, dynamic> json) {
+    double? parseDouble(dynamic value) {
+      if (value == null) return null;
+      if (value is double) return value;
+      if (value is int) return value.toDouble();
+      if (value is String) return double.tryParse(value);
+      return null;
+    }
+
     return Comment(
       idUser: json['idUser'],
       idHotel: json['idHotel'],
-      comment: json['comment'],
-      rating: (json['rating'] as num).toDouble(),
+      content: json['content'],
+      rating: parseDouble(json['ratting']),
     );
   }
   final String idUser;
   final String idHotel;
-  final String comment;
-  final double rating;
+  final String content;
+  final double? rating;
 }

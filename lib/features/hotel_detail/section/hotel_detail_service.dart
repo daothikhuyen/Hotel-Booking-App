@@ -8,11 +8,9 @@ import 'package:hotel_booking_app/data/model/user.dart';
 
 class HotelDetailService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
-  List<Comment> listComment = [];
   DocumentSnapshot? _lastDoc;
 
-  Future<List<Comment>> fetchMostPopularHotels(
+  Future<List<CommentWithUser>> fetchCommentHotels(
     BuildContext context, {
     required int limit,
     required String idHotel,
@@ -30,21 +28,26 @@ class HotelDetailService {
 
       final snapshot = await query.get();
 
-      if (snapshot.docs.isNotEmpty) {
-        _lastDoc = snapshot.docs.last;
-        for (var doc in snapshot.docs) {
-          final comment = Comment.fromJson(doc.data());
-          // listComment.add(
-          //   CommentWithUser(comment: Comment.fromJson(doc.data()), user: user),
-          // );
-        }
-      }
+      if (snapshot.docs.isEmpty) return [];
 
-      return snapshot.docs.map((doc) {
-        return Comment.fromJson(doc.data());
-      }).toList();
+      _lastDoc = snapshot.docs.last;
+
+      final listComment = <CommentWithUser>[];
+      for (final doc in snapshot.docs) {
+        final comment = Comment.fromJson(doc.data());
+        final userDoc =
+            await _firestore
+                .collection(FirestoreCollections.users)
+                .doc(comment.idUser)
+                .get();
+
+        if (!userDoc.exists) continue;
+        final user = HBUser.fromJson(userDoc.data() ?? {});
+        listComment.add(CommentWithUser(comment: comment, user: user));
+      }
+      return listComment;
     } on FirebaseException catch (e) {
-      throw AppException(message: 'popular hotels: ${e.message}');
+      throw AppException(message: 'comment: ${e.message}');
     }
   }
 }

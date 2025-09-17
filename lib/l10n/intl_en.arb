@@ -86,6 +86,7 @@
   "description": "Description",
   "location": "Location",
   "reviews": "Reviews",
+  "noReviews": "No reviews yet",
   "descriptionHotel": "The ideal place for those looking for a luxurious and tranquil holiday experience with stunning sea views. The ideal place for those looking for a luxurious and tranquil holiday experience with stunning sea views",
   "titleRequestBooking": "Request to book",
   "date": "Dates",
@@ -136,6 +137,24 @@
   "paymentComplete": "Payment Complete",
   "contentPaymentComplete": "Etiam cras nec metus laoreet. Faucibus \n iaculis cras ut posuere.",
   "search": "Search...",
+  "titleSearch": "Search",
+  "perNight": "Per Night",
+  "bed": "{bed} bed",
+  "@bed": {
+    "placeholders": {
+      "bed": {
+        "type": "int"
+      }
+    }
+  },
+  "bathroom": "{bathroom} bathroom",
+  "@bathroom": {
+    "placeholders": {
+      "bathroom": {
+        "type": "int"
+      }
+    }
+  },
   "booked": "Booked",
   "history": "History",
   "bookingDetail": "Booking Detail",

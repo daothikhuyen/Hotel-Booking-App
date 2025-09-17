@@ -133,4 +133,23 @@ class HotelService {
       throw AppException(message: 'all ${e.message}');
     }
   }
+
+  Future<List<Hotel>> searchHotel(String text, int limit) async {
+    try {
+      final snapshot =
+          await _firestore
+              .collection(FirestoreCollections.hotels)
+              .orderBy('name')
+              .startAt([text])
+              .endAt(['$text\uf8ff'])
+              .limit(limit)
+              .get();
+
+      return snapshot.docs.map((doc) {
+        return Hotel.fromJson(doc.data(), doc.id);
+      }).toList();
+    } on FirebaseException catch (e) {
+      throw AppException(message: 'search ${e.message}');
+    }
+  }
 }

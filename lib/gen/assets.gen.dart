@@ -14,10 +14,6 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/android12splash.png
-  AssetGenImage get android12splash =>
-      const AssetGenImage('assets/images/android12splash.png');
-
   /// Directory path: assets/images/avatar
   $AssetsImagesAvatarGen get avatar => const $AssetsImagesAvatarGen();
 
@@ -44,13 +40,7 @@ class $AssetsImagesGen {
   AssetGenImage get sucess => const AssetGenImage('assets/images/sucess.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [
-    android12splash,
-    brand,
-    logoApp,
-    splash,
-    sucess,
-  ];
+  List<AssetGenImage> get values => [brand, logoApp, splash, sucess];
 }
 
 class $AssetsImagesAvatarGen {
@@ -109,6 +99,9 @@ class $AssetsImagesIconGen {
   /// File path: assets/images/icon/Heart.svg
   String get heart => 'assets/images/icon/Heart.svg';
 
+  /// File path: assets/images/icon/HeartWhite.svg
+  String get heartWhite => 'assets/images/icon/HeartWhite.svg';
+
   /// File path: assets/images/icon/Icon - Apple.svg
   String get iconApple => 'assets/images/icon/Icon - Apple.svg';
 
@@ -150,6 +143,9 @@ class $AssetsImagesIconGen {
   AssetGenImage get barcode =>
       const AssetGenImage('assets/images/icon/barcode.png');
 
+  /// File path: assets/images/icon/bathroom-tub-towel.svg
+  String get bathroomTubTowel => 'assets/images/icon/bathroom-tub-towel.svg';
+
   /// File path: assets/images/icon/building.svg
   String get building => 'assets/images/icon/building.svg';
 
@@ -167,6 +163,9 @@ class $AssetsImagesIconGen {
 
   /// File path: assets/images/icon/discount_shape.svg
   String get discountShape => 'assets/images/icon/discount_shape.svg';
+
+  /// File path: assets/images/icon/double-bed.svg
+  String get doubleBed => 'assets/images/icon/double-bed.svg';
 
   /// File path: assets/images/icon/edit_square.svg
   String get editSquare => 'assets/images/icon/edit_square.svg';
@@ -234,6 +233,7 @@ class $AssetsImagesIconGen {
     frameArrow,
     group,
     heart,
+    heartWhite,
     iconApple,
     iconFacebook,
     iconGoogle,
@@ -247,12 +247,14 @@ class $AssetsImagesIconGen {
     akarIconsMinus,
     apartement,
     barcode,
+    bathroomTubTowel,
     building,
     buliding,
     calendar,
     call,
     dangerCircle,
     discountShape,
+    doubleBed,
     editSquare,
     emptyWallet,
     home1,

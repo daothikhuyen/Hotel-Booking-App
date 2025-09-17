@@ -223,6 +223,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reviews => 'Reviews';
 
   @override
+  String get noReviews => 'No reviews yet';
+
+  @override
   String get descriptionHotel => 'The ideal place for those looking for a luxurious and tranquil holiday experience with stunning sea views. The ideal place for those looking for a luxurious and tranquil holiday experience with stunning sea views';
 
   @override
@@ -324,6 +327,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get search => 'Search...';
+
+  @override
+  String get titleSearch => 'Search';
+
+  @override
+  String get perNight => 'Per Night';
+
+  @override
+  String bed(int bed) {
+    return '$bed bed';
+  }
+
+  @override
+  String bathroom(int bathroom) {
+    return '$bathroom bathroom';
+  }
 
   @override
   String get booked => 'Booked';

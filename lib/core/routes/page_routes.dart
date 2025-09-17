@@ -11,4 +11,5 @@ class PageRoutes {
   static const String bookingSucess = '/bookingSucess';
   static const String bookingDetail = '/bookingDetail';
   static const String profile = '/profile';
+  static const String search = '/search';
 }

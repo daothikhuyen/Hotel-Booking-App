@@ -515,6 +515,12 @@ abstract class AppLocalizations {
   /// **'Reviews'**
   String get reviews;
 
+  /// No description provided for @noReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'No reviews yet'**
+  String get noReviews;
+
   /// No description provided for @descriptionHotel.
   ///
   /// In en, this message translates to:
@@ -712,6 +718,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Search...'**
   String get search;
+
+  /// No description provided for @titleSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get titleSearch;
+
+  /// No description provided for @perNight.
+  ///
+  /// In en, this message translates to:
+  /// **'Per Night'**
+  String get perNight;
+
+  /// No description provided for @bed.
+  ///
+  /// In en, this message translates to:
+  /// **'{bed} bed'**
+  String bed(int bed);
+
+  /// No description provided for @bathroom.
+  ///
+  /// In en, this message translates to:
+  /// **'{bathroom} bathroom'**
+  String bathroom(int bathroom);
 
   /// No description provided for @booked.
   ///

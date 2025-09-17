@@ -107,6 +107,9 @@ class HeaderBar extends StatelessWidget {
           Row(
             children: [
               GestureDetector(
+                onTap: () {
+                  context.go(PageRoutes.search);
+                },
                 child: Container(
                   width: 40,
                   height: 40,

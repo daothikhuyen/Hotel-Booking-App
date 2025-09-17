@@ -1,6 +1,4 @@
 // Called api on firebase . Here is example of virtual data
-import 'package:widgetbook_hotel_booking_app/gen/assets.gen.dart';
-
 final List<Map<String, String>> hotelData = [
   {
     'id': '1234',

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/exceptions/app_exception.dart';
 import 'package:hotel_booking_app/core/widgets/alter/snack_bar.dart';
-import 'package:hotel_booking_app/data/model/booking.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/features/home/services/hotel_service.dart';
 
@@ -98,5 +97,17 @@ class HotelController extends ChangeNotifier {
     listRecomended.clear();
     listBestToday.clear();
     notifyListeners();
+  }
+
+  Future<List<Hotel>> searchHotel(
+    BuildContext context, {
+    required String text,
+  }) {
+    try {
+      return _service.searchHotel(text, limit);
+    } on AppException catch (e) {
+      HBSnackBar().showSnackBar(context, e.message);
+      throw AppException(message: e.message);
+    }
   }
 }

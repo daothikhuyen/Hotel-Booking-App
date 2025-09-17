@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
@@ -30,7 +28,7 @@ class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 
-    Future<void> loadData() async {
+  Future<void> loadData() async {
     await controller.fetchMyBooking(table: 'booked').then((value) {
       setState(() {
         isLoading = false;

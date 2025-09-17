@@ -223,6 +223,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get reviews => 'Bình luận';
 
   @override
+  String get noReviews => 'Chưa có bình luận';
+
+  @override
   String get descriptionHotel => 'Nơi lý tưởng cho những ai đang tìm kiếm trải nghiệm nghỉ dưỡng sang trọng và yên tĩnh với tầm nhìn ra biển tuyệt đẹp.Nơi lý tưởng cho những ai đang tìm kiếm trải nghiệm nghỉ dưỡng sang trọng và yên tĩnh với tầm nhìn ra biển tuyệt đẹp';
 
   @override
@@ -324,6 +327,22 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get search => 'Tìm kiếm...';
+
+  @override
+  String get titleSearch => 'Tìm Kiếm';
+
+  @override
+  String get perNight => 'Mỗi đêm';
+
+  @override
+  String bed(int bed) {
+    return '$bed phòng ngủ';
+  }
+
+  @override
+  String bathroom(int bathroom) {
+    return '$bathroom phòng tắm';
+  }
 
   @override
   String get booked => 'Đã đặt';
