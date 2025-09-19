@@ -32,7 +32,6 @@ class PopupCard extends StatefulWidget {
 }
 
 class _PopupCardState extends State<PopupCard> {
-
   @override
   void initState() {
     super.initState();
@@ -154,7 +153,7 @@ class _PopupCardState extends State<PopupCard> {
                               child: HeaderCard(
                                 title: context.l10n.commonFacilities,
                                 onPressed: () {},
-                                titleBtn: context.l10n.seeAll,
+                                titleBtn: '',
                               ),
                             ),
                             Row(
@@ -190,7 +189,7 @@ class _PopupCardState extends State<PopupCard> {
                             HeaderCard(
                               title: context.l10n.reviews,
                               onPressed: () {},
-                              titleBtn: context.l10n.seeAll,
+                              titleBtn: '',
                             ),
                             ReviewSection(number: 2, idHotel: hotel.id),
                           ],
@@ -214,6 +213,7 @@ class _PopupCardState extends State<PopupCard> {
                         context.l10n.detailRecommended,
                         context.l10n.seeAll,
                         3,
+                        2,
                       ),
                     ),
                   ),

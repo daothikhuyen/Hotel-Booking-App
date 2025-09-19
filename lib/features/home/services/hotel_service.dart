@@ -152,4 +152,43 @@ class HotelService {
       throw AppException(message: 'search ${e.message}');
     }
   }
+
+  Future<List<Hotel>> filterHotel(
+    String location,
+    double price,
+    int bed,
+    int bathroom,
+    int rating,
+  ) async {
+    try {
+      var query = _firestore.collection(FirestoreCollections.hotels).limit(10);
+      debugPrint('info filter $location $price $bed $bathroom $rating');
+
+      if (location.isNotEmpty) {
+        query = query.where('location', isEqualTo: location);
+      }
+      if (price > 0) {
+        final priceFormat =( price*1000).round();
+        query = query.where('currentPrice', isLessThanOrEqualTo: priceFormat);
+      }
+      if (bed > 0) {
+        query = query.where('bed', isEqualTo: bed);
+      }
+      if (bathroom > 0) {
+        query = query.where('bathroom', isEqualTo: bathroom);
+      }
+      if (rating > 0) {
+        final lowerBound = rating.floorToDouble();
+        query = query.where('ratting', isLessThanOrEqualTo: lowerBound);
+      }
+
+      final snapshot = await query.get();
+
+      return snapshot.docs.map((doc) {
+        return Hotel.fromJson(doc.data(), doc.id);
+      }).toList();
+    } on FirebaseException catch (e) {
+      throw AppException(message: 'search ${e.message}');
+    }
+  }
 }

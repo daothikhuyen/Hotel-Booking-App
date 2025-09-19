@@ -433,4 +433,13 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get overlayMessage => 'Thông báo';
+
+  @override
+  String get roomCount => 'Số lượng';
+
+  @override
+  String get filter => 'Lọc Theo';
+
+  @override
+  String get applyFilter => 'Áp dụng bộ lọc';
 }

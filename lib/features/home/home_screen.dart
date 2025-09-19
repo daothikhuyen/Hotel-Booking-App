@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: RefreshIndicator(
         onRefresh: () async {
-          controller.reset();
+          controller.reset(4);
         },
         child: CustomScrollView(
           slivers: [
@@ -123,24 +123,32 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     // Most Popular
-                    VisibilityDetector(
-                      key: UniqueKey(),
-                      onVisibilityChanged: (info) {
-                        if (info.visibleFraction >= 0.1 &&
-                            controller.listPopular.isEmpty) {
-                          controller.fetchMostPopularHotels(context, limit: 4);
-                        }
-                      },
-                      child: Column(
-                        children: [
-                          ListPopular(
-                            controller.listPopular,
-                            controller.listPopular.length < 3
-                                ? controller.listPopular.length
-                                : 3,
+                    LayoutBuilder(
+                      builder: (context, constraints) {
+                        
+                        return VisibilityDetector(
+                          key: UniqueKey(),
+                          onVisibilityChanged: (info) {
+                            if (info.visibleFraction >= 0.1 &&
+                                controller.listPopular.isEmpty) {
+                              controller.fetchMostPopularHotels(
+                                context,
+                                limit: 4,
+                              );
+                            }
+                          },
+                          child: Column(
+                            children: [
+                              ListPopular(
+                                controller.listPopular,
+                                controller.listPopular.length < 10
+                                        ? controller.listPopular.length
+                                        : 10,
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        );
+                      },
                     ),
 
                     // Recommendex For You
@@ -153,15 +161,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         }
                       },
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           HeaderCard(
                             title: context.l10n.homeRecommended,
                             titleBtn: context.l10n.seeAll,
                             onPressed: () {
-                              context.push(
-                                PageRoutes.seeAllPage,
-                                extra: 2,
-                              );
+                              context.push(PageRoutes.seeAllPage, extra: 2);
                             },
                           ),
                           const SizedBox(height: 5),
@@ -197,9 +203,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         controller.listBestToday,
                         context.l10n.bestToday,
                         context.l10n.seeAll,
-                        controller.listBestToday.length < 3
-                            ? controller.listBestToday.length
-                            : 2,
+                        controller.listBestToday.length < 10
+                                ? controller.listBestToday.length
+                                : 10,
+                        3,
                       ),
                     ),
                   ],

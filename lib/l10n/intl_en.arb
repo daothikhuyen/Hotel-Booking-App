@@ -185,5 +185,8 @@
   "lastPrice": "Last Price",
   "bold": "Bold",
   "buttonPressed": "Button Pressed",
-  "overlayMessage": "Overlay Message"
+  "overlayMessage": "Overlay Message",
+  "roomCount": "Room Count",
+  "filter": "Filter By",
+  "applyFilter": "Apply Filter"
 }

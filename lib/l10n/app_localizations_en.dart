@@ -433,4 +433,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get overlayMessage => 'Overlay Message';
+
+  @override
+  String get roomCount => 'Room Count';
+
+  @override
+  String get filter => 'Filter By';
+
+  @override
+  String get applyFilter => 'Apply Filter';
 }

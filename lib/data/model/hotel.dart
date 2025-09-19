@@ -10,6 +10,8 @@ class Hotel {
     this.lastPrice,
     this.ratting,
     this.traffic,
+    this.bed,
+    this.bathroom,
   });
 
   factory Hotel.fromJson(Map<String, dynamic> json, String id) {
@@ -31,6 +33,8 @@ class Hotel {
       lastPrice: parseDouble(json['lastPrice']),
       ratting: parseDouble(json['ratting']),
       traffic: (json['traffic'] as int?) ?? 0,
+      bed: (json['bed'] as int?) ?? 0,
+      bathroom: (json['bathroom'] as int?) ?? 0,
     );
   }
   String id;
@@ -42,6 +46,8 @@ class Hotel {
   double? lastPrice;
   double? ratting;
   int? traffic;
+  int? bed;
+  int? bathroom;
 
   double? parseDouble(dynamic value) {
     if (value == null) return null;

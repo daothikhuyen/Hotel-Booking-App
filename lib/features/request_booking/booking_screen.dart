@@ -115,6 +115,7 @@ class _BookingScreenState extends State<BookingScreen> {
             }
           },
           bold: true,
+          isSelected: true,
         ),
       ),
     );

@@ -13,7 +13,8 @@ class ListHorizontal extends StatefulWidget {
     this.listHotels,
     this.title,
     this.textButton,
-    this.number, {
+    this.number,
+    this.index, {
     super.key,
   });
 
@@ -21,6 +22,7 @@ class ListHorizontal extends StatefulWidget {
   final String title;
   final String textButton;
   final int number;
+  final int index;
 
   @override
   State<ListHorizontal> createState() => _ListHorizontalState();
@@ -35,7 +37,7 @@ class _ListHorizontalState extends State<ListHorizontal> {
           title: widget.title,
           titleBtn: widget.textButton,
           onPressed: () {
-            context.push(PageRoutes.seeAllPage, extra: 3);
+            context.push(PageRoutes.seeAllPage, extra: widget.index);
           },
         ),
         // list hotel
@@ -83,6 +85,7 @@ class NewCardSkeleton extends StatelessWidget {
     return SizedBox(
       height: 102,
       child: ListView.builder(
+        physics: const AlwaysScrollableScrollPhysics(),
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemCount: 4,

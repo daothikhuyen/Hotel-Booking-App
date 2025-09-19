@@ -14,7 +14,15 @@ class OptionCard extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SvgPicture.asset(image, width: 24, height: 24),
+        SvgPicture.asset(
+          image,
+          width: 24,
+          height: 24,
+          colorFilter: ColorFilter.mode(
+            context.colorScheme.onSurface,
+            BlendMode.srcIn,
+          ),
+        ),
         const SizedBox(width: 18),
         Expanded(
           child: Container(

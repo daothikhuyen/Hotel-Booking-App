@@ -37,21 +37,24 @@ class _CheckOutState extends State<CheckOut> {
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 18, right: 18, top: 25),
-        child: Column(
-          children: [
-            RecomendedCard(
-              name: hotel.name,
-              location: hotel.location,
-              currentPrice: hotel.currentPrice ?? 0,
-              linkImage: hotel.image,
-              ratting: hotel.ratting.toString(),
-            ),
-
-            InfoHotelBooking(booking: widget.booking),
-            // promo
-            const SizedBox(height: 18),
-            const PromoCard(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              RecomendedCard(
+                name: hotel.name,
+                location: hotel.location,
+                currentPrice: hotel.currentPrice ?? 0,
+                linkImage: hotel.image,
+                ratting: hotel.ratting.toString(),
+              ),
+          
+              InfoHotelBooking(booking: widget.booking),
+              // promo
+              const SizedBox(height: 18),
+              const PromoCard(),
+              const SizedBox(height: 4),
+            ],
+          ),
         ),
       ),
 
@@ -70,6 +73,7 @@ class _CheckOutState extends State<CheckOut> {
           },
           bold: true,
           size: 56,
+          isSelected: true,
         ),
       ),
     );

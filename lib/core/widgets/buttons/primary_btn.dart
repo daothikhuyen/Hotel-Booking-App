@@ -8,6 +8,7 @@ class PrimaryBtn extends StatelessWidget {
     required this.onPressed,
     required this.bold,
     required this.size,
+    required this.isSelected,
     super.key,
   });
 
@@ -15,25 +16,41 @@ class PrimaryBtn extends StatelessWidget {
   final bool bold;
   final VoidCallback onPressed;
   final double size;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: context.colorScheme.primary,
-        minimumSize: Size(double.infinity, size),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        backgroundColor:
+            isSelected ? context.colorScheme.primary : const Color(0xFFF6F8FA),
+        minimumSize: Size(0, size),
+        shape: RoundedRectangleBorder(
+          side:
+              !isSelected
+                  ? BorderSide(
+                    color: context.colorScheme.outline.withValues(alpha: 0.3),
+                    width: 1.01,
+                  )
+                  : const BorderSide(width: 0),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        elevation: 0,
       ),
       child: Text(
         textButton,
         style:
             bold
                 ? HBTextStyles.bodySemiboldMedium(
-                  context.colorScheme.onSecondary,
+                  isSelected
+                      ? context.colorScheme.onSecondary
+                      : context.colorScheme.primary,
                 )
                 : HBTextStyles.bodyMediumMedium(
-                  context.colorScheme.onSecondary,
+                  isSelected
+                      ? context.colorScheme.onSecondary
+                      : context.colorScheme.primary,
                 ),
       ),
     );

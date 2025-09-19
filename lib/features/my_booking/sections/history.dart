@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/utils/format.dart';
 import 'package:hotel_booking_app/core/widgets/alter/page_alter_null.dart';
+import 'package:hotel_booking_app/core/widgets/cards/vertical_skeleton_card.dart';
 import 'package:hotel_booking_app/data/model/booking.dart';
 import 'package:hotel_booking_app/features/my_booking/controller/my_booking_controller.dart';
 import 'package:hotel_booking_app/features/my_booking/widgets/booking_card.dart';
@@ -37,8 +38,8 @@ class _HistoryState extends State<History> with AutomaticKeepAliveClientMixin{
         if (_scrollController.position.pixels >=
                 _scrollController.position.maxScrollExtent - 200 &&
             !controller.isLoading &&
-            controller.hasMore) {
-          controller.fetchMyBooking(table: 'booked', loadMore: true);
+            !controller.hasMore) {
+          controller.fetchMyBooking(table: 'history', loadMore: true);
         }
       });
     });
@@ -65,7 +66,7 @@ class _HistoryState extends State<History> with AutomaticKeepAliveClientMixin{
 
     return RefreshIndicator(
       onRefresh: () async {
-        controller.reset();
+        controller.reset(controller.listHistory);
         isLoading = true;
         await loadData();
       },
@@ -73,14 +74,15 @@ class _HistoryState extends State<History> with AutomaticKeepAliveClientMixin{
         animation: controller,
         builder: (context, _) {
           if (isLoading) return const BookingSkeleton();
-          if (controller.listBooking.isEmpty) return const PageAlterNull();
+          if (controller.listHistory.isEmpty) return const PageAlterNull();
           return ListView.builder(
+            physics: const AlwaysScrollableScrollPhysics(),
             controller: _scrollController,
-            itemCount: controller.listBooking.length + 1,
+            itemCount: controller.listHistory.length + 1,
             itemBuilder: (context, index) {
-              if (index < controller.listBooking.length) {
-                final hotel = controller.listBooking[index].hotel;
-                final myBooking = controller.listBooking[index];
+              if (index < controller.listHistory.length) {
+                final hotel = controller.listHistory[index].hotel;
+                final myBooking = controller.listHistory[index];
                 return GestureDetector(
                   onTap: () {
                     context.push(PageRoutes.bookingDetail, extra: myBooking);
@@ -102,8 +104,8 @@ class _HistoryState extends State<History> with AutomaticKeepAliveClientMixin{
                   ),
                 );
               } else {
-                return controller.hasMore
-                    ? const Center(child: CircularProgressIndicator())
+                return !controller.hasMore && controller.isLoading
+                    ? const VerticalSkeletonCard(height: 262)
                     : const SizedBox.shrink();
               }
             },

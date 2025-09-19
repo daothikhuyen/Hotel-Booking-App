@@ -922,6 +922,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Overlay Message'**
   String get overlayMessage;
+
+  /// No description provided for @roomCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Room Count'**
+  String get roomCount;
+
+  /// No description provided for @filter.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter By'**
+  String get filter;
+
+  /// No description provided for @applyFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply Filter'**
+  String get applyFilter;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

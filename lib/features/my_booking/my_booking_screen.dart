@@ -105,13 +105,6 @@ class _MyBookingScreenState extends State<MyBookingScreen>
                               color: Colors.transparent,
                             ),
                           ),
-                          SvgPicture.asset(
-                            Assets.images.icon.filter,
-                            colorFilter: ColorFilter.mode(
-                              context.colorScheme.onTertiary,
-                              BlendMode.srcIn,
-                            ),
-                          ),
                         ],
                       ),
                     ),
@@ -160,7 +153,7 @@ class _MyBookingScreenState extends State<MyBookingScreen>
           ];
         },
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
           child: TabBarView(
             controller: tabController,
             children: <Widget>[

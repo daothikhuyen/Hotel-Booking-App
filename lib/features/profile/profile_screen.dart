@@ -33,110 +33,113 @@ class ProfileScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 18, right: 18, top: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (user?.email != null)
-              SizedBox(
-                height: 57,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          width: 56,
-                          height: 56,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            image: DecorationImage(
-                              image:
-                                  user?.photoURL != ''
-                                      ? NetworkImage(user?.photoURL ?? '')
-                                      : AssetImage(
-                                            Assets.images.avatar.ellipse.path,
-                                          )
-                                          as ImageProvider,
-                              fit: BoxFit.cover,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (user?.email != null)
+                SizedBox(
+                  height: 57,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            width: 56,
+                            height: 56,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              image: DecorationImage(
+                                image:
+                                    user?.photoURL != ''
+                                        ? NetworkImage(user?.photoURL ?? '')
+                                        : AssetImage(
+                                              Assets.images.avatar.ellipse.path,
+                                            )
+                                            as ImageProvider,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(width: 8),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              user?.displayName ?? '',
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: GoogleFonts.plusJakartaSans(
-                                textStyle: HBTextStyles.bodySemiboldMedium(
-                                  context.colorScheme.onSurfaceVariant,
+                          const SizedBox(width: 8),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                user?.displayName ?? '',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.plusJakartaSans(
+                                  textStyle: HBTextStyles.bodySemiboldMedium(
+                                    context.colorScheme.onSurfaceVariant,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Text(
-                              user?.location ?? '',
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: GoogleFonts.plusJakartaSans(
-                                textStyle: HBTextStyles.bodyMediumSmall(
-                                  context.colorScheme.tertiary,
+                              Text(
+                                user?.location ?? '',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.plusJakartaSans(
+                                  textStyle: HBTextStyles.bodyMediumSmall(
+                                    context.colorScheme.tertiary,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
+                      SvgPicture.asset(Assets.images.icon.editSquare),
+                    ],
+                  ),
+                )
+              else
+                Row(
+                  children: [
+                    Expanded(
+                      child: SecondBtn(
+                        titleBtn: context.l10n.signIn,
+                        color: context.colorScheme.primary,
+                        size: 46,
+                        radiusSize: 12,
+                        onPressed: () {
+                          context.push(PageRoutes.signIn);
+                        },
+                      ),
                     ),
-                    SvgPicture.asset(Assets.images.icon.editSquare),
+                    Expanded(
+                      child: PrimaryBtn(
+                        textButton: context.l10n.signUp,
+                        onPressed: () {},
+                        bold: true,
+                        size: 46,
+                        isSelected: true,
+                      ),
+                    ),
                   ],
                 ),
-              )
-            else
-              Row(
-                children: [
-                  Expanded(
-                    child: SecondBtn(
-                      titleBtn: context.l10n.signIn,
-                      color: context.colorScheme.primary,
-                      size: 46,
-                      radiusSize: 12,
-                      onPressed: () {
-                        context.push(PageRoutes.signIn);
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    child: PrimaryBtn(
-                      textButton: context.l10n.signUp,
-                      onPressed: () {},
-                      bold: true,
-                      size: 46,
-                    ),
-                  ),
-                ],
-              ),
-            const SizedBox(height: 50),
-            const SettingSection(), // setting
-            if (user?.email != null)
-              Padding(
-                padding: const EdgeInsets.only(top: 18),
-                child: Center(
-                  child: TextButton(
-                    onPressed: () => HBDiaglog().showSignOutDialog(context),
-                    child: Text(
-                      context.l10n.logout,
-                      style: HBTextStyles.bodySemiboldLarge(
-                        context.colorScheme.error,
+              const SizedBox(height: 45),
+              const SettingSection(), // setting
+              if (user?.email != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: 4),
+                  child: Center(
+                    child: TextButton(
+                      onPressed: () => HBDiaglog().showSignOutDialog(context),
+                      child: Text(
+                        context.l10n.logout,
+                        style: HBTextStyles.bodySemiboldLarge(
+                          context.colorScheme.error,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              )
-            else
-              const SizedBox.shrink(),
-          ],
+                )
+              else
+                const SizedBox.shrink(),
+            ],
+          ),
         ),
       ),
     );

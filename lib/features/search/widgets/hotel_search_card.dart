@@ -71,7 +71,7 @@ class HotelSearchCard extends StatelessWidget {
                                 ),
                                 const SizedBox(width: 4),
                                 Text(
-                                  context.l10n.bed(4),
+                                  context.l10n.bed(hotel.bed??0),
                                   style: HBTextStyles.bodySemiboldSmall(
                                     context.colorScheme.onSurfaceVariant,
                                   ),
@@ -91,7 +91,7 @@ class HotelSearchCard extends StatelessWidget {
                                 ),
                                 const SizedBox(width: 4),
                                 Text(
-                                  context.l10n.bathroom(3),
+                                  context.l10n.bathroom(hotel.bathroom??0),
                                   style: HBTextStyles.bodySemiboldSmall(
                                     context.colorScheme.onSurfaceVariant,
                                   ),

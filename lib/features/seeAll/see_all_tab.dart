@@ -32,34 +32,35 @@ class _SeeAllTabState extends State<SeeAllTab>
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       controller = Provider.of<HotelController>(context, listen: false);
-      loadData();
+      loadData(loadMore: false).then((value) {
+        setState(() {
+          isLoading = false;
+        });
+      });
       _scrollController.addListener(() {
         if (_scrollController.position.pixels >=
                 _scrollController.position.maxScrollExtent - 200 &&
             !controller.isLoading &&
-            controller.hasMore) {
-          controller.fetchMostPopularHotels(context, loadMore: true);
+            !controller.hasMore) {
+          loadData(loadMore: true);
         }
       });
     });
   }
 
-  Future<void> loadData() async {
+  Future<void> loadData({required bool loadMore}) async {
     switch (widget.index) {
       case 0:
-        await controller.fetchAll(context);
+        await controller.fetchAll(context, loadMore: loadMore);
       case 1:
-        await controller.fetchBestToday(context);
+        await controller.fetchMostPopularHotels(context, loadMore: loadMore);
       case 2:
-        await controller.fetchRecomendedHotels(context);
+        await controller.fetchRecomendedHotels(context, loadMore: loadMore);
       case 3:
-        await controller.fetchMostPopularHotels(context);
+        await controller.fetchBestToday(context, loadMore: loadMore);
       default:
-        await controller.fetchMostPopularHotels(context);
+        await controller.fetchMostPopularHotels(context, loadMore: loadMore);
     }
-    setState(() {
-      isLoading = false;
-    });
   }
 
   @override
@@ -90,19 +91,24 @@ class _SeeAllTabState extends State<SeeAllTab>
       padding: const EdgeInsets.only(top: 18),
       child: RefreshIndicator(
         onRefresh: () async {
-          controller.reset();
+          controller.reset(widget.index);
           isLoading = true;
-          await loadData();
+          await loadData(loadMore: false).then((value) {
+            setState(() {
+              isLoading = false;
+            });
+          },);
         },
         child: AnimatedBuilder(
           animation: controller,
           builder: (context, _) {
+            if (isLoading) return const VerticalSkeletonCard();
+            if (hotels.isEmpty) return const PageAlterNull();
             return ListView.builder(
+              physics: const AlwaysScrollableScrollPhysics(),
               controller: _scrollController,
               itemCount: hotels.length,
               itemBuilder: (context, index) {
-                if (isLoading) return const VerticalSkeletonCard();
-                if (hotels.isEmpty) return const PageAlterNull();
                 if (index < hotels.length) {
                   final hotel = hotels[index];
                   return Column(
@@ -132,8 +138,8 @@ class _SeeAllTabState extends State<SeeAllTab>
                     ],
                   );
                 } else {
-                  return controller.hasMore
-                      ? const Center(child: CircularProgressIndicator())
+                  return controller.hasMore && controller.isLoading
+                      ? const VerticalSkeletonCard()
                       : const SizedBox.shrink();
                 }
               },

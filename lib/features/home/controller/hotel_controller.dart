@@ -9,9 +9,11 @@ class HotelController extends ChangeNotifier {
   List<Hotel> listPopular = [];
   List<Hotel> listRecomended = [];
   List<Hotel> listBestToday = [];
+  List<Hotel> listHotelSearch = [];
 
   bool isLoading = false;
   bool hasMore = true;
+  bool isFilter = false;
   static const int limit = 10;
   String? error;
 
@@ -25,6 +27,8 @@ class HotelController extends ChangeNotifier {
   }) async {
     try {
       if (isLoading) return;
+
+      debugPrint('loadMore $loadMore');
 
       if (loadMore) {
         isLoading = true;
@@ -45,10 +49,10 @@ class HotelController extends ChangeNotifier {
       context,
       _service.fetchAll(context, loadMore: loadMore, limit: limit),
       (data) => {
-        listAll = data,
         if (data.length < limit) {hasMore = false},
-        notifyListeners(),
+        if (isLoading) {listAll.addAll(data)} else {listAll = data},
       },
+      loadMore: loadMore,
     );
   }
 
@@ -92,22 +96,55 @@ class HotelController extends ChangeNotifier {
     (data) => listBestToday = data,
   );
 
-  void reset() {
-    listPopular.clear();
-    listRecomended.clear();
-    listBestToday.clear();
-    notifyListeners();
-  }
-
-  Future<List<Hotel>> searchHotel(
-    BuildContext context, {
-    required String text,
-  }) {
+  Future<void> searchHotel(BuildContext context, {required String text}) async {
     try {
-      return _service.searchHotel(text, limit);
+      listHotelSearch = await _service.searchHotel(text, limit);
+      notifyListeners();
     } on AppException catch (e) {
       HBSnackBar().showSnackBar(context, e.message);
       throw AppException(message: e.message);
     }
+  }
+
+  Future<void> filterHotel(
+    BuildContext context,
+    String? location,
+    double? price,
+    int? bed,
+    int? bathroom,
+    int? rating,
+  ) async {
+    try {
+      listHotelSearch = await _service.filterHotel(
+        location ?? '',
+        price ?? 0,
+        bed ?? 0,
+        bathroom ?? 0,
+        rating ?? 0,
+      );
+      isFilter = true;
+      notifyListeners();
+    } on AppException catch (e) {
+      HBSnackBar().showSnackBar(context, e.message);
+      throw AppException(message: e.message);
+    }
+  }
+
+  void reset(int index) {
+    switch (index) {
+      case 0:
+        listAll.clear();
+      case 1:
+        listPopular.clear();
+      case 2:
+        listRecomended.clear();
+      case 3:
+        listBestToday.clear();
+      default:
+        listPopular.clear();
+        listRecomended.clear();
+        listBestToday.clear();
+    }
+    notifyListeners();
   }
 }

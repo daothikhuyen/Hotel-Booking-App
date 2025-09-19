@@ -64,11 +64,15 @@ class OnboardingCard extends StatelessWidget {
                 const SizedBox(height: 35),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 30, top: 40),
-                  child: PrimaryBtn(
-                    size: 56,
-                    textButton: getTranslatedText(context, textButton),
-                    onPressed: onPressed,
-                    bold: true,
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: PrimaryBtn(
+                      size: 56,
+                      textButton: getTranslatedText(context, textButton),
+                      onPressed: onPressed,
+                      bold: true,
+                      isSelected: true,
+                    ),
                   ),
                 ),
 

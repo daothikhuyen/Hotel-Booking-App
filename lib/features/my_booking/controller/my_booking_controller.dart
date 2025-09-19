@@ -8,6 +8,7 @@ class MyBookingController with ChangeNotifier {
   bool hasMore = true;
   bool isEmpty = true;
   List<Booking> listBooking = [];
+  List<Booking> listHistory = [];
 
   final MyBookingService _service = MyBookingService();
 
@@ -40,10 +41,12 @@ class MyBookingController with ChangeNotifier {
         hasMore = false;
       }
 
-      if (isLoading) {
-        listBooking.addAll(newBookings);
-      } else {
-        listBooking = newBookings;
+      debugPrint('loading $isLoading');
+
+      if(table == 'booked'){
+        updateList(listBooking, newBookings);
+      }else{
+        updateList(listHistory, newBookings);
       }
 
       isLoading = false;
@@ -67,8 +70,11 @@ class MyBookingController with ChangeNotifier {
           text: text,
           isHistory: isHistory,
         );
-         debugPrint('isHistory $booked');
-        listBooking = booked;
+        if(isHistory){
+          listHistory = booked;
+        }else{
+          listBooking = booked;
+        }
         notifyListeners();
         return booked;
       }
@@ -81,13 +87,23 @@ class MyBookingController with ChangeNotifier {
     }
   }
 
+  void updateList(List<Booking> nameList, List<Booking> newBookings) {
+    if (isLoading) {
+      nameList.addAll(newBookings);
+    } else {
+      nameList
+        ..clear()
+        ..addAll(newBookings);
+    }
+  }
+
   void loading({required bool value}) {
     isEmpty = value;
     notifyListeners();
   }
 
-  void reset() {
-    listBooking.clear();
+  void reset(List<Booking> nameList) {
+    nameList.clear();
     isLoading = false;
     hasMore = true;
     _service.reset();

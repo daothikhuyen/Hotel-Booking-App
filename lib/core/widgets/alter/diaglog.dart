@@ -114,6 +114,7 @@ class HBDiaglog {
                         },
                         bold: true,
                         size: 46,
+                        isSelected: true,
                       ),
                     ),
                   ],

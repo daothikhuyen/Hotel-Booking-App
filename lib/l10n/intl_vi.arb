@@ -187,5 +187,8 @@
   "lastPrice": "Giá cũ",
   "bold": "In đậm",
   "buttonPressed": "Nhấn nút",
-  "overlayMessage": "Thông báo"
+  "overlayMessage": "Thông báo",
+  "roomCount": "Số lượng",
+  "filter": "Lọc Theo",
+  "applyFilter": "Áp dụng bộ lọc"
 }

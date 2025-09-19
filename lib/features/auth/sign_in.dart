@@ -159,16 +159,20 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                PrimaryBtn(
-                  size: 56,
-                  textButton: context.l10n.signIn,
-                  onPressed: () => authController.signIn(
-                    context: context,
-                    formKey: _formKey,
-                    email: _email.text,
-                    password: _password.text,
+                SizedBox(
+                  width: double.infinity,
+                  child: PrimaryBtn(
+                    size: 56,
+                    textButton: context.l10n.signIn,
+                    onPressed: () => authController.signIn(
+                      context: context,
+                      formKey: _formKey,
+                      email: _email.text,
+                      password: _password.text,
+                    ),
+                    bold: false,
+                    isSelected: true,
                   ),
-                  bold: false,
                 ),
                 const SizedBox(height: 30),
                 Center(

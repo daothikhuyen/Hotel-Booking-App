@@ -76,6 +76,7 @@ Future<List<DateTime?>?> datePicker(
                           }
                         },
                         bold: false,
+                        isSelected: true,
                       ),
                     ),
                   ],

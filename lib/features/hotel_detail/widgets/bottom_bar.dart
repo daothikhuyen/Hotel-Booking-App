@@ -95,6 +95,7 @@ class BottomBar extends StatelessWidget {
                   }
                 },
                 bold: true,
+                isSelected: true,
               ),
             ),
           ],

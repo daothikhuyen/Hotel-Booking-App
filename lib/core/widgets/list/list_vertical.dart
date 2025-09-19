@@ -66,7 +66,25 @@ class _ListVerticalState extends State<ListVertical> {
                     );
                   }),
                 )
-                : const VerticalSkeletonCard(),
+                : Column(
+                  children: List.generate(4, (index) {
+                    return Column(
+                      children: [
+                        const VerticalSkeletonCard(),
+                        if (index < 4 - 1)
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 5,
+                              vertical: 20,
+                            ),
+                            child: BuildDivider(),
+                          )
+                        else
+                          const SizedBox.shrink(),
+                      ],
+                    );
+                  }),
+                ),
       ),
     );
   }

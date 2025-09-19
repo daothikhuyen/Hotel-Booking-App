@@ -27,6 +27,10 @@ Widget buildListVerticalUseCase(BuildContext context) {
           label: 'Number',
           initialValue: 3,
         ),
+        context.knobs.int.input(
+          label: 'index',
+          initialValue: 3,
+        ),
       ),
     ),
   );

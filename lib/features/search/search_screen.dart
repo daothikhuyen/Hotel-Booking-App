@@ -8,8 +8,8 @@ import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/widgets/alter/page_alter_null.dart';
 import 'package:hotel_booking_app/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/core/widgets/textfield.dart';
-import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
+import 'package:hotel_booking_app/features/search/section/filter_card.dart';
 import 'package:hotel_booking_app/features/search/widgets/hotel_search_card.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +24,6 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   final _scrollController = ScrollController();
   final search = TextEditingController();
-  List<Hotel> listHotelSearch = [];
   Timer? _debounce;
 
   @override
@@ -40,8 +39,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
     _debounce = Timer(const Duration(milliseconds: 400), () async {
       final text = search.text;
-      listHotelSearch = await searchController.searchHotel(context, text: text);
-      setState(() {});
+      await searchController.searchHotel(context, text: text);
     });
   }
 
@@ -94,26 +92,8 @@ class _SearchScreenState extends State<SearchScreen> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      showModalBottomSheet(
-                        context: context,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(30),
-                          ),
-                        ),
-                        isScrollControlled: true,
-                        builder: (context) {
-                          return const SizedBox(
-                            width: double.infinity,
-                            child: Column(
-                              children: [
-                                //TODOS:...,
-                              ],
-                            ),
-                          );
-                        },
-                      );
+                    onTap: () async {
+                      await filterCard(context);
                     },
                     child: SvgPicture.asset(
                       Assets.images.icon.filter,
@@ -129,36 +109,44 @@ class _SearchScreenState extends State<SearchScreen> {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4),
-                child: AnimatedBuilder(
-                  animation: controller,
-                  builder: (context, child) {
-                    final listSearch =
-                        search.text.isNotEmpty
-                            ? listHotelSearch
-                            : controller.listRecomended;
-                    return listSearch.isNotEmpty
-                        ? ListView.builder(
-                          controller: _scrollController,
-                          itemCount: listSearch.length + 1,
-                          itemBuilder: (context, index) {
-                            if (index < listSearch.length) {
-                              final hotel = listSearch[index];
-                              return GestureDetector(
-                                onTap: () {
-                                  context.push(
-                                    PageRoutes.detailPage,
-                                    extra: hotel,
-                                  );
-                                },
-                                child: HotelSearchCard(hotel: hotel),
-                              );
-                            } else {
-                              return const SizedBox.shrink();
-                            }
-                          },
-                        )
-                        : const PageAlterNull();
+                child: RefreshIndicator(
+                  onRefresh: () async {
+                    controller.isFilter = false;
                   },
+                  child: AnimatedBuilder(
+                    animation: controller,
+                    builder: (context, child) {
+                      final listSearch =
+                          controller.isFilter
+                              ? controller.listHotelSearch
+                              : search.text.isNotEmpty
+                              ? controller.listHotelSearch
+                              : controller.listRecomended;
+                      return listSearch.isNotEmpty
+                          ? ListView.builder(
+                            physics: const AlwaysScrollableScrollPhysics(),
+                            controller: _scrollController,
+                            itemCount: listSearch.length + 1,
+                            itemBuilder: (context, index) {
+                              if (index < listSearch.length) {
+                                final hotel = listSearch[index];
+                                return GestureDetector(
+                                  onTap: () {
+                                    context.push(
+                                      PageRoutes.detailPage,
+                                      extra: hotel,
+                                    );
+                                  },
+                                  child: HotelSearchCard(hotel: hotel),
+                                );
+                              } else {
+                                return const SizedBox.shrink();
+                              }
+                            },
+                          )
+                          : const PageAlterNull();
+                    },
+                  ),
                 ),
               ),
             ),

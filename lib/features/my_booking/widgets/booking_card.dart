@@ -63,10 +63,15 @@ class BookingCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      name,
-                      style: HBTextStyles.bodySemiboldLarge(
-                        context.colorScheme.onSurfaceVariant,
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.38,
+                      child: Text(
+                        name,
+                        style: HBTextStyles.bodySemiboldLarge(
+                          context.colorScheme.onSurfaceVariant,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     Padding(

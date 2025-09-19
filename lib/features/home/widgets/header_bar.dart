@@ -102,6 +102,7 @@ class HeaderBar extends StatelessWidget {
                   context.go(PageRoutes.signIn);
                 },
                 bold: false,
+                isSelected: true,
               ),
             ),
           Row(

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/utils/format.dart';
 import 'package:hotel_booking_app/core/widgets/alter/page_alter_null.dart';
+import 'package:hotel_booking_app/core/widgets/cards/vertical_skeleton_card.dart';
 import 'package:hotel_booking_app/data/model/booking.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
 import 'package:hotel_booking_app/features/my_booking/controller/my_booking_controller.dart';
@@ -54,7 +55,7 @@ class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin {
         if (_scrollController.position.pixels >=
                 _scrollController.position.maxScrollExtent - 200 &&
             !controller.isLoading &&
-            controller.hasMore) {
+            !controller.hasMore) {
           controller.fetchMyBooking(table: 'booked', loadMore: true);
         }
       });
@@ -63,7 +64,7 @@ class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin {
 
     // Khi logout
     if (authController.currentUser == null) {
-      controller.reset();
+      controller.reset(controller.listBooking);
       setState(() {
         isLoading = false;
         _initialized = false;
@@ -78,7 +79,7 @@ class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin {
 
     return RefreshIndicator(
       onRefresh: () async {
-        controller.reset();
+        controller.reset(controller.listBooking);
         isLoading = true;
         await loadData();
       },
@@ -88,6 +89,7 @@ class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin {
           if (isLoading) return const BookingSkeleton();
           if (controller.listBooking.isEmpty) return const PageAlterNull();
           return ListView.builder(
+            physics: const AlwaysScrollableScrollPhysics(),
             controller: _scrollController,
             itemCount: controller.listBooking.length + 1,
             itemBuilder: (context, index) {
@@ -115,8 +117,8 @@ class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin {
                   ),
                 );
               } else {
-                return controller.hasMore
-                    ? const Center(child: CircularProgressIndicator())
+                return !controller.hasMore  && controller.isLoading
+                    ? const VerticalSkeletonCard(height: 262,)
                     : const SizedBox.shrink();
               }
             },
