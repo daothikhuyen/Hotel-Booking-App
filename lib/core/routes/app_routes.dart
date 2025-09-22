@@ -15,6 +15,8 @@ import 'package:hotel_booking_app/features/layout/layout_scaffold.dart';
 import 'package:hotel_booking_app/features/my_booking/my_booking_screen.dart';
 import 'package:hotel_booking_app/features/onboarding/onboarding_screen.dart';
 import 'package:hotel_booking_app/features/profile/profile_screen.dart';
+import 'package:hotel_booking_app/features/profile/sections/language.dart';
+import 'package:hotel_booking_app/features/profile/sections/personal_info.dart';
 import 'package:hotel_booking_app/features/request_booking/booking_screen.dart';
 import 'package:hotel_booking_app/features/request_booking/check_out.dart';
 import 'package:hotel_booking_app/features/request_booking/page_sucess.dart';
@@ -107,6 +109,18 @@ final goRouter = GoRouter(
       path: PageRoutes.search,
       pageBuilder: (context, state) {
         return animationRouter(const SearchScreen(), state);
+      },
+    ),
+    GoRoute(
+      path: PageRoutes.personalInfo,
+      pageBuilder: (context, state) {
+        return animationRouter(const PersonalInfo(), state);
+      },
+    ),
+    GoRoute(
+      path: PageRoutes.language,
+      pageBuilder: (context, state) {
+        return animationRouter(const Language(), state);
       },
     ),
     StatefulShellRoute.indexedStack(

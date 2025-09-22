@@ -38,7 +38,7 @@ class _HistoryState extends State<History> with AutomaticKeepAliveClientMixin{
         if (_scrollController.position.pixels >=
                 _scrollController.position.maxScrollExtent - 200 &&
             !controller.isLoading &&
-            !controller.hasMore) {
+            controller.hasMore) {
           controller.fetchMyBooking(table: 'history', loadMore: true);
         }
       });
@@ -104,8 +104,8 @@ class _HistoryState extends State<History> with AutomaticKeepAliveClientMixin{
                   ),
                 );
               } else {
-                return !controller.hasMore && controller.isLoading
-                    ? const VerticalSkeletonCard(height: 262)
+                return controller.hasMore && controller.isLoading
+                    ? const VerticalSkeletonCard(height: 120)
                     : const SizedBox.shrink();
               }
             },

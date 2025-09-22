@@ -19,6 +19,7 @@ Widget buildBottomBarUseCase(BuildContext context) {
               name: 'Fan Hu',
               location: 'Hi Li',
               roomType: 'Single',
+              categoryId: 'Zk2IvTj6oXRPto2qaUgM'
             ),
           ),
       ],

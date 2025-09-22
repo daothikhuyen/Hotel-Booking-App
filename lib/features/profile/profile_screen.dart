@@ -19,6 +19,11 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final userProvider = Provider.of<AuthController>(context);
     final user = userProvider.currentUser;
+    final photoURL = user?.photoURL ?? '';
+
+final imageProvider = photoURL.isNotEmpty
+    ? NetworkImage(photoURL)
+    : AssetImage(Assets.images.avatar.ellipse.path) as ImageProvider;
 
     return Scaffold(
       appBar: AppBar(
@@ -51,13 +56,7 @@ class ProfileScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(100),
                               image: DecorationImage(
-                                image:
-                                    user?.photoURL != ''
-                                        ? NetworkImage(user?.photoURL ?? '')
-                                        : AssetImage(
-                                              Assets.images.avatar.ellipse.path,
-                                            )
-                                            as ImageProvider,
+                                image:imageProvider,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -90,7 +89,12 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SvgPicture.asset(Assets.images.icon.editSquare),
+                      GestureDetector(
+                        onTap: () {
+                          context.push(PageRoutes.personalInfo);
+                        },
+                        child: SvgPicture.asset(Assets.images.icon.editSquare),
+                      ),
                     ],
                   ),
                 )

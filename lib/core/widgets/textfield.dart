@@ -3,12 +3,12 @@ import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 
 class HBTexField extends StatefulWidget {
-
   const HBTexField({
     required this.controller,
     required this.hintText,
     required this.color,
     this.validator,
+    this.enabled = true,
     this.isPassword = false,
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.next,
@@ -21,6 +21,7 @@ class HBTexField extends StatefulWidget {
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
   final Color color;
+  final bool enabled;
 
   @override
   State<HBTexField> createState() => _HBTexFieldState();
@@ -43,15 +44,20 @@ class _HBTexFieldState extends State<HBTexField> {
     return TextFormField(
       controller: widget.controller,
       validator: widget.validator,
-      style: HBTextStyles.bodySemiboldSmall(textColor),
+      enabled: widget.enabled,
+      style:
+          widget.enabled
+              ? HBTextStyles.bodySemiboldSmall(textColor)
+              : HBTextStyles.bodySemiboldSmall(hintColor),
       decoration: InputDecoration(
         hintText: widget.hintText,
-        hintStyle:  HBTextStyles.bodySemiboldSmall(hintColor),
+        hintStyle: HBTextStyles.bodySemiboldSmall(hintColor),
         filled: true,
         fillColor: widget.color,
         border: InputBorder.none,
         enabledBorder: _border(Colors.transparent),
         focusedBorder: _border(Colors.transparent),
+        disabledBorder: _border(Colors.transparent),
         errorBorder: _border(errorColor),
         focusedErrorBorder: _border(errorColor),
         suffixIcon:

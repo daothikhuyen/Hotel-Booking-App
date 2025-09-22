@@ -6,6 +6,7 @@ class Hotel {
     required this.name,
     required this.location,
     required this.roomType,
+    required this.categoryId,
     this.currentPrice,
     this.lastPrice,
     this.ratting,
@@ -25,10 +26,11 @@ class Hotel {
 
     return Hotel(
       id: id,
-      image: json['image'],
-      name: json['name'],
-      location: json['location'],
-      roomType: json['roomType'],
+      image: json['image']?? '',
+      name: json['name'] ?? '',
+      location: json['location'] ?? '',
+      roomType: json['roomType']?? '',
+      categoryId: json['categoryId'] ?? '',
       currentPrice: parseDouble(json['currentPrice']),
       lastPrice: parseDouble(json['lastPrice']),
       ratting: parseDouble(json['ratting']),
@@ -42,6 +44,7 @@ class Hotel {
   String name;
   String location;
   String roomType;
+  String categoryId;
   double? currentPrice;
   double? lastPrice;
   double? ratting;
@@ -64,6 +67,7 @@ class Hotel {
       'name': name,
       'location': location,
       'roomType': roomType,
+      'categoryId': categoryId,
       'currentPrice': currentPrice,
       'lastPrice': lastPrice,
       'ratting': ratting,

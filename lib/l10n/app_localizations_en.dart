@@ -442,4 +442,49 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get applyFilter => 'Apply Filter';
+
+  @override
+  String get personalInfo => 'Personal Info';
+
+  @override
+  String get firstName => 'First Name';
+
+  @override
+  String get lastName => 'Last Name';
+
+  @override
+  String get saveChanges => 'Save Changes';
+
+  @override
+  String get apartement => 'Apartement';
+
+  @override
+  String get villas => 'Villas';
+
+  @override
+  String get suggestedLanguages => 'Suggested Languages';
+
+  @override
+  String get otherLanguages => 'Other Languages';
+
+  @override
+  String get english => 'English';
+
+  @override
+  String get vietnamese => 'VietNamese';
+
+  @override
+  String get errorNotEmpty => 'Please do not leave blank';
+
+  @override
+  String get errorNumberPhone => 'Phone number is not in correct format';
+
+  @override
+  String get displayName => 'Display Name';
+
+  @override
+  String get updateSucess => 'Update successful';
+
+  @override
+  String get updateFailed => 'Update failed';
 }

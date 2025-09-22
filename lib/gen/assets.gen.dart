@@ -210,6 +210,9 @@ class $AssetsImagesIconGen {
   /// File path: assets/images/icon/solar_star-bold.svg
   String get solarStarBold => 'assets/images/icon/solar_star-bold.svg';
 
+  /// File path: assets/images/icon/tick.svg
+  String get tick => 'assets/images/icon/tick.svg';
+
   /// File path: assets/images/icon/user.svg
   String get user => 'assets/images/icon/user.svg';
 
@@ -269,6 +272,7 @@ class $AssetsImagesIconGen {
     question,
     shieldDone,
     solarStarBold,
+    tick,
     user,
     villa,
     wind2,
