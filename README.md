@@ -15,8 +15,10 @@
   
 ## Function
 - Login
+- Home ( search by text or search by filter)
 - Hotel Booking (Select date, number of guests)
 - View your booked rooms, booking history
+- Profile( change language and update personal info)
 - Logout
 
 ## UI: Hotel Booking App
@@ -31,7 +33,7 @@
 
 - **Home**
 
-<img src="./assets/images/image_project/home2.png" width="200"/>  <img src="./assets/images/image_project/home_1.png" width="200"/> <img src="./assets/images/image_project/home3.png" width="200"/> 
+<img src="./assets/images/image_project/home2.png" width="200"/>  <img src="./assets/images/image_project/home_1.png" width="200"/> <img src="./assets/images/image_project/home3.png" width="200"/> <img src="./assets/images/image_project/home_4.png" width="200"/> 
 
 - **Detail**
 
@@ -47,10 +49,13 @@
 
 - **Profile**
 
-<img src="./assets/images/image_project/profile_2.png" width="200"/> <img src="./assets/images/image_project/profile_1.png" width="200"/> 
+<img src="./assets/images/image_project/profile_2.png" width="200"/> <img src="./assets/images/image_project/profile_1.png" width="200"/> <img src="./assets/images/image_project/profile_3.png" width="200"/>  <img src="./assets/images/image_project/profile_4.png" width="200"/> 
 
 - **Demo**
-[Video demo project](https://github.com/user-attachments/assets/f72ec06e-a718-4f56-a7bc-3fb4bfd39cd0)
+  
+    [Video demo hotel booking app](https://github.com/user-attachments/assets/caf4c5c1-3c8c-4da1-9d77-cbaf97ecb69e)
+
+    [Video demo widgetbook](https://github.com/user-attachments/assets/53b1dbc7-a926-47f1-9532-716e29fb37ef)
 
 ## Technologies Used
 - Visual studio code

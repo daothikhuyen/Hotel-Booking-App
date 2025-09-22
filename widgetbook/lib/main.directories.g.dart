@@ -10,6 +10,8 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
+import 'package:provider/provider.dart';
 import 'package:widgetbook/widgetbook.dart' as _widgetbook;
 import 'package:widgetbook_hotel_booking_app/hotel_booking/core/theme/color.dart'
     as _widgetbook_hotel_booking_app_hotel_booking_core_theme_color;
@@ -224,8 +226,16 @@ final directories = <_widgetbook.WidgetbookNode>[
                 useCase: _widgetbook.WidgetbookUseCase(
                   name: 'Default',
                   builder:
-                      _widgetbook_hotel_booking_app_hotel_booking_core_widgets_category_category_list
-                          .buildCategoryListUseCase,
+                      (context) => MultiProvider(
+                        providers: [
+                          ChangeNotifierProvider(
+                            create: (_) => HotelController(),
+                          ),
+                        ],
+                        child:
+                            _widgetbook_hotel_booking_app_hotel_booking_core_widgets_category_category_list
+                                .buildCategoryListUseCase(context),
+                      ),
                 ),
               ),
             ],

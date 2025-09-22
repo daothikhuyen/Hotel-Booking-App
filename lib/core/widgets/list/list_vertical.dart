@@ -4,7 +4,6 @@ import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/widgets/cards/build_divider.dart';
 import 'package:hotel_booking_app/core/widgets/cards/recomended_card.dart';
 import 'package:hotel_booking_app/core/widgets/cards/vertical_skeleton_card.dart';
-import 'package:hotel_booking_app/data/data/hotel_data.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 
 class ListVertical extends StatefulWidget {
@@ -52,7 +51,7 @@ class _ListVerticalState extends State<ListVertical> {
                           ),
                         ),
                         // create horizontal line
-                        if (index < hotelData.length - 1)
+                        if (index < widget.listHotels.length - 1)
                           const Padding(
                             padding: EdgeInsets.symmetric(
                               horizontal: 5,

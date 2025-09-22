@@ -4,4 +4,5 @@ static const String users = 'users';
   static const String destinations = 'destination';
   static const String booking = 'booking';
   static const String comment = 'comments';
+  static const String category = 'category';
 }

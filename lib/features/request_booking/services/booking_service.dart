@@ -16,7 +16,7 @@ class BookingService {
       await bookingCollection.add(booking.toJson());
       return;
     } on AppException catch (e) {
-      throw AppException(message: 'Error save booking $e');
+      throw AppException(message: '$e');
     }
   }
 }

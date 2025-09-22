@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/exceptions/app_exception.dart';
+import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/widgets/alter/diaglog.dart';
 import 'package:hotel_booking_app/core/widgets/alter/snack_bar.dart';
@@ -31,11 +32,11 @@ class AuthController extends ChangeNotifier {
     notifyListeners();
   }
 
-Future<void> isLoggedIn() async {
-  final user = await LocalStorageHelper.getUserData();
-  _isSignIn = user != null;
-  notifyListeners();
-}
+  Future<void> isLoggedIn() async {
+    final user = await LocalStorageHelper.getUserData();
+    _isSignIn = user != null;
+    notifyListeners();
+  }
 
   // sign in with email and password
   Future<void> signIn({
@@ -61,11 +62,37 @@ Future<void> isLoggedIn() async {
     try {
       diaglog.showLoading(context);
       await AuthService().signInUserWithGoogle(context);
-       context.go(PageRoutes.homePage);
+      context.go(PageRoutes.homePage);
     } on AppException catch (e) {
       snackBar.showSnackBar(context, e.message);
     } finally {
       Navigator.pop(context);
+    }
+  }
+
+  Future<void> updateProfile({
+    required BuildContext context,
+    required String displayName,
+    required String phone,
+    required String location,
+    required GlobalKey<FormState> formKey,
+  }) async {
+    if (formKey.currentState!.validate()) {
+      try {
+        diaglog.showLoading(context);
+        await AuthService().updateProfile(
+          context,
+          displayName,
+          phone,
+          location,
+        );
+        notifyListeners();
+        snackBar.showSnackBar(context, context.l10n.updateSucess);
+      } on AppException catch (e) {
+        snackBar.showSnackBar(context, e.message);
+      }finally {
+        Navigator.pop(context);
+      }
     }
   }
 
@@ -76,9 +103,9 @@ Future<void> isLoggedIn() async {
       await clearUser();
       await authService.signOut(context);
       notifyListeners();
-    } on AppException catch (e){
+    } on AppException catch (e) {
       context.pop();
-      snackBar.showSnackBar(context,e.message);
-    } 
+      snackBar.showSnackBar(context, e.message);
+    }
   }
 }

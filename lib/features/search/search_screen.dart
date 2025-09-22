@@ -111,7 +111,10 @@ class _SearchScreenState extends State<SearchScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 4),
                 child: RefreshIndicator(
                   onRefresh: () async {
-                    controller.isFilter = false;
+                    setState(() {
+                      controller.isFilter = false;
+                      search.text = '';
+                    });
                   },
                   child: AnimatedBuilder(
                     animation: controller,

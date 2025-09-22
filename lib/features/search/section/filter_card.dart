@@ -13,7 +13,7 @@ DropdownMenuItem<String> buildMenuItem(BuildContext context, String item) {
   final text = extractBedBath(item);
   final value =
       '${context.l10n.bed(text['bed'] ?? 0)},'
-      ' ${context.l10n.bathroom(text['bed'] ?? 0)}';
+      ' ${context.l10n.bathroom(text['bathroom'] ?? 0)}';
 
   return DropdownMenuItem(value: item, child: Text(value));
 }

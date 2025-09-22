@@ -940,6 +940,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Apply Filter'**
   String get applyFilter;
+
+  /// No description provided for @personalInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Info'**
+  String get personalInfo;
+
+  /// No description provided for @firstName.
+  ///
+  /// In en, this message translates to:
+  /// **'First Name'**
+  String get firstName;
+
+  /// No description provided for @lastName.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Name'**
+  String get lastName;
+
+  /// No description provided for @saveChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Changes'**
+  String get saveChanges;
+
+  /// No description provided for @apartement.
+  ///
+  /// In en, this message translates to:
+  /// **'Apartement'**
+  String get apartement;
+
+  /// No description provided for @villas.
+  ///
+  /// In en, this message translates to:
+  /// **'Villas'**
+  String get villas;
+
+  /// No description provided for @suggestedLanguages.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggested Languages'**
+  String get suggestedLanguages;
+
+  /// No description provided for @otherLanguages.
+  ///
+  /// In en, this message translates to:
+  /// **'Other Languages'**
+  String get otherLanguages;
+
+  /// No description provided for @english.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get english;
+
+  /// No description provided for @vietnamese.
+  ///
+  /// In en, this message translates to:
+  /// **'VietNamese'**
+  String get vietnamese;
+
+  /// No description provided for @errorNotEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Please do not leave blank'**
+  String get errorNotEmpty;
+
+  /// No description provided for @errorNumberPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number is not in correct format'**
+  String get errorNumberPhone;
+
+  /// No description provided for @displayName.
+  ///
+  /// In en, this message translates to:
+  /// **'Display Name'**
+  String get displayName;
+
+  /// No description provided for @updateSucess.
+  ///
+  /// In en, this message translates to:
+  /// **'Update successful'**
+  String get updateSucess;
+
+  /// No description provided for @updateFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Update failed'**
+  String get updateFailed;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

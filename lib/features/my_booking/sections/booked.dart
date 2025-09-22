@@ -55,7 +55,7 @@ class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin {
         if (_scrollController.position.pixels >=
                 _scrollController.position.maxScrollExtent - 200 &&
             !controller.isLoading &&
-            !controller.hasMore) {
+            controller.hasMore) {
           controller.fetchMyBooking(table: 'booked', loadMore: true);
         }
       });
@@ -117,8 +117,8 @@ class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin {
                   ),
                 );
               } else {
-                return !controller.hasMore  && controller.isLoading
-                    ? const VerticalSkeletonCard(height: 262,)
+                return controller.hasMore && controller.isLoading
+                    ? const VerticalSkeletonCard(height: 120,)
                     : const SizedBox.shrink();
               }
             },

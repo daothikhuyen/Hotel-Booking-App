@@ -45,7 +45,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get mostPopular => 'Phổ biến nhất';
 
   @override
-  String get mybooking => 'Lịch sử';
+  String get mybooking => 'Phòng Của Bạn';
 
   @override
   String get nearYou => 'Khách sạn gần bạn';
@@ -378,7 +378,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get logout => 'Đăng xuất';
 
   @override
-  String get noData => 'Hiện tại chưa có lịch sử nào!';
+  String get noData => 'Hiện tại chưa có thông tin nào!';
 
   @override
   String get areYouSure => 'Bạn chắc chắn';
@@ -442,4 +442,49 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get applyFilter => 'Áp dụng bộ lọc';
+
+  @override
+  String get personalInfo => 'Thông Tin Cá Nhân';
+
+  @override
+  String get firstName => 'Tên';
+
+  @override
+  String get lastName => 'Họ';
+
+  @override
+  String get saveChanges => 'Lưu Thay Đổi';
+
+  @override
+  String get apartement => 'Căn hộ';
+
+  @override
+  String get villas => 'Biệt thự';
+
+  @override
+  String get suggestedLanguages => 'Ngôn ngữ đề xuất';
+
+  @override
+  String get otherLanguages => 'Ngôn ngữ khác';
+
+  @override
+  String get english => 'Anh';
+
+  @override
+  String get vietnamese => 'Việt Nam';
+
+  @override
+  String get errorNotEmpty => 'Vui lòng không để trống';
+
+  @override
+  String get errorNumberPhone => 'Số điện thoại chưa đúng';
+
+  @override
+  String get displayName => 'Tên hiển thị';
+
+  @override
+  String get updateSucess => 'Cập nhật thành công';
+
+  @override
+  String get updateFailed => 'Cập nhật thất bại';
 }
