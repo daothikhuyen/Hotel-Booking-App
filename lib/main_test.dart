@@ -10,6 +10,7 @@ import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart
 import 'package:hotel_booking_app/features/home/controller/navigation_controller.dart';
 import 'package:hotel_booking_app/features/hotel_detail/controller/hotel_detail_controller.dart';
 import 'package:hotel_booking_app/features/my_booking/controller/my_booking_controller.dart';
+import 'package:hotel_booking_app/features/profile/controller/profile_controller.dart';
 import 'package:hotel_booking_app/features/request_booking/controller/booking_controller.dart';
 import 'package:hotel_booking_app/firebase_options.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
@@ -21,7 +22,6 @@ void main() async {
   final localUser = await LocalStorageHelper.getUserData();
   await authController.isLoggedIn();
   runApp(
-    
     DevicePreview(
       builder:
           (context) => MultiProvider(
@@ -39,6 +39,7 @@ void main() async {
               ChangeNotifierProvider(
                 create: (context) => MyBookingController(),
               ),
+              ChangeNotifierProvider(create: (context) => ProfileController()),
               ChangeNotifierProvider(
                 create: (_) {
                   final userController = AuthController();

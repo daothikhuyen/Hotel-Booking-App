@@ -75,7 +75,6 @@
   "networkError": "Network error. Check your connection.",
   "userNotExisted": "You are not logged in.\n Please log in to continue booking",
   "hotelNotExisted": "Data does not exist",
-  "tagHotel": "Hotels",
   "titleDetail": "Detail",
   "commonFacilities": "Common Facilities",
   "titlePrice": "Price",
@@ -188,5 +187,22 @@
   "overlayMessage": "Overlay Message",
   "roomCount": "Room Count",
   "filter": "Filter By",
-  "applyFilter": "Apply Filter"
+  "applyFilter": "Apply Filter",
+  "personalInfo": "Personal Info",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "saveChanges": "Save Changes",
+  "apartement": "Apartement",
+  "villas": "Villas",
+  "languages": "Languages",
+  "suggestedLanguages": "Suggested Languages",
+  "otherLanguages": "Other Languages",
+  "english": "English",
+  "vietnamese": "VietNamese",
+  "errorNotEmpty": "Please do not leave blank",
+  "errorNumberPhone": "Phone number is not in correct format",
+  "displayName": "Display Name",
+  "updateSucess": "Update successful",
+  "updateFailed": "Update failed"
+
 }

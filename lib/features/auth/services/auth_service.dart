@@ -92,7 +92,6 @@ class AuthService {
       final snapshot = await auth.signInWithCredential(credential);
 
       if (snapshot.user != null) {
-
         final docSnapshot =
             await FirebaseFirestore.instance
                 .collection(FirestoreCollections.users)
@@ -123,6 +122,36 @@ class AuthService {
       await auth.signOut();
     } on FirebaseException {
       throw AppException(message: context.l10n.signOutFailed);
+    }
+  }
+
+  Future<void> updateProfile(
+    BuildContext context,
+    String displayName,
+    String phone,
+    String location,
+  ) async {
+    try {
+      final docRef = _firestore
+          .collection(FirestoreCollections.users)
+          .doc(currentUser?.uid ?? '');
+
+      final hbUser = HBUser(
+        uid: currentUser?.uid ?? '',
+        email: currentUser?.email ?? '',
+        displayName: displayName,
+        numberPhone: phone,
+        location: location,
+        photoURL: currentUser?.photoURL,
+      );
+
+      await docRef.update(hbUser.toJson());
+      await currentUser?.updateDisplayName(displayName);
+
+      await LocalStorageHelper.saveUser(hbUser);
+      Provider.of<AuthController>(context, listen: false).setUser(hbUser);
+    } on FirebaseException {
+      throw AppException(message: context.l10n.updateFailed);
     }
   }
 }

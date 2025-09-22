@@ -162,13 +162,12 @@ class HotelService {
   ) async {
     try {
       var query = _firestore.collection(FirestoreCollections.hotels).limit(10);
-      debugPrint('info filter $location $price $bed $bathroom $rating');
 
       if (location.isNotEmpty) {
         query = query.where('location', isEqualTo: location);
       }
       if (price > 0) {
-        final priceFormat =( price*1000).round();
+        final priceFormat = (price * 1000).round();
         query = query.where('currentPrice', isLessThanOrEqualTo: priceFormat);
       }
       if (bed > 0) {
@@ -189,6 +188,31 @@ class HotelService {
       }).toList();
     } on FirebaseException catch (e) {
       throw AppException(message: 'search ${e.message}');
+    }
+  }
+
+  Future<List<Hotel>> fetchHotelByCategory(
+    BuildContext context,
+    String categoryId,
+    int limit,
+  ) async {
+    try {
+      final snapshot =
+          await _firestore
+              .collection(FirestoreCollections.hotels)
+              .where('categoryId', isEqualTo: categoryId)
+              .limit(limit)
+              .get();
+
+      if (snapshot.docs.isEmpty) {
+        return await fetchRecomendedHotels(context, limit: limit);
+      }
+
+      return snapshot.docs.map((doc) {
+        return Hotel.fromJson(doc.data(), doc.id);
+      }).toList();
+    } on FirebaseException catch (e) {
+      throw AppException(message: 'fetch hotel by category ${e.message}');
     }
   }
 }

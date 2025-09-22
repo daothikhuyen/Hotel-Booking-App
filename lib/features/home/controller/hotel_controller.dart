@@ -28,8 +28,6 @@ class HotelController extends ChangeNotifier {
     try {
       if (isLoading) return;
 
-      debugPrint('loadMore $loadMore');
-
       if (loadMore) {
         isLoading = true;
         notifyListeners();
@@ -79,10 +77,15 @@ class HotelController extends ChangeNotifier {
   Future<void> fetchRecomendedHotels(
     BuildContext context, {
     int limit = limit,
+    String categoryId = '',
     bool loadMore = false,
   }) => fetchHotel(
     context,
-    _service.fetchRecomendedHotels(context, limit: limit, loadMore: loadMore),
+    _service.fetchRecomendedHotels(
+      context,
+      limit: limit,
+      loadMore: loadMore,
+    ),
     (data) => listRecomended = data,
   );
 
@@ -95,6 +98,24 @@ class HotelController extends ChangeNotifier {
     _service.fetchBestToday(context, limit: limit, loadMore: loadMore),
     (data) => listBestToday = data,
   );
+
+  Future<void> fetchHotelByCategory(
+    BuildContext context,
+    String categoryId, {
+    int limit = limit,
+  }) async {
+    try {
+      listRecomended = await _service.fetchHotelByCategory(
+        context,
+        categoryId,
+        limit,
+      );
+      notifyListeners();
+    } on AppException catch (e) {
+      HBSnackBar().showSnackBar(context, e.message);
+      throw AppException(message: e.message);
+    }
+  }
 
   Future<void> searchHotel(BuildContext context, {required String text}) async {
     try {

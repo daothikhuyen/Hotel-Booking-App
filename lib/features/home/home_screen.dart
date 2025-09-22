@@ -10,6 +10,7 @@ import 'package:hotel_booking_app/core/widgets/list/list_horizontal.dart';
 import 'package:hotel_booking_app/core/widgets/list/list_vertical.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
 import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
+import 'package:hotel_booking_app/features/home/controller/navigation_controller.dart';
 import 'package:hotel_booking_app/features/home/widgets/header_bar.dart';
 import 'package:hotel_booking_app/features/home/widgets/list_popular.dart';
 import 'package:hotel_booking_app/features/home/widgets/map_section.dart';
@@ -25,7 +26,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int selectedIndex = 0;
 
   @override
   void initState() {
@@ -34,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final controllerCategory = Provider.of<NavigationController>(context);
     final controller = Provider.of<HotelController>(context);
     final userProvider = Provider.of<AuthController>(context);
     final user = userProvider.currentUser;
@@ -42,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: RefreshIndicator(
         onRefresh: () async {
           controller.reset(4);
+          controllerCategory.reset();
         },
         child: CustomScrollView(
           slivers: [
@@ -125,7 +127,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     // Most Popular
                     LayoutBuilder(
                       builder: (context, constraints) {
-                        
                         return VisibilityDetector(
                           key: UniqueKey(),
                           onVisibilityChanged: (info) {
@@ -142,8 +143,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               ListPopular(
                                 controller.listPopular,
                                 controller.listPopular.length < 10
-                                        ? controller.listPopular.length
-                                        : 10,
+                                    ? controller.listPopular.length
+                                    : 10,
                               ),
                             ],
                           ),
@@ -158,6 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         if (info.visibleFraction > 0.1 &&
                             controller.listRecomended.isEmpty) {
                           controller.fetchRecomendedHotels(context, limit: 3);
+                          controllerCategory.fetchCategory(context);
                         }
                       },
                       child: Column(
@@ -172,7 +174,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           const SizedBox(height: 5),
                           // category list
-                          const CategoryList(),
+                          CategoryList(
+                            key: ValueKey(controllerCategory.listCategory),
+                            listCategory: controllerCategory.listCategory,
+                          ),
                           const SizedBox(height: 10),
                           ListVertical(
                             controller.listRecomended,
@@ -204,8 +209,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         context.l10n.bestToday,
                         context.l10n.seeAll,
                         controller.listBestToday.length < 10
-                                ? controller.listBestToday.length
-                                : 10,
+                            ? controller.listBestToday.length
+                            : 10,
                         3,
                       ),
                     ),

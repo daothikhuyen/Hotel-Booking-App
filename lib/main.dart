@@ -9,6 +9,7 @@ import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart
 import 'package:hotel_booking_app/features/home/controller/navigation_controller.dart';
 import 'package:hotel_booking_app/features/hotel_detail/controller/hotel_detail_controller.dart';
 import 'package:hotel_booking_app/features/my_booking/controller/my_booking_controller.dart';
+import 'package:hotel_booking_app/features/profile/controller/profile_controller.dart';
 import 'package:hotel_booking_app/features/request_booking/controller/booking_controller.dart';
 import 'package:hotel_booking_app/firebase_options.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
@@ -25,6 +26,7 @@ void main() async {
         ChangeNotifierProvider(create: (context) => HotelController()),
         ChangeNotifierProvider(create: (context) => NavigationController()),
         ChangeNotifierProvider(create: (context) => HotelDetailController()),
+        ChangeNotifierProvider(create: (context) => ProfileController()),
         ChangeNotifierProvider(
           create: (context) => BookingController(),
         ), // request booking
@@ -42,8 +44,21 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => MyAppState();
+}
+
+class MyAppState extends State<MyApp> {
+  Locale _locale = const Locale('en');
+
+  void setLocale(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +78,7 @@ class MyApp extends StatelessWidget {
         Locale('en'), // English
         Locale('vi'), // vietnamese
       ],
-      locale: const Locale('en'),
+      locale: _locale,
     );
   }
 }
