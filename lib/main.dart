@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: const [
         Locale('en'), // English
-        Locale('vi'), // Spanish
+        Locale('vi'), // vietnamese
       ],
       locale: const Locale('en'),
     );
