@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/response/api_status.dart';
+import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
+import 'package:hotel_booking_app/core/widgets/alter/snack_bar.dart';
 import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/core/widgets/buttons/second_btn.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 import 'package:provider/provider.dart';
 
-class HBDiaglog {
+class LoadingOverlay {
   Future<void> diaglogBuilder({
     required BuildContext context,
     required String title,
@@ -78,7 +81,7 @@ class HBDiaglog {
               mainAxisSize: MainAxisSize.min,
               children: [
                 SvgPicture.asset(Assets.images.icon.question),
-                const SizedBox(height: 18,),
+                const SizedBox(height: 18),
                 Text(
                   context.l10n.areYouSure,
                   style: HBTextStyles.bodySemiboldLarge(
@@ -91,7 +94,7 @@ class HBDiaglog {
                     context.colorScheme.onSurface,
                   ),
                 ),
-                const SizedBox(height: 18,),
+                const SizedBox(height: 18),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -100,10 +103,18 @@ class HBDiaglog {
                         titleBtn: context.l10n.logout,
                         color: context.colorScheme.error,
                         radiusSize: 12,
-                        size: 46, 
-                        onPressed: () async{ 
-                          await authController.signOut(context);
-                         },
+                        size: 46,
+                        onPressed: () async {
+                          context.replace(PageRoutes.signIn);
+                          showLoading(context);
+                          final result = await authController.signOut(context);
+
+                          if (result.status == ApiStatus.error) {
+                            context.pop();
+                            HBSnackBar().showSnackBar(context, result.message);
+                            context.replace(PageRoutes.profile);
+                          }
+                        },
                       ),
                     ),
                     Expanded(

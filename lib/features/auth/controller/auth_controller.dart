@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/exceptions/app_exception.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/core/routes/page_routes.dart';
-import 'package:hotel_booking_app/core/widgets/alter/diaglog.dart';
-import 'package:hotel_booking_app/core/widgets/alter/snack_bar.dart';
+import 'package:hotel_booking_app/core/response/api_response.dart';
+import 'package:hotel_booking_app/core/response/api_status.dart';
+import 'package:hotel_booking_app/core/widgets/alter/loading_overlay.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
 import 'package:hotel_booking_app/features/auth/helpers/local_storage_helper.dart';
 import 'package:hotel_booking_app/features/auth/services/auth_service.dart';
 
 class AuthController extends ChangeNotifier {
-  final HBSnackBar snackBar = HBSnackBar();
-  final HBDiaglog diaglog = HBDiaglog();
+  final LoadingOverlay diaglog = LoadingOverlay();
   final AuthService authService = AuthService();
 
   HBUser? _currentUser;
@@ -39,38 +37,41 @@ class AuthController extends ChangeNotifier {
   }
 
   // sign in with email and password
-  Future<void> signIn({
+  Future<ApiResponse> signIn({
     required BuildContext context,
     required String email,
     required String password,
     required GlobalKey<FormState> formKey,
   }) async {
-    if (formKey.currentState!.validate()) {
-      try {
-        diaglog.showLoading(context);
-        await AuthService().signInUser(context, email, password);
-        context.go(PageRoutes.homePage);
-      } on AppException catch (e) {
-        snackBar.showSnackBar(context, e.message);
-      } finally {
-        Navigator.pop(context);
-      }
-    }
-  }
-
-  Future<void> signInWithGoogle(BuildContext context) async {
     try {
-      diaglog.showLoading(context);
-      await AuthService().signInUserWithGoogle(context);
-      context.go(PageRoutes.homePage);
+      if (formKey.currentState!.validate()) {
+        final user = await AuthService().signInUser(context, email, password);
+        return ApiResponse(
+          ApiStatus.success,
+          message: context.l10n.signInSucess,
+          data: user,
+        );
+      }
+      return ApiResponse(ApiStatus.error);
     } on AppException catch (e) {
-      snackBar.showSnackBar(context, e.message);
-    } finally {
-      Navigator.pop(context);
+      return ApiResponse(ApiStatus.error, message: e.message);
     }
   }
 
-  Future<void> updateProfile({
+  Future<ApiResponse> signInWithGoogle(BuildContext context) async {
+    try {
+      final user = await AuthService().signInUserWithGoogle(context);
+      return ApiResponse(
+        ApiStatus.success,
+        message: context.l10n.signInSucess,
+        data: user,
+      );
+    } on AppException catch (e) {
+      return ApiResponse(ApiStatus.error, message: e.message);
+    }
+  }
+
+  Future<ApiResponse> updateProfile({
     required BuildContext context,
     required String displayName,
     required String phone,
@@ -79,33 +80,32 @@ class AuthController extends ChangeNotifier {
   }) async {
     if (formKey.currentState!.validate()) {
       try {
-        diaglog.showLoading(context);
-        await AuthService().updateProfile(
+        final user = await AuthService().updateProfile(
           context,
           displayName,
           phone,
           location,
         );
-        notifyListeners();
-        snackBar.showSnackBar(context, context.l10n.updateSucess);
+        return ApiResponse(
+          ApiStatus.success,
+          message: context.l10n.updateSucess,
+          data: user,
+        );
       } on AppException catch (e) {
-        snackBar.showSnackBar(context, e.message);
-      }finally {
-        Navigator.pop(context);
+        return ApiResponse(ApiStatus.error, message: e.message);
       }
     }
+    return ApiResponse(ApiStatus.error);
   }
 
-  Future<void> signOut(BuildContext context) async {
+  Future<ApiResponse> signOut(BuildContext context) async {
     try {
-      diaglog.showLoading(context);
-      context.replace(PageRoutes.signIn);
       await clearUser();
       await authService.signOut(context);
       notifyListeners();
+      return ApiResponse(ApiStatus.success);
     } on AppException catch (e) {
-      context.pop();
-      snackBar.showSnackBar(context, e.message);
+      return ApiResponse(ApiStatus.error, message: e.message);
     }
   }
 }

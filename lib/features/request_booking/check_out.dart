@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/response/api_status.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
+import 'package:hotel_booking_app/core/widgets/alter/snack_bar.dart';
 import 'package:hotel_booking_app/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/core/widgets/cards/recomended_card.dart';
@@ -47,7 +49,7 @@ class _CheckOutState extends State<CheckOut> {
                 linkImage: hotel.image,
                 ratting: hotel.ratting.toString(),
               ),
-          
+
               InfoHotelBooking(booking: widget.booking),
               // promo
               const SizedBox(height: 18),
@@ -64,11 +66,15 @@ class _CheckOutState extends State<CheckOut> {
           textButton: context.l10n.selectPayment,
           onPressed: () {
             controller.createBooking(context, widget.booking).then((value) {
-              myBookingController.fetchMyBooking(
-                table: 'booked',
-                loadMore: true,
-              );
-              context.push(PageRoutes.bookingSucess);
+              if (value.status == ApiStatus.success) {
+                myBookingController.fetchMyBooking(
+                  table: 'booked',
+                  loadMore: true,
+                );
+                context.push(PageRoutes.bookingSucess);
+              }else{
+                HBSnackBar().showSnackBar(context, value.message);
+              }
             });
           },
           bold: true,

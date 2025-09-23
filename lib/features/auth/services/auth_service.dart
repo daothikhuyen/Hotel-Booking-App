@@ -6,9 +6,7 @@ import 'package:hotel_booking_app/core/exceptions/app_exception.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/firestore_collections.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
-import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
 import 'package:hotel_booking_app/features/auth/helpers/local_storage_helper.dart';
-import 'package:provider/provider.dart';
 
 class AuthService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -49,7 +47,7 @@ class AuthService {
     }
   }
 
-  Future<void> signInUser(
+  Future signInUser(
     BuildContext context,
     String email,
     String password,
@@ -66,19 +64,20 @@ class AuthService {
               .doc(credentail.user?.uid)
               .get();
 
-      if (snapshot.exists && snapshot.data() != null) {
-        final user = HBUser.fromJson(snapshot.data() ?? {});
-
-        await LocalStorageHelper.saveUser(user);
-        Provider.of<AuthController>(context, listen: false).setUser(user);
-        return;
+      if (!snapshot.exists && snapshot.data() == null) {
+        throw AppException(message: context.l10n.signInFailed);
       }
-    } on FirebaseAuthException {
+
+      final user = HBUser.fromJson(snapshot.data() ?? {});
+
+      await LocalStorageHelper.saveUser(user);
+      return user;
+    } on FirebaseAuthException{
       throw AppException(message: context.l10n.signInFailed);
     }
   }
 
-  Future<void> signInUserWithGoogle(BuildContext context) async {
+  Future signInUserWithGoogle(BuildContext context) async {
     try {
       final gUser = await GoogleSignIn().signIn();
 
@@ -100,7 +99,7 @@ class AuthService {
         if (docSnapshot.exists) {
           final user = HBUser.fromJson(docSnapshot.data() ?? {});
           await LocalStorageHelper.saveUser(user);
-          Provider.of<AuthController>(context, listen: false).setUser(user);
+          return user;
         } else {
           await signUpUser(
             context: context,
@@ -125,7 +124,7 @@ class AuthService {
     }
   }
 
-  Future<void> updateProfile(
+  Future updateProfile(
     BuildContext context,
     String displayName,
     String phone,
@@ -149,7 +148,7 @@ class AuthService {
       await currentUser?.updateDisplayName(displayName);
 
       await LocalStorageHelper.saveUser(hbUser);
-      Provider.of<AuthController>(context, listen: false).setUser(hbUser);
+      return hbUser;
     } on FirebaseException {
       throw AppException(message: context.l10n.updateFailed);
     }

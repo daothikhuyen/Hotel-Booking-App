@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/response/api_status.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/core/utils/validator.dart';
-import 'package:hotel_booking_app/core/widgets/alter/diaglog.dart';
+import 'package:hotel_booking_app/core/widgets/alter/loading_overlay.dart';
 import 'package:hotel_booking_app/core/widgets/alter/snack_bar.dart';
 import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/core/widgets/textfield.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
 import 'package:hotel_booking_app/features/auth/widgets/circular_checkbox%20.dart';
 import 'package:hotel_booking_app/features/auth/widgets/socail_section.dart';
+import 'package:provider/provider.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -22,8 +24,7 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   final HBSnackBar snackBar = HBSnackBar();
-  final HBDiaglog diaglog = HBDiaglog();
-  final AuthController authController = AuthController();
+  final LoadingOverlay diaglog = LoadingOverlay();
   final _formKey = GlobalKey<FormState>();
   final _email = TextEditingController();
   final _password = TextEditingController();
@@ -60,6 +61,7 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
+    final authController = Provider.of<AuthController>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -164,12 +166,26 @@ class _SignInState extends State<SignIn> {
                   child: PrimaryBtn(
                     size: 56,
                     textButton: context.l10n.signIn,
-                    onPressed: () => authController.signIn(
-                      context: context,
-                      formKey: _formKey,
-                      email: _email.text,
-                      password: _password.text,
-                    ),
+                    onPressed: () async {
+                      try {
+                        diaglog.showLoading(context);
+                        final result = await authController.signIn(
+                          context: context,
+                          formKey: _formKey,
+                          email: _email.text,
+                          password: _password.text,
+                        );
+                        if (result.status == ApiStatus.error &&
+                            result.message != '') {
+                          snackBar.showSnackBar(context, result.message);
+                        } else {
+                          authController.setUser(result.data);
+                          context.go(PageRoutes.homePage);
+                        }
+                      } finally {
+                        Navigator.pop(context);
+                      }
+                    },
                     bold: false,
                     isSelected: true,
                   ),
@@ -186,8 +202,7 @@ class _SignInState extends State<SignIn> {
                         ),
                       ),
                       TextButton(
-                        onPressed:
-                            () => context.push(PageRoutes.signIn),
+                        onPressed: () => context.push(PageRoutes.signIn),
                         child: Text(
                           context.l10n.signUp,
                           style: GoogleFonts.roboto(

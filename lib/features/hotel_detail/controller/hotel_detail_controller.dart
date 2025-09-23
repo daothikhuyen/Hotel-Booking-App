@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/exceptions/app_exception.dart';
-import 'package:hotel_booking_app/core/widgets/alter/snack_bar.dart';
+import 'package:hotel_booking_app/core/response/api_response.dart';
+import 'package:hotel_booking_app/core/response/api_status.dart';
 import 'package:hotel_booking_app/data/data/comment_user.dart';
 import 'package:hotel_booking_app/features/hotel_detail/section/hotel_detail_service.dart';
 
@@ -12,7 +13,7 @@ class HotelDetailController extends ChangeNotifier {
 
   final HotelDetailService _service = HotelDetailService();
 
-  Future<void> fetchCommentHotel(
+  Future<ApiResponse> fetchCommentHotel(
     BuildContext context, {
     required String idHotel,
     bool loadMore = false,
@@ -20,7 +21,7 @@ class HotelDetailController extends ChangeNotifier {
   }) async {
     try {
       final List<CommentWithUser> newComment;
-      if (isLoading) return;
+      if (isLoading) return ApiResponse(ApiStatus.loading);
 
       if (loadMore) {
         isLoading = true;
@@ -45,8 +46,9 @@ class HotelDetailController extends ChangeNotifier {
 
       isLoading = false;
       notifyListeners();
+      return ApiResponse(ApiStatus.success);
     } on AppException catch (e) {
-      HBSnackBar().showSnackBar(context, e.message);
+      return ApiResponse(ApiStatus.error, message: e.message);
     }
   }
 }

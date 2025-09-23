@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
-import 'package:hotel_booking_app/core/widgets/alter/diaglog.dart';
+import 'package:hotel_booking_app/core/widgets/alter/loading_overlay.dart';
 import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/core/widgets/buttons/second_btn.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
@@ -21,9 +21,10 @@ class ProfileScreen extends StatelessWidget {
     final user = userProvider.currentUser;
     final photoURL = user?.photoURL ?? '';
 
-final imageProvider = photoURL.isNotEmpty
-    ? NetworkImage(photoURL)
-    : AssetImage(Assets.images.avatar.ellipse.path) as ImageProvider;
+    final imageProvider =
+        photoURL.isNotEmpty
+            ? NetworkImage(photoURL)
+            : AssetImage(Assets.images.avatar.ellipse.path) as ImageProvider;
 
     return Scaffold(
       appBar: AppBar(
@@ -56,7 +57,7 @@ final imageProvider = photoURL.isNotEmpty
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(100),
                               image: DecorationImage(
-                                image:imageProvider,
+                                image: imageProvider,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -130,7 +131,8 @@ final imageProvider = photoURL.isNotEmpty
                   padding: const EdgeInsets.only(top: 4),
                   child: Center(
                     child: TextButton(
-                      onPressed: () => HBDiaglog().showSignOutDialog(context),
+                      onPressed:
+                          () => LoadingOverlay().showSignOutDialog(context),
                       child: Text(
                         context.l10n.logout,
                         style: HBTextStyles.bodySemiboldLarge(

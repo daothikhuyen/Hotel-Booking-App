@@ -41,8 +41,6 @@ class MyBookingController with ChangeNotifier {
         hasMore = false;
       }
 
-      debugPrint('loading $isLoading');
-
       if(table == 'booked'){
         updateList(listBooking, newBookings);
       }else{

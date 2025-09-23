@@ -43,7 +43,7 @@ class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin {
     _scrollController.dispose();
   }
 
-   @override
+  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     final authController = Provider.of<AuthController>(context);
@@ -64,10 +64,12 @@ class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin {
 
     // Khi logout
     if (authController.currentUser == null) {
-      controller.reset(controller.listBooking);
-      setState(() {
-        isLoading = false;
-        _initialized = false;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        controller.reset(controller.listBooking);
+        setState(() {
+          isLoading = false;
+          _initialized = false;
+        });
       });
     }
   }
@@ -118,7 +120,7 @@ class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin {
                 );
               } else {
                 return controller.hasMore && controller.isLoading
-                    ? const VerticalSkeletonCard(height: 120,)
+                    ? const VerticalSkeletonCard(height: 120)
                     : const SizedBox.shrink();
               }
             },

@@ -5,6 +5,7 @@ import 'package:hotel_booking_app/core/utils/format.dart';
 import 'package:hotel_booking_app/core/widgets/alter/page_alter_null.dart';
 import 'package:hotel_booking_app/core/widgets/cards/vertical_skeleton_card.dart';
 import 'package:hotel_booking_app/data/model/booking.dart';
+import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
 import 'package:hotel_booking_app/features/my_booking/controller/my_booking_controller.dart';
 import 'package:hotel_booking_app/features/my_booking/widgets/booking_card.dart';
 import 'package:hotel_booking_app/features/my_booking/widgets/booking_skeleton.dart';
@@ -22,17 +23,18 @@ class _HistoryState extends State<History> with AutomaticKeepAliveClientMixin{
   final _scrollController = ScrollController();
   late MyBookingController controller;
   bool isLoading = true;
-
+  bool _initialized = false;
     
   @override
   bool get wantKeepAlive => true;
 
-  @override
-  void initState() {
-    super.initState();
+    @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final authController = Provider.of<AuthController>(context);
+    controller = Provider.of<MyBookingController>(context, listen: false);
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      controller =  Provider.of<MyBookingController>(context, listen: false);
+    if (authController.currentUser != null && !_initialized) {
       loadData();
       _scrollController.addListener(() {
         if (_scrollController.position.pixels >=
@@ -42,7 +44,19 @@ class _HistoryState extends State<History> with AutomaticKeepAliveClientMixin{
           controller.fetchMyBooking(table: 'history', loadMore: true);
         }
       });
-    });
+      _initialized = true;
+    }
+
+    // Khi logout
+    if (authController.currentUser == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        controller.reset(controller.listHistory);
+        setState(() {
+          isLoading = false;
+          _initialized = false;
+        });
+      });
+    }
   }
 
   Future<void> loadData() async {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/exceptions/app_exception.dart';
-import 'package:hotel_booking_app/core/widgets/alter/snack_bar.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/features/home/services/hotel_service.dart';
 
@@ -19,7 +18,7 @@ class HotelController extends ChangeNotifier {
 
   final HotelService _service = HotelService();
 
-  Future<void> fetchHotel(
+  Future fetchHotel(
     BuildContext context,
     Future<List<Hotel>> serviceMethod,
     Function(List<Hotel>) data, {
@@ -35,7 +34,7 @@ class HotelController extends ChangeNotifier {
 
       data(await serviceMethod);
     } on AppException catch (e) {
-      HBSnackBar().showSnackBar(context, e.message);
+      throw AppException(message: e.message);
     } finally {
       isLoading = false;
       notifyListeners();
@@ -81,11 +80,7 @@ class HotelController extends ChangeNotifier {
     bool loadMore = false,
   }) => fetchHotel(
     context,
-    _service.fetchRecomendedHotels(
-      context,
-      limit: limit,
-      loadMore: loadMore,
-    ),
+    _service.fetchRecomendedHotels(context, limit: limit, loadMore: loadMore),
     (data) => listRecomended = data,
   );
 
@@ -112,7 +107,6 @@ class HotelController extends ChangeNotifier {
       );
       notifyListeners();
     } on AppException catch (e) {
-      HBSnackBar().showSnackBar(context, e.message);
       throw AppException(message: e.message);
     }
   }
@@ -122,7 +116,6 @@ class HotelController extends ChangeNotifier {
       listHotelSearch = await _service.searchHotel(text, limit);
       notifyListeners();
     } on AppException catch (e) {
-      HBSnackBar().showSnackBar(context, e.message);
       throw AppException(message: e.message);
     }
   }
@@ -146,7 +139,6 @@ class HotelController extends ChangeNotifier {
       isFilter = true;
       notifyListeners();
     } on AppException catch (e) {
-      HBSnackBar().showSnackBar(context, e.message);
       throw AppException(message: e.message);
     }
   }

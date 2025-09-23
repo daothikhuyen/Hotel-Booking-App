@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/response/api_status.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
+import 'package:hotel_booking_app/core/widgets/alter/snack_bar.dart';
 import 'package:hotel_booking_app/features/hotel_detail/controller/hotel_detail_controller.dart';
 import 'package:hotel_booking_app/features/hotel_detail/widgets/review_card.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
@@ -27,7 +29,11 @@ class _ReviewSectionState extends State<ReviewSection> {
         context,
         idHotel: widget.idHotel,
         limit: widget.number,
-      );
+      ).then((value) {
+        if (value.status == ApiStatus.error) {
+          HBSnackBar().showSnackBar(context, value.message);
+        }
+      });
   }
 
   @override
@@ -53,16 +59,14 @@ class _ReviewSectionState extends State<ReviewSection> {
                     ),
                   ),
                   const SizedBox(width: 8),
-                  Expanded(
-                    child: ReviewCard(comment: comment),
-                  ),
+                  Expanded(child: ReviewCard(comment: comment)),
                 ],
               ),
             );
           }),
         )
         : Text(
-            context.l10n.noReviews,
+          context.l10n.noReviews,
           style: HBTextStyles.bodyMediumSmall(
             context.colorScheme.onSurfaceVariant,
           ),

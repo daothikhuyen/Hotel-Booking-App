@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/core/response/api_status.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/core/utils/validator.dart';
+import 'package:hotel_booking_app/core/widgets/alter/loading_overlay.dart';
+import 'package:hotel_booking_app/core/widgets/alter/snack_bar.dart';
 import 'package:hotel_booking_app/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/core/widgets/textfield.dart';
@@ -17,7 +20,8 @@ class PersonalInfo extends StatefulWidget {
 }
 
 class _PersonalInfoState extends State<PersonalInfo> {
-  final AuthController authController = AuthController();
+  final LoadingOverlay diaglog = LoadingOverlay();
+  final HBSnackBar snackBar = HBSnackBar();
   final _formKey = GlobalKey<FormState>();
   final _displayName = TextEditingController();
   final _lastName = TextEditingController();
@@ -40,6 +44,8 @@ class _PersonalInfoState extends State<PersonalInfo> {
 
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<AuthController>(context);
+
     return Scaffold(
       appBar: HBAppBar(
         isScrolled: false,
@@ -115,14 +121,25 @@ class _PersonalInfoState extends State<PersonalInfo> {
                 width: double.infinity,
                 child: PrimaryBtn(
                   textButton: context.l10n.saveChanges,
-                  onPressed:
-                      () => authController.updateProfile(
+                  onPressed: () async {
+                    try {
+                      diaglog.showLoading(context);
+                      final result = await userProvider.updateProfile(
                         context: context,
                         displayName: _displayName.text,
                         phone: _phone.text,
                         location: _location.text,
                         formKey: _formKey,
-                      ),
+                      );
+
+                      if (result.status == ApiStatus.success) {
+                        userProvider.setUser(result.data);
+                      }
+                      snackBar.showSnackBar(context, result.message);
+                    } finally {
+                      context.pop();
+                    }
+                  },
                   bold: true,
                   size: 56,
                   isSelected: false,
