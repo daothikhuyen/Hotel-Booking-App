@@ -43,6 +43,10 @@ String getTranslatedText(BuildContext context, String key) {
       return context.l10n.timeHours;
     case 'Restaurant':
       return context.l10n.restaurant;
+    case 'English':
+      return context.l10n.english;
+    case 'Vietnamese':
+      return context.l10n.vietnamese;
     default:
       return key;
   }

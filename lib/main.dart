@@ -52,16 +52,11 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-  Locale _locale = const Locale('en');
-
-  void setLocale(Locale locale) {
-    setState(() {
-      _locale = locale;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
+    final controller = Provider.of<ProfileController>(context);
+
     return MaterialApp.router(
       title: 'Hotel Booking App',
       routerConfig: goRouter,
@@ -78,7 +73,7 @@ class MyAppState extends State<MyApp> {
         Locale('en'), // English
         Locale('vi'), // vietnamese
       ],
-      locale: _locale,
+      locale: controller.locale,
     );
   }
 }

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
+import 'package:hotel_booking_app/core/utils/translation_helper.dart';
 import 'package:hotel_booking_app/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/core/widgets/cards/build_divider.dart';
 import 'package:hotel_booking_app/data/data/languages_data.dart';
 import 'package:hotel_booking_app/features/profile/controller/profile_controller.dart';
 import 'package:hotel_booking_app/features/profile/widgets/language_card.dart';
-import 'package:hotel_booking_app/main.dart';
 import 'package:provider/provider.dart';
 
 class Language extends StatefulWidget {
@@ -62,16 +62,14 @@ class _LanguageState extends State<Language> {
                       children: [
                         LanguageCard(
                           isSelected: controller.selctedIndex == index,
-                          title: lang['name'] ?? '',
+                          title: getTranslatedText(context, lang['name']?? ''),
                           color: context.colorScheme.onSurfaceVariant,
                           onPressed: () {
-                            controller.setSelectedLanguage(
+                            controller..setSelectedLanguage(
                               index,
                               lang['code'] ?? '',
-                            );
-                            context
-                                .findAncestorStateOfType<MyAppState>()
-                                ?.setLocale(Locale(lang['code'] ?? 'en'));
+                            )
+                            ..setLocale(Locale(lang['code'] ?? 'en'));
                           },
                         ),
 

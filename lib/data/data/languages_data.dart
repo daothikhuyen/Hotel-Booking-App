@@ -1,6 +1,6 @@
 List<Map<String, String>> suggestedLanguages = [
   {'name': 'English', 'code': 'en', 'flag': 'EU'},
-  {'name': 'VietNamese', 'code': 'vi', 'flag': 'VN'},
+  {'name': 'Vietnamese', 'code': 'vi', 'flag': 'VN'},
 ];
 
 List<Map<String, String>> otherLanguages = [

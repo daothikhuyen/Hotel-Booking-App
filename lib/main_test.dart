@@ -54,11 +54,19 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => MyAppState();
+}
+
+class MyAppState extends State<MyApp> {
+
+  @override
   Widget build(BuildContext context) {
+    final controller = Provider.of<ProfileController>(context);
+    
     return MaterialApp.router(
       title: 'Hotel Booking App',
       routerConfig: goRouter,
@@ -75,7 +83,7 @@ class MyApp extends StatelessWidget {
         Locale('en'), // English
         Locale('vi'), // vietnamese
       ],
-      locale: const Locale('en'),
+      locale: controller.locale,
     );
   }
 }
