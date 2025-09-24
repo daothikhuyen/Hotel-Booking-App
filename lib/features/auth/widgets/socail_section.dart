@@ -20,8 +20,8 @@ class SocailSection extends StatefulWidget {
 
 class _SocailSectionState extends State<SocailSection> {
   String? error;
-  final HBSnackBar snackBar = HBSnackBar();
-  final LoadingOverlay diaglog = LoadingOverlay();
+  final snackBar = HBSnackBar();
+  final LoadingOverlay loadingOverlay = LoadingOverlay();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class _SocailSectionState extends State<SocailSection> {
           linkIcon: Assets.images.icon.iconGoogle,
           onPressed: () async {
             try {
-              diaglog.showLoading(context);
+              loadingOverlay.showLoading(context);
               final result = await authenContrller.signInWithGoogle(context);
               if (result.status == ApiStatus.error) {
                 snackBar.showSnackBar(context, result.message);

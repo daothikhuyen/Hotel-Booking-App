@@ -9,7 +9,7 @@ import 'package:hotel_booking_app/features/request_booking/services/booking_serv
 
 class BookingController extends ChangeNotifier {
   final user = FirebaseAuth.instance.currentUser;
-  final BookingService _service = BookingService();
+  final _service = BookingService();
 
   Future<ApiResponse> createBooking(
     BuildContext context,

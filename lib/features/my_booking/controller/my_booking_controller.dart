@@ -10,7 +10,7 @@ class MyBookingController with ChangeNotifier {
   List<Booking> listBooking = [];
   List<Booking> listHistory = [];
 
-  final MyBookingService _service = MyBookingService();
+  final _service = MyBookingService();
 
   Future<void> fetchMyBooking({
     required String table,

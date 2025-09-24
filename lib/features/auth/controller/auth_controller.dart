@@ -3,15 +3,12 @@ import 'package:hotel_booking_app/core/exceptions/app_exception.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/response/api_response.dart';
 import 'package:hotel_booking_app/core/response/api_status.dart';
-import 'package:hotel_booking_app/core/widgets/alter/loading_overlay.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
 import 'package:hotel_booking_app/features/auth/helpers/local_storage_helper.dart';
 import 'package:hotel_booking_app/features/auth/services/auth_service.dart';
 
 class AuthController extends ChangeNotifier {
-  final LoadingOverlay diaglog = LoadingOverlay();
   final AuthService authService = AuthService();
-
   HBUser? _currentUser;
 
   HBUser? get currentUser => _currentUser;

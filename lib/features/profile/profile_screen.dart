@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
-import 'package:hotel_booking_app/core/widgets/alter/loading_overlay.dart';
+import 'package:hotel_booking_app/core/widgets/alter/dialog.dart';
 import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/core/widgets/buttons/second_btn.dart';
 import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
@@ -17,6 +17,7 @@ class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    final hbDialog = HBDialog();
     final userProvider = Provider.of<AuthController>(context);
     final user = userProvider.currentUser;
     final photoURL = user?.photoURL ?? '';
@@ -132,7 +133,7 @@ class ProfileScreen extends StatelessWidget {
                   child: Center(
                     child: TextButton(
                       onPressed:
-                          () => LoadingOverlay().showSignOutDialog(context),
+                          () => hbDialog.showSignOutDialog(context),
                       child: Text(
                         context.l10n.logout,
                         style: HBTextStyles.bodySemiboldLarge(

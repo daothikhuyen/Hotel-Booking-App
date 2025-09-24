@@ -23,8 +23,8 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  final HBSnackBar snackBar = HBSnackBar();
-  final LoadingOverlay diaglog = LoadingOverlay();
+  final snackBar = HBSnackBar();
+  final loadingOverlay = LoadingOverlay();
   final _formKey = GlobalKey<FormState>();
   final _email = TextEditingController();
   final _password = TextEditingController();
@@ -168,7 +168,7 @@ class _SignInState extends State<SignIn> {
                     textButton: context.l10n.signIn,
                     onPressed: () async {
                       try {
-                        diaglog.showLoading(context);
+                        loadingOverlay.showLoading(context);
                         final result = await authController.signIn(
                           context: context,
                           formKey: _formKey,

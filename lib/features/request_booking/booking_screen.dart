@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
-import 'package:hotel_booking_app/core/widgets/alter/loading_overlay.dart';
+import 'package:hotel_booking_app/core/widgets/alter/dialog.dart';
 import 'package:hotel_booking_app/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
@@ -94,7 +94,7 @@ class _BookingScreenState extends State<BookingScreen> {
           textButton: context.l10n.titleCheckOut,
           onPressed: () {
             if (nightCount == null || numberGuest == null) {
-              LoadingOverlay().diaglogBuilder(
+              HBDialog().showAlertDialog(
                 context: context,
                 title: context.l10n.notification,
                 desc: context.l10n.notifiBookingFailure,

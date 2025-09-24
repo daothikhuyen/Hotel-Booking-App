@@ -4,7 +4,7 @@ import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/core/routes/page_routes.dart';
 import 'package:hotel_booking_app/core/themes/theme.dart';
 import 'package:hotel_booking_app/core/utils/format.dart';
-import 'package:hotel_booking_app/core/widgets/alter/loading_overlay.dart';
+import 'package:hotel_booking_app/core/widgets/alter/dialog.dart';
 import 'package:hotel_booking_app/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
@@ -19,6 +19,7 @@ class BottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final hbDialog = HBDialog();
 
     return Positioned(
       bottom: 0,
@@ -77,7 +78,7 @@ class BottomBar extends StatelessWidget {
                       extra: hotel,
                     );
                   } else {
-                    LoadingOverlay().diaglogBuilder(
+                    hbDialog.showAlertDialog(
                       context: context,
                       title: context.l10n.notification,
                       desc: context.l10n.userNotExisted,

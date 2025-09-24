@@ -20,8 +20,8 @@ class PersonalInfo extends StatefulWidget {
 }
 
 class _PersonalInfoState extends State<PersonalInfo> {
-  final LoadingOverlay diaglog = LoadingOverlay();
-  final HBSnackBar snackBar = HBSnackBar();
+  final loadingOverlay = LoadingOverlay();
+  final snackBar = HBSnackBar();
   final _formKey = GlobalKey<FormState>();
   final _displayName = TextEditingController();
   final _lastName = TextEditingController();
@@ -123,7 +123,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                   textButton: context.l10n.saveChanges,
                   onPressed: () async {
                     try {
-                      diaglog.showLoading(context);
+                      loadingOverlay.showLoading(context);
                       final result = await userProvider.updateProfile(
                         context: context,
                         displayName: _displayName.text,
