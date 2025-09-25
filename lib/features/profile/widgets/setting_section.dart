@@ -47,7 +47,7 @@ class SettingSection extends StatelessWidget {
         const SizedBox(height: 20),
         OptionCard(
           title: context.l10n.languages,
-          image: Assets.images.icon.vector,
+          image: Assets.images.icon.internet1,
           onPressed: () {
             context.push(PageRoutes.language);
           },

@@ -186,6 +186,9 @@ class $AssetsImagesIconGen {
   /// File path: assets/images/icon/house-regular.svg
   String get houseRegular => 'assets/images/icon/house-regular.svg';
 
+  /// File path: assets/images/icon/internet 1.svg
+  String get internet1 => 'assets/images/icon/internet 1.svg';
+
   /// File path: assets/images/icon/language.svg
   String get language => 'assets/images/icon/language.svg';
 
@@ -264,6 +267,7 @@ class $AssetsImagesIconGen {
     home,
     hotel,
     houseRegular,
+    internet1,
     language,
     layerTwo,
     location,
