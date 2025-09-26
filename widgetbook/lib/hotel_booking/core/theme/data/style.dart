@@ -1,4 +1,4 @@
-import 'package:hotel_booking_app/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/themes/theme.dart';
 import 'package:widgetbook_hotel_booking_app/hotel_booking/core/theme/model/text_style_group.dart';
 import 'package:widgetbook_hotel_booking_app/hotel_booking/core/theme/model/text_style_preview.dart';
 

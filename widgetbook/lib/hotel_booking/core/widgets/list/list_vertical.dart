@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/core/widgets/list/list_vertical.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
+import 'package:hotel_booking_app/ui/core/widgets/list/list_vertical.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:widgetbook_hotel_booking_app/hotel_booking/data_fake/hotel_data.dart';

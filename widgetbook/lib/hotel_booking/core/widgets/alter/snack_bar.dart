@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/ui/core/widgets/alter/snack_bar.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
-import 'package:hotel_booking_app/core/widgets/alter/snack_bar.dart';
 
 @widgetbook.UseCase(name: 'Default', type: HBSnackBar)
 Widget hbSnackBarUseCase(BuildContext context) {

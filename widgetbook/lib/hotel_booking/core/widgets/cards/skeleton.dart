@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/core/widgets/cards/skeleton.dart';
+import 'package:hotel_booking_app/ui/core/widgets/cards/skeleton.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 

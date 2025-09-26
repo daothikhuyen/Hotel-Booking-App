@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/data/data/comment_user.dart';
 import 'package:hotel_booking_app/data/model/comment.dart';
+import 'package:hotel_booking_app/data/model/comment_user.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
-import 'package:hotel_booking_app/features/hotel_detail/widgets/review_card.dart';
+import 'package:hotel_booking_app/ui/features/hotel_detail/widgets/review_card.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 @widgetbook.UseCase(name: 'Default', type: ReviewCard)

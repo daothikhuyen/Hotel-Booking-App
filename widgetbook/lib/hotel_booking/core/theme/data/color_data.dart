@@ -1,5 +1,6 @@
-import 'package:hotel_booking_app/core/themes/app_colors.dart';
-import 'package:widgetbook_hotel_booking_app/hotel_booking/core/theme/model/color_style.group.dart';
+import 'package:hotel_booking_app/ui/core/themes/app_colors.dart';
+
+import '../model/color_style.group.dart';
 
 final colors = [
     ColorGroup("Primary 6 color", [

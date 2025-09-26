@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/data/model/booking.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
-import 'package:hotel_booking_app/features/request_booking/widgets/checkout/info_hotel_booking.dart';
+import 'package:hotel_booking_app/gen/assets.gen.dart';
+import 'package:hotel_booking_app/ui/features/request_booking/widgets/checkout/info_hotel_booking.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
-import 'package:widgetbook_hotel_booking_app/gen/assets.gen.dart';
 
 @widgetbook.UseCase(name: 'Default', type: InfoHotelBooking)
 Widget buildInfoHotelUseCase(BuildContext context) {

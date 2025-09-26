@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/features/layout/layout_scaffold.dart';
+import 'package:hotel_booking_app/ui/features/layout/layout_scaffold.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 @widgetbook.UseCase(name: 'Default', type: LayoutScaffold)

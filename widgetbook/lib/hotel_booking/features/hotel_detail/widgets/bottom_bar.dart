@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
-import 'package:hotel_booking_app/features/hotel_detail/widgets/bottom_bar.dart';
+import 'package:hotel_booking_app/gen/assets.gen.dart';
+import 'package:hotel_booking_app/ui/features/hotel_detail/widgets/bottom_bar.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
-import 'package:widgetbook_hotel_booking_app/gen/assets.gen.dart';
 
 
 @widgetbook.UseCase(name: 'Default', type: BottomBar)

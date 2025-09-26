@@ -9,7 +9,7 @@ final List<Map<String, String>> hotelData = [
     'lastPrice': '450',
     'roomType': 'vip',
     'trffic': '120',
-    'ratting': '4.5',
+    'rating': '4.5',
   },
   {
     'id': '1234',
@@ -20,7 +20,7 @@ final List<Map<String, String>> hotelData = [
     'lastPrice': '450',
     'roomType': 'vip',
     'trffic': '120',
-    'ratting': '4.2',
+    'rating': '4.2',
   },
   {
     'id': '1234',
@@ -31,6 +31,6 @@ final List<Map<String, String>> hotelData = [
     'lastPrice': '450',
     'roomType': 'vip',
     'trffic': '120',
-    'ratting': '4.8',
+    'rating': '4.8',
   },
 ];

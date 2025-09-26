@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/core/widgets/cards/best_today_card.dart';
+import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/ui/core/widgets/cards/best_today_card.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
@@ -25,9 +25,9 @@ Widget buildBestTodayCardUseCase(BuildContext context) {
             .slider(label: context.l10n.priceDetails, initialValue: 450.0, min: 0, max: 1000.0)
             .toStringAsFixed(2),
       ),
-      ratting: double.parse(
+      rating: double.parse(
         context.knobs.double
-            .slider(label: context.l10n.ratting, initialValue: 450.0, min: 0, max: 1000.0)
+            .slider(label: context.l10n.rating, initialValue: 450.0, min: 0, max: 1000.0)
             .toStringAsFixed(1),
       ), 
       traffic: context.knobs.int.slider(
