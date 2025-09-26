@@ -402,7 +402,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get linkImage => 'Link ảnh';
 
   @override
-  String get ratting => 'Đánh giá';
+  String get rating => 'Đánh giá';
 
   @override
   String get name => 'Tên';

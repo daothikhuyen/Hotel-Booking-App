@@ -175,7 +175,7 @@
   "nameBank": "Tên ngân hàng",
   "title": "Tiêu đề",
   "linkImage": "Link ảnh",
-  "ratting": "Đánh giá",
+  "rating": "Đánh giá",
   "name": "Tên",
   "isCheckBox": "Kiểm tra checkbox",
   "isScrolled": "Kiểm tra Scroll",

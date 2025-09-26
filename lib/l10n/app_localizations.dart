@@ -857,11 +857,11 @@ abstract class AppLocalizations {
   /// **'Link Image'**
   String get linkImage;
 
-  /// No description provided for @ratting.
+  /// No description provided for @rating.
   ///
   /// In en, this message translates to:
   /// **'Rating'**
-  String get ratting;
+  String get rating;
 
   /// No description provided for @name.
   ///

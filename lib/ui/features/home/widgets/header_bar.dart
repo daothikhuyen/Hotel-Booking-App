@@ -1,0 +1,182 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hotel_booking_app/gen/assets.gen.dart';
+import 'package:hotel_booking_app/routing/page_routes.dart';
+import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/widgets/buttons/primary_btn.dart';
+
+class HeaderBar extends StatelessWidget {
+  const HeaderBar({
+    required this.linkImage,
+    required this.userName,
+    required this.location,
+    super.key,
+  });
+
+  final String? linkImage;
+  final String userName;
+  final String location;
+
+  @override
+  Widget build(BuildContext context) {
+    
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          if (userName != '')
+            Expanded(
+              child: Row(
+                children: [
+                  Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      image: DecorationImage(
+                        image:
+                            linkImage != ''
+                                ? NetworkImage(linkImage!)
+                                : AssetImage(Assets.images.avatar.ellipse.path)
+                                    as ImageProvider,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          userName,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: GoogleFonts.plusJakartaSans(
+                            textStyle: HBTextStyles.bodySemiboldMedium(
+                              context.colorScheme.onSurfaceVariant,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Row(
+                          children: [
+                            SvgPicture.asset(
+                              Assets.images.icon.vector,
+                              colorFilter: ColorFilter.mode(
+                                context.colorScheme.onSurfaceVariant.withValues(
+                                  alpha: 0.7,
+                                ),
+                                BlendMode.srcIn,
+                              ),
+                            ),
+                            const SizedBox(width: 4),
+                            Text(
+                              location,
+                              style: GoogleFonts.plusJakartaSans(
+                                textStyle: HBTextStyles.bodyRegularSmall(
+                                  context.colorScheme.tertiary,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            )
+          else
+            SizedBox(
+              width: 200,
+              child: PrimaryBtn(
+                size: 56,
+                textButton: context.l10n.signIn,
+                onPressed: () {
+                  context.go(PageRoutes.signIn);
+                },
+                bold: false,
+                isSelected: true,
+              ),
+            ),
+          Row(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  context.go(PageRoutes.search);
+                },
+                child: Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: context.colorScheme.outline),
+                    borderRadius: BorderRadius.circular(100),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: SvgPicture.asset(
+                      Assets.images.icon.search,
+                      colorFilter: ColorFilter.mode(
+                        context.iconTheme.color ?? Colors.transparent,
+                        BlendMode.srcIn,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              GestureDetector(
+                onTap: () {
+                  //TODOS:...
+                }, // temporary
+                child: Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: context.colorScheme.outline),
+                    borderRadius: BorderRadius.circular(100),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          Assets.images.icon.group,
+                          colorFilter: ColorFilter.mode(
+                            context.iconTheme.color ?? Colors.transparent,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+
+                        Positioned(
+                          top: 1.4,
+                          right: 3,
+                          child: CircleAvatar(
+                            radius: 4,
+                            backgroundColor: context.colorScheme.onSecondary,
+                            child: CircleAvatar(
+                              radius: 2.5,
+                              backgroundColor: context.colorScheme.error,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 16),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}

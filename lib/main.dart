@@ -1,18 +1,18 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:hotel_booking_app/core/routes/app_routes.dart';
-import 'package:hotel_booking_app/core/themes/theme.dart';
-import 'package:hotel_booking_app/features/auth/controller/auth_controller.dart';
-import 'package:hotel_booking_app/features/auth/helpers/local_storage_helper.dart';
-import 'package:hotel_booking_app/features/home/controller/hotel_controller.dart';
-import 'package:hotel_booking_app/features/home/controller/navigation_controller.dart';
-import 'package:hotel_booking_app/features/hotel_detail/controller/hotel_detail_controller.dart';
-import 'package:hotel_booking_app/features/my_booking/controller/my_booking_controller.dart';
-import 'package:hotel_booking_app/features/profile/controller/profile_controller.dart';
-import 'package:hotel_booking_app/features/request_booking/controller/booking_controller.dart';
 import 'package:hotel_booking_app/firebase_options.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
+import 'package:hotel_booking_app/routing/app_routes.dart';
+import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/features/auth/view_model/auth_controller.dart';
+import 'package:hotel_booking_app/ui/features/home/view_model/hotel_controller.dart';
+import 'package:hotel_booking_app/ui/features/home/view_model/navigation_controller.dart';
+import 'package:hotel_booking_app/ui/features/hotel_detail/view_model/hotel_detail_controller.dart';
+import 'package:hotel_booking_app/ui/features/my_booking/view_model/my_booking_controller.dart';
+import 'package:hotel_booking_app/ui/features/profile/view_model/profile_controller.dart';
+import 'package:hotel_booking_app/ui/features/request_booking/view_model/booking_controller.dart';
+import 'package:hotel_booking_app/utils/helpers/local_storage_helper.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -52,7 +52,6 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-
   @override
   Widget build(BuildContext context) {
     final controller = Provider.of<ProfileController>(context);

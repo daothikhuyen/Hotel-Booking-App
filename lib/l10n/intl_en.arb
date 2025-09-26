@@ -174,7 +174,7 @@
   "nameBank": "Name Bank",
   "title": "Title",
   "linkImage": "Link Image",
-  "ratting": "Rating",
+  "rating": "Rating",
   "name": "Name",
   "isCheckBox": "Is Checkbox",
   "isScrolled": "Is Scrolled",

@@ -18,7 +18,7 @@ class HBUser {
       email: json['email'],
       numberPhone: json['numberPhone'],
       location: json['location'],
-      photoURL: json['photoUrl'],
+      photoURL: json['photoURL'],
     );
   }
 
@@ -36,7 +36,7 @@ class HBUser {
       'displayName': displayName,
       'numberPhone': numberPhone ?? '0',
       'location': location ?? 'San Diego, CA',
-      'photoUrl': photoURL ?? '',
+      'photoURL': photoURL ?? '',
     };
   }
 }

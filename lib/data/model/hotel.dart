@@ -9,7 +9,7 @@ class Hotel {
     required this.categoryId,
     this.currentPrice,
     this.lastPrice,
-    this.ratting,
+    this.rating,
     this.traffic,
     this.bed,
     this.bathroom,
@@ -33,7 +33,7 @@ class Hotel {
       categoryId: json['categoryId'] ?? '',
       currentPrice: parseDouble(json['currentPrice']),
       lastPrice: parseDouble(json['lastPrice']),
-      ratting: parseDouble(json['ratting']),
+      rating: parseDouble(json['rating']),
       traffic: (json['traffic'] as int?) ?? 0,
       bed: (json['bed'] as int?) ?? 0,
       bathroom: (json['bathroom'] as int?) ?? 0,
@@ -47,7 +47,7 @@ class Hotel {
   String categoryId;
   double? currentPrice;
   double? lastPrice;
-  double? ratting;
+  double? rating;
   int? traffic;
   int? bed;
   int? bathroom;
@@ -70,7 +70,7 @@ class Hotel {
       'categoryId': categoryId,
       'currentPrice': currentPrice,
       'lastPrice': lastPrice,
-      'ratting': ratting,
+      'rating': rating,
       'traffic': traffic,
     };
   }

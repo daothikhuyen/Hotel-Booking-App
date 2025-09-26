@@ -19,7 +19,7 @@ class Comment {
       idUser: json['idUser'],
       idHotel: json['idHotel'],
       content: json['content'],
-      rating: parseDouble(json['ratting']),
+      rating: parseDouble(json['rating']),
     );
   }
   final String idUser;

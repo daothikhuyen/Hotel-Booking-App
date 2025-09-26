@@ -402,7 +402,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get linkImage => 'Link Image';
 
   @override
-  String get ratting => 'Rating';
+  String get rating => 'Rating';
 
   @override
   String get name => 'Name';

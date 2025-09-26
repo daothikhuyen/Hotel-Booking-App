@@ -15,8 +15,7 @@
 build/
 coverage/
 lib/generated_plugin_registrant.dart
-lib/widgets/home/items/recommended_item.Dart
-lib/widgets/home/sections/recommended_section.Dart
+format.md
 
 # For library packages, don’t commit the pubspec.lock file.
 # Regenerating the pubspec.lock file lets you test your package against the latest compatible versions of its dependencies.
