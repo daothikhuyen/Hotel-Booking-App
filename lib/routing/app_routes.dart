@@ -9,10 +9,15 @@ import 'package:hotel_booking_app/ui/core/widgets/alter/page_alter_null.dart';
 import 'package:hotel_booking_app/ui/features/auth/sign_in.dart';
 import 'package:hotel_booking_app/ui/features/auth/view_model/auth_controller.dart';
 import 'package:hotel_booking_app/ui/features/booking_detail/booking_detail_screen.dart';
+import 'package:hotel_booking_app/ui/features/chat/chat_screen.dart';
 import 'package:hotel_booking_app/ui/features/home/home_screen.dart';
+import 'package:hotel_booking_app/ui/features/home/view_model/hotel_controller.dart';
+import 'package:hotel_booking_app/ui/features/home/view_model/navigation_controller.dart';
 import 'package:hotel_booking_app/ui/features/hotel_detail/detail_screen.dart';
+import 'package:hotel_booking_app/ui/features/hotel_detail/view_model/hotel_detail_controller.dart';
 import 'package:hotel_booking_app/ui/features/layout/layout_scaffold.dart';
 import 'package:hotel_booking_app/ui/features/my_booking/my_booking_screen.dart';
+import 'package:hotel_booking_app/ui/features/my_booking/view_model/my_booking_controller.dart';
 import 'package:hotel_booking_app/ui/features/onboarding/onboarding_screen.dart';
 import 'package:hotel_booking_app/ui/features/profile/profile_screen.dart';
 import 'package:hotel_booking_app/ui/features/profile/widgets/sections/language.dart';
@@ -20,8 +25,10 @@ import 'package:hotel_booking_app/ui/features/profile/widgets/sections/personal_
 import 'package:hotel_booking_app/ui/features/request_booking/booking_screen.dart';
 import 'package:hotel_booking_app/ui/features/request_booking/check_out.dart';
 import 'package:hotel_booking_app/ui/features/request_booking/page_sucess.dart';
+import 'package:hotel_booking_app/ui/features/request_booking/view_model/booking_controller.dart';
 import 'package:hotel_booking_app/ui/features/search/search_screen.dart';
 import 'package:hotel_booking_app/ui/features/seeAll/see_all_screen.dart';
+import 'package:provider/provider.dart';
 
 final AuthController authController = AuthController();
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -49,7 +56,18 @@ final goRouter = GoRouter(
         final hotel = state.extra;
 
         if (hotel is Hotel) {
-          return animationRouter(DetailScreen(hotel: hotel), state);
+          return animationRouter(
+            MultiProvider(
+              providers: [
+                ChangeNotifierProvider(
+                  create: (context) => HotelDetailController(),
+                ),
+                ChangeNotifierProvider(create: (context) => HotelController()),
+              ],
+              child: DetailScreen(hotel: hotel),
+            ),
+            state,
+          );
         }
         return animationRouter(const PageAlterNull(), state);
       },
@@ -74,7 +92,20 @@ final goRouter = GoRouter(
         final booking = state.extra;
 
         if (booking is Booking) {
-          return animationRouter(CheckOut(booking: booking), state);
+          return animationRouter(
+            MultiProvider(
+              providers: [
+                ChangeNotifierProvider(
+                  create: (context) => BookingController(),
+                ),
+                ChangeNotifierProvider(
+                  create: (context) => MyBookingController(),
+                ),
+              ],
+              child: CheckOut(booking: booking),
+            ),
+            state,
+          );
         }
 
         return animationRouter(const PageAlterNull(), state);
@@ -102,13 +133,25 @@ final goRouter = GoRouter(
       path: PageRoutes.seeAllPage,
       pageBuilder: (context, state) {
         final index = int.tryParse(state.extra?.toString() ?? '');
-        return animationRouter(SeeAllScreen(index: index ?? 0), state);
+        return animationRouter(
+          ChangeNotifierProvider(
+            create: (context) => HotelController(),
+            child: SeeAllScreen(index: index ?? 0),
+          ),
+          state,
+        );
       },
     ),
     GoRoute(
       path: PageRoutes.search,
       pageBuilder: (context, state) {
-        return animationRouter(const SearchScreen(), state);
+        return animationRouter(
+          ChangeNotifierProvider(
+            create: (context) => HotelController(),
+            child: const SearchScreen(),
+          ),
+          state,
+        );
       },
     ),
     GoRoute(
@@ -125,8 +168,13 @@ final goRouter = GoRouter(
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
-        // the UI shell
-        return LayoutScaffold(navigationShell: navigationShell);
+        return MultiProvider(
+          providers: [
+            ChangeNotifierProvider(create: (context) => HotelController()),
+            ChangeNotifierProvider(create: (context) => NavigationController()),
+          ],
+          child: LayoutScaffold(navigationShell: navigationShell),
+        );
       },
       branches: [
         StatefulShellBranch(
@@ -145,12 +193,26 @@ final goRouter = GoRouter(
             GoRoute(
               path: PageRoutes.myBooking,
               pageBuilder:
-                  (context, state) =>
-                      animationRouter(const MyBookingScreen(), state),
+                  (context, state) => animationRouter(
+                    ChangeNotifierProvider(
+                      create: (context) => MyBookingController(),
+                      child: const MyBookingScreen(),
+                    ),
+                    state,
+                  ),
             ),
           ],
         ),
-        StatefulShellBranch(routes: const []),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: PageRoutes.chat,
+              pageBuilder:
+                  (context, state) =>
+                      animationRouter(const ChatScreen(), state),
+            ),
+          ],
+        ),
         StatefulShellBranch(
           routes: [
             GoRoute(

@@ -10,6 +10,7 @@ import 'package:hotel_booking_app/ui/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/ui/core/widgets/textfield.dart';
 import 'package:hotel_booking_app/ui/features/auth/view_model/auth_controller.dart';
 import 'package:hotel_booking_app/utils/validator.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:provider/provider.dart';
 
 class PersonalInfo extends StatefulWidget {
@@ -28,6 +29,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
   final _email = TextEditingController();
   final _phone = TextEditingController();
   final _location = TextEditingController();
+  PhoneNumber _selectedNumber = PhoneNumber(isoCode: 'VN');
 
   @override
   void initState() {
@@ -71,7 +73,8 @@ class _PersonalInfoState extends State<PersonalInfo> {
                 controller: _displayName,
                 hintText: 'Khuyen',
                 color: context.colorScheme.outline.withValues(alpha: 0.5),
-                validator: (v) => validateText(context, v),
+                validator:
+                    (v) => validateText(context, v, context.l10n.errorNotEmpty),
               ),
               const SizedBox(height: 18),
               Text(
@@ -85,22 +88,8 @@ class _PersonalInfoState extends State<PersonalInfo> {
                 controller: _email,
                 hintText: 'daothikhuyen@gmail.com',
                 color: context.colorScheme.outline.withValues(alpha: 0.5),
-                validator: (v) => validateEmail(context, v),
+                validator: (v) => validateEmail(context, v, isSubmmited: false),
                 enabled: false,
-              ),
-              const SizedBox(height: 18),
-              Text(
-                context.l10n.phone,
-                style: HBTextStyles.bodySemiboldMedium(
-                  context.colorScheme.onSurfaceVariant,
-                ),
-              ),
-              const SizedBox(height: 10),
-              HBTextField(
-                controller: _phone,
-                hintText: '+8434007663',
-                color: context.colorScheme.outline.withValues(alpha: 0.5),
-                validator: (v) => validateNumberPhone(context, v),
               ),
               const SizedBox(height: 18),
               Text(
@@ -114,7 +103,40 @@ class _PersonalInfoState extends State<PersonalInfo> {
                 controller: _location,
                 hintText: 'San Diego, CA',
                 color: context.colorScheme.outline.withValues(alpha: 0.5),
-                validator: (v) => validateText(context, v),
+                validator:
+                    (v) => validateText(context, v, context.l10n.errorNotEmpty),
+              ),
+              const SizedBox(height: 18),
+              Text(
+                context.l10n.phone,
+                style: HBTextStyles.bodySemiboldMedium(
+                  context.colorScheme.onSurfaceVariant,
+                ),
+              ),
+              const SizedBox(height: 10),
+              // input for number phone
+              InternationalPhoneNumberInput(
+                onInputChanged: (PhoneNumber number) {
+                  final raw = number.parseNumber();
+                  _phone.text = raw.isNotEmpty ? number.phoneNumber ?? '' : '';
+                  _selectedNumber = number;
+                },
+                validator:
+                    (value) => validateNumberPhone(
+                      context,
+                      _phone.text,
+                      _selectedNumber,
+                    ),
+                initialValue: PhoneNumber(
+                  isoCode: 'VN',
+                  phoneNumber: _phone.text,
+                ),
+                autoValidateMode: AutovalidateMode.onUserInteraction,
+                inputDecoration: InputDecoration(
+                  errorStyle: HBTextStyles.bodyRegularMedium(
+                    context.colorScheme.error,
+                  ),
+                ),
               ),
               const SizedBox(height: 50),
               SizedBox(

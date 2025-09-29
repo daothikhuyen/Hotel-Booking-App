@@ -75,9 +75,9 @@ class HotelService {
     bool loadMore = false,
   }) async {
     try {
-      Query<Map<String, dynamic>> query = _firestore.collection(
-        FirestoreCollections.hotels,
-      );
+      var query = _firestore
+          .collection(FirestoreCollections.hotels)
+          .where('discount', isEqualTo: true);
 
       if (loadMore && _lastDoc != null) {
         query = query.startAfterDocument(_lastDoc!);
@@ -94,12 +94,7 @@ class HotelService {
             return Hotel.fromJson(doc.data(), doc.id);
           }).toList();
 
-      final filtered =
-          hotels.where((hotel) {
-            return ((hotel.lastPrice ?? 0) - (hotel.currentPrice ?? 0)) > 50;
-          }).toList();
-
-      return filtered.take(limit).toList();
+      return hotels.take(limit).toList();
     } on FirebaseException catch (e) {
       throw AppException(message: 'Best hotel ${e.message}');
     }

@@ -34,6 +34,7 @@ dependencies:
   google_sign_in: ^6.3.0
   infinite_scroll_pagination: ^5.1.1
   intl: any
+  intl_phone_number_input: ^0.7.5
   provider: ^6.1.5
   readmore: ^3.0.0
   shared_preferences: ^2.5.3

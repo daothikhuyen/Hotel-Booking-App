@@ -150,7 +150,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorEmailFormat => 'Invalid email format';
 
   @override
-  String get errorPasswordFormat => 'Password must be at least 6 characters long';
+  String get errorPasswordFormat => 'Password must be at least 8 characters, including uppercase, lowercase, numbers and special characters (@, \$, !, %, , ?, &)';
 
   @override
   String get tagAll => 'All';

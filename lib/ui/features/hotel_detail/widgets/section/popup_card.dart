@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/ui/core/themes/theme.dart';
@@ -8,8 +9,7 @@ import 'package:hotel_booking_app/ui/core/widgets/cards/skeleton.dart';
 import 'package:hotel_booking_app/ui/core/widgets/list/list_horizontal.dart';
 import 'package:hotel_booking_app/ui/features/home/view_model/hotel_controller.dart';
 import 'package:hotel_booking_app/ui/features/home/widgets/map_section.dart';
-import 'package:hotel_booking_app/ui/features/hotel_detail/detail_screen.dart';
-import 'package:hotel_booking_app/ui/features/hotel_detail/facilities.dart';
+import 'package:hotel_booking_app/ui/features/hotel_detail/data/facilities.dart';
 import 'package:hotel_booking_app/ui/features/hotel_detail/widgets/facilities_card.dart';
 import 'package:hotel_booking_app/ui/features/hotel_detail/widgets/section/read_more.dart';
 import 'package:hotel_booking_app/ui/features/hotel_detail/widgets/section/review_section.dart';
@@ -18,13 +18,13 @@ import 'package:provider/provider.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class PopupCard extends StatefulWidget {
-  const PopupCard({
-    required this.widget,
+  const PopupCard( {
+    required this.hotel,
     required this.onScrollChange,
     super.key,
   });
 
-  final DetailScreen widget;
+  final Hotel hotel;
   final Function({required bool scrolled}) onScrollChange;
 
   @override
@@ -40,7 +40,7 @@ class _PopupCardState extends State<PopupCard> {
   @override
   Widget build(BuildContext context) {
     final controller = Provider.of<HotelController>(context);
-    final hotel = widget.widget.hotel;
+    final hotel = widget.hotel;
 
     return DraggableScrollableSheet(
       initialChildSize: 0.7,

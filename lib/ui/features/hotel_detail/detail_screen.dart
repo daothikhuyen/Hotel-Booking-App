@@ -63,7 +63,7 @@ class _DetailScreenState extends State<DetailScreen> {
             ),
 
             // body detail
-            PopupCard(widget: widget, onScrollChange: onScrollChange),
+            PopupCard(hotel: widget.hotel, onScrollChange: onScrollChange),
             // header detail
             Positioned(
               top: 0,

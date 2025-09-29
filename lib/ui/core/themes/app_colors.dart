@@ -19,7 +19,7 @@ class AppColors {
   static const Color secondary500 = Color(0xFF3B81F6);
 
   static const Color greyscale0 = Color(0xFFFFFFFF);
-  static const Color greyscale25 = Color(0xFFF6F8FA);
+  static const Color greyscale25 = Color(0xFFECEFF3);
   static const Color greyscale30 = Color(0xFFE3E9ED);
   static const Color greyscale50 = Color(0xFFF6F8FA);
   static const Color greyscale100 = Color(0xFFE8F2FF);

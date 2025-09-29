@@ -380,7 +380,7 @@ abstract class AppLocalizations {
   /// No description provided for @errorPasswordFormat.
   ///
   /// In en, this message translates to:
-  /// **'Password must be at least 6 characters long'**
+  /// **'Password must be at least 8 characters, including uppercase, lowercase, numbers and special characters (@, \$, !, %, , ?, &)'**
   String get errorPasswordFormat;
 
   /// No description provided for @tagAll.

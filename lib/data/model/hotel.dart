@@ -7,6 +7,7 @@ class Hotel {
     required this.location,
     required this.roomType,
     required this.categoryId,
+    required this.discount,
     this.currentPrice,
     this.lastPrice,
     this.rating,
@@ -35,6 +36,7 @@ class Hotel {
       lastPrice: parseDouble(json['lastPrice']),
       rating: parseDouble(json['rating']),
       traffic: (json['traffic'] as int?) ?? 0,
+      discount: json['discount'] ?? false,
       bed: (json['bed'] as int?) ?? 0,
       bathroom: (json['bathroom'] as int?) ?? 0,
     );
@@ -45,6 +47,7 @@ class Hotel {
   String location;
   String roomType;
   String categoryId;
+  bool discount;
   double? currentPrice;
   double? lastPrice;
   double? rating;

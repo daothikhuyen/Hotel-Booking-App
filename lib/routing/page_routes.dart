@@ -14,4 +14,5 @@ class PageRoutes {
   static const String personalInfo = '/personalInfo';
   static const String language = '/language';
   static const String search = '/search';
+  static const String chat = 'chat';
 }

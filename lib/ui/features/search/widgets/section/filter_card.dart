@@ -7,7 +7,6 @@ import 'package:hotel_booking_app/ui/core/themes/theme.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/ui/features/home/view_model/hotel_controller.dart';
 import 'package:hotel_booking_app/ui/features/profile/data/filter_data.dart';
-import 'package:provider/provider.dart';
 
 DropdownMenuItem<String> buildMenuItem(BuildContext context, String item) {
   final text = extractBedBath(item);
@@ -29,7 +28,7 @@ Map<String, int> extractBedBath(String item) {
   return {'bed': 0, 'bathroom': 0};
 }
 
-Future<dynamic> filterCard(BuildContext context) {
+Future<dynamic> filterCard(BuildContext context, HotelController controller) {
   String? selectedValue;
   String? locationSelected;
   String? starSelected;
@@ -221,7 +220,6 @@ Future<dynamic> filterCard(BuildContext context) {
                       child: PrimaryBtn(
                         textButton: context.l10n.applyFilter,
                         onPressed: () async {
-                          final controller = context.read<HotelController>();
                           await controller
                               .filterHotel(
                                 context,

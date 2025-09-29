@@ -19,6 +19,7 @@ ThemeData lightMode = ThemeData(
     inverseSurface: AppColors.greyscale900,
     onInverseSurface: AppColors.greyscale500,
     onTertiaryContainer: AppColors.greyscale30,
+    
   ),
   iconTheme: const IconThemeData(
     color: AppColors.greyscale900, // private color icon

@@ -30,6 +30,8 @@ class _SignInState extends State<SignIn> {
   final _password = TextEditingController();
 
   bool isCheckbox = false;
+  bool isSubmitted = false;
+  bool _obscureText = true;
   String? error;
 
   // or sign in with
@@ -111,7 +113,9 @@ class _SignInState extends State<SignIn> {
                 HBTextField(
                   controller: _email,
                   hintText: context.l10n.enterEmail,
-                  validator: (v) => validateEmail(context, v),
+                  validator:
+                      (v) =>
+                          validateEmail(context, v, isSubmmited: isSubmitted),
                   color: context.colorScheme.outline,
                 ),
                 const SizedBox(height: 15),
@@ -128,37 +132,52 @@ class _SignInState extends State<SignIn> {
                   isPassword: true,
                   validator: (v) => validatePassword(context, v),
                   color: context.colorScheme.outline,
+                  obscureText: _obscureText,
+                  onToggleObscureText: () {
+                    setState(() => _obscureText = !_obscureText);
+                  },
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 15),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
+                FormField<bool>(
+                  initialValue: isCheckbox,
+                  validator: (value) {
+                    return null;
+                    // TODOS: will do in the future
+                  },
+                  builder: (field) {
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const CircularCheckbox(size: 28, isCheckbox: false),
-                          const SizedBox(width: 8),
-                          Text(
-                            context.l10n.checkbox,
-                            style: HBTextStyles.bodyRegularSmall(
-                              context.colorScheme.onSurfaceVariant.withValues(
-                                alpha: 0.5,
+                          Row(
+                            children: [
+                              const CircularCheckbox(
+                                size: 28,
+                                isCheckbox: false,
+                              ),
+                              const SizedBox(width: 8),
+                              Text(
+                                context.l10n.checkbox,
+                                style: HBTextStyles.bodyRegularSmall(
+                                  context.colorScheme.onSurfaceVariant
+                                      .withValues(alpha: 0.5),
+                                ),
+                              ),
+                            ],
+                          ),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              context.l10n.forgotPassword,
+                              style: HBTextStyles.bodyRegularSmall(
+                                context.colorScheme.error,
                               ),
                             ),
                           ),
                         ],
                       ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          context.l10n.forgotPassword,
-                          style: HBTextStyles.bodyRegularSmall(
-                            context.colorScheme.error,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
                 const SizedBox(height: 20),
                 SizedBox(
@@ -168,6 +187,7 @@ class _SignInState extends State<SignIn> {
                     textButton: context.l10n.signIn,
                     onPressed: () async {
                       try {
+                        isSubmitted = true;
                         loadingOverlay.showLoading(context);
                         final result = await authController.signIn(
                           context: context,

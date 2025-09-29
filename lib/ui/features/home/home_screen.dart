@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 import 'package:hotel_booking_app/routing/page_routes.dart';
 import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/ui/core/themes/spacing_constants.dart';
 import 'package:hotel_booking_app/ui/core/themes/theme.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/header_card.dart';
 import 'package:hotel_booking_app/ui/core/widgets/category/category_list.dart';
@@ -26,12 +27,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     final controllerCategory = Provider.of<NavigationController>(context);
@@ -48,8 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
-              expandedHeight: 75,
-              toolbarHeight: 75,
+              expandedHeight: AppHeights.expandedAppBar,
+              toolbarHeight: AppHeights.toolbar,
               elevation: 0,
               shadowColor: context.colorScheme.onSurfaceVariant.withValues(
                 alpha: 0.4,

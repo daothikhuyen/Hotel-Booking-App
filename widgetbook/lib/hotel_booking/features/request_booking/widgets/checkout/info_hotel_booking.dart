@@ -17,7 +17,8 @@ Widget buildInfoHotelUseCase(BuildContext context) {
         name: 'Lu San Hi',
         location: 'Hello',
         roomType: 'Double',
-        categoryId: 'Zk2IvTj6oXRPto2qaUgM'
+        categoryId: 'Zk2IvTj6oXRPto2qaUgM',
+        discount: false
       ),
       user: HBUser(uid: '1234', email: 'daothikhuyen30@gmail.com'),
       checkIn: DateTime(2024, 6, 20),

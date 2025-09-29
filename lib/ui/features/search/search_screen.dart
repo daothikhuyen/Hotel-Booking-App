@@ -93,7 +93,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      await filterCard(context);
+                      await filterCard(context, controller);
                     },
                     child: SvgPicture.asset(
                       Assets.images.icon.filter,

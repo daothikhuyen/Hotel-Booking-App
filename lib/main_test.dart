@@ -7,12 +7,7 @@ import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/routing/app_routes.dart';
 import 'package:hotel_booking_app/ui/core/themes/theme.dart';
 import 'package:hotel_booking_app/ui/features/auth/view_model/auth_controller.dart';
-import 'package:hotel_booking_app/ui/features/home/view_model/hotel_controller.dart';
-import 'package:hotel_booking_app/ui/features/home/view_model/navigation_controller.dart';
-import 'package:hotel_booking_app/ui/features/hotel_detail/view_model/hotel_detail_controller.dart';
-import 'package:hotel_booking_app/ui/features/my_booking/view_model/my_booking_controller.dart';
 import 'package:hotel_booking_app/ui/features/profile/view_model/profile_controller.dart';
-import 'package:hotel_booking_app/ui/features/request_booking/view_model/booking_controller.dart';
 import 'package:hotel_booking_app/utils/helpers/local_storage_helper.dart';
 import 'package:provider/provider.dart';
 
@@ -26,19 +21,6 @@ void main() async {
       builder:
           (context) => MultiProvider(
             providers: [
-              ChangeNotifierProvider(create: (context) => HotelController()),
-              ChangeNotifierProvider(
-                create: (context) => NavigationController(),
-              ),
-              ChangeNotifierProvider(
-                create: (context) => HotelDetailController(),
-              ),
-              ChangeNotifierProvider(
-                create: (context) => BookingController(),
-              ), // request booking
-              ChangeNotifierProvider(
-                create: (context) => MyBookingController(),
-              ),
               ChangeNotifierProvider(create: (context) => ProfileController()),
               ChangeNotifierProvider(
                 create: (_) {

@@ -10,11 +10,24 @@ import 'package:hotel_booking_app/ui/core/widgets/alter/dialog.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/second_btn.dart';
 import 'package:hotel_booking_app/ui/features/auth/view_model/auth_controller.dart';
+import 'package:hotel_booking_app/ui/features/profile/view_model/profile_controller.dart';
 import 'package:hotel_booking_app/ui/features/profile/widgets/setting_section.dart';
 import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (_) => ProfileController(),
+      child: const ProfileView(),
+    );
+  }
+}
+
+class ProfileView extends StatelessWidget {
+  const ProfileView({super.key});
+
   @override
   Widget build(BuildContext context) {
     final hbDialog = HBDialog();
@@ -132,8 +145,7 @@ class ProfileScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 4),
                   child: Center(
                     child: TextButton(
-                      onPressed:
-                          () => hbDialog.showSignOutDialog(context),
+                      onPressed: () => hbDialog.showSignOutDialog(context),
                       child: Text(
                         context.l10n.logout,
                         style: HBTextStyles.bodySemiboldLarge(

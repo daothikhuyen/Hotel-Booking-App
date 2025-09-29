@@ -24,7 +24,9 @@ class PrimaryBtn extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor:
-            isSelected ? context.colorScheme.primary : const Color(0xFFF6F8FA),
+            isSelected
+                ? context.colorScheme.primary
+                : context.colorScheme.secondary,
         minimumSize: Size(0, size),
         shape: RoundedRectangleBorder(
           side:

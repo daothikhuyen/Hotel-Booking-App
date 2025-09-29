@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/ui/core/themes/theme.dart';
 
-class HBTextField extends StatefulWidget {
+class HBTextField extends StatelessWidget {
   const HBTextField({
     required this.controller,
     required this.hintText,
     required this.color,
+    this.obscureText = false,
     this.validator,
     this.enabled = true,
     this.isPassword = false,
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.next,
     super.key,
+    this.onToggleObscureText,
   });
   final TextEditingController controller;
   final String hintText;
@@ -22,18 +24,8 @@ class HBTextField extends StatefulWidget {
   final TextInputAction textInputAction;
   final Color color;
   final bool enabled;
-
-  @override
-  State<HBTextField> createState() => _HBTextFieldState();
-}
-
-class _HBTextFieldState extends State<HBTextField> {
-  bool _obscureText = true;
-
-  OutlineInputBorder _border(Color color) => OutlineInputBorder(
-    borderRadius: BorderRadius.circular(13),
-    borderSide: BorderSide(color: color),
-  );
+  final bool obscureText;
+  final VoidCallback? onToggleObscureText;
 
   @override
   Widget build(BuildContext context) {
@@ -41,39 +33,45 @@ class _HBTextFieldState extends State<HBTextField> {
     final hintColor = textColor.withValues(alpha: 0.7);
     final errorColor = context.colorScheme.error;
 
+    OutlineInputBorder border(Color color) => OutlineInputBorder(
+      borderRadius: BorderRadius.circular(13),
+      borderSide: BorderSide(color: color),
+    );
+
     return TextFormField(
-      controller: widget.controller,
-      validator: widget.validator,
-      enabled: widget.enabled,
+      controller: controller,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      validator: validator,
+      enabled: enabled,
       style:
-          widget.enabled
+          enabled
               ? HBTextStyles.bodySemiboldSmall(textColor)
               : HBTextStyles.bodySemiboldSmall(hintColor),
       decoration: InputDecoration(
-        hintText: widget.hintText,
+        hintText: hintText,
         hintStyle: HBTextStyles.bodySemiboldSmall(hintColor),
         filled: true,
-        fillColor: widget.color,
+        fillColor: color,
         border: InputBorder.none,
-        enabledBorder: _border(Colors.transparent),
-        focusedBorder: _border(Colors.transparent),
-        disabledBorder: _border(Colors.transparent),
-        errorBorder: _border(errorColor),
-        focusedErrorBorder: _border(errorColor),
+        enabledBorder: border(Colors.transparent),
+        focusedBorder: border(Colors.transparent),
+        disabledBorder: border(Colors.transparent),
+        errorBorder: border(errorColor),
+        focusedErrorBorder: border(errorColor),
         suffixIcon:
-            widget.isPassword
+            isPassword
                 ? IconButton(
                   icon: Icon(
-                    _obscureText ? Icons.visibility_off : Icons.visibility,
+                    obscureText ? Icons.visibility_off : Icons.visibility,
                   ),
-                  onPressed: () => setState(() => _obscureText = !_obscureText),
+                  onPressed: onToggleObscureText,
                 )
                 : null,
         errorStyle: HBTextStyles.bodyRegularMedium(errorColor),
       ),
-      keyboardType: widget.keyboardType,
-      textInputAction: widget.textInputAction,
-      obscureText: widget.isPassword && _obscureText,
+      keyboardType: keyboardType,
+      textInputAction: textInputAction,
+      obscureText: isPassword && obscureText,
     );
   }
 }

@@ -47,7 +47,7 @@
   "errorEmptyEmail": "Please enter your email",
   "errorEmptyPassword": "Please enter your password",
   "errorEmailFormat": "Invalid email format",
-  "errorPasswordFormat": "Password must be at least 6 characters long",
+  "errorPasswordFormat": "Password must be at least 8 characters, including uppercase, lowercase, numbers and special characters (@, $, !, %, , ?, &)",
   "tagAll": "All",
   "tagApartement": "Apartement\n",
   "tagHotel": "Hotels",

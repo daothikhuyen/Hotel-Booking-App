@@ -1,44 +1,58 @@
 // validator for email
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
-String? validateEmail(BuildContext context, String? value) {
-  final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-
+// validator for text
+String? validateText(BuildContext context, String? value, String errorMessage) {
   if (value == null || value.isEmpty) {
-    return context.l10n.errorEmptyEmail;
-  } else if (!emailRegExp.hasMatch(value)) {
-    return context.l10n.errorEmailFormat;
+    return errorMessage;
   }
   return null;
+}
+
+String? validateEmail(
+  BuildContext context,
+  String? value, {
+  required bool isSubmmited,
+}) {
+  final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+  final result = validateText(context, value, context.l10n.errorEmailFormat);
+  if (result == null || result.isEmpty) {
+    if (!emailRegExp.hasMatch(value ?? '')) {
+      return context.l10n.errorEmailFormat;
+    }
+  }
+  return result;
 }
 
 // validator for password
 String? validatePassword(BuildContext context, String? value) {
-  if (value == null || value.isEmpty) {
-    return context.l10n.errorEmptyPassword;
-  } else if (value.length < 8) {
-    return context.l10n.errorPasswordFormat;
-  }
-  return null;
-}
+  final passwordRegExp = RegExp(
+    r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$',
+  );
 
-// validator for text
-String? validateText(BuildContext context, String? value) {
-  if (value == null || value.isEmpty) {
-    return context.l10n.errorNotEmpty;
+  final result = validateText(context, value, context.l10n.errorEmptyPassword);
+  if (result == null || result.isEmpty) {
+    if (!passwordRegExp.hasMatch(value ?? '')) {
+      return context.l10n.errorPasswordFormat;
+    }
   }
-  return null;
+  return result;
 }
 
 // validator for numberPhone
-String? validateNumberPhone(BuildContext context, String? value) {
-  final phoneRegExp = RegExp(r'^(?:\+84|0)(?:[0-9]{9})$');
-
-  if (value == null || value.isEmpty) {
-    return context.l10n.errorNotEmpty;
-  } else if(!phoneRegExp.hasMatch(value)) {
-    return context.l10n.errorNumberPhone;
+String? validateNumberPhone(
+  BuildContext context,
+  String? numberPhone,
+  PhoneNumber selectedNumber,
+) {
+  final phoneRegExp = RegExp(r'^(\+|00)[0-9]{10,11}$');
+  final result = validateText(context, numberPhone, context.l10n.errorNotEmpty);
+  if (result == null || result.isEmpty) {
+    if (!phoneRegExp.hasMatch(numberPhone ?? '')) {
+      return context.l10n.errorNumberPhone;
+    }
   }
   return null;
 }

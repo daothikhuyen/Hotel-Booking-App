@@ -4,7 +4,9 @@ import 'package:hotel_booking_app/routing/page_routes.dart';
 import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/ui/core/themes/theme.dart';
 import 'package:hotel_booking_app/ui/core/widgets/app_bar.dart';
+import 'package:hotel_booking_app/ui/features/home/view_model/hotel_controller.dart';
 import 'package:hotel_booking_app/ui/features/seeAll/see_all_tab.dart';
+import 'package:provider/provider.dart';
 
 class SeeAllScreen extends StatefulWidget {
   const SeeAllScreen({required this.index, Key? key})
@@ -34,6 +36,8 @@ class _SeeAllScreenState extends State<SeeAllScreen>
 
   @override
   Widget build(BuildContext context) {
+    final controller = Provider.of<HotelController>(context);
+
     return Scaffold(
       appBar: HBAppBar(
         isScrolled: false,
@@ -96,11 +100,11 @@ class _SeeAllScreenState extends State<SeeAllScreen>
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: TabBarView(
             controller: tabController,
-            children: const <Widget>[
-              SeeAllTab(index: 0),
-              SeeAllTab(index: 1),
-              SeeAllTab(index: 2),
-              SeeAllTab(index: 3),
+            children: <Widget>[
+              SeeAllTab(index: 0, controller:controller),
+              SeeAllTab(index: 1, controller:controller),
+              SeeAllTab(index: 2, controller:controller),
+              SeeAllTab(index: 3, controller: controller,),
             ],
           ),
         ),

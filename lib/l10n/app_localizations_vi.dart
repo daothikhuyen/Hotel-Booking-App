@@ -150,7 +150,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get errorEmailFormat => 'Định dạng email không hợp lệ';
 
   @override
-  String get errorPasswordFormat => 'Mật khẩu phải dài ít nhất 6 kí tự';
+  String get errorPasswordFormat => 'Mật khẩu phải có ít nhất 8 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt (@, \$, !, %, , ?, &)';
 
   @override
   String get tagAll => 'Tất cả';

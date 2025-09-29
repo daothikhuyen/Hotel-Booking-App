@@ -7,11 +7,11 @@ import 'package:hotel_booking_app/ui/core/widgets/cards/build_divider.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/recommended_card.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/vertical_skeleton_card.dart';
 import 'package:hotel_booking_app/ui/features/home/view_model/hotel_controller.dart';
-import 'package:provider/provider.dart';
 
 class SeeAllTab extends StatefulWidget {
-  const SeeAllTab({required this.index, super.key});
+  const SeeAllTab({required this.index, required this.controller, super.key});
   final int index;
+  final HotelController controller;
 
   @override
   State<SeeAllTab> createState() => _SeeAllTabState();
@@ -30,8 +30,8 @@ class _SeeAllTabState extends State<SeeAllTab>
   void initState() {
     super.initState();
 
+      controller = widget.controller;
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      controller = Provider.of<HotelController>(context, listen: false);
       loadData(loadMore: false).then((value) {
         setState(() {
           isLoading = false;
@@ -72,7 +72,6 @@ class _SeeAllTabState extends State<SeeAllTab>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final controller = Provider.of<HotelController>(context);
     List<Hotel> hotels;
 
     switch (widget.index) {
@@ -97,7 +96,7 @@ class _SeeAllTabState extends State<SeeAllTab>
             setState(() {
               isLoading = false;
             });
-          },);
+          });
         },
         child: AnimatedBuilder(
           animation: controller,
