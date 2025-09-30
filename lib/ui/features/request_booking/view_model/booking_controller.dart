@@ -22,7 +22,7 @@ class BookingController extends ChangeNotifier {
           message: context.l10n.userNotExisted,
         );
       }
-      await _service.saveBooking(booking);
+      await _service.saveBooking(context, booking);
 
       return ApiResponse(ApiStatus.success);
     } on AppException catch (e) {

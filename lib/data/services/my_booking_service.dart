@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/data/model/booking.dart';
 import 'package:hotel_booking_app/ui/core/exceptions/app_exception.dart';
+import 'package:hotel_booking_app/ui/core/exceptions/error_type.dart';
 import 'package:hotel_booking_app/ui/core/firestore_collections.dart';
+import 'package:hotel_booking_app/ui/core/network/network_util.dart';
 
 class MyBookingService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -13,10 +16,12 @@ class MyBookingService {
   DocumentSnapshot? _lastDoc;
 
   Future<List<Booking>> fetchMyBooking({
+    required BuildContext context,
     required bool isHistory,
     bool isLoadMore = false,
   }) async {
     final now = Timestamp.now().millisecondsSinceEpoch;
+    await NetworkUtil.hasNetwork(context);
     try {
       if (currentUser == null) return [];
       var query = _firestore
@@ -48,16 +53,20 @@ class MyBookingService {
 
       return booking;
     } on FirebaseException catch (e) {
-      throw AppException(message: 'fetchMyBooking ${e.message}');
+      throw AppException(
+        type: ErrorType.unknown,
+        message: '${e.message}',
+      );
     }
   }
 
   Future<List<Booking>> searchBooked({
+    required BuildContext context,
     required String text,
     required bool isHistory,
   }) async {
     final now = Timestamp.now().millisecondsSinceEpoch;
-
+    await NetworkUtil.hasNetwork(context);
     try {
       if (currentUser == null) return [];
 
@@ -83,7 +92,10 @@ class MyBookingService {
 
       return booking;
     } on FirebaseException catch (e) {
-      throw AppException(message: 'Search MyBooking ${e.message}');
+      throw AppException(
+        type: ErrorType.unknown,
+        message: '${e.message}',
+      );
     }
   }
 

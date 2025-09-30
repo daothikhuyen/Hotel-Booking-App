@@ -41,7 +41,11 @@ class _HistoryState extends State<History> with AutomaticKeepAliveClientMixin {
                 _scrollController.position.maxScrollExtent - 200 &&
             !controller.isLoading &&
             controller.hasMore) {
-          controller.fetchMyBooking(table: 'history', loadMore: true);
+          controller.fetchMyBooking(
+            context: context,
+            table: 'history',
+            loadMore: true,
+          );
         }
       });
       _initialized = true;
@@ -60,7 +64,9 @@ class _HistoryState extends State<History> with AutomaticKeepAliveClientMixin {
   }
 
   Future<void> loadData() async {
-    await controller.fetchMyBooking(table: 'history').then((value) {
+    await controller.fetchMyBooking(context: context, table: 'history').then((
+      value,
+    ) {
       setState(() {
         isLoading = false;
       });

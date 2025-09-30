@@ -203,6 +203,8 @@
   "errorNumberPhone": "Phone number is not in correct format",
   "displayName": "Display Name",
   "updateSucess": "Update successful",
-  "updateFailed": "Update failed"
+  "updateFailed": "Update failed",
+  "notInternet": "No internet connection",
+  "sharedPreferences": "SharedPreferences not available"
 
 }

@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
 import 'package:hotel_booking_app/ui/core/exceptions/app_exception.dart';
+import 'package:hotel_booking_app/ui/core/exceptions/error_type.dart';
 import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/ui/core/firestore_collections.dart';
+import 'package:hotel_booking_app/ui/core/network/network_util.dart';
 import 'package:hotel_booking_app/utils/helpers/local_storage_helper.dart';
 
 class AuthService {
@@ -23,6 +25,7 @@ class AuthService {
     required String email,
     required String location,
   }) async {
+    await NetworkUtil.hasNetwork(context);
     try {
       final userDoc =
           await _firestore
@@ -43,15 +46,15 @@ class AuthService {
             .set(hbUser.toJson());
       }
     } on FirebaseAuthException {
-      throw AppException(message: context.l10n.signUpFailed);
-    }
+      throw AppException(
+        type: ErrorType.unknown,
+        message: context.l10n.signUpFailed,
+      );
+    } 
   }
 
-  Future signInUser(
-    BuildContext context,
-    String email,
-    String password,
-  ) async {
+  Future signInUser(BuildContext context, String email, String password) async {
+    await NetworkUtil.hasNetwork(context);
     try {
       final credentail = await auth.signInWithEmailAndPassword(
         email: email,
@@ -65,7 +68,10 @@ class AuthService {
               .get();
 
       if (!snapshot.exists && snapshot.data() == null) {
-        throw AppException(message: context.l10n.signInFailed);
+        throw AppException(
+          type: ErrorType.notFound,
+          message: context.l10n.signUpFailed,
+        );
       }
 
       final user = HBUser.fromJson(snapshot.data() ?? {});
@@ -73,11 +79,15 @@ class AuthService {
       await LocalStorageHelper.saveUser(user);
       return user;
     } on FirebaseAuthException{
-      throw AppException(message: context.l10n.signInFailed);
+      throw AppException(
+        type: ErrorType.invalidCredential,
+        message: context.l10n.signUpFailed,
+      );
     }
   }
 
   Future signInUserWithGoogle(BuildContext context) async {
+    await NetworkUtil.hasNetwork(context);
     try {
       final gUser = await GoogleSignIn().signIn();
 
@@ -112,15 +122,22 @@ class AuthService {
 
       return;
     } on FirebaseAuthException {
-      throw AppException(message: context.l10n.signInFailed);
+      throw AppException(
+        type: ErrorType.invalidCredential,
+        message: context.l10n.signUpFailed,
+      );
     }
   }
 
   Future<void> signOut(BuildContext context) async {
+    await NetworkUtil.hasNetwork(context);
     try {
       await auth.signOut();
     } on FirebaseException {
-      throw AppException(message: context.l10n.signOutFailed);
+      throw AppException(
+        type: ErrorType.unknown,
+        message: context.l10n.signOutFailed,
+      );
     }
   }
 
@@ -130,6 +147,7 @@ class AuthService {
     String phone,
     String location,
   ) async {
+    await NetworkUtil.hasNetwork(context);
     try {
       final docRef = _firestore
           .collection(FirestoreCollections.users)
@@ -150,7 +168,10 @@ class AuthService {
       await LocalStorageHelper.saveUser(hbUser);
       return hbUser;
     } on FirebaseException {
-      throw AppException(message: context.l10n.updateFailed);
+      throw AppException(
+        type: ErrorType.invalidCredential,
+        message: context.l10n.updateFailed,
+      );
     }
   }
 }

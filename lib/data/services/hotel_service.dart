@@ -1,8 +1,11 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/ui/core/exceptions/app_exception.dart';
+import 'package:hotel_booking_app/ui/core/exceptions/error_type.dart';
 import 'package:hotel_booking_app/ui/core/firestore_collections.dart';
+import 'package:hotel_booking_app/ui/core/network/network_util.dart';
 
 class HotelService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -16,6 +19,7 @@ class HotelService {
     required int limit,
     bool loadMore = false,
   }) async {
+    await NetworkUtil.hasNetwork(context);
     try {
       var query = _firestore
           .collection(FirestoreCollections.hotels)
@@ -36,7 +40,7 @@ class HotelService {
         return Hotel.fromJson(doc.data(), doc.id);
       }).toList();
     } on FirebaseException catch (e) {
-      throw AppException(message: 'popular hotels: ${e.message}');
+      throw AppException(type: ErrorType.unknown, message: '${e.message}');
     }
   }
 
@@ -45,6 +49,7 @@ class HotelService {
     required int limit,
     bool loadMore = false,
   }) async {
+    await NetworkUtil.hasNetwork(context);
     try {
       var query = _firestore
           .collection(FirestoreCollections.hotels)
@@ -65,7 +70,11 @@ class HotelService {
         return Hotel.fromJson(doc.data(), doc.id);
       }).toList();
     } on FirebaseException catch (e) {
-      throw AppException(message: 'Recomended ${e.message}');
+      throw AppException(
+        code: e.hashCode,
+        type: ErrorType.unknown,
+        message: '${e.message}',
+      );
     }
   }
 
@@ -74,6 +83,7 @@ class HotelService {
     required int limit,
     bool loadMore = false,
   }) async {
+    await NetworkUtil.hasNetwork(context);
     try {
       var query = _firestore
           .collection(FirestoreCollections.hotels)
@@ -96,7 +106,7 @@ class HotelService {
 
       return hotels.take(limit).toList();
     } on FirebaseException catch (e) {
-      throw AppException(message: 'Best hotel ${e.message}');
+      throw AppException(type: ErrorType.unknown, message: '${e.message}');
     }
   }
 
@@ -105,6 +115,7 @@ class HotelService {
     required int limit,
     bool loadMore = false,
   }) async {
+    await NetworkUtil.hasNetwork(context);
     try {
       var query = _firestore
           .collection(FirestoreCollections.hotels)
@@ -124,11 +135,16 @@ class HotelService {
         return Hotel.fromJson(doc.data(), doc.id);
       }).toList();
     } on FirebaseException catch (e) {
-      throw AppException(message: 'all ${e.message}');
-    }
+      throw AppException(type: ErrorType.unknown, message: '${e.message}');
+    } 
   }
 
-  Future<List<Hotel>> searchHotel(String text, int limit) async {
+  Future<List<Hotel>> searchHotel(
+    BuildContext context,
+    String text,
+    int limit,
+  ) async {
+    await NetworkUtil.hasNetwork(context);
     try {
       final snapshot =
           await _firestore
@@ -143,17 +159,19 @@ class HotelService {
         return Hotel.fromJson(doc.data(), doc.id);
       }).toList();
     } on FirebaseException catch (e) {
-      throw AppException(message: 'search ${e.message}');
+      throw AppException(type: ErrorType.unknown, message: '${e.message}');
     }
   }
 
   Future<List<Hotel>> filterHotel(
+    BuildContext context,
     String location,
     double price,
     int bed,
     int bathroom,
     int rating,
   ) async {
+    await NetworkUtil.hasNetwork(context);
     try {
       var query = _firestore.collection(FirestoreCollections.hotels).limit(10);
 
@@ -181,7 +199,7 @@ class HotelService {
         return Hotel.fromJson(doc.data(), doc.id);
       }).toList();
     } on FirebaseException catch (e) {
-      throw AppException(message: 'search ${e.message}');
+      throw AppException(type: ErrorType.unknown, message: '${e.message}');
     }
   }
 
@@ -190,6 +208,7 @@ class HotelService {
     String categoryId,
     int limit,
   ) async {
+    await NetworkUtil.hasNetwork(context);
     try {
       final snapshot =
           await _firestore
@@ -206,7 +225,7 @@ class HotelService {
         return Hotel.fromJson(doc.data(), doc.id);
       }).toList();
     } on FirebaseException catch (e) {
-      throw AppException(message: 'fetch hotel by category ${e.message}');
-    }
+      throw AppException(type: ErrorType.unknown, message: '${e.message}');
+    } 
   }
 }

@@ -204,5 +204,7 @@
   "errorNumberPhone": "Số điện thoại chưa đúng",
   "displayName": "Tên hiển thị",
   "updateSucess": "Cập nhật thành công",
-  "updateFailed": "Cập nhật thất bại"
+  "updateFailed": "Cập nhật thất bại",
+  "notInternet": "Không có kết nối internet",
+  "sharedPreferences": "Thông tin không có sẵn"
 }

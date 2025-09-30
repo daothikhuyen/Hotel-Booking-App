@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:hotel_booking_app/data/model/booking.dart';
 import 'package:hotel_booking_app/data/services/my_booking_service.dart';
 import 'package:hotel_booking_app/ui/core/exceptions/app_exception.dart';
+import 'package:hotel_booking_app/ui/core/exceptions/error_type.dart';
 
 class MyBookingController with ChangeNotifier {
   bool isLoading = false;
@@ -13,6 +14,7 @@ class MyBookingController with ChangeNotifier {
   final _service = MyBookingService();
 
   Future<void> fetchMyBooking({
+    required BuildContext context,
     required String table,
     bool loadMore = false,
   }) async {
@@ -27,11 +29,13 @@ class MyBookingController with ChangeNotifier {
 
       if (table == 'booked') {
         newBookings = await _service.fetchMyBooking(
+          context: context,
           isLoadMore: loadMore,
           isHistory: false,
         );
       } else {
         newBookings = await _service.fetchMyBooking(
+          context: context,
           isLoadMore: loadMore,
           isHistory: true,
         );
@@ -50,11 +54,16 @@ class MyBookingController with ChangeNotifier {
       isLoading = false;
       notifyListeners();
     } on AppException catch (e) {
-      throw AppException(code: e.hashCode, message: 'Error ${e.message}');
+      throw AppException(
+        code: e.hashCode,
+        type: ErrorType.unknown,
+        message: e.message,
+      );
     }
   }
 
   Future<List<Booking>> searchBooked({
+    required BuildContext context,
     required String text,
     required bool isHistory,
   }) async {
@@ -62,9 +71,13 @@ class MyBookingController with ChangeNotifier {
       hasMore = false;
       notifyListeners();
       if (text.isEmpty) {
-        await fetchMyBooking(table: isHistory ? 'history' : 'booked');
+        await fetchMyBooking(
+          context: context,
+          table: isHistory ? 'history' : 'booked',
+        );
       } else {
         final booked = await _service.searchBooked(
+          context: context,
           text: text,
           isHistory: isHistory,
         );
@@ -80,7 +93,8 @@ class MyBookingController with ChangeNotifier {
     } on AppException catch (e) {
       throw AppException(
         code: e.hashCode,
-        message: 'Error search booked ${e.message}',
+        type: ErrorType.unknown,
+        message: ' ${e.message}',
       );
     }
   }

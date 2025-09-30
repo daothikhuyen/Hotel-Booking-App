@@ -487,4 +487,10 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get updateFailed => 'Cập nhật thất bại';
+
+  @override
+  String get notInternet => 'Không có kết nối internet';
+
+  @override
+  String get sharedPreferences => 'Thông tin không có sẵn';
 }

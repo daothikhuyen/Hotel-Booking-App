@@ -34,7 +34,7 @@ class HotelController extends ChangeNotifier {
 
       data(await serviceMethod);
     } on AppException catch (e) {
-      throw AppException(message: e.message);
+      throw AppException(type: e.type, message: e.message);
     } finally {
       isLoading = false;
       notifyListeners();
@@ -107,16 +107,16 @@ class HotelController extends ChangeNotifier {
       );
       notifyListeners();
     } on AppException catch (e) {
-      throw AppException(message: e.message);
+      throw AppException(type: e.type,message: e.message);
     }
   }
 
   Future<void> searchHotel(BuildContext context, {required String text}) async {
     try {
-      listHotelSearch = await _service.searchHotel(text, limit);
+      listHotelSearch = await _service.searchHotel(context, text, limit);
       notifyListeners();
     } on AppException catch (e) {
-      throw AppException(message: e.message);
+      throw AppException(type: e.type,message: e.message);
     }
   }
 
@@ -130,6 +130,7 @@ class HotelController extends ChangeNotifier {
   ) async {
     try {
       listHotelSearch = await _service.filterHotel(
+        context,
         location ?? '',
         price ?? 0,
         bed ?? 0,
@@ -139,7 +140,7 @@ class HotelController extends ChangeNotifier {
       isFilter = true;
       notifyListeners();
     } on AppException catch (e) {
-      throw AppException(message: e.message);
+      throw AppException(type: e.type,message: e.message);
     }
   }
 

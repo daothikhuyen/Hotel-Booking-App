@@ -31,7 +31,9 @@ class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin {
   bool get wantKeepAlive => true;
 
   Future<void> loadData() async {
-    await controller.fetchMyBooking(table: 'booked').then((value) {
+    await controller.fetchMyBooking(context: context, table: 'booked').then((
+      value,
+    ) {
       setState(() {
         isLoading = false;
       });
@@ -57,7 +59,11 @@ class _BookedState extends State<Booked> with AutomaticKeepAliveClientMixin {
                 _scrollController.position.maxScrollExtent - 200 &&
             !controller.isLoading &&
             controller.hasMore) {
-          controller.fetchMyBooking(table: 'booked', loadMore: true);
+          controller.fetchMyBooking(
+            context: context,
+            table: 'booked',
+            loadMore: true,
+          );
         }
       });
       _initialized = true;

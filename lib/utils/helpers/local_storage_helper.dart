@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'package:flutter/services.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
 import 'package:hotel_booking_app/ui/core/exceptions/app_exception.dart';
+import 'package:hotel_booking_app/ui/core/exceptions/error_type.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalStorageHelper {
@@ -10,8 +12,13 @@ class LocalStorageHelper {
     try {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString(_keyUser, jsonEncode(user.toJson()));
-    } on Exception catch (e) {
-      throw AppException(message: e.toString());
+    } on MissingPluginException {
+      throw AppException(
+        type: ErrorType.unknown,
+        message: 'SharedPreferences not available',
+      );
+    } on PlatformException catch (e) {
+      throw AppException(type: ErrorType.unknown, message: '${e.message}');
     }
   }
 
@@ -23,8 +30,8 @@ class LocalStorageHelper {
         return HBUser.fromJson(jsonDecode(data));
       }
       return null;
-    } on Exception catch (e) {
-      throw AppException(message: e.toString());
+    } on FormatException catch (e) {
+      throw AppException(type: ErrorType.unknown, message: '$e');
     }
   }
 
@@ -32,8 +39,13 @@ class LocalStorageHelper {
     try {
       final prefs = await SharedPreferences.getInstance();
       await prefs.remove(_keyUser);
-    } on Exception catch (e) {
-      throw AppException(message: 'Error removerUser: $e');
+    } on MissingPluginException {
+      throw AppException(
+        type: ErrorType.unknown,
+        message: 'SharedPreferences not available',
+      );
+    } on PlatformException catch (e) {
+      throw AppException(type: ErrorType.unknown, message: '${e.message}');
     }
   }
 }

@@ -487,4 +487,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get updateFailed => 'Update failed';
+
+  @override
+  String get notInternet => 'No internet connection';
+
+  @override
+  String get sharedPreferences => 'SharedPreferences not available';
 }

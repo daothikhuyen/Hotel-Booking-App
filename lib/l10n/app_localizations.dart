@@ -1030,6 +1030,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Update failed'**
   String get updateFailed;
+
+  /// No description provided for @notInternet.
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection'**
+  String get notInternet;
+
+  /// No description provided for @sharedPreferences.
+  ///
+  /// In en, this message translates to:
+  /// **'SharedPreferences not available'**
+  String get sharedPreferences;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

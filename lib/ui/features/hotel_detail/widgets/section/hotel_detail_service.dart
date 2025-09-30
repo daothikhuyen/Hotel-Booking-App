@@ -4,6 +4,7 @@ import 'package:hotel_booking_app/data/model/comment.dart';
 import 'package:hotel_booking_app/data/model/comment_user.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
 import 'package:hotel_booking_app/ui/core/exceptions/app_exception.dart';
+import 'package:hotel_booking_app/ui/core/exceptions/error_type.dart';
 import 'package:hotel_booking_app/ui/core/firestore_collections.dart';
 
 class HotelDetailService {
@@ -47,7 +48,7 @@ class HotelDetailService {
       }
       return listComment;
     } on FirebaseException catch (e) {
-      throw AppException(message: 'comment: ${e.message}');
+      throw AppException(type: ErrorType.unknown, message: '${e.message}');
     }
   }
 }

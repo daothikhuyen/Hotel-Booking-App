@@ -16,9 +16,9 @@ class NavigationController with ChangeNotifier {
     try {
       loading = true;
       notifyListeners();
-      listDestinations = await _service.fetchDestination();
+      listDestinations = await _service.fetchDestination(context);
     } on AppException catch (e) {
-      throw AppException(message: e.message);
+      throw AppException(type: e.type,message: e.message);
     } finally {
       loading = false;
       notifyListeners();
@@ -29,9 +29,9 @@ class NavigationController with ChangeNotifier {
     try {
       loading = true;
       notifyListeners();
-      listCategory = await _service.fetchCategory();
+      listCategory = await _service.fetchCategory(context);
     } on AppException catch (e) {
-      throw AppException(message: e.message);
+      throw AppException(type: e.type,message: e.message);
     } finally {
       loading = false;
       notifyListeners();

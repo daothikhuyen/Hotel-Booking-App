@@ -68,6 +68,7 @@ class _CheckOutState extends State<CheckOut> {
             controller.createBooking(context, widget.booking).then((value) {
               if (value.status == ApiStatus.success) {
                 myBookingController.fetchMyBooking(
+                  context: context,
                   table: 'booked',
                   loadMore: true,
                 );
