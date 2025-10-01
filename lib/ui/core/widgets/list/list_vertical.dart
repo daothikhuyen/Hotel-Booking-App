@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/routing/page_routes.dart';
+import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/build_divider.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/recommended_card.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/vertical_skeleton_card.dart';
@@ -28,9 +29,12 @@ class _ListVerticalState extends State<ListVertical> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
+      padding: EdgeInsets.only(bottom: context.spacing.lg),
       child: Padding(
-        padding: const EdgeInsets.only(top: 18, right: 8),
+        padding: EdgeInsets.only(
+          top: context.spacing.lg,
+          right: context.spacing.sm,
+        ),
         child:
             widget.listHotels.isNotEmpty
                 ? Column(
@@ -52,12 +56,12 @@ class _ListVerticalState extends State<ListVertical> {
                         ),
                         // create horizontal line
                         if (index < widget.listHotels.length - 1)
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(
-                              horizontal: 5,
-                              vertical: 20,
+                              horizontal: context.spacing.xs,
+                              vertical: context.spacing.xl,
                             ),
-                            child: BuildDivider(),
+                            child: const BuildDivider(),
                           )
                         else
                           const SizedBox.shrink(),
@@ -71,12 +75,12 @@ class _ListVerticalState extends State<ListVertical> {
                       children: [
                         const VerticalSkeletonCard(),
                         if (index < 4 - 1)
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(
-                              horizontal: 5,
-                              vertical: 20,
+                              horizontal: context.spacing.xs,
+                              vertical: context.spacing.xl,
                             ),
-                            child: BuildDivider(),
+                            child: const BuildDivider(),
                           )
                         else
                           const SizedBox.shrink(),

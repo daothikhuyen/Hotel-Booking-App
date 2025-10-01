@@ -58,7 +58,10 @@ class _DatePickerState extends State<DatePicker> {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+          padding: EdgeInsets.symmetric(
+            horizontal: context.spacing.sm,
+            vertical: context.spacing.md,
+          ),
           child: HeaderCard(
             title: context.l10n.date,
             onPressed: () {},
@@ -73,13 +76,14 @@ class _DatePickerState extends State<DatePicker> {
                 onTap: selectedDate,
                 child: Container(
                   height: 94,
-                  padding: const EdgeInsets.all(10),
-                  margin: const EdgeInsets.only(left: 5, right: 8),
+                  padding: EdgeInsets.all(context.spacing.sm),
+                  margin: EdgeInsets.only(
+                    left: context.spacing.xs,
+                    right: context.spacing.sm,
+                  ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: context.colorScheme.outline.withValues(
-                      alpha: 0.20,
-                    ),
+                    color: context.colorScheme.outline.withValues(alpha: 0.20),
                   ),
                   child: Column(
                     // mainAxisAlignment: MainAxisAlignment.start,
@@ -94,7 +98,7 @@ class _DatePickerState extends State<DatePicker> {
                               BlendMode.srcIn,
                             ),
                           ),
-                          const SizedBox(width: 8),
+                          SizedBox(height: context.spacing.sm),
                           Text(
                             context.l10n.checkIn,
                             style: HBTextStyles.bodyMediumMedium(
@@ -103,7 +107,7 @@ class _DatePickerState extends State<DatePicker> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: context.spacing.sm),
                       Text(
                         formatStartDate ?? today.toString(),
                         style: HBTextStyles.bodyRegularMedium(
@@ -121,13 +125,14 @@ class _DatePickerState extends State<DatePicker> {
                 onTap: selectedDate,
                 child: Container(
                   height: 94,
-                  padding: const EdgeInsets.all(10),
-                  margin: const EdgeInsets.only(right: 5, left: 8),
+                  padding: EdgeInsets.all(context.spacing.sm),
+                  margin: EdgeInsets.only(
+                    right: context.spacing.xs,
+                    left: context.spacing.sm,
+                  ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: context.colorScheme.outline.withValues(
-                      alpha: 0.20,
-                    ),
+                    color: context.colorScheme.outline.withValues(alpha: 0.20),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,7 +146,7 @@ class _DatePickerState extends State<DatePicker> {
                               BlendMode.srcIn,
                             ),
                           ),
-                          const SizedBox(width: 8),
+                          SizedBox(height: context.spacing.sm),
                           Text(
                             context.l10n.checkOut,
                             style: HBTextStyles.bodyMediumMedium(
@@ -150,7 +155,7 @@ class _DatePickerState extends State<DatePicker> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: context.spacing.sm),
                       Text(
                         formatEndDate ?? today.toString(),
                         style: HBTextStyles.bodyRegularMedium(

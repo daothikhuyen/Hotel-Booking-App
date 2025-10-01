@@ -30,7 +30,7 @@ class BookingCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 176,
-      padding: const EdgeInsets.all(8),
+      padding: EdgeInsets.all(context.spacing.sm),
       decoration: BoxDecoration(
         border: Border.all(
           width: 1.3,
@@ -43,7 +43,10 @@ class BookingCard extends StatelessWidget {
           Container(
             width: 96,
             height: 152,
-            margin: const EdgeInsets.only(right: 8, left: 3),
+            margin: EdgeInsets.only(
+              right: context.spacing.sm,
+              left: context.spacing.xs,
+            ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(13),
               image: DecorationImage(
@@ -75,7 +78,7 @@ class BookingCard extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 15),
+                      padding: EdgeInsets.only(right: context.spacing.lg),
                       child: Row(
                         children: [
                           SvgPicture.asset(
@@ -83,7 +86,7 @@ class BookingCard extends StatelessWidget {
                             width: 16,
                             height: 16,
                           ),
-                          const SizedBox(width: 4),
+                          SizedBox(height: context.spacing.xs),
                           Text(
                             rating,
                             style: HBTextStyles.bodySemiboldSmall(
@@ -95,7 +98,7 @@ class BookingCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 4),
+                SizedBox(height: context.spacing.xs),
                 Row(
                   children: [
                     SvgPicture.asset(
@@ -105,7 +108,7 @@ class BookingCard extends StatelessWidget {
                         BlendMode.srcIn,
                       ),
                     ),
-                    const SizedBox(width: 4),
+                    SizedBox(height: context.spacing.xs),
                     Text(
                       location,
                       style: HBTextStyles.bodyRegularSmall(
@@ -114,7 +117,7 @@ class BookingCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 4),
+                SizedBox(height: context.spacing.xs),
                 RichText(
                   text: TextSpan(
                     children: [
@@ -136,18 +139,18 @@ class BookingCard extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(vertical: 8),
+                  margin: EdgeInsets.symmetric(vertical: context.spacing.sm),
                   child: const BuildDivider(),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 10),
+                  padding: EdgeInsets.only(right: context.spacing.sm),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
                         children: [
                           SvgPicture.asset(Assets.images.icon.calendar),
-                          const SizedBox(width: 4),
+                          SizedBox(height: context.spacing.xs),
                           Text(
                             context.l10n.date,
                             style: HBTextStyles.bodyRegularMedium(
@@ -165,16 +168,16 @@ class BookingCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 5),
+                SizedBox(height:  context.spacing.xs),
                 Padding(
-                  padding: const EdgeInsets.only(right: 10),
+                  padding: EdgeInsets.only(right:  context.spacing.sm),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
                         children: [
                           SvgPicture.asset(Assets.images.icon.profile),
-                          const SizedBox(width: 4),
+                          SizedBox(height: context.spacing.xs),
                           Text(
                             context.l10n.guest,
                             style: HBTextStyles.bodyRegularMedium(

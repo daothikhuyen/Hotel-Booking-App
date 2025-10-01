@@ -34,7 +34,7 @@ class _PopularCardState extends State<PopularCard> {
           Container(
             width: 156,
             height: 220,
-            margin: const EdgeInsets.only(right: 10),
+            margin: EdgeInsets.only(right:  context.spacing.sm),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
@@ -66,14 +66,17 @@ class _PopularCardState extends State<PopularCard> {
               child: SvgPicture.asset(Assets.images.icon.heart),
             ),
           ),
-          
+
           Positioned(
             bottom: 0,
             left: 0,
             right: 0,
 
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 18),
+              padding: EdgeInsets.symmetric(
+                horizontal: context.spacing.sm,
+                vertical: context.spacing.lg,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -83,21 +86,20 @@ class _PopularCardState extends State<PopularCard> {
                       context.colorScheme.onPrimary,
                     ),
                   ),
-                  const SizedBox(height: 5),
+                  SizedBox(height: context.spacing.xs),
                   Text(
                     widget.location,
                     style: HBTextStyles.bodyMediumXSmall(
                       context.colorScheme.onPrimary,
                     ),
                   ),
-                  const SizedBox(height: 5),
+                  SizedBox(height: context.spacing.xs),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        context.l10n.price(
-                              formatPrice(widget.currentPrice),
-                            ) +context.l10n.night,
+                        context.l10n.price(formatPrice(widget.currentPrice)) +
+                            context.l10n.night,
                         style: HBTextStyles.bodySemiboldSmall(
                           context.colorScheme.onPrimary,
                         ),
@@ -109,14 +111,14 @@ class _PopularCardState extends State<PopularCard> {
                             width: 12,
                             height: 12,
                           ),
-                          const SizedBox(width: 3),
+                          SizedBox(height: context.spacing.xs),
                           Text(
                             '${widget.rating}',
                             style: HBTextStyles.bodySemiboldXSmall(
                               context.colorScheme.onPrimary,
                             ),
                           ),
-                          const SizedBox(width: 8),
+                          SizedBox(height: context.spacing.sm),
                         ],
                       ),
                     ],

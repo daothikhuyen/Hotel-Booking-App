@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:widgetbook_hotel_booking_app/hotel_booking/core/theme/data/style.dart';
 
@@ -23,14 +24,14 @@ Widget buildTextStyleUseCase(BuildContext context) {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: context.spacing.lg),
                   Wrap(
                     spacing: 20,
                     runSpacing: 20,
                     children:
                         font.textStyle.map((entry) {
                           return Container(
-                            padding: const EdgeInsets.all(12),
+                            padding: EdgeInsets.all(context.spacing.md),
                             width: 160,
                             decoration: BoxDecoration(
                               border: Border.all(
@@ -46,7 +47,7 @@ Widget buildTextStyleUseCase(BuildContext context) {
                                   entry.name,
                                   style: entry.style(defaultColor),
                                 ),
-                                const SizedBox(height: 4),
+                                SizedBox(height: context.spacing.xs),
                                 Text(
                                   entry.description,
                                   style: const TextStyle(

@@ -4,9 +4,7 @@ import 'package:hotel_booking_app/ui/core/widgets/cards/skeleton.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class BookingSkeleton extends StatelessWidget {
-  const BookingSkeleton({
-    super.key,
-  });
+  const BookingSkeleton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +15,9 @@ class BookingSkeleton extends StatelessWidget {
           interval: const Duration(seconds: 5),
           colorOpacity: 0,
           child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 8),
+            margin: EdgeInsets.symmetric(vertical: context.spacing.sm),
             height: 176,
-            padding: const EdgeInsets.all(8),
+            padding: EdgeInsets.all(context.spacing.sm),
             decoration: BoxDecoration(
               border: Border.all(
                 width: 1.3,
@@ -27,19 +25,19 @@ class BookingSkeleton extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(18),
             ),
-            child: const Row(
+            child: Row(
               children: [
-                Skeleton(width: 96, height: 152),
+                const Skeleton(width: 96, height: 152),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 8),
-                      Skeleton(width: 200, height: 30),
-                      SizedBox(height: 8),
-                      Skeleton(width: 200, height: 30),
-                      SizedBox(height: 8),
-                      Skeleton(width: 200, height: 30),
+                      SizedBox(height: context.spacing.sm),
+                      const Skeleton(width: 200, height: 30),
+                      SizedBox(height: context.spacing.sm),
+                      const Skeleton(width: 200, height: 30),
+                      SizedBox(height: context.spacing.sm),
+                      const Skeleton(width: 200, height: 30),
                     ],
                   ),
                 ),

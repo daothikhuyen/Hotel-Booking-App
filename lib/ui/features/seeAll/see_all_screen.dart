@@ -50,15 +50,18 @@ class _SeeAllScreenState extends State<SeeAllScreen>
           return [
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.only(left: 18, right: 18),
+                padding: EdgeInsets.only(
+                  left: context.spacing.lg,
+                  right: context.spacing.lg,
+                ),
                 child: Column(
                   children: [
                     Container(
-                      margin: const EdgeInsets.only(top: 30, bottom: 18),
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 5,
-                        horizontal: 5,
+                      margin: EdgeInsets.only(
+                        top: context.spacing.xxl,
+                        bottom: context.spacing.lg,
                       ),
+                      padding: context.spacing.allXs,
                       height: 55,
                       decoration: BoxDecoration(
                         color: context.colorScheme.outline.withValues(
@@ -97,14 +100,14 @@ class _SeeAllScreenState extends State<SeeAllScreen>
           ];
         },
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: context.spacing.horizXL,
           child: TabBarView(
             controller: tabController,
             children: <Widget>[
-              SeeAllTab(index: 0, controller:controller),
-              SeeAllTab(index: 1, controller:controller),
-              SeeAllTab(index: 2, controller:controller),
-              SeeAllTab(index: 3, controller: controller,),
+              SeeAllTab(index: 0, controller: controller),
+              SeeAllTab(index: 1, controller: controller),
+              SeeAllTab(index: 2, controller: controller),
+              SeeAllTab(index: 3, controller: controller),
             ],
           ),
         ),

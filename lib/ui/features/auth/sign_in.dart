@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -42,7 +44,7 @@ class _SignInState extends State<SignIn> {
         child: Container(height: 1.5, color: context.colorScheme.outline),
       ),
       Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
+        padding: EdgeInsets.symmetric(horizontal: context.spacing.sm),
         child: Text(
           text,
           style: HBTextStyles.bodyRegularSmall(context.colorScheme.outline),
@@ -77,12 +79,12 @@ class _SignInState extends State<SignIn> {
       body: Form(
         key: _formKey,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.symmetric(horizontal: context.spacing.xl),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 20),
+                SizedBox(height: context.spacing.xl),
                 Center(
                   child: Text(
                     context.l10n.signInTitle,
@@ -92,7 +94,7 @@ class _SignInState extends State<SignIn> {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: context.spacing.sm),
                 Center(
                   child: Text(
                     context.l10n.signInDesc,
@@ -102,30 +104,28 @@ class _SignInState extends State<SignIn> {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                const SizedBox(height: 15),
+                SizedBox(height: context.spacing.lg),
                 Text(
                   context.l10n.emailAddress,
                   style: HBTextStyles.bodySemiboldSmall(
                     context.colorScheme.onSurfaceVariant,
                   ),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: context.spacing.md),
                 HBTextField(
                   controller: _email,
                   hintText: context.l10n.enterEmail,
-                  validator:
-                      (v) =>
-                          validateEmail(context, v, isSubmmited: isSubmitted),
+                  validator: (v) => validateEmail(context, v),
                   color: context.colorScheme.outline,
                 ),
-                const SizedBox(height: 15),
+                SizedBox(height: context.spacing.lg),
                 Text(
                   context.l10n.password,
                   style: HBTextStyles.bodySemiboldSmall(
                     context.colorScheme.onSurfaceVariant,
                   ),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: context.spacing.md),
                 HBTextField(
                   controller: _password,
                   hintText: context.l10n.enterPassword,
@@ -145,7 +145,7 @@ class _SignInState extends State<SignIn> {
                   },
                   builder: (field) {
                     return Padding(
-                      padding: const EdgeInsets.only(top: 15),
+                      padding: EdgeInsets.only(top: context.spacing.lg),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -155,7 +155,7 @@ class _SignInState extends State<SignIn> {
                                 size: 28,
                                 isCheckbox: false,
                               ),
-                              const SizedBox(width: 8),
+                              SizedBox(width: context.spacing.sm),
                               Text(
                                 context.l10n.checkbox,
                                 style: HBTextStyles.bodyRegularSmall(
@@ -179,7 +179,7 @@ class _SignInState extends State<SignIn> {
                     );
                   },
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: context.spacing.xl),
                 SizedBox(
                   width: double.infinity,
                   child: PrimaryBtn(
@@ -210,7 +210,7 @@ class _SignInState extends State<SignIn> {
                     isSelected: true,
                   ),
                 ),
-                const SizedBox(height: 30),
+                SizedBox(height: context.spacing.xxl),
                 Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -235,11 +235,11 @@ class _SignInState extends State<SignIn> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 25),
+                SizedBox(height: context.spacing.xxl),
                 _buildDividerWithText(context.l10n.orSignIn),
-                const SizedBox(height: 25),
+                SizedBox(height: context.spacing.xxl),
                 SocailSection(error: error),
-                const SizedBox(height: 40),
+                SizedBox(height: context.spacing.huge),
                 Center(
                   child: Text.rich(
                     TextSpan(
@@ -262,7 +262,7 @@ class _SignInState extends State<SignIn> {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: context.spacing.xl),
               ],
             ),
           ),

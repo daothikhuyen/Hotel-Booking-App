@@ -47,7 +47,11 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
         child: StatefulBuilder(
           builder: (context, setState) {
             return Padding(
-              padding: const EdgeInsets.only(left: 18, top: 30, bottom: 20),
+              padding: EdgeInsets.only(
+                left: context.spacing.lg,
+                top: context.spacing.xxl,
+                bottom: context.spacing.xl,
+              ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +65,7 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  const SizedBox(height: 18),
+                  SizedBox(height: context.spacing.lg),
                   Text(
                     context.l10n.roomCount,
                     style: HBTextStyles.bodyMediumMedium(
@@ -69,12 +73,12 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                     ),
                     textAlign: TextAlign.start,
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: context.spacing.sm),
                   Container(
-                    margin: const EdgeInsets.only(right: 18),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 4,
+                    margin: EdgeInsets.only(right: context.spacing.lg),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: context.spacing.md,
+                      vertical: context.spacing.xs,
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
@@ -97,7 +101,7 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
+                 SizedBox(height: context.spacing.xl),
                   Text(
                     context.l10n.titlePrice,
                     style: HBTextStyles.bodyMediumMedium(
@@ -105,7 +109,7 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                     ),
                     textAlign: TextAlign.start,
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: context.spacing.sm),
                   Slider(
                     value: currentSliderValue,
                     max: 1000,
@@ -118,7 +122,7 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                       });
                     },
                   ),
-                  const SizedBox(height: 20),
+                 SizedBox(height: context.spacing.xl),
                   Text(
                     context.l10n.location,
                     style: HBTextStyles.bodyMediumMedium(
@@ -126,7 +130,7 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                     ),
                     textAlign: TextAlign.start,
                   ),
-                  const SizedBox(height: 14),
+                 SizedBox(height: context.spacing.md),
                   SizedBox(
                     height: 50,
                     child: ListView.builder(
@@ -136,7 +140,7 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                       itemCount: locationItem.length,
                       itemBuilder: (context, index) {
                         return Container(
-                          margin: const EdgeInsets.only(left: 8),
+                          margin: EdgeInsets.only(left: context.spacing.sm),
                           child: PrimaryBtn(
                             textButton: locationItem[index],
                             onPressed: () {
@@ -152,7 +156,7 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                       },
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: context.spacing.xl),
                   Text(
                     context.l10n.rating,
                     style: HBTextStyles.bodyMediumMedium(
@@ -160,11 +164,11 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                     ),
                     textAlign: TextAlign.start,
                   ),
-                  const SizedBox(height: 14),
+                  SizedBox(height: context.spacing.md),
                   SizedBox(
-                    height: 50,
+                    height: context.spacing.huge,
                     child: Padding(
-                      padding: const EdgeInsets.only(right: 18),
+                      padding: EdgeInsets.only(right: context.spacing.lg),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children:
@@ -176,7 +180,9 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                                   });
                                 },
                                 child: Container(
-                                  margin: const EdgeInsets.only(left: 8),
+                                  margin: EdgeInsets.only(
+                                    left: context.spacing.sm,
+                                  ),
                                   width: 56,
                                   height: 43,
                                   decoration: BoxDecoration(
@@ -197,7 +203,7 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                                         width: 18,
                                         height: 18,
                                       ),
-                                      const SizedBox(width: 4),
+                                      SizedBox(height: context.spacing.xs),
                                       Text(
                                         start,
                                         style: HBTextStyles.bodySemiboldMedium(
@@ -212,9 +218,9 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: context.spacing.xl),
                   Container(
-                    margin: const EdgeInsets.only(right: 18),
+                    margin: EdgeInsets.only(right: context.spacing.lg),
                     child: SizedBox(
                       width: double.infinity,
                       child: PrimaryBtn(

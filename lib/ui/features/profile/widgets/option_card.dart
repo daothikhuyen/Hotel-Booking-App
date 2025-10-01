@@ -31,7 +31,7 @@ class OptionCard extends StatelessWidget {
               BlendMode.srcIn,
             ),
           ),
-          const SizedBox(width: 18),
+          SizedBox(width: context.spacing.lg),
           Expanded(
             child: Container(
               height: 48,

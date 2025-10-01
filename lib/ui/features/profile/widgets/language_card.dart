@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
+import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/ui/core/themes/theme.dart';
 
 class LanguageCard extends StatefulWidget {
@@ -23,7 +24,7 @@ class _LanguageCardState extends State<LanguageCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 8),
+      padding: EdgeInsets.only(left:  context.spacing.sm),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

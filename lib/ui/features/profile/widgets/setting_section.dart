@@ -19,7 +19,7 @@ class SettingSection extends StatelessWidget {
           style: HBTextStyles.bodyMediumXLarge(context.colorScheme.onTertiary),
           textAlign: TextAlign.start,
         ),
-        const SizedBox(height: 30),
+        SizedBox(height: context.spacing.xxl),
         // Option card for profile
         OptionCard(
           title: context.l10n.yourCard,
@@ -28,7 +28,7 @@ class SettingSection extends StatelessWidget {
             //TODOS:...
           },
         ),
-        const SizedBox(height: 20),
+        SizedBox(height: context.spacing.xl),
         OptionCard(
           title: context.l10n.security,
           image: Assets.images.icon.shieldDone,
@@ -36,7 +36,7 @@ class SettingSection extends StatelessWidget {
             //TODOS:..
           },
         ),
-        const SizedBox(height: 20),
+        SizedBox(height: context.spacing.xl),
         OptionCard(
           title: context.l10n.notification,
           image: Assets.images.icon.vector,
@@ -44,7 +44,7 @@ class SettingSection extends StatelessWidget {
             //TODOS:...
           },
         ),
-        const SizedBox(height: 20),
+        SizedBox(height: context.spacing.xl),
         OptionCard(
           title: context.l10n.languages,
           image: Assets.images.icon.internet1,
@@ -52,7 +52,7 @@ class SettingSection extends StatelessWidget {
             context.push(PageRoutes.language);
           },
         ),
-        const SizedBox(height: 20),
+        SizedBox(height: context.spacing.xl),
         OptionCard(
           title: context.l10n.help_support,
           image: Assets.images.icon.dangerCircle,

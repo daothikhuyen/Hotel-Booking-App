@@ -26,7 +26,10 @@ class BottomBar extends StatelessWidget {
       left: 0,
       right: 0,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+        padding: EdgeInsets.symmetric(
+          horizontal: context.spacing.lg,
+          vertical: context.spacing.sm,
+        ),
         decoration: BoxDecoration(
           color: context.colorScheme.surface,
           borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),

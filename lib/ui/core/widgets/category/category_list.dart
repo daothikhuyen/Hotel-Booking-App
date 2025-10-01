@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/data/model/category.dart';
+import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/skeleton.dart';
 import 'package:hotel_booking_app/ui/core/widgets/category/category_item.dart';
 import 'package:hotel_booking_app/ui/features/home/view_model/hotel_controller.dart';
@@ -69,7 +70,7 @@ class _CategoryListState extends State<CategoryList> {
                 itemCount: 4,
                 itemBuilder: (context, index) {
                   return Container(
-                    margin: const EdgeInsets.only(right: 8),
+                    margin: EdgeInsets.only(right: context.spacing.sm),
                     child: const Skeleton(width: 97, height: 43),
                   );
                 },

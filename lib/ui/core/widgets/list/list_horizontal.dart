@@ -42,7 +42,7 @@ class _ListHorizontalState extends State<ListHorizontal> {
         ),
         // list hotel
         Padding(
-          padding: const EdgeInsets.only(bottom: 20),
+          padding: EdgeInsets.only(bottom: context.spacing.xl),
           child:
               widget.listHotels.isNotEmpty
                   ? SizedBox(
@@ -97,8 +97,8 @@ class NewCardSkeleton extends StatelessWidget {
             child: Container(
               height: 101,
               width: 300,
-              padding: const EdgeInsets.all(8),
-              margin: const EdgeInsets.only(right: 10),
+              padding: EdgeInsets.all(context.spacing.sm),
+              margin: EdgeInsets.only(right: context.spacing.md),
               decoration: BoxDecoration(
                 border: Border.all(
                   width: 1.01,
@@ -107,19 +107,19 @@ class NewCardSkeleton extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18),
                 color: context.colorScheme.onPrimary,
               ),
-              child: const Row(
+              child: Row(
                 children: [
-                  Skeleton(width: 75, height: 75),
-                  SizedBox(width: 8),
+                  const Skeleton(width: 75, height: 75),
+                  SizedBox(width: context.spacing.sm),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Skeleton(width: 150, height: 13),
-                      SizedBox(height: 8),
-                      Skeleton(width: 100, height: 13),
-                      SizedBox(height: 8),
-                      Skeleton(width: 100, height: 13),
+                      const Skeleton(width: 150, height: 13),
+                      SizedBox(height: context.spacing.sm),
+                      const Skeleton(width: 100, height: 13),
+                      SizedBox(height: context.spacing.sm),
+                      const Skeleton(width: 100, height: 13),
                     ],
                   ),
                 ],

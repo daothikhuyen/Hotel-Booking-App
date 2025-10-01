@@ -27,7 +27,7 @@ class PageSucess extends StatelessWidget {
               context.l10n.paymentComplete,
               style: HBTextStyles.headingThree(context.colorScheme.onSurface),
             ),
-            const SizedBox(height: 10),
+           SizedBox(height: context.spacing.sm),
             Align(
               child: Text(
                 context.l10n.contentPaymentComplete,

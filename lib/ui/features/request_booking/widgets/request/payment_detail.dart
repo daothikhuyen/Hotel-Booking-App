@@ -46,14 +46,14 @@ class _PaymentDetailState extends State<PaymentDetail> {
                     context.colorScheme.tertiary,
                   ),
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: context.spacing.sm),
                 Text(
                   context.l10n.cleaningFee,
                   style: HBTextStyles.bodyRegularMedium(
                     context.colorScheme.tertiary,
                   ),
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: context.spacing.sm),
                 Text(
                   context.l10n.serviceFee,
                   style: HBTextStyles.bodyRegularMedium(
@@ -87,9 +87,9 @@ class _PaymentDetailState extends State<PaymentDetail> {
             ),
           ],
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 15),
-          child: BuildDivider(),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: context.spacing.lg),
+          child: const BuildDivider(),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

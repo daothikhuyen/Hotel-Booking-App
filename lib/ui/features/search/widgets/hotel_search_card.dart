@@ -14,7 +14,7 @@ class HotelSearchCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 18),
+      padding: EdgeInsets.only(top: context.spacing.lg),
       child: Stack(
         children: [
           Column(
@@ -33,9 +33,9 @@ class HotelSearchCard extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 8),
+              SizedBox(height: context.spacing.sm),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 3),
+                padding: EdgeInsets.symmetric(horizontal: context.spacing.xs),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,14 +49,14 @@ class HotelSearchCard extends StatelessWidget {
                             context.colorScheme.onSurfaceVariant,
                           ),
                         ),
-                        const SizedBox(height: 4),
+                        SizedBox(height: context.spacing.xs),
                         Text(
                           hotel.location,
                           style: HBTextStyles.bodyRegularSmall(
                             context.colorScheme.onTertiary,
                           ),
                         ),
-                        const SizedBox(height: 4),
+                        SizedBox(height: context.spacing.xs),
                         Row(
                           children: [
                             Row(
@@ -69,7 +69,7 @@ class HotelSearchCard extends StatelessWidget {
                                     BlendMode.srcIn,
                                   ),
                                 ),
-                                const SizedBox(width: 4),
+                                SizedBox(height: context.spacing.xs),
                                 Text(
                                   context.l10n.bed(hotel.bed ?? 0),
                                   style: HBTextStyles.bodySemiboldSmall(
@@ -78,7 +78,7 @@ class HotelSearchCard extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            const SizedBox(width: 10),
+                            SizedBox(height: context.spacing.sm),
                             Row(
                               children: [
                                 SvgPicture.asset(
@@ -89,7 +89,7 @@ class HotelSearchCard extends StatelessWidget {
                                     BlendMode.srcIn,
                                   ),
                                 ),
-                                const SizedBox(width: 4),
+                                SizedBox(height: context.spacing.xs),
                                 Text(
                                   context.l10n.bathroom(hotel.bathroom ?? 0),
                                   style: HBTextStyles.bodySemiboldSmall(
@@ -111,7 +111,7 @@ class HotelSearchCard extends StatelessWidget {
                             context.colorScheme.primary,
                           ),
                         ),
-                        const SizedBox(height: 4),
+                        SizedBox(height: context.spacing.xs),
                         Text(
                           context.l10n.perNight,
                           style: HBTextStyles.bodyRegularSmall(
@@ -137,7 +137,7 @@ class HotelSearchCard extends StatelessWidget {
             left: 0,
             right: 0,
             child: Padding(
-              padding: const EdgeInsets.all(12),
+              padding: EdgeInsets.all(context.spacing.md),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -158,14 +158,14 @@ class HotelSearchCard extends StatelessWidget {
                           width: 12,
                           height: 12,
                         ),
-                        const SizedBox(width: 3),
+                        SizedBox(height: context.spacing.xs),
                         Text(
                           '${hotel.rating}',
                           style: HBTextStyles.bodySemiboldXSmall(
                             context.colorScheme.onPrimary,
                           ),
                         ),
-                        const SizedBox(width: 8),
+                        SizedBox(height: context.spacing.sm),
                       ],
                     ),
                   ),
@@ -179,7 +179,7 @@ class HotelSearchCard extends StatelessWidget {
                       ),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(5),
+                      padding: EdgeInsets.all(context.spacing.xs),
                       child: SvgPicture.asset(Assets.images.icon.heartWhite),
                     ),
                   ),

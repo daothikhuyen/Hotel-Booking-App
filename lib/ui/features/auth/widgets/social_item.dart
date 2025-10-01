@@ -19,10 +19,10 @@ class SocialItem extends StatelessWidget {
       child: Container(
         width: 72,
         height: 48,
-        padding: const EdgeInsets.all(13),
+        padding: EdgeInsets.all(context.spacing.md),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: context.colorScheme.secondary,
+          color: context.colorScheme.outline.withValues(alpha: 0.5),
         ),
         child: SvgPicture.asset(linkIcon),
       ),

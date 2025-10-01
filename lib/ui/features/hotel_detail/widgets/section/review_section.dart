@@ -41,10 +41,10 @@ class _ReviewSectionState extends State<ReviewSection> {
     final controller = Provider.of<HotelDetailController>(context);
     return controller.listCommentHotel.isNotEmpty
         ? Column(
-          children: List.generate(widget.number, (index) {
+          children: List.generate(controller.listCommentHotel.length, (index) {
             final comment = controller.listCommentHotel[index];
             return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
+              padding: EdgeInsets.symmetric(vertical: context.spacing.sm),
               child: Row(
                 children: [
                   Container(

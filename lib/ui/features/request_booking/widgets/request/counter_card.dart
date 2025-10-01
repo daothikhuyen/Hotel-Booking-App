@@ -23,7 +23,7 @@ class _CounterCardState extends State<CounterCard> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 15),
+          padding: EdgeInsets.only(top: context.spacing.lg),
           child: HeaderCard(
             title: context.l10n.guest,
             onPressed: () {},
@@ -45,7 +45,7 @@ class _CounterCardState extends State<CounterCard> {
               },
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18),
+              padding: EdgeInsets.symmetric(horizontal: context.spacing.lg),
               child: Text(
                 guestCount.toString(),
                 style: HBTextStyles.bodySemiboldLarge(

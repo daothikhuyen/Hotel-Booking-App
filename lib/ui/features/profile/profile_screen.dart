@@ -52,7 +52,11 @@ class ProfileView extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 18, right: 18, top: 20),
+        padding: EdgeInsets.only(
+          left: context.spacing.lg,
+          right: context.spacing.lg,
+          top: context.spacing.xl,
+        ),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,7 +80,7 @@ class ProfileView extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const SizedBox(width: 8),
+                          SizedBox(width: context.spacing.sm),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -138,11 +142,11 @@ class ProfileView extends StatelessWidget {
                     ),
                   ],
                 ),
-              const SizedBox(height: 45),
+              SizedBox(height: context.spacing.huge),
               const SettingSection(), // setting
               if (user?.email != null)
                 Padding(
-                  padding: const EdgeInsets.only(top: 4),
+                  padding: EdgeInsets.only(top:  context.spacing.xs),
                   child: Center(
                     child: TextButton(
                       onPressed: () => hbDialog.showSignOutDialog(context),

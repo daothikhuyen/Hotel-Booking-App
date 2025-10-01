@@ -38,7 +38,11 @@ class OnboardingCard extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(bottom: 40, left: 20, right: 20),
+          padding: EdgeInsets.only(
+            bottom: context.spacing.huge,
+            left: context.spacing.xl,
+            right: context.spacing.xl,
+          ),
           child: Align(
             alignment: Alignment.bottomCenter,
             child: Column(
@@ -49,10 +53,9 @@ class OnboardingCard extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: HBTextStyles.headingThree(
                     context.colorScheme.onSecondary,
-                    
                   ),
                 ),
-                const SizedBox(height: 12),
+                SizedBox(height: context.spacing.md),
                 Text(
                   getTranslatedText(context, desc),
                   textAlign: TextAlign.center,
@@ -61,9 +64,12 @@ class OnboardingCard extends StatelessWidget {
                     letterSpacing: 0.5,
                   ),
                 ),
-                const SizedBox(height: 35),
+                SizedBox(height: context.spacing.xxl),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 30, top: 40),
+                  padding: EdgeInsets.only(
+                    bottom: context.spacing.xxl,
+                    top: context.spacing.huge,
+                  ),
                   child: SizedBox(
                     width: double.infinity,
                     child: PrimaryBtn(
@@ -78,7 +84,7 @@ class OnboardingCard extends StatelessWidget {
 
                 if (textButton == 'getStarted')
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
+                    padding: EdgeInsets.only(bottom: context.spacing.xl),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

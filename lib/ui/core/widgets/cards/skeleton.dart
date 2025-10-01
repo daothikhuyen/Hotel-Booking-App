@@ -18,8 +18,8 @@ class Skeleton extends StatelessWidget {
     return Container(
       width: width,
       height: height,
-      padding: const EdgeInsets.all(8),
-      margin: const EdgeInsets.all(4),
+      padding: EdgeInsets.all(context.spacing.sm),
+      margin: EdgeInsets.all(context.spacing.xs),
       decoration: BoxDecoration(
         border: Border.all(
           width: 1.02,

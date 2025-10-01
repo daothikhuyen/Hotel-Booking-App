@@ -11,13 +11,10 @@ String? validateText(BuildContext context, String? value, String errorMessage) {
   return null;
 }
 
-String? validateEmail(
-  BuildContext context,
-  String? value, {
-  required bool isSubmmited,
-}) {
+String? validateEmail(BuildContext context, String? value) {
   final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-  final result = validateText(context, value, context.l10n.errorEmailFormat);
+
+  final result = validateText(context, value, context.l10n.errorEmptyEmail);
   if (result == null || result.isEmpty) {
     if (!emailRegExp.hasMatch(value ?? '')) {
       return context.l10n.errorEmailFormat;

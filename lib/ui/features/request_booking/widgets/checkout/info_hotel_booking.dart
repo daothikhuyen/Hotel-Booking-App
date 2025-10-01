@@ -24,8 +24,8 @@ class _InfoHotelBookingState extends State<InfoHotelBooking> {
     final booking = widget.booking;
 
     return Container(
-      padding: const EdgeInsets.all(18),
-      margin: const EdgeInsets.only(top: 23),
+      padding: EdgeInsets.all(context.spacing.lg),
+      margin: EdgeInsets.only(top: context.spacing.xl),
       decoration: BoxDecoration(
         border: Border.all(width: 1.02, color: context.colorScheme.outline),
         borderRadius: BorderRadius.circular(16),
@@ -37,7 +37,7 @@ class _InfoHotelBookingState extends State<InfoHotelBooking> {
             context.l10n.yourBooking,
             style: HBTextStyles.bodySemiboldMedium(context.colorScheme.primary),
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: context.spacing.sm),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -55,7 +55,7 @@ class _InfoHotelBookingState extends State<InfoHotelBooking> {
                           BlendMode.srcIn,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: context.spacing.sm),
                       SvgPicture.asset(
                         Assets.images.icon.profile,
                         colorFilter: ColorFilter.mode(
@@ -65,7 +65,7 @@ class _InfoHotelBookingState extends State<InfoHotelBooking> {
                           BlendMode.srcIn,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: context.spacing.sm),
                       SvgPicture.asset(
                         Assets.images.icon.building,
                         colorFilter: ColorFilter.mode(
@@ -75,7 +75,7 @@ class _InfoHotelBookingState extends State<InfoHotelBooking> {
                           BlendMode.srcIn,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: context.spacing.sm),
                       SvgPicture.asset(
                         Assets.images.icon.call,
                         colorFilter: ColorFilter.mode(
@@ -87,7 +87,7 @@ class _InfoHotelBookingState extends State<InfoHotelBooking> {
                       ),
                     ],
                   ),
-                  const SizedBox(width: 8),
+                  SizedBox(height: context.spacing.sm),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -97,21 +97,21 @@ class _InfoHotelBookingState extends State<InfoHotelBooking> {
                           context.colorScheme.onSurface,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: context.spacing.sm),
                       Text(
                         context.l10n.guest,
                         style: HBTextStyles.bodyRegularMedium(
                           context.colorScheme.onSurface,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: context.spacing.sm),
                       Text(
                         context.l10n.roomType,
                         style: HBTextStyles.bodyRegularMedium(
                           context.colorScheme.onSurface,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: context.spacing.sm),
                       Text(
                         context.l10n.phone,
                         style: HBTextStyles.bodyRegularMedium(
@@ -131,21 +131,21 @@ class _InfoHotelBookingState extends State<InfoHotelBooking> {
                       context.colorScheme.onSurface,
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: context.spacing.sm),
                   Text(
                     context.l10n.numberGuest(booking.guests, 1),
                     style: HBTextStyles.bodyMediumMedium(
                       context.colorScheme.onSurface,
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: context.spacing.sm),
                   Text(
                     booking.hotel.roomType,
                     style: HBTextStyles.bodyMediumMedium(
                       context.colorScheme.onSurface,
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: context.spacing.sm),
                   Text(
                     booking.user.numberPhone ?? '0834007781',
                     style: HBTextStyles.bodyMediumMedium(
@@ -157,7 +157,7 @@ class _InfoHotelBookingState extends State<InfoHotelBooking> {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
+            padding: EdgeInsets.symmetric(vertical: context.spacing.xl),
             child: LayoutBuilder(
               builder: (context, constraints) {
                 return Dash(
@@ -177,7 +177,7 @@ class _InfoHotelBookingState extends State<InfoHotelBooking> {
                   context.colorScheme.primary,
                 ),
               ),
-              const SizedBox(height: 5),
+              SizedBox(height: context.spacing.xs),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -190,21 +190,21 @@ class _InfoHotelBookingState extends State<InfoHotelBooking> {
                           context.colorScheme.onSurface,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: context.spacing.sm),
                       Text(
                         context.l10n.cleaningFee,
                         style: HBTextStyles.bodyMediumMedium(
                           context.colorScheme.onSurface,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: context.spacing.sm),
                       Text(
                         context.l10n.serviceFee,
                         style: HBTextStyles.bodyMediumMedium(
                           context.colorScheme.onSurface,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: context.spacing.sm),
                       Text(
                         context.l10n.totalPrice,
                         style: HBTextStyles.bodySemiboldMedium(
@@ -222,21 +222,21 @@ class _InfoHotelBookingState extends State<InfoHotelBooking> {
                           context.colorScheme.onSurface,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: context.spacing.sm),
                       Text(
                         context.l10n.price(formatPrice(booking.cleaningFee)),
                         style: HBTextStyles.bodySemiboldMedium(
                           context.colorScheme.onSurface,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: context.spacing.sm),
                       Text(
                         context.l10n.price(formatPrice(booking.serviceFee)),
                         style: HBTextStyles.bodySemiboldMedium(
                           context.colorScheme.onSurface,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: context.spacing.sm),
                       Text(
                         context.l10n.price(formatPrice(booking.totalPrice)),
                         style: HBTextStyles.bodySemiboldMedium(

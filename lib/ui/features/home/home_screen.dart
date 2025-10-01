@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 import 'package:hotel_booking_app/routing/page_routes.dart';
 import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/spacing_constants.dart';
 import 'package:hotel_booking_app/ui/core/themes/theme.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/header_card.dart';
 import 'package:hotel_booking_app/ui/core/widgets/category/category_list.dart';
@@ -43,8 +42,8 @@ class _HomeScreenState extends State<HomeScreen> {
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
-              expandedHeight: AppHeights.expandedAppBar,
-              toolbarHeight: AppHeights.toolbar,
+              expandedHeight: context.height.expandedAppBar,
+              toolbarHeight: context.height.toolbar,
               elevation: 0,
               shadowColor: context.colorScheme.onSurfaceVariant.withValues(
                 alpha: 0.4,
@@ -55,7 +54,10 @@ class _HomeScreenState extends State<HomeScreen> {
               flexibleSpace: FlexibleSpaceBar(
                 background: Center(
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 18, top: 30),
+                    padding: EdgeInsets.only(
+                      left: context.spacing.lg,
+                      top: context.spacing.xxl,
+                    ),
                     child: SizedBox(
                       height: 60,
                       child: HeaderBar(
@@ -70,11 +72,14 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.only(left: 18, top: 8),
+                padding: EdgeInsets.only(
+                  left: context.spacing.lg,
+                  top: context.spacing.sm,
+                ),
                 child: Column(
                   children: [
                     Container(
-                      margin: const EdgeInsets.only(right: 16),
+                      margin: EdgeInsets.only(right: context.spacing.lg),
                       width: double.infinity,
                       height: 72,
                       decoration: BoxDecoration(
@@ -86,11 +91,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.only(
-                          // left: 5,
-                          right: 20,
-                          top: 16,
-                          bottom: 16,
+                        padding: EdgeInsets.only(
+                          right:  context.spacing.xl,
+                          top:  context.spacing.lg,
+                          bottom:  context.spacing.lg,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -167,13 +171,13 @@ class _HomeScreenState extends State<HomeScreen> {
                               context.push(PageRoutes.seeAllPage, extra: 2);
                             },
                           ),
-                          const SizedBox(height: 5),
+                          SizedBox(height: context.spacing.xs),
                           // category list
                           CategoryList(
                             key: ValueKey(controllerCategory.listCategory),
                             listCategory: controllerCategory.listCategory,
                           ),
-                          const SizedBox(height: 10),
+                          SizedBox(height: context.spacing.sm),
                           ListVertical(
                             controller.listRecomended,
                             context.l10n.homeRecommended,

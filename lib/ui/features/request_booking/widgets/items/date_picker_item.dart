@@ -33,9 +33,9 @@ Future<List<DateTime?>?> datePicker(
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 20,
+                padding: EdgeInsets.symmetric(
+                  vertical: context.spacing.sm,
+                  horizontal: context.spacing.xl,
                 ),
                 child: Row(
                   children: [
@@ -57,7 +57,7 @@ Future<List<DateTime?>?> datePicker(
                         ),
                       ),
                     ),
-                    const SizedBox(width: 5,),
+                    SizedBox(height: context.spacing.xs),
                     Expanded(
                       child: PrimaryBtn(
                         size: 40,
@@ -68,7 +68,6 @@ Future<List<DateTime?>?> datePicker(
                               startDate.isAfter(DateTime.now())) {
                             return Navigator.of(context).pop(tempValue);
                           } else {
-
                             HBSnackBar().showOverlayMessage(
                               context,
                               context.l10n.startDateMustBeFuture,

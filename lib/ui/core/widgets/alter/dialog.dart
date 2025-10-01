@@ -65,14 +65,18 @@ class HBDialog {
       builder: (context) {
         return Dialog(
           child: Container(
-            padding: const EdgeInsets.only(top: 35, left: 20, right: 20),
+            padding: EdgeInsets.only(
+              top: context.spacing.xxl,
+              left: context.spacing.xl,
+              right: context.spacing.xl,
+            ),
             height: 311,
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(18)),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 SvgPicture.asset(Assets.images.icon.question),
-                const SizedBox(height: 18),
+                SizedBox(height: context.spacing.lg),
                 Text(
                   context.l10n.areYouSure,
                   style: HBTextStyles.bodySemiboldLarge(
@@ -85,7 +89,7 @@ class HBDialog {
                     context.colorScheme.onSurface,
                   ),
                 ),
-                const SizedBox(height: 18),
+                SizedBox(height: context.spacing.lg),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

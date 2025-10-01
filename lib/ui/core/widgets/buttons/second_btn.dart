@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/ui/core/themes/theme.dart';
 
 class SecondBtn extends StatelessWidget {
@@ -25,7 +26,10 @@ class SecondBtn extends StatelessWidget {
       child: Container(
         height: size == 0 ? null : size,
         width: size == 0 ? null : double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 8),
+        padding: EdgeInsets.symmetric(
+          horizontal: context.spacing.md,
+          vertical: context.spacing.sm,
+        ),
         decoration: BoxDecoration(
           border: Border.all(width: 1.5, color: color),
           borderRadius: BorderRadius.circular(radiusSize),

@@ -44,11 +44,11 @@ class HBAppBar extends StatelessWidget implements PreferredSizeWidget {
               )
               : const BoxDecoration(),
       child: Padding(
-        padding: const EdgeInsets.only(
-          top: 40,
-          bottom: 10,
-          right: 20,
-          left: 20,
+        padding: EdgeInsets.only(
+          top: context.spacing.xxl,
+          bottom: context.spacing.lg,
+          right: context.spacing.xl,
+          left: context.spacing.xl,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -76,12 +76,18 @@ class _MyBookingScreenState extends State<MyBookingScreen>
           return [
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
+                padding: EdgeInsets.only(
+                  top: context.spacing.xxl,
+                  left: context.spacing.xl,
+                  right: context.spacing.xl,
+                ),
                 child: Column(
                   children: [
                     Container(
-                      margin: const EdgeInsets.only(top: 10),
-                      padding: const EdgeInsets.symmetric(horizontal: 18),
+                      margin: EdgeInsets.only(top: context.spacing.sm),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: context.spacing.lg,
+                      ),
                       decoration: BoxDecoration(
                         border: Border.all(
                           width: 1.3,
@@ -111,10 +117,13 @@ class _MyBookingScreenState extends State<MyBookingScreen>
                     ),
                     if (search.text.isEmpty)
                       Container(
-                        margin: const EdgeInsets.only(top: 30, bottom: 18),
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 5,
-                          horizontal: 5,
+                        margin: EdgeInsets.only(
+                          top: context.spacing.xxl,
+                          bottom: context.spacing.lg,
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          vertical: context.spacing.xs,
+                          horizontal: context.spacing.xs,
                         ),
                         height: 55,
                         decoration: BoxDecoration(
@@ -154,7 +163,11 @@ class _MyBookingScreenState extends State<MyBookingScreen>
           ];
         },
         body: Padding(
-          padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
+          padding: EdgeInsets.only(
+            top: context.spacing.sm,
+            left: context.spacing.xl,
+            right: context.spacing.xl,
+          ),
           child: TabBarView(
             controller: tabController,
             children: <Widget>[

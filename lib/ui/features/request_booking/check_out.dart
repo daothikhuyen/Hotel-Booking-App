@@ -38,7 +38,11 @@ class _CheckOutState extends State<CheckOut> {
         onPressed: () => context.pop(),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 18, right: 18, top: 25),
+        padding: EdgeInsets.only(
+          left: context.spacing.lg,
+          right: context.spacing.lg,
+          top: context.spacing.xl,
+        ),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -52,16 +56,20 @@ class _CheckOutState extends State<CheckOut> {
 
               InfoHotelBooking(booking: widget.booking),
               // promo
-              const SizedBox(height: 18),
+              SizedBox(height: context.spacing.lg),
               const PromoCard(),
-              const SizedBox(height: 4),
+              SizedBox(height: context.spacing.xs),
             ],
           ),
         ),
       ),
 
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(left: 18, right: 18, bottom: 25),
+        padding: EdgeInsets.only(
+          left: context.spacing.lg,
+          right: context.spacing.lg,
+          bottom: context.spacing.xl,
+        ),
         child: PrimaryBtn(
           textButton: context.l10n.selectPayment,
           onPressed: () {
@@ -73,7 +81,7 @@ class _CheckOutState extends State<CheckOut> {
                   loadMore: true,
                 );
                 context.push(PageRoutes.bookingSucess);
-              }else{
+              } else {
                 HBSnackBar().showSnackBar(context, value.message);
               }
             });

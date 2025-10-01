@@ -28,18 +28,18 @@ class _PayWithState extends State<PayWith> {
         HeaderCard(title: context.l10n.payWith, onPressed: () {}, titleBtn: ''),
         Container(
           height: 65,
-          margin: const EdgeInsets.only(bottom: 10),
+          margin: EdgeInsets.only(bottom: context.spacing.sm),
           decoration: BoxDecoration(
             border: Border.all(width: 1.01, color: context.colorScheme.outline),
             color: context.colorScheme.outline.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(18),
           ),
           child: Padding(
-            padding: const EdgeInsets.only(
-              left: 10,
-              right: 4,
-              top: 5,
-              bottom: 5,
+            padding: EdgeInsets.only(
+              left: context.spacing.sm,
+              right: context.spacing.xs,
+              top: context.spacing.xs,
+              bottom: context.spacing.xs,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

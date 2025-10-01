@@ -18,7 +18,7 @@ import 'package:provider/provider.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class PopupCard extends StatefulWidget {
-  const PopupCard( {
+  const PopupCard({
     required this.hotel,
     required this.onScrollChange,
     super.key,
@@ -58,13 +58,15 @@ class _PopupCardState extends State<PopupCard> {
           child: SingleChildScrollView(
             controller: scrollController,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 25),
+              padding: EdgeInsets.symmetric(vertical: context.spacing.xl),
               child: Column(
                 children: [
                   Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 18),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: context.spacing.lg,
+                        ),
                         child: Column(
                           children: [
                             Row(
@@ -82,13 +84,16 @@ class _PopupCardState extends State<PopupCard> {
                                         textAlign: TextAlign.start,
                                       )
                                     else
-                                      const Skeleton(width: 50, height: 10),
-                                    const SizedBox(height: 5),
+                                      Skeleton(
+                                        width: context.spacing.huge,
+                                        height: context.spacing.sm,
+                                      ),
+                                    SizedBox(height: context.spacing.xs),
                                     Row(
                                       children: [
                                         Padding(
-                                          padding: const EdgeInsets.only(
-                                            right: 4,
+                                          padding: EdgeInsets.only(
+                                            right: context.spacing.xs,
                                           ),
                                           child: SvgPicture.asset(
                                             width: 18,
@@ -110,9 +115,9 @@ class _PopupCardState extends State<PopupCard> {
                                         else
                                           const Skeleton(width: 50, height: 5),
                                         Padding(
-                                          padding: const EdgeInsets.only(
-                                            left: 15,
-                                            right: 8,
+                                          padding: EdgeInsets.only(
+                                            left: context.spacing.lg,
+                                            right: context.spacing.sm,
                                           ),
                                           child: SvgPicture.asset(
                                             Assets.images.icon.solarStarBold,
@@ -146,9 +151,9 @@ class _PopupCardState extends State<PopupCard> {
                               ],
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(
-                                top: 15,
-                                bottom: 10,
+                              padding: EdgeInsets.only(
+                                left: context.spacing.lg,
+                                right: context.spacing.sm,
                               ),
                               child: HeaderCard(
                                 title: context.l10n.commonFacilities,
@@ -171,9 +176,9 @@ class _PopupCardState extends State<PopupCard> {
                             ),
 
                             Padding(
-                              padding: const EdgeInsets.only(
-                                top: 20,
-                                bottom: 10,
+                              padding: EdgeInsets.only(
+                                left: context.spacing.xl,
+                                right: context.spacing.sm,
                               ),
                               child: HeaderCard(
                                 title: context.l10n.description,
@@ -183,7 +188,7 @@ class _PopupCardState extends State<PopupCard> {
                             ),
                             ReadMore(text: context.l10n.descriptionHotel),
                             Padding(
-                              padding: const EdgeInsets.only(top: 10),
+                              padding: EdgeInsets.only(top: context.spacing.sm),
                               child: MapSection(title: context.l10n.location),
                             ),
                             HeaderCard(
@@ -199,7 +204,10 @@ class _PopupCardState extends State<PopupCard> {
                   ),
 
                   Padding(
-                    padding: const EdgeInsets.only(left: 18, top: 10),
+                    padding: EdgeInsets.only(
+                      left: context.spacing.lg,
+                      top: context.spacing.sm,
+                    ),
                     child: VisibilityDetector(
                       key: const Key('recommednedDetail-section'),
                       onVisibilityChanged: (info) {

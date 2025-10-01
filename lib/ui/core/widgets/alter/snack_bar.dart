@@ -8,7 +8,11 @@ class HBSnackBar {
       SnackBar(
         content: Text(message),
         behavior: SnackBarBehavior.floating,
-        margin: const EdgeInsets.only(top: 10, left: 16, right: 16),
+        margin: EdgeInsets.only(
+          top: context.spacing.sm,
+          left: context.spacing.lg,
+          right: context.spacing.lg,
+        ),
         action: SnackBarAction(label: context.l10n.oK, onPressed: () {}),
       ),
     );
@@ -24,7 +28,11 @@ class HBSnackBar {
             right: 0,
             child: Material(
               child: Container(
-                padding: const EdgeInsets.only(left: 18, bottom: 25, top: 15),
+                padding: EdgeInsets.only(
+                  left: context.spacing.lg,
+                  bottom: context.spacing.xl,
+                  top: context.spacing.lg,
+                ),
                 decoration: BoxDecoration(color: context.colorScheme.onSurface),
                 child: Text(
                   message,

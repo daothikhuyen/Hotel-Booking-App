@@ -143,7 +143,7 @@ class HotelController extends ChangeNotifier {
       throw AppException(type: e.type,message: e.message);
     }
   }
-
+  
   void reset(int index) {
     switch (index) {
       case 0:

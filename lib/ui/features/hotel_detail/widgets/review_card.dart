@@ -32,7 +32,7 @@ class ReviewCard extends StatelessWidget {
                   width: 16,
                   height: 16,
                 ),
-                const SizedBox(width: 4),
+                SizedBox(width: context.spacing.xs),
                 Text(
                   '${comment.comment.rating}',
                   style: HBTextStyles.bodySemiboldXSmall(
@@ -44,7 +44,10 @@ class ReviewCard extends StatelessWidget {
           ],
         ),
         Padding(
-          padding: const EdgeInsets.only(right: 10, top: 5),
+          padding: EdgeInsets.only(
+            right: context.spacing.sm,
+            top: context.spacing.xs,
+          ),
           child: ReadMore(text: comment.comment.content),
         ),
       ],

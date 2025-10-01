@@ -9,7 +9,8 @@ class HeaderCard extends StatelessWidget {
     required this.title,
     required this.onPressed,
     required this.titleBtn,
-    super.key, this.color,
+    super.key,
+    this.color,
   });
 
   final String title;
@@ -20,7 +21,7 @@ class HeaderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 1),
+      padding: EdgeInsets.only(right: context.spacing.xs),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

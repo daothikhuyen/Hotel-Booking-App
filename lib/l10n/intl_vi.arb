@@ -48,7 +48,7 @@
   "errorEmptyEmail": "Vui lòng nhập email của bạn",
   "errorEmptyPassword": "Vui lòng nhập mật khẩu của bạn",
   "errorEmailFormat": "Định dạng email không hợp lệ",
-  "errorPasswordFormat": "Mật khẩu phải có ít nhất 8 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt (@, $, !, %, , ?, &)",
+  "errorPasswordFormat": "Mật khẩu không đúng định dạng",
   "tagAll": "Tất cả",
   "tagApartement": "Căn hộ\n",
   "tagHotel": "Khách sạn",

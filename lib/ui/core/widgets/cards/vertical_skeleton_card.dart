@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/skeleton.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
@@ -22,25 +23,25 @@ class _VerticalSkeletonCardState extends State<VerticalSkeletonCard> {
         children: [
           SizedBox(
             height: widget.height,
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Skeleton(width: 85, height: 85),
-                SizedBox(width: 8),
+                const Skeleton(width: 85, height: 85),
+                SizedBox(width: context.spacing.sm),
                 Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Skeleton(width: 200, height: 13),
-                      SizedBox(height: 8),
-                      Skeleton(width: 100, height: 13),
-                      SizedBox(height: 8),
-                      Skeleton(width: 150, height: 13),
+                      const Skeleton(width: 200, height: 13),
+                      SizedBox(height: context.spacing.sm),
+                      const Skeleton(width: 100, height: 13),
+                      SizedBox(height: context.spacing.sm),
+                      const Skeleton(width: 150, height: 13),
                     ],
                   ),
                 ),
-                Skeleton(width: 30, height: 30),
+                const Skeleton(width: 30, height: 30),
               ],
             ),
           ),

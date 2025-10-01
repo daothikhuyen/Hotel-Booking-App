@@ -20,7 +20,7 @@ class _ListPopularState extends State<ListPopular> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 13),
+      padding: EdgeInsets.only(bottom:  context.spacing.md),
       child: Column(
         children: [
           HeaderCard(
@@ -30,7 +30,7 @@ class _ListPopularState extends State<ListPopular> {
               context.push(PageRoutes.seeAllPage, extra: 1);
             },
           ),
-          const SizedBox(height: 5),
+          SizedBox(height: context.spacing.xs),
 
           if (widget.listHotels.isNotEmpty)
             SizedBox(
@@ -68,7 +68,7 @@ class _ListPopularState extends State<ListPopular> {
                     interval: const Duration(seconds: 5),
                     colorOpacity: 0,
                     child: Container(
-                      margin: const EdgeInsets.only(right: 10),
+                      margin: EdgeInsets.only(right:  context.spacing.sm),
                       width: 156,
                       height: 220,
                       decoration: BoxDecoration(

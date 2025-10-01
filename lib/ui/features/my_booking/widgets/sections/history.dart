@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/data/model/booking.dart';
 import 'package:hotel_booking_app/routing/page_routes.dart';
+import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/ui/core/widgets/alter/page_alter_null.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/vertical_skeleton_card.dart';
 import 'package:hotel_booking_app/ui/features/auth/view_model/auth_controller.dart';
@@ -108,7 +109,7 @@ class _HistoryState extends State<History> with AutomaticKeepAliveClientMixin {
                     context.push(PageRoutes.bookingDetail, extra: myBooking);
                   },
                   child: Container(
-                    margin: const EdgeInsets.symmetric(vertical: 8),
+                    margin: EdgeInsets.symmetric(vertical: context.spacing.sm),
                     child: BookingCard(
                       linkImage: hotel.image,
                       name: hotel.name,

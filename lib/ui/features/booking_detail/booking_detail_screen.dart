@@ -33,8 +33,16 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
       ),
       body: Container(
         height: MediaQuery.of(context).size.height * 0.8,
-        padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
-        margin: const EdgeInsets.only(left: 18, right: 18, top: 18),
+        padding: EdgeInsets.only(
+          left: context.spacing.lg,
+          right: context.spacing.lg,
+          bottom: context.spacing.lg,
+        ),
+        margin: EdgeInsets.only(
+          left: context.spacing.lg,
+          right: context.spacing.lg,
+          top: context.spacing.lg,
+        ),
         decoration: BoxDecoration(
           border: Border.all(width: 1.1, color: context.colorScheme.outline),
           borderRadius: BorderRadius.circular(16),
@@ -56,7 +64,7 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
               currentPrice: hotel.currentPrice ?? 0,
               rating: hotel.rating.toString(),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: context.spacing.sm),
             HeaderCard(
               title: context.l10n.location,
               onPressed: () {
@@ -75,7 +83,7 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
                 ),
               ),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: context.spacing.sm),
             HeaderCard(
               title: context.l10n.yourBooking,
               onPressed: () {
@@ -101,7 +109,7 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
                             BlendMode.srcIn,
                           ),
                         ),
-                        const SizedBox(height: 10),
+                        SizedBox(height: context.spacing.sm),
                         SvgPicture.asset(
                           Assets.images.icon.profile,
                           colorFilter: ColorFilter.mode(
@@ -111,7 +119,7 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
                             BlendMode.srcIn,
                           ),
                         ),
-                        const SizedBox(height: 10),
+                        SizedBox(height: context.spacing.sm),
                         SvgPicture.asset(
                           Assets.images.icon.building,
                           colorFilter: ColorFilter.mode(
@@ -121,7 +129,7 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
                             BlendMode.srcIn,
                           ),
                         ),
-                        const SizedBox(height: 10),
+                        SizedBox(height: context.spacing.sm),
                         SvgPicture.asset(
                           Assets.images.icon.call,
                           colorFilter: ColorFilter.mode(
@@ -133,7 +141,7 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(width: 8),
+                    SizedBox(height: context.spacing.sm),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -143,21 +151,21 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
                             context.colorScheme.onSurface,
                           ),
                         ),
-                        const SizedBox(height: 10),
+                        SizedBox(height: context.spacing.sm),
                         Text(
                           context.l10n.guest,
                           style: HBTextStyles.bodyRegularMedium(
                             context.colorScheme.onSurface,
                           ),
                         ),
-                        const SizedBox(height: 10),
+                        SizedBox(height: context.spacing.sm),
                         Text(
                           context.l10n.roomType,
                           style: HBTextStyles.bodyRegularMedium(
                             context.colorScheme.onSurface,
                           ),
                         ),
-                        const SizedBox(height: 10),
+                        SizedBox(height: context.spacing.sm),
                         Text(
                           context.l10n.phone,
                           style: HBTextStyles.bodyRegularMedium(
@@ -177,21 +185,21 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
                         context.colorScheme.onSurface,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: context.spacing.sm),
                     Text(
                       context.l10n.numberGuest(booking.guests, 1),
                       style: HBTextStyles.bodyMediumMedium(
                         context.colorScheme.onSurface,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: context.spacing.sm),
                     Text(
                       booking.hotel.roomType,
                       style: HBTextStyles.bodyMediumMedium(
                         context.colorScheme.onSurface,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: context.spacing.sm),
                     Text(
                       booking.user.numberPhone != '0'
                           ? booking.user.numberPhone ?? '0'
@@ -204,9 +212,9 @@ class _BookingDetailScreenState extends State<BookingDetailScreen> {
                 ),
               ],
             ),
-            const SizedBox(height: 50),
+            SizedBox(height: context.spacing.huge),
             Image.asset(Assets.images.icon.barcode.path),
-            const SizedBox(height: 5),
+            SizedBox(height: context.spacing.xs),
             Text(
               '06158310-5427-471d-af1f-bd9029b',
               style: HBTextStyles.bodyMediumXSmall(

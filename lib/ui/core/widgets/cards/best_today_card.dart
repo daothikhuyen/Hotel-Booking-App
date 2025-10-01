@@ -30,8 +30,8 @@ class BestTodayCard extends StatelessWidget {
     return Container(
       height: 101,
       width: 300,
-      padding: const EdgeInsets.all(8),
-      margin: const EdgeInsets.only(right: 10),
+      padding: EdgeInsets.all(context.spacing.sm),
+      margin: EdgeInsets.only(right: context.spacing.md),
       decoration: BoxDecoration(
         border: Border.all(
           width: 1.02,
@@ -45,7 +45,10 @@ class BestTodayCard extends StatelessWidget {
           Container(
             width: 75,
             height: 75,
-            margin: const EdgeInsets.only(right: 8, left: 3),
+            margin: EdgeInsets.only(
+              right: context.spacing.sm,
+              left: context.spacing.xs,
+            ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(13),
               image: DecorationImage(
@@ -65,7 +68,7 @@ class BestTodayCard extends StatelessWidget {
                   context.colorScheme.onSurfaceVariant,
                 ),
               ),
-              const SizedBox(height: 8),
+              SizedBox(height: context.spacing.sm),
               Row(
                 children: [
                   SvgPicture.asset(
@@ -77,7 +80,7 @@ class BestTodayCard extends StatelessWidget {
                       BlendMode.srcIn,
                     ),
                   ),
-                  const SizedBox(width: 4),
+                  SizedBox(width: context.spacing.xs),
                   Text(
                     address,
                     style: HBTextStyles.bodyRegularSmall(
@@ -86,7 +89,7 @@ class BestTodayCard extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 3),
+              SizedBox(height: context.spacing.xs),
 
               Row(
                 children: [
@@ -95,14 +98,14 @@ class BestTodayCard extends StatelessWidget {
                     width: 16,
                     height: 16,
                   ),
-                  const SizedBox(width: 4),
+                  SizedBox(width: context.spacing.xs),
                   Text(
                     rating.toString(),
                     style: HBTextStyles.bodySemiboldXSmall(
                       context.colorScheme.onError,
                     ),
                   ),
-                  const SizedBox(width: 4),
+                  SizedBox(width: context.spacing.xs),
                   Text(
                     context.l10n.traffic(traffic),
                     style: HBTextStyles.bodyRegularXSmall(
@@ -110,14 +113,14 @@ class BestTodayCard extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(width: 15),
+                  SizedBox(width: context.spacing.lg),
                   Text(
                     context.l10n.price(formatPrice(currentPrice / 1000)),
                     style: HBTextStyles.bodySemiboldSmall(
                       context.colorScheme.onSurfaceVariant,
                     ),
                   ),
-                  const SizedBox(width: 15),
+                  SizedBox(width: context.spacing.lg),
                   Text(
                     context.l10n.price(formatPrice(lastPrice / 1000)),
                     style: HBTextStyles.bodyMediumXSmall(

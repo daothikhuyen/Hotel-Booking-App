@@ -145,10 +145,15 @@ final goRouter = GoRouter(
     GoRoute(
       path: PageRoutes.search,
       pageBuilder: (context, state) {
+        var recommendedHotels = <Hotel>[];
+
+        if (state.extra != null && state.extra is List<Hotel>) {
+          recommendedHotels = (state.extra ?? []) as List<Hotel>;
+        }
         return animationRouter(
           ChangeNotifierProvider(
             create: (context) => HotelController(),
-            child: const SearchScreen(),
+            child: SearchScreen(listHotelRecommentd: recommendedHotels),
           ),
           state,
         );

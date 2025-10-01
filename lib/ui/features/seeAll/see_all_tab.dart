@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/routing/page_routes.dart';
+import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/ui/core/widgets/alter/page_alter_null.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/build_divider.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/recommended_card.dart';
@@ -87,7 +88,7 @@ class _SeeAllTabState extends State<SeeAllTab>
         hotels = controller.listPopular;
     }
     return Padding(
-      padding: const EdgeInsets.only(top: 18),
+      padding: EdgeInsets.only(top: context.spacing.lg),
       child: RefreshIndicator(
         onRefresh: () async {
           controller.reset(widget.index);
@@ -125,12 +126,12 @@ class _SeeAllTabState extends State<SeeAllTab>
                         ),
                       ),
                       if (index < hotels.length - 1)
-                        const Padding(
+                        Padding(
                           padding: EdgeInsets.symmetric(
-                            horizontal: 5,
-                            vertical: 14,
+                            horizontal: context.spacing.xs,
+                            vertical: context.spacing.md,
                           ),
-                          child: BuildDivider(),
+                          child: const BuildDivider(),
                         )
                       else
                         const SizedBox.shrink(),

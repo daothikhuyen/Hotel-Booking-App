@@ -30,13 +30,17 @@ class _LanguageState extends State<Language> {
         onPressed: () => context.pop(),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 18, right: 18, top: 25),
+        padding: EdgeInsets.only(
+          left: context.spacing.lg,
+          right: context.spacing.lg,
+          top: context.spacing.xl,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.all(18),
+              padding: EdgeInsets.all(context.spacing.lg),
               decoration: BoxDecoration(
                 border: Border.all(
                   width: 1.01,
@@ -53,7 +57,7 @@ class _LanguageState extends State<Language> {
                       context.colorScheme.onTertiary,
                     ),
                   ),
-                  const SizedBox(height: 14),
+                  SizedBox(height: context.spacing.md),
                   ...suggestedLanguages.asMap().entries.map((entry) {
                     final index = entry.key;
                     final lang = entry.value;
@@ -72,7 +76,9 @@ class _LanguageState extends State<Language> {
 
                         if (index < suggestedLanguages.length - 1)
                           Container(
-                            margin: const EdgeInsets.symmetric(vertical: 16),
+                            margin: EdgeInsets.symmetric(
+                              vertical: context.spacing.lg,
+                            ),
                             child: const BuildDivider(),
                           ),
                       ],
@@ -81,10 +87,10 @@ class _LanguageState extends State<Language> {
                 ],
               ),
             ),
-            const SizedBox(height: 30),
+            SizedBox(height: context.spacing.xxl),
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.all(18),
+              padding: EdgeInsets.all(context.spacing.lg),
               decoration: BoxDecoration(
                 border: Border.all(
                   width: 1.01,
@@ -101,7 +107,7 @@ class _LanguageState extends State<Language> {
                       context.colorScheme.onTertiary,
                     ),
                   ),
-                  const SizedBox(height: 14),
+                  SizedBox(height: context.spacing.md),
 
                   ...otherLanguages.asMap().entries.map((entry) {
                     final index = entry.key;
@@ -117,7 +123,9 @@ class _LanguageState extends State<Language> {
 
                         if (index < otherLanguages.length - 1)
                           Container(
-                            margin: const EdgeInsets.symmetric(vertical: 16),
+                            margin: EdgeInsets.symmetric(
+                              vertical: context.spacing.lg,
+                            ),
                             child: const BuildDivider(),
                           ),
                       ],

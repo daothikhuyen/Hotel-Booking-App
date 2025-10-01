@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 import 'package:hotel_booking_app/routing/page_routes.dart';
 import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
@@ -15,7 +16,9 @@ import 'package:hotel_booking_app/ui/features/search/widgets/section/filter_card
 import 'package:provider/provider.dart';
 
 class SearchScreen extends StatefulWidget {
-  const SearchScreen({super.key});
+  const SearchScreen({required this.listHotelRecommentd, super.key});
+
+  final List<Hotel> listHotelRecommentd;
 
   @override
   State<SearchScreen> createState() => _SearchScreenState();
@@ -24,11 +27,13 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   final _scrollController = ScrollController();
   final search = TextEditingController();
+  late HotelController controller;
   Timer? _debounce;
 
   @override
   void initState() {
     super.initState();
+
     search.addListener(_onSearchChanged);
   }
 
@@ -61,12 +66,16 @@ class _SearchScreenState extends State<SearchScreen> {
         onPressed: () => context.go(PageRoutes.homePage),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
+        padding: EdgeInsets.only(
+          top: context.spacing.xxl,
+          left: context.spacing.xl,
+          right: context.spacing.xl,
+        ),
         child: Column(
           children: [
             Container(
-              margin: const EdgeInsets.only(top: 10),
-              padding: const EdgeInsets.symmetric(horizontal: 18),
+              margin: EdgeInsets.only(top: context.spacing.sm),
+              padding: EdgeInsets.symmetric(horizontal: context.spacing.lg),
               decoration: BoxDecoration(
                 border: Border.all(
                   width: 1.3,
@@ -108,7 +117,7 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4),
+                padding: EdgeInsets.symmetric(horizontal: context.spacing.xs),
                 child: RefreshIndicator(
                   onRefresh: () async {
                     setState(() {
@@ -124,7 +133,7 @@ class _SearchScreenState extends State<SearchScreen> {
                               ? controller.listHotelSearch
                               : search.text.isNotEmpty
                               ? controller.listHotelSearch
-                              : controller.listRecomended;
+                              : widget.listHotelRecommentd;
                       return listSearch.isNotEmpty
                           ? ListView.builder(
                             physics: const AlwaysScrollableScrollPhysics(),

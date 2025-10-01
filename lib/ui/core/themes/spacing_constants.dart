@@ -1,36 +1,39 @@
 import 'package:flutter/material.dart';
 
 class AppSpacing {
-  static const double base = 4;
+  const AppSpacing({this.base = 4});
+  final double base;
 
   // Named sizes
-  static const double xs = base;
-  static const double sm = base * 2;
-  static const double md = base * 3;
-  static const double lg = base * 4;
-  static const double xl = base * 6;
-  static const double xxl = base * 8;
-  static const double huge = base * 12;
+  double get xs => base;
+  double get sm => base * 2;
+  double get md => base * 3;
+  double get lg => base * 4;
+  double get xl => base * 6;
+  double get xxl => base * 8;
+  double get huge => base * 12;
 
-  // Common EdgeInsets presets (const where possible)
-  static const EdgeInsets allXs = EdgeInsets.all(xs);
-  static const EdgeInsets allSm = EdgeInsets.all(sm);
-  static const EdgeInsets allMd = EdgeInsets.all(md);
-  static const EdgeInsets allLg = EdgeInsets.all(lg);
+  // Common EdgeInsets presets
+  EdgeInsets get allXs => EdgeInsets.all(xs);
+  EdgeInsets get allSm => EdgeInsets.all(sm);
+  EdgeInsets get allMd => EdgeInsets.all(md);
+  EdgeInsets get allLg => EdgeInsets.all(lg);
 
-  static const EdgeInsets horizSm = EdgeInsets.symmetric(horizontal: sm);
-  static const EdgeInsets horizMd = EdgeInsets.symmetric(horizontal: md);
-  static const EdgeInsets vertSm = EdgeInsets.symmetric(vertical: sm);
-  static const EdgeInsets vertMd = EdgeInsets.symmetric(vertical: md);
+  EdgeInsets get horizSm => EdgeInsets.symmetric(horizontal: sm);
+  EdgeInsets get horizMd => EdgeInsets.symmetric(horizontal: md);
+  EdgeInsets get horizlg => EdgeInsets.symmetric(horizontal: lg);
+  EdgeInsets get horizXL => EdgeInsets.symmetric(horizontal: xl);
+  EdgeInsets get vertSm => EdgeInsets.symmetric(vertical: sm);
+  EdgeInsets get vertMd => EdgeInsets.symmetric(vertical: md);
 
-  // Use when you need consistent gaps inside lists/rows
-  static const SizedBox gapXs = SizedBox(width: xs, height: xs);
-  static const SizedBox gapSm = SizedBox(width: sm, height: sm);
-  static const SizedBox gapMd = SizedBox(width: md, height: md);
-  static const SizedBox gapLg = SizedBox(width: lg, height: lg);
+  SizedBox get gapXs => SizedBox(width: xs, height: xs);
+  SizedBox get gapSm => SizedBox(width: sm, height: sm);
+  SizedBox get gapMd => SizedBox(width: md, height: md);
+  SizedBox get gapLg => SizedBox(width: lg, height: lg);
 }
 
 class AppHeights {
-  static const double toolbar = 75;
-  static const double expandedAppBar = 75;
+  const AppHeights({this.toolbar = 75, this.expandedAppBar = 75});
+  final double toolbar;
+  final double expandedAppBar;
 }

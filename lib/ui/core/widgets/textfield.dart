@@ -14,7 +14,7 @@ class HBTextField extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.next,
     super.key,
-    this.onToggleObscureText,
+    this.onToggleObscureText, this.onChanged,
   });
   final TextEditingController controller;
   final String hintText;
@@ -26,6 +26,7 @@ class HBTextField extends StatelessWidget {
   final bool enabled;
   final bool obscureText;
   final VoidCallback? onToggleObscureText;
+  final ValueChanged<String>? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +43,7 @@ class HBTextField extends StatelessWidget {
       controller: controller,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: validator,
+      onChanged: onChanged,
       enabled: enabled,
       style:
           enabled

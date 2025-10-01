@@ -22,7 +22,7 @@ class PromoCard extends StatelessWidget {
         ),
     
         Container(
-          margin: const EdgeInsets.only(top: 16),
+          margin: EdgeInsets.only(top: context.spacing.lg),
           width: double.infinity,
           height: 52,
           decoration: BoxDecoration(
@@ -34,11 +34,10 @@ class PromoCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
           ),
           child: Padding(
-            padding: const EdgeInsets.only(
-              // left: 5,
-              right: 20,
-              top: 10,
-              bottom: 10,
+            padding: EdgeInsets.only(
+              right: context.spacing.xl,
+              top: context.spacing.sm,
+              bottom: context.spacing.sm,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

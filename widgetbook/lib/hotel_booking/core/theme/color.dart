@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:widgetbook_hotel_booking_app/hotel_booking/core/theme/data/color_data.dart';
 import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/card_color.dart';
@@ -19,7 +20,7 @@ Widget buildColorPaletteUseCase(BuildContext context) {
               Text(color.title,
                   style: const TextStyle(
                       fontSize: 16, fontWeight: FontWeight.bold)),
-              const SizedBox(height: 12),
+              SizedBox(height: context.spacing.md),
               Wrap(
                 spacing: 10,
                 runSpacing: 12,

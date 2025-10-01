@@ -4,7 +4,6 @@ import 'package:hotel_booking_app/ui/core/themes/theme.dart';
 import 'package:hotel_booking_app/utils/translation_helper.dart';
 
 class CategoryItem extends StatelessWidget {
-
   const CategoryItem({
     required this.title,
     required this.linkImage,
@@ -20,8 +19,11 @@ class CategoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 43,
-      margin: const EdgeInsets.symmetric(horizontal: 4),
-      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+      margin: EdgeInsets.symmetric(horizontal: context.spacing.xs),
+      padding: EdgeInsets.symmetric(
+        vertical: context.spacing.xs,
+        horizontal: context.spacing.md,
+      ),
       decoration: BoxDecoration(
         color:
             isSelected
@@ -41,20 +43,23 @@ class CategoryItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // Icon or image
-          if (linkImage != '') Container(
-                width: 30,
-                height: 30,
-                margin: const EdgeInsets.only(right: 3),
-                padding: const EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  color:
-                      !isSelected
-                          ? context.colorScheme.tertiary.withValues(alpha: 0.15)
-                          : context.colorScheme.onPrimary,
-                  shape: BoxShape.circle,
-                ),
-                child: Image.asset(linkImage!, fit: BoxFit.contain),
-              ) else const SizedBox.shrink(),
+          if (linkImage != '')
+            Container(
+              width: 30,
+              height: 30,
+              margin: EdgeInsets.only(right: context.spacing.xs),
+              padding: EdgeInsets.all(context.spacing.xs),
+              decoration: BoxDecoration(
+                color:
+                    !isSelected
+                        ? context.colorScheme.tertiary.withValues(alpha: 0.15)
+                        : context.colorScheme.onPrimary,
+                shape: BoxShape.circle,
+              ),
+              child: Image.asset(linkImage!, fit: BoxFit.contain),
+            )
+          else
+            const SizedBox.shrink(),
           Text(
             getTranslatedText(context, title),
             style: HBTextStyles.bodyRegularSmall(

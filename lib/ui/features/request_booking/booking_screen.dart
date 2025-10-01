@@ -45,7 +45,7 @@ class _BookingScreenState extends State<BookingScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: EdgeInsets.symmetric(horizontal: context.spacing.lg),
             child: Column(
               children: [
                 // selected date
@@ -88,7 +88,10 @@ class _BookingScreenState extends State<BookingScreen> {
       ),
 
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 30),
+        padding: EdgeInsets.symmetric(
+          horizontal: context.spacing.lg,
+          vertical: context.spacing.xxl,
+        ),
         child: PrimaryBtn(
           size: 56,
           textButton: context.l10n.titleCheckOut,

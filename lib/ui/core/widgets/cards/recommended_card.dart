@@ -30,13 +30,16 @@ class RecommendedCard extends StatelessWidget {
           Container(
             width: 85,
             height: 85,
-            margin: const EdgeInsets.only(right: 8, left: 3),
+            margin: EdgeInsets.only(
+              right: context.spacing.sm,
+              left: context.spacing.xs,
+            ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(13),
               image: DecorationImage(
                 image:
                     linkImage != ''
-                        ? NetworkImage(linkImage?? '')
+                        ? NetworkImage(linkImage ?? '')
                         : AssetImage(Assets.images.home.frameOne.path)
                             as ImageProvider,
                 fit: BoxFit.cover,
@@ -47,7 +50,7 @@ class RecommendedCard extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
-            
+
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,7 +62,7 @@ class RecommendedCard extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 15),
+                      padding: EdgeInsets.only(right: context.spacing.lg),
                       child: Row(
                         children: [
                           SvgPicture.asset(
@@ -67,7 +70,7 @@ class RecommendedCard extends StatelessWidget {
                             width: 16,
                             height: 16,
                           ),
-                          const SizedBox(width: 4),
+                          SizedBox(width: context.spacing.xs),
                           Text(
                             rating,
                             style: HBTextStyles.bodySemiboldSmall(
@@ -79,7 +82,7 @@ class RecommendedCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: context.spacing.sm),
                 Row(
                   children: [
                     SvgPicture.asset(
@@ -91,7 +94,7 @@ class RecommendedCard extends StatelessWidget {
                         BlendMode.srcIn,
                       ),
                     ),
-                    const SizedBox(width: 4),
+                    SizedBox(width: context.spacing.xs),
                     Text(
                       location,
                       style: HBTextStyles.bodyRegularSmall(
@@ -100,7 +103,7 @@ class RecommendedCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: context.spacing.sm),
                 RichText(
                   text: TextSpan(
                     children: [

@@ -7,6 +7,8 @@ import 'package:hotel_booking_app/routing/page_routes.dart';
 import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/ui/core/themes/theme.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/primary_btn.dart';
+import 'package:hotel_booking_app/ui/features/home/view_model/hotel_controller.dart';
+import 'package:provider/provider.dart';
 
 class HeaderBar extends StatelessWidget {
   const HeaderBar({
@@ -22,9 +24,10 @@ class HeaderBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
+    final controller = Provider.of<HotelController>(context);
+
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
+      padding: EdgeInsets.symmetric(vertical: context.spacing.xs),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -47,7 +50,7 @@ class HeaderBar extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 12),
+                  SizedBox(width: context.spacing.md),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,7 +66,7 @@ class HeaderBar extends StatelessWidget {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 4),
+                        SizedBox(height: context.spacing.xs),
                         Row(
                           children: [
                             SvgPicture.asset(
@@ -75,7 +78,7 @@ class HeaderBar extends StatelessWidget {
                                 BlendMode.srcIn,
                               ),
                             ),
-                            const SizedBox(width: 4),
+                            SizedBox(width: context.spacing.xs),
                             Text(
                               location,
                               style: GoogleFonts.plusJakartaSans(
@@ -109,7 +112,10 @@ class HeaderBar extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  context.go(PageRoutes.search);
+                  context.go(
+                    PageRoutes.search,
+                    extra: controller.listRecomended,
+                  );
                 },
                 child: Container(
                   width: 40,
@@ -119,7 +125,7 @@ class HeaderBar extends StatelessWidget {
                     borderRadius: BorderRadius.circular(100),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(8),
+                    padding: EdgeInsets.all(context.spacing.sm),
                     child: SvgPicture.asset(
                       Assets.images.icon.search,
                       colorFilter: ColorFilter.mode(
@@ -130,7 +136,7 @@ class HeaderBar extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: 8),
+              SizedBox(width: context.spacing.sm),
               GestureDetector(
                 onTap: () {
                   //TODOS:...
@@ -143,7 +149,7 @@ class HeaderBar extends StatelessWidget {
                     borderRadius: BorderRadius.circular(100),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(8),
+                    padding: EdgeInsets.all(context.spacing.sm),
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
@@ -172,7 +178,7 @@ class HeaderBar extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: 16),
+             SizedBox(width: context.spacing.lg),
             ],
           ),
         ],

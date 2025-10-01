@@ -5,7 +5,7 @@ import 'package:hotel_booking_app/ui/core/widgets/cards/header_card.dart';
 
 class MapSection extends StatelessWidget {
   const MapSection({required this.title, super.key});
-  final String title ;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,10 @@ class MapSection extends StatelessWidget {
           },
         ),
         Container(
-          margin: const EdgeInsets.only(top: 10, bottom: 10),
+          margin: EdgeInsets.only(
+            top: context.spacing.sm,
+            bottom: context.spacing.sm,
+          ),
           height: 167,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),

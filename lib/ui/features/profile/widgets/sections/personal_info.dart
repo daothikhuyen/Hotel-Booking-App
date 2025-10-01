@@ -45,6 +45,16 @@ class _PersonalInfoState extends State<PersonalInfo> {
   }
 
   @override
+  void dispose() {
+    _displayName.dispose();
+    _lastName.dispose();
+    _email.dispose();
+    _phone.dispose();
+    _location.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<AuthController>(context);
 
@@ -58,7 +68,11 @@ class _PersonalInfoState extends State<PersonalInfo> {
       body: Form(
         key: _formKey,
         child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 50),
+          padding: EdgeInsets.only(
+            left: context.spacing.xl,
+            right: context.spacing.xl,
+            top: context.spacing.huge,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -68,7 +82,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                   context.colorScheme.onSurfaceVariant,
                 ),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: context.spacing.sm),
               HBTextField(
                 controller: _displayName,
                 hintText: 'Khuyen',
@@ -76,29 +90,29 @@ class _PersonalInfoState extends State<PersonalInfo> {
                 validator:
                     (v) => validateText(context, v, context.l10n.errorNotEmpty),
               ),
-              const SizedBox(height: 18),
+              SizedBox(height: context.spacing.lg),
               Text(
                 context.l10n.emailAddress,
                 style: HBTextStyles.bodySemiboldMedium(
                   context.colorScheme.onSurfaceVariant,
                 ),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: context.spacing.sm),
               HBTextField(
                 controller: _email,
                 hintText: 'daothikhuyen@gmail.com',
                 color: context.colorScheme.outline.withValues(alpha: 0.5),
-                validator: (v) => validateEmail(context, v, isSubmmited: false),
+                validator: (v) => validateEmail(context, v),
                 enabled: false,
               ),
-              const SizedBox(height: 18),
+              SizedBox(height: context.spacing.lg),
               Text(
                 context.l10n.location,
                 style: HBTextStyles.bodySemiboldMedium(
                   context.colorScheme.onSurfaceVariant,
                 ),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: context.spacing.sm),
               HBTextField(
                 controller: _location,
                 hintText: 'San Diego, CA',
@@ -106,14 +120,14 @@ class _PersonalInfoState extends State<PersonalInfo> {
                 validator:
                     (v) => validateText(context, v, context.l10n.errorNotEmpty),
               ),
-              const SizedBox(height: 18),
+              SizedBox(height: context.spacing.lg),
               Text(
                 context.l10n.phone,
                 style: HBTextStyles.bodySemiboldMedium(
                   context.colorScheme.onSurfaceVariant,
                 ),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: context.spacing.sm),
               // input for number phone
               InternationalPhoneNumberInput(
                 onInputChanged: (PhoneNumber number) {
@@ -138,7 +152,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                   ),
                 ),
               ),
-              const SizedBox(height: 50),
+              SizedBox(height: context.spacing.huge),
               SizedBox(
                 width: double.infinity,
                 child: PrimaryBtn(

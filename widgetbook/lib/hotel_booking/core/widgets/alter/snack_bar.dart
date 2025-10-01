@@ -19,7 +19,7 @@ Widget hbSnackBarUseCase(BuildContext context) {
             },
             child: const Text('SnackBar'),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: context.spacing.lg),
           ElevatedButton(
             onPressed: () {
               snackBar.showOverlayMessage(
