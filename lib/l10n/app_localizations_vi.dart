@@ -45,7 +45,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get mostPopular => 'Phổ biến nhất';
 
   @override
-  String get mybooking => 'Phòng Của Bạn';
+  String get mybooking => 'Danh sách';
 
   @override
   String get nearYou => 'Khách sạn gần bạn';

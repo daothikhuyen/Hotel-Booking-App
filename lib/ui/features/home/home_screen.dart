@@ -89,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       child: Padding(
                         padding: EdgeInsets.only(
-                          right: context.spacing.xl,
+                          right: context.spacing.md,
                           top: context.spacing.lg,
                           bottom: context.spacing.lg,
                         ),

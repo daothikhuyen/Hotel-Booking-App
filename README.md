@@ -12,7 +12,7 @@
 ## Test Accounts
 - User test 1 : 
   - Email: daothikhuyen30@gmail.com 
-  - Password: 123456789
+  - Password: Daothikhuyen30@
   
 ## Function
 - Login
