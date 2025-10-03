@@ -1,14 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/routing/page_routes.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/ui/features/home/view_model/hotel_controller.dart';
-import 'package:provider/provider.dart';
 
 class HeaderBar extends StatelessWidget {
   const HeaderBar({
@@ -27,7 +19,7 @@ class HeaderBar extends StatelessWidget {
     final controller = Provider.of<HotelController>(context);
 
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: context.spacing.xs),
+      padding: EdgeInsets.symmetric(vertical: context.spacing.xs.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -36,10 +28,10 @@ class HeaderBar extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
-                    width: 40,
-                    height: 40,
+                    width: 40.h,
+                    height: 40.h,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
+                      shape: BoxShape.circle,
                       image: DecorationImage(
                         image:
                             linkImage != ''
@@ -50,7 +42,7 @@ class HeaderBar extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(width: context.spacing.md),
+                  SizedBox(width: context.spacing.md.w),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,6 +63,8 @@ class HeaderBar extends StatelessWidget {
                           children: [
                             SvgPicture.asset(
                               Assets.images.icon.vector,
+                              width: 18.w,
+                              height: 18.h,
                               colorFilter: ColorFilter.mode(
                                 context.colorScheme.onSurfaceVariant.withValues(
                                   alpha: 0.7,
@@ -78,7 +72,7 @@ class HeaderBar extends StatelessWidget {
                                 BlendMode.srcIn,
                               ),
                             ),
-                            SizedBox(width: context.spacing.xs),
+                            SizedBox(width: context.spacing.xs.w),
                             Text(
                               location,
                               style: GoogleFonts.plusJakartaSans(
@@ -97,9 +91,9 @@ class HeaderBar extends StatelessWidget {
             )
           else
             SizedBox(
-              width: 200,
+              width: 200.w,
               child: PrimaryBtn(
-                size: 56,
+                size: 56.h,
                 textButton: context.l10n.signIn,
                 onPressed: () {
                   context.go(PageRoutes.signIn);
@@ -118,16 +112,18 @@ class HeaderBar extends StatelessWidget {
                   );
                 },
                 child: Container(
-                  width: 40,
-                  height: 40,
+                  width: 35.w,
+                  height: 35.h,
                   decoration: BoxDecoration(
                     border: Border.all(color: context.colorScheme.outline),
-                    borderRadius: BorderRadius.circular(100),
+                    shape: BoxShape.circle,
                   ),
                   child: Padding(
                     padding: EdgeInsets.all(context.spacing.sm),
                     child: SvgPicture.asset(
                       Assets.images.icon.search,
+                      width: 20.w,
+                      height: 20.h,
                       colorFilter: ColorFilter.mode(
                         context.iconTheme.color ?? Colors.transparent,
                         BlendMode.srcIn,
@@ -136,17 +132,17 @@ class HeaderBar extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(width: context.spacing.sm),
+              SizedBox(width: context.spacing.sm.w),
               GestureDetector(
                 onTap: () {
                   //TODOS:...
                 }, // temporary
                 child: Container(
-                  width: 40,
-                  height: 40,
+                  width: 35.w,
+                  height: 35.h,
                   decoration: BoxDecoration(
                     border: Border.all(color: context.colorScheme.outline),
-                    borderRadius: BorderRadius.circular(100),
+                    shape: BoxShape.circle,
                   ),
                   child: Padding(
                     padding: EdgeInsets.all(context.spacing.sm),
@@ -155,6 +151,8 @@ class HeaderBar extends StatelessWidget {
                       children: [
                         SvgPicture.asset(
                           Assets.images.icon.group,
+                          width: 20.w,
+                          height: 20.h,
                           colorFilter: ColorFilter.mode(
                             context.iconTheme.color ?? Colors.transparent,
                             BlendMode.srcIn,
@@ -162,13 +160,13 @@ class HeaderBar extends StatelessWidget {
                         ),
 
                         Positioned(
-                          top: 1.4,
-                          right: 3,
+                          top: 1.4.h,
+                          right: 3.w,
                           child: CircleAvatar(
-                            radius: 4,
+                            radius: 4.r,
                             backgroundColor: context.colorScheme.onSecondary,
                             child: CircleAvatar(
-                              radius: 2.5,
+                              radius: 2.5.r,
                               backgroundColor: context.colorScheme.error,
                             ),
                           ),
@@ -178,7 +176,7 @@ class HeaderBar extends StatelessWidget {
                   ),
                 ),
               ),
-             SizedBox(width: context.spacing.lg),
+              SizedBox(width: context.spacing.lg.w),
             ],
           ),
         ],

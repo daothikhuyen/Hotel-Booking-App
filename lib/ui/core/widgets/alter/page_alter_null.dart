@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 
 class PageAlterNull extends StatelessWidget {
   const PageAlterNull({super.key});

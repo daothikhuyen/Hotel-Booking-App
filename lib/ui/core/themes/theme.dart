@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/themes/app_colors.dart';
 
 ThemeData lightMode = ThemeData(
@@ -52,7 +51,7 @@ ThemeData darkMode = ThemeData(
 class HBTextStyles {
   static TextStyle headingOne(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 32,
+      fontSize: 32.sp,
       fontWeight: FontWeight.w900,
       color: color,
     );
@@ -60,7 +59,7 @@ class HBTextStyles {
 
   static TextStyle headingTwo(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 28,
+      fontSize: 28.sp,
       fontWeight: FontWeight.w700,
       color: color,
     );
@@ -68,7 +67,7 @@ class HBTextStyles {
 
   static TextStyle headingThree(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 24,
+      fontSize: 24.sp,
       fontWeight: FontWeight.w700,
       color: color,
       letterSpacing: 1.5,
@@ -77,7 +76,7 @@ class HBTextStyles {
 
   static TextStyle bigTitle(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 28,
+      fontSize: 28.sp,
       fontWeight: FontWeight.w700,
       color: color,
     );
@@ -85,7 +84,7 @@ class HBTextStyles {
 
   static TextStyle title(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 16,
+      fontSize: 16.sp,
       fontWeight: FontWeight.w900,
       color: color,
     );
@@ -93,7 +92,7 @@ class HBTextStyles {
 
   static TextStyle paragraph(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 14,
+      fontSize: 14.sp,
       fontWeight: FontWeight.w400,
       color: color,
     );
@@ -101,7 +100,7 @@ class HBTextStyles {
 
   static TextStyle caption(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 16,
+      fontSize: 16.sp,
       fontWeight: FontWeight.w400,
       color: color,
     );
@@ -109,7 +108,7 @@ class HBTextStyles {
 
   static TextStyle smallButton(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 12,
+      fontSize: 12.sp,
       fontWeight: FontWeight.w600,
       color: color,
     );
@@ -117,7 +116,7 @@ class HBTextStyles {
 
   static TextStyle bigButton(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 14,
+      fontSize: 14.sp,
       fontWeight: FontWeight.w700,
       color: color,
     );
@@ -125,7 +124,7 @@ class HBTextStyles {
 
   static TextStyle smallText(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 12,
+      fontSize: 12.sp,
       fontWeight: FontWeight.w400,
       color: color,
     );
@@ -133,7 +132,7 @@ class HBTextStyles {
 
   static TextStyle bodySemiboldXLarge(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 20,
+      fontSize: 20.sp,
       fontWeight: FontWeight.w600,
       color: color,
     );
@@ -141,7 +140,7 @@ class HBTextStyles {
 
   static TextStyle bodyMediumXLarge(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 20,
+      fontSize: 20.sp,
       fontWeight: FontWeight.w500,
       color: color,
     );
@@ -149,7 +148,7 @@ class HBTextStyles {
 
   static TextStyle bodySemiboldLarge(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 18,
+      fontSize: 18.sp,
       fontWeight: FontWeight.w600,
       color: color,
     );
@@ -157,7 +156,7 @@ class HBTextStyles {
 
   static TextStyle bodyMediumLarge(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 18,
+      fontSize: 18.sp,
       fontWeight: FontWeight.w500,
       color: color,
     );
@@ -165,7 +164,7 @@ class HBTextStyles {
 
   static TextStyle bodyRegularLarge(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 18,
+      fontSize: 18.sp,
       fontWeight: FontWeight.w400,
       color: color,
     );
@@ -173,7 +172,7 @@ class HBTextStyles {
 
   static TextStyle bodySemiboldMedium(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 16,
+      fontSize: 16.sp,
       fontWeight: FontWeight.w600,
       color: color,
     );
@@ -181,7 +180,7 @@ class HBTextStyles {
 
   static TextStyle bodyMediumMedium(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 16,
+      fontSize: 16.sp,
       fontWeight: FontWeight.w500,
       color: color,
     );
@@ -189,7 +188,7 @@ class HBTextStyles {
 
   static TextStyle bodyRegularMedium(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 16,
+      fontSize: 16.sp,
       fontWeight: FontWeight.w400,
       color: color,
     );
@@ -197,7 +196,7 @@ class HBTextStyles {
 
   static TextStyle bodySemiboldSmall(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 14,
+      fontSize: 14.sp,
       fontWeight: FontWeight.w600,
       color: color,
     );
@@ -205,7 +204,7 @@ class HBTextStyles {
 
   static TextStyle bodyMediumSmall(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 14,
+      fontSize: 14.sp,
       fontWeight: FontWeight.w500,
       color: color,
     );
@@ -213,7 +212,7 @@ class HBTextStyles {
 
   static TextStyle bodyRegularSmall(Color color, {double letterSpacing = 0}) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 14,
+      fontSize: 14.sp,
       fontWeight: FontWeight.w400,
       color: color,
       letterSpacing: letterSpacing,
@@ -222,7 +221,7 @@ class HBTextStyles {
 
   static TextStyle bodySemiboldXSmall(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 12,
+      fontSize: 12.sp,
       fontWeight: FontWeight.w600,
       color: color,
     );
@@ -235,7 +234,7 @@ class HBTextStyles {
     double? decorationThickness,
   }) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 12,
+      fontSize: 12.sp,
       fontWeight: FontWeight.w500,
       color: color,
       decoration: decoration,
@@ -246,7 +245,7 @@ class HBTextStyles {
 
   static TextStyle bodyRegularXSmall(Color color) {
     return GoogleFonts.jost().copyWith(
-      fontSize: 12,
+      fontSize: 12.sp,
       fontWeight: FontWeight.w400,
       color: color,
     );

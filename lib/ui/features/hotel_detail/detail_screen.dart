@@ -1,13 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/skeleton.dart';
 import 'package:hotel_booking_app/ui/features/auth/view_model/auth_controller.dart';
 import 'package:hotel_booking_app/ui/features/hotel_detail/widgets/bottom_bar.dart';
 import 'package:hotel_booking_app/ui/features/hotel_detail/widgets/section/popup_card.dart';
-import 'package:provider/provider.dart';
 
 class DetailScreen extends StatefulWidget {
   const DetailScreen({required this.hotel, super.key});
@@ -42,7 +39,7 @@ class _DetailScreenState extends State<DetailScreen> {
           children: [
             if (hotel.image.isNotEmpty)
               Container(
-                height: 374,
+                height: 374.h,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: NetworkImage(hotel.image),
@@ -51,10 +48,10 @@ class _DetailScreenState extends State<DetailScreen> {
                 ),
               )
             else
-              const Skeleton(width: double.infinity, height: 374),
+              Skeleton(width: double.infinity, height: 374.h),
 
             Container(
-              height: 374,
+              height: 374.h,
               decoration: BoxDecoration(
                 color: context.colorScheme.inverseSurface.withValues(
                   alpha: 0.35,

@@ -1,10 +1,8 @@
 // private navigators
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/data/model/booking.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/routing/animation.dart';
-import 'package:hotel_booking_app/routing/page_routes.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/alter/page_alter_null.dart';
 import 'package:hotel_booking_app/ui/features/auth/sign_in.dart';
 import 'package:hotel_booking_app/ui/features/auth/view_model/auth_controller.dart';
@@ -13,6 +11,7 @@ import 'package:hotel_booking_app/ui/features/chat/chat_screen.dart';
 import 'package:hotel_booking_app/ui/features/home/home_screen.dart';
 import 'package:hotel_booking_app/ui/features/home/view_model/hotel_controller.dart';
 import 'package:hotel_booking_app/ui/features/home/view_model/navigation_controller.dart';
+import 'package:hotel_booking_app/ui/features/home/view_model/search_hotel_controller.dart';
 import 'package:hotel_booking_app/ui/features/hotel_detail/detail_screen.dart';
 import 'package:hotel_booking_app/ui/features/hotel_detail/view_model/hotel_detail_controller.dart';
 import 'package:hotel_booking_app/ui/features/layout/layout_scaffold.dart';
@@ -28,7 +27,6 @@ import 'package:hotel_booking_app/ui/features/request_booking/page_sucess.dart';
 import 'package:hotel_booking_app/ui/features/request_booking/view_model/booking_controller.dart';
 import 'package:hotel_booking_app/ui/features/search/search_screen.dart';
 import 'package:hotel_booking_app/ui/features/seeAll/see_all_screen.dart';
-import 'package:provider/provider.dart';
 
 final AuthController authController = AuthController();
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -152,7 +150,7 @@ final goRouter = GoRouter(
         }
         return animationRouter(
           ChangeNotifierProvider(
-            create: (context) => HotelController(),
+            create: (context) => SearchHotelController(),
             child: SearchScreen(listHotelRecommentd: recommendedHotels),
           ),
           state,

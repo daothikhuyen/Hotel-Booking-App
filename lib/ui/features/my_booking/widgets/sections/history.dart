@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/data/model/booking.dart';
 import 'package:hotel_booking_app/routing/page_routes.dart';
@@ -109,7 +110,9 @@ class _HistoryState extends State<History> with AutomaticKeepAliveClientMixin {
                     context.push(PageRoutes.bookingDetail, extra: myBooking);
                   },
                   child: Container(
-                    margin: EdgeInsets.symmetric(vertical: context.spacing.sm),
+                    margin: EdgeInsets.symmetric(
+                      vertical: context.spacing.sm.h,
+                    ),
                     child: BookingCard(
                       linkImage: hotel.image,
                       name: hotel.name,
@@ -126,7 +129,7 @@ class _HistoryState extends State<History> with AutomaticKeepAliveClientMixin {
                 );
               } else {
                 return controller.hasMore && controller.isLoading
-                    ? const VerticalSkeletonCard(height: 120)
+                    ? VerticalSkeletonCard(height: 120.h)
                     : const SizedBox.shrink();
               }
             },

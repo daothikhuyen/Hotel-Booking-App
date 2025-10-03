@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/utils/translation_helper.dart';
 

@@ -1,14 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:hotel_booking_app/data/repositories/api_status.dart';
-import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/routing/page_routes.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/alter/loading_overlay.dart';
 import 'package:hotel_booking_app/ui/core/widgets/alter/snack_bar.dart';
 import 'package:hotel_booking_app/ui/features/auth/view_model/auth_controller.dart';
 import 'package:hotel_booking_app/ui/features/auth/widgets/social_item.dart';
-import 'package:provider/provider.dart';
 
 class SocailSection extends StatefulWidget {
   const SocailSection({super.key, this.error});
@@ -48,9 +42,9 @@ class _SocailSectionState extends State<SocailSection> {
             }
           },
         ),
-        SizedBox(width: context.spacing.sm),
+        SizedBox(width: context.spacing.sm.w),
         SocialItem(linkIcon: Assets.images.icon.iconApple, onPressed: () {}),
-        SizedBox(width: context.spacing.sm),
+        SizedBox(width: context.spacing.sm.w),
         SocialItem(linkIcon: Assets.images.icon.iconFacebook, onPressed: () {}),
       ],
     );

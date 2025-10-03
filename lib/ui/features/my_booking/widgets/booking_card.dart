@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
 import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
@@ -29,37 +30,40 @@ class BookingCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 176,
+      height: 170.h,
       padding: EdgeInsets.all(context.spacing.sm),
       decoration: BoxDecoration(
         border: Border.all(
-          width: 1.3,
+          width: 1.3.w,
           color: context.colorScheme.outline.withValues(alpha: 0.5),
         ),
         borderRadius: BorderRadius.circular(18),
       ),
       child: Row(
         children: [
-          Container(
-            width: 96,
-            height: 152,
-            margin: EdgeInsets.only(
-              right: context.spacing.sm,
-              left: context.spacing.xs,
-            ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(13),
-              image: DecorationImage(
-                image:
-                    linkImage != ''
-                        ? NetworkImage(linkImage!)
-                        : AssetImage(Assets.images.home.frameOne.path)
-                            as ImageProvider,
-                fit: BoxFit.cover,
+          Expanded(
+            flex: 3,
+            child: Container(
+              width: 96.w,
+              margin: EdgeInsets.only(
+                right: context.spacing.sm.w,
+                left: context.spacing.xs.w,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(13),
+                image: DecorationImage(
+                  image:
+                      linkImage != ''
+                          ? NetworkImage(linkImage!)
+                          : AssetImage(Assets.images.home.frameOne.path)
+                              as ImageProvider,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
           Expanded(
+            flex: 5,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -78,15 +82,15 @@ class BookingCard extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(right: context.spacing.lg),
+                      padding: EdgeInsets.only(right: context.spacing.sm.w),
                       child: Row(
                         children: [
                           SvgPicture.asset(
                             Assets.images.icon.solarStarBold,
-                            width: 16,
-                            height: 16,
+                            width: 16.w,
+                            height: 16.h,
                           ),
-                          SizedBox(height: context.spacing.xs),
+                          SizedBox(height: context.spacing.xs.h),
                           Text(
                             rating,
                             style: HBTextStyles.bodySemiboldSmall(
@@ -98,7 +102,7 @@ class BookingCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: context.spacing.xs),
+                SizedBox(height: context.spacing.xs.h),
                 Row(
                   children: [
                     SvgPicture.asset(
@@ -108,7 +112,7 @@ class BookingCard extends StatelessWidget {
                         BlendMode.srcIn,
                       ),
                     ),
-                    SizedBox(height: context.spacing.xs),
+                    SizedBox(height: context.spacing.xs.h),
                     Text(
                       location,
                       style: HBTextStyles.bodyRegularSmall(
@@ -139,11 +143,11 @@ class BookingCard extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.symmetric(vertical: context.spacing.sm),
+                  margin: EdgeInsets.symmetric(vertical: context.spacing.sm.h),
                   child: const BuildDivider(),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(right: context.spacing.sm),
+                  padding: EdgeInsets.only(right: context.spacing.sm.w),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -170,7 +174,7 @@ class BookingCard extends StatelessWidget {
                 ),
                 SizedBox(height:  context.spacing.xs),
                 Padding(
-                  padding: EdgeInsets.only(right:  context.spacing.sm),
+                  padding: EdgeInsets.only(right:  context.spacing.sm.w),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

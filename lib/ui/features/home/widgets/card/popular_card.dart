@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/utils/format.dart';
 
 class PopularCard extends StatefulWidget {
@@ -32,9 +28,9 @@ class _PopularCardState extends State<PopularCard> {
       child: Stack(
         children: [
           Container(
-            width: 156,
-            height: 220,
-            margin: EdgeInsets.only(right:  context.spacing.sm),
+            width: 150.w,
+            height: 200.h,
+            margin: EdgeInsets.only(right: context.spacing.md.w),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
@@ -49,8 +45,8 @@ class _PopularCardState extends State<PopularCard> {
           ),
 
           Container(
-            width: 156,
-            height: 220,
+            width: 150.w,
+            height: 200.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: context.colorScheme.inverseSurface.withValues(alpha: 0.35),
@@ -58,12 +54,16 @@ class _PopularCardState extends State<PopularCard> {
           ),
 
           Positioned(
-            top: 10,
-            right: 18,
+            top: 10.h,
+            right: 24.w,
             child: CircleAvatar(
-              radius: 10,
+              radius: 10.r,
               backgroundColor: context.colorScheme.onPrimary,
-              child: SvgPicture.asset(Assets.images.icon.heart),
+              child: SvgPicture.asset(
+                Assets.images.icon.heart,
+                width: 10.w,
+                height: 10.h,
+              ),
             ),
           ),
 
@@ -74,8 +74,8 @@ class _PopularCardState extends State<PopularCard> {
 
             child: Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: context.spacing.sm,
-                vertical: context.spacing.lg,
+                horizontal: context.spacing.sm.w,
+                vertical: context.spacing.md.h,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,7 +93,7 @@ class _PopularCardState extends State<PopularCard> {
                       context.colorScheme.onPrimary,
                     ),
                   ),
-                  SizedBox(height: context.spacing.xs),
+                  SizedBox(height: context.spacing.xs.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -108,17 +108,17 @@ class _PopularCardState extends State<PopularCard> {
                         children: [
                           SvgPicture.asset(
                             Assets.images.icon.solarStarBold,
-                            width: 12,
-                            height: 12,
+                            width: 12.w,
+                            height: 12.h,
                           ),
-                          SizedBox(height: context.spacing.xs),
+                          SizedBox(width: context.spacing.xs),
                           Text(
                             '${widget.rating}',
                             style: HBTextStyles.bodySemiboldXSmall(
                               context.colorScheme.onPrimary,
                             ),
                           ),
-                          SizedBox(height: context.spacing.sm),
+                          SizedBox(width: context.spacing.sm.w),
                         ],
                       ),
                     ],

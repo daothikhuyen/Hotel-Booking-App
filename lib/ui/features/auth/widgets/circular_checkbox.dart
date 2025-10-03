@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 
 class CircularCheckbox extends StatefulWidget {
   const CircularCheckbox({
@@ -36,12 +35,12 @@ class _CircularCheckboxState extends State<CircularCheckbox> {
           _isCheckbox
               ? Icon(
                 Icons.check_circle,
-                size: widget.size ?? 25.0,
+                size: widget.size ?? 25.h,
                 color: Theme.of(context).colorScheme.primary,
               )
               : Icon(
                 Icons.circle_outlined,
-                size: widget.size ?? 25.0,
+                size: widget.size ?? 25.h,
                 color: context.colorScheme.secondary,
               ),
     );

@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/header_card.dart';
 import 'package:hotel_booking_app/ui/features/request_booking/widgets/items/item_counter.dart';
 
@@ -36,7 +33,7 @@ class _CounterCardState extends State<CounterCard> {
               icon: Assets.images.icon.akarIconsMinus,
               color: context.colorScheme.primary,
               background: context.colorScheme.secondary,
-              size: 30,
+              size: 25.r,
               onPressed: () {
                 setState(() {
                   if (guestCount > 0) guestCount -= 1;
@@ -58,7 +55,7 @@ class _CounterCardState extends State<CounterCard> {
               icon: Assets.images.icon.plus,
               color: context.colorScheme.onSecondary,
               background: context.colorScheme.primary,
-              size: 30,
+              size: 25.r,
               onPressed: () {
                 setState(() {
                   guestCount += 1;

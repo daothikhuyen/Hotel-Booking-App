@@ -1,9 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/data/model/booking.dart';
-import 'package:hotel_booking_app/data/repositories/api_status.dart';
-import 'package:hotel_booking_app/routing/page_routes.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/alter/snack_bar.dart';
 import 'package:hotel_booking_app/ui/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/primary_btn.dart';
@@ -12,7 +8,6 @@ import 'package:hotel_booking_app/ui/features/my_booking/view_model/my_booking_c
 import 'package:hotel_booking_app/ui/features/request_booking/view_model/booking_controller.dart';
 import 'package:hotel_booking_app/ui/features/request_booking/widgets/checkout/info_hotel_booking.dart';
 import 'package:hotel_booking_app/ui/features/request_booking/widgets/checkout/promo_card.dart';
-import 'package:provider/provider.dart';
 
 class CheckOut extends StatefulWidget {
   const CheckOut({required this.booking, super.key});
@@ -41,7 +36,7 @@ class _CheckOutState extends State<CheckOut> {
         padding: EdgeInsets.only(
           left: context.spacing.lg,
           right: context.spacing.lg,
-          top: context.spacing.xl,
+          top: context.spacing.lg,
         ),
         child: SingleChildScrollView(
           child: Column(
@@ -58,7 +53,7 @@ class _CheckOutState extends State<CheckOut> {
               // promo
               SizedBox(height: context.spacing.lg),
               const PromoCard(),
-              SizedBox(height: context.spacing.xs),
+              SizedBox(height: context.spacing.sm),
             ],
           ),
         ),
@@ -87,7 +82,7 @@ class _CheckOutState extends State<CheckOut> {
             });
           },
           bold: true,
-          size: 56,
+          size: 46.h,
           isSelected: true,
         ),
       ),

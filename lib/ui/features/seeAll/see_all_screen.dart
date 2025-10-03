@@ -1,12 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:hotel_booking_app/routing/page_routes.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/ui/features/home/view_model/hotel_controller.dart';
 import 'package:hotel_booking_app/ui/features/seeAll/see_all_tab.dart';
-import 'package:provider/provider.dart';
 
 class SeeAllScreen extends StatefulWidget {
   const SeeAllScreen({required this.index, Key? key})
@@ -51,18 +46,18 @@ class _SeeAllScreenState extends State<SeeAllScreen>
             SliverToBoxAdapter(
               child: Padding(
                 padding: EdgeInsets.only(
-                  left: context.spacing.lg,
-                  right: context.spacing.lg,
+                  left: context.spacing.lg.w,
+                  right: context.spacing.lg.w,
                 ),
                 child: Column(
                   children: [
                     Container(
                       margin: EdgeInsets.only(
-                        top: context.spacing.xxl,
-                        bottom: context.spacing.lg,
+                        top: context.spacing.xxl.h,
+                        bottom: context.spacing.lg.h,
                       ),
                       padding: context.spacing.allXs,
-                      height: 55,
+                      height: 45.h,
                       decoration: BoxDecoration(
                         color: context.colorScheme.outline.withValues(
                           alpha: 0.25,

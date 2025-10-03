@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 
 class AppSpacing {
   const AppSpacing({this.base = 4});
@@ -33,7 +33,7 @@ class AppSpacing {
 }
 
 class AppHeights {
-  const AppHeights({this.toolbar = 75, this.expandedAppBar = 75});
+  const AppHeights({this.toolbar = 65, this.expandedAppBar = 65});
   final double toolbar;
   final double expandedAppBar;
 }

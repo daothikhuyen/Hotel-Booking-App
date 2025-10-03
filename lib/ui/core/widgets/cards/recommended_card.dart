@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/utils/format.dart';
 
 class RecommendedCard extends StatelessWidget {
@@ -24,18 +20,18 @@ class RecommendedCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 85,
+      height: 85.h,
       child: Row(
         children: [
           Container(
-            width: 85,
-            height: 85,
+            width: 85.h,
+            height: 85.h,
             margin: EdgeInsets.only(
               right: context.spacing.sm,
               left: context.spacing.xs,
             ),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(13),
+              borderRadius: BorderRadius.circular(13.r),
               image: DecorationImage(
                 image:
                     linkImage != ''
@@ -46,6 +42,7 @@ class RecommendedCard extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(width: context.spacing.xs.w),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -62,13 +59,13 @@ class RecommendedCard extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(right: context.spacing.lg),
+                      padding: EdgeInsets.only(right: context.spacing.lg.w),
                       child: Row(
                         children: [
                           SvgPicture.asset(
                             Assets.images.icon.solarStarBold,
-                            width: 16,
-                            height: 16,
+                            width: 16.w,
+                            height: 16.h,
                           ),
                           SizedBox(width: context.spacing.xs),
                           Text(
@@ -82,7 +79,7 @@ class RecommendedCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: context.spacing.sm),
+                SizedBox(height: context.spacing.sm.h),
                 Row(
                   children: [
                     SvgPicture.asset(

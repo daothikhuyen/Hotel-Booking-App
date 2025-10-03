@@ -12,7 +12,6 @@ class HotelController extends ChangeNotifier {
 
   bool isLoading = false;
   bool hasMore = true;
-  bool isFilter = false;
   static const int limit = 10;
   String? error;
 
@@ -107,43 +106,10 @@ class HotelController extends ChangeNotifier {
       );
       notifyListeners();
     } on AppException catch (e) {
-      throw AppException(type: e.type,message: e.message);
+      throw AppException(type: e.type, message: e.message);
     }
   }
 
-  Future<void> searchHotel(BuildContext context, {required String text}) async {
-    try {
-      listHotelSearch = await _service.searchHotel(context, text, limit);
-      notifyListeners();
-    } on AppException catch (e) {
-      throw AppException(type: e.type,message: e.message);
-    }
-  }
-
-  Future<void> filterHotel(
-    BuildContext context,
-    String? location,
-    double? price,
-    int? bed,
-    int? bathroom,
-    int? rating,
-  ) async {
-    try {
-      listHotelSearch = await _service.filterHotel(
-        context,
-        location ?? '',
-        price ?? 0,
-        bed ?? 0,
-        bathroom ?? 0,
-        rating ?? 0,
-      );
-      isFilter = true;
-      notifyListeners();
-    } on AppException catch (e) {
-      throw AppException(type: e.type,message: e.message);
-    }
-  }
-  
   void reset(int index) {
     switch (index) {
       case 0:

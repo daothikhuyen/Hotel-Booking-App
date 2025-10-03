@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/utils/format.dart';
 
 class BestTodayCard extends StatelessWidget {
@@ -28,13 +24,13 @@ class BestTodayCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 101,
-      width: 300,
+      height: 101.h,
+      width: 300.w,
       padding: EdgeInsets.all(context.spacing.sm),
-      margin: EdgeInsets.only(right: context.spacing.md),
+      margin: EdgeInsets.only(right: context.spacing.md.w),
       decoration: BoxDecoration(
         border: Border.all(
-          width: 1.02,
+          width: 1.02.w,
           color: context.colorScheme.outline.withValues(alpha: 0.7),
         ),
         borderRadius: BorderRadius.circular(18),
@@ -43,8 +39,8 @@ class BestTodayCard extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: 75,
-            height: 75,
+            width: 75.h,
+            height: 75.h,
             margin: EdgeInsets.only(
               right: context.spacing.sm,
               left: context.spacing.xs,
@@ -95,8 +91,8 @@ class BestTodayCard extends StatelessWidget {
                 children: [
                   SvgPicture.asset(
                     Assets.images.icon.solarStarBold,
-                    width: 16,
-                    height: 16,
+                    width: 16.w,
+                    height: 16.h,
                   ),
                   SizedBox(width: context.spacing.xs),
                   Text(

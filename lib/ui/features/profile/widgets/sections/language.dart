@@ -1,14 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/build_divider.dart';
 import 'package:hotel_booking_app/ui/features/profile/data/languages_data.dart';
 import 'package:hotel_booking_app/ui/features/profile/view_model/profile_controller.dart';
 import 'package:hotel_booking_app/ui/features/profile/widgets/language_card.dart';
 import 'package:hotel_booking_app/utils/translation_helper.dart';
-import 'package:provider/provider.dart';
 
 class Language extends StatefulWidget {
   const Language({super.key});
@@ -31,9 +27,9 @@ class _LanguageState extends State<Language> {
       ),
       body: Padding(
         padding: EdgeInsets.only(
-          left: context.spacing.lg,
-          right: context.spacing.lg,
-          top: context.spacing.xl,
+          left: context.spacing.lg.w,
+          right: context.spacing.lg.w,
+          top: context.spacing.xl.h,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,7 +39,7 @@ class _LanguageState extends State<Language> {
               padding: EdgeInsets.all(context.spacing.lg),
               decoration: BoxDecoration(
                 border: Border.all(
-                  width: 1.01,
+                  width: 1.01.w,
                   color: context.colorScheme.outline,
                 ),
                 borderRadius: BorderRadius.circular(12),
@@ -87,13 +83,13 @@ class _LanguageState extends State<Language> {
                 ],
               ),
             ),
-            SizedBox(height: context.spacing.xxl),
+            SizedBox(height: context.spacing.xxl.h),
             Container(
               width: double.infinity,
               padding: EdgeInsets.all(context.spacing.lg),
               decoration: BoxDecoration(
                 border: Border.all(
-                  width: 1.01,
+                  width: 1.01.w,
                   color: context.colorScheme.outline,
                 ),
                 borderRadius: BorderRadius.circular(12),
@@ -107,7 +103,7 @@ class _LanguageState extends State<Language> {
                       context.colorScheme.onTertiary,
                     ),
                   ),
-                  SizedBox(height: context.spacing.md),
+                  SizedBox(height: context.spacing.md.h),
 
                   ...otherLanguages.asMap().entries.map((entry) {
                     final index = entry.key;
@@ -124,7 +120,7 @@ class _LanguageState extends State<Language> {
                         if (index < otherLanguages.length - 1)
                           Container(
                             margin: EdgeInsets.symmetric(
-                              vertical: context.spacing.lg,
+                              vertical: context.spacing.lg.h,
                             ),
                             child: const BuildDivider(),
                           ),

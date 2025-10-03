@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
-import 'package:hotel_booking_app/routing/page_routes.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/alter/page_alter_null.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/build_divider.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/recommended_card.dart';
@@ -31,7 +28,7 @@ class _SeeAllTabState extends State<SeeAllTab>
   void initState() {
     super.initState();
 
-      controller = widget.controller;
+    controller = widget.controller;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       loadData(loadMore: false).then((value) {
         setState(() {

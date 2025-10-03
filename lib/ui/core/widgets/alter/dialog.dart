@@ -1,17 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
-import 'package:hotel_booking_app/data/repositories/api_status.dart';
-import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/routing/page_routes.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/alter/loading_overlay.dart';
 import 'package:hotel_booking_app/ui/core/widgets/alter/snack_bar.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/second_btn.dart';
 import 'package:hotel_booking_app/ui/features/auth/view_model/auth_controller.dart';
-import 'package:provider/provider.dart';
 
 class HBDialog {
   Future<void> showAlertDialog({
@@ -65,12 +57,8 @@ class HBDialog {
       builder: (context) {
         return Dialog(
           child: Container(
-            padding: EdgeInsets.only(
-              top: context.spacing.xxl,
-              left: context.spacing.xl,
-              right: context.spacing.xl,
-            ),
-            height: 311,
+            padding: context.spacing.allLg.h,
+            // height: 311.h,
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(18)),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -97,8 +85,8 @@ class HBDialog {
                       child: SecondBtn(
                         titleBtn: context.l10n.logout,
                         color: context.colorScheme.error,
-                        radiusSize: 12,
-                        size: 46,
+                        radiusSize: 12.r,
+                        size: 40.h,
                         onPressed: () async {
                           context.replace(PageRoutes.signIn);
                           LoadingOverlay().showLoading(context);
@@ -119,7 +107,7 @@ class HBDialog {
                           context.pop(context);
                         },
                         bold: true,
-                        size: 46,
+                        size: 40.h,
                         isSelected: true,
                       ),
                     ),

@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
-import 'package:hotel_booking_app/routing/page_routes.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/alter/dialog.dart';
 import 'package:hotel_booking_app/ui/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/primary_btn.dart';
@@ -12,7 +9,6 @@ import 'package:hotel_booking_app/ui/features/request_booking/widgets/request/da
 import 'package:hotel_booking_app/ui/features/request_booking/widgets/request/pay_with.dart';
 import 'package:hotel_booking_app/ui/features/request_booking/widgets/request/payment_detail.dart';
 import 'package:hotel_booking_app/utils/helpers/booking_helper.dart';
-import 'package:provider/provider.dart';
 
 class BookingScreen extends StatefulWidget {
   const BookingScreen({required this.hotel, super.key});
@@ -45,7 +41,7 @@ class _BookingScreenState extends State<BookingScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: context.spacing.lg),
+            padding: EdgeInsets.symmetric(horizontal: context.spacing.lg.h),
             child: Column(
               children: [
                 // selected date
@@ -88,12 +84,9 @@ class _BookingScreenState extends State<BookingScreen> {
       ),
 
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: context.spacing.lg,
-          vertical: context.spacing.xxl,
-        ),
+        padding: context.spacing.allLg.h,
         child: PrimaryBtn(
-          size: 56,
+          size: 46.h,
           textButton: context.l10n.titleCheckOut,
           onPressed: () {
             if (nightCount == null || numberGuest == null) {

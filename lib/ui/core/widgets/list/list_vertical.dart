@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
-import 'package:hotel_booking_app/routing/page_routes.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/build_divider.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/recommended_card.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/vertical_skeleton_card.dart';
@@ -29,11 +26,11 @@ class _ListVerticalState extends State<ListVertical> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: context.spacing.lg),
+      padding: EdgeInsets.only(bottom: context.spacing.lg.h),
       child: Padding(
         padding: EdgeInsets.only(
-          top: context.spacing.lg,
-          right: context.spacing.sm,
+          top: context.spacing.lg.h,
+          right: context.spacing.sm.w,
         ),
         child:
             widget.listHotels.isNotEmpty
@@ -58,8 +55,8 @@ class _ListVerticalState extends State<ListVertical> {
                         if (index < widget.listHotels.length - 1)
                           Padding(
                             padding: EdgeInsets.symmetric(
-                              horizontal: context.spacing.xs,
-                              vertical: context.spacing.xl,
+                              horizontal: context.spacing.xs.h,
+                              vertical: context.spacing.xl.w,
                             ),
                             child: const BuildDivider(),
                           )
@@ -77,8 +74,8 @@ class _ListVerticalState extends State<ListVertical> {
                         if (index < 4 - 1)
                           Padding(
                             padding: EdgeInsets.symmetric(
-                              horizontal: context.spacing.xs,
-                              vertical: context.spacing.xl,
+                              horizontal: context.spacing.xs.h,
+                              vertical: context.spacing.xl.w,
                             ),
                             child: const BuildDivider(),
                           )

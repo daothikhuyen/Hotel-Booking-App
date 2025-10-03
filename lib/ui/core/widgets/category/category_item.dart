@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/utils/translation_helper.dart';
 
 class CategoryItem extends StatelessWidget {
@@ -18,7 +16,7 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 43,
+      height: 40.h,
       margin: EdgeInsets.symmetric(horizontal: context.spacing.xs),
       padding: EdgeInsets.symmetric(
         vertical: context.spacing.xs,
@@ -45,8 +43,8 @@ class CategoryItem extends StatelessWidget {
           // Icon or image
           if (linkImage != '')
             Container(
-              width: 30,
-              height: 30,
+              width: 30.w,
+              height: 30.h,
               margin: EdgeInsets.only(right: context.spacing.xs),
               padding: EdgeInsets.all(context.spacing.xs),
               decoration: BoxDecoration(

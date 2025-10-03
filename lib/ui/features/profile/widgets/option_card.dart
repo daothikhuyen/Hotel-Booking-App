@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 
 class OptionCard extends StatelessWidget {
   const OptionCard({
@@ -24,8 +21,8 @@ class OptionCard extends StatelessWidget {
         children: [
           SvgPicture.asset(
             image,
-            width: 24,
-            height: 24,
+            width: 20.w,
+            height: 20.h,
             colorFilter: ColorFilter.mode(
               context.colorScheme.onSurface,
               BlendMode.srcIn,
@@ -34,11 +31,11 @@ class OptionCard extends StatelessWidget {
           SizedBox(width: context.spacing.lg),
           Expanded(
             child: Container(
-              height: 48,
+              height: 40.h,
               decoration: BoxDecoration(
                 border: Border(
                   bottom: BorderSide(
-                    width: 1.01,
+                    width: 1.01.w,
                     color: context.colorScheme.outline.withValues(alpha: 0.5),
                   ),
                 ),

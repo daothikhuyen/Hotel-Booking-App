@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/routing/page_routes.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/features/profile/widgets/option_card.dart';
 
 class SettingSection extends StatelessWidget {
@@ -19,7 +14,7 @@ class SettingSection extends StatelessWidget {
           style: HBTextStyles.bodyMediumXLarge(context.colorScheme.onTertiary),
           textAlign: TextAlign.start,
         ),
-        SizedBox(height: context.spacing.xxl),
+        SizedBox(height: context.spacing.xl.h),
         // Option card for profile
         OptionCard(
           title: context.l10n.yourCard,
@@ -28,7 +23,7 @@ class SettingSection extends StatelessWidget {
             //TODOS:...
           },
         ),
-        SizedBox(height: context.spacing.xl),
+        SizedBox(height: context.spacing.lg.h),
         OptionCard(
           title: context.l10n.security,
           image: Assets.images.icon.shieldDone,
@@ -36,7 +31,7 @@ class SettingSection extends StatelessWidget {
             //TODOS:..
           },
         ),
-        SizedBox(height: context.spacing.xl),
+        SizedBox(height: context.spacing.lg.h),
         OptionCard(
           title: context.l10n.notification,
           image: Assets.images.icon.vector,
@@ -44,7 +39,7 @@ class SettingSection extends StatelessWidget {
             //TODOS:...
           },
         ),
-        SizedBox(height: context.spacing.xl),
+        SizedBox(height: context.spacing.lg.h),
         OptionCard(
           title: context.l10n.languages,
           image: Assets.images.icon.internet1,
@@ -52,7 +47,7 @@ class SettingSection extends StatelessWidget {
             context.push(PageRoutes.language);
           },
         ),
-        SizedBox(height: context.spacing.xl),
+        SizedBox(height: context.spacing.lg.h),
         OptionCard(
           title: context.l10n.help_support,
           image: Assets.images.icon.dangerCircle,

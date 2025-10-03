@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
-import 'package:hotel_booking_app/routing/page_routes.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/header_card.dart';
 import 'package:hotel_booking_app/ui/features/home/widgets/card/popular_card.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
@@ -20,7 +17,7 @@ class _ListPopularState extends State<ListPopular> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom:  context.spacing.md),
+      padding: EdgeInsets.only(bottom: context.spacing.md),
       child: Column(
         children: [
           HeaderCard(
@@ -34,7 +31,7 @@ class _ListPopularState extends State<ListPopular> {
 
           if (widget.listHotels.isNotEmpty)
             SizedBox(
-              height: 221,
+              height: 190.h,
               child: ListView.builder(
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
@@ -58,7 +55,7 @@ class _ListPopularState extends State<ListPopular> {
             )
           else
             SizedBox(
-              height: 221,
+              height: 190.h,
               child: ListView.builder(
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
@@ -68,9 +65,9 @@ class _ListPopularState extends State<ListPopular> {
                     interval: const Duration(seconds: 5),
                     colorOpacity: 0,
                     child: Container(
-                      margin: EdgeInsets.only(right:  context.spacing.sm),
-                      width: 156,
-                      height: 220,
+                      margin: EdgeInsets.only(right: context.spacing.sm),
+                      width: 150.w,
+                      height: 190.h,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         color: context.colorScheme.inverseSurface.withValues(

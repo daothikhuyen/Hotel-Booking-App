@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:hotel_booking_app/routing/page_routes.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 
 class HBAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HBAppBar({
@@ -19,7 +15,7 @@ class HBAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback onPressed;
 
   @override
-  Size get preferredSize => const Size.fromHeight(50);
+  Size get preferredSize => Size.fromHeight(50.h);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +26,7 @@ class HBAppBar extends StatelessWidget implements PreferredSizeWidget {
                 color: context.colorScheme.surface,
                 border: Border(
                   bottom: BorderSide(
-                    width: 0.5,
+                    width: 0.5.w,
                     color: context.colorScheme.outline,
                   ),
                 ),
@@ -38,17 +34,17 @@ class HBAppBar extends StatelessWidget implements PreferredSizeWidget {
                   BoxShadow(
                     color: context.colorScheme.onTertiary,
                     offset: const Offset(0, -1),
-                    blurRadius: 10,
+                    blurRadius: 10.r,
                   ),
                 ],
               )
               : const BoxDecoration(),
       child: Padding(
         padding: EdgeInsets.only(
-          top: context.spacing.xxl,
-          bottom: context.spacing.lg,
-          right: context.spacing.xl,
-          left: context.spacing.xl,
+          top: context.spacing.xxl.h,
+          bottom: context.spacing.lg.h,
+          right: context.spacing.xl.w,
+          left: context.spacing.xl.w,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -76,6 +72,7 @@ class HBAppBar extends StatelessWidget implements PreferredSizeWidget {
               },
               child: Icon(
                 Icons.home_outlined,
+                size: 24.w,
                 color:
                     isScrolled ? context.colorScheme.onSurfaceVariant : color,
               ),

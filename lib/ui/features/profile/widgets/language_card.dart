@@ -1,8 +1,4 @@
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 
 class LanguageCard extends StatefulWidget {
   const LanguageCard({
@@ -41,7 +37,7 @@ class _LanguageCardState extends State<LanguageCard> {
           ),
       
           if (widget.isSelected)
-            SvgPicture.asset(Assets.images.icon.tick, width: 16, height: 16)
+            SvgPicture.asset(Assets.images.icon.tick, width: 16.w, height: 16.w)
           else
             const SizedBox.shrink(),
         ],

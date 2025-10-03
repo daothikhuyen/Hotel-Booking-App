@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hotel_booking_app/data/model/comment_user.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
@@ -29,8 +30,8 @@ class ReviewCard extends StatelessWidget {
               children: [
                 SvgPicture.asset(
                   Assets.images.icon.solarStarBold,
-                  width: 16,
-                  height: 16,
+                  width: 16.w,
+                  height: 16.h,
                 ),
                 SizedBox(width: context.spacing.xs),
                 Text(
@@ -45,8 +46,8 @@ class ReviewCard extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.only(
-            right: context.spacing.sm,
-            top: context.spacing.xs,
+            right: context.spacing.sm.w,
+            top: context.spacing.xs.h,
           ),
           child: ReadMore(text: comment.comment.content),
         ),

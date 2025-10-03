@@ -1,9 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
-import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/utils/format.dart';
 
 class HotelSearchCard extends StatelessWidget {
@@ -20,7 +16,7 @@ class HotelSearchCard extends StatelessWidget {
           Column(
             children: [
               Container(
-                height: 180,
+                height: 180.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(13),
                   image: DecorationImage(
@@ -33,9 +29,9 @@ class HotelSearchCard extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: context.spacing.sm),
+              SizedBox(height: context.spacing.sm.h),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: context.spacing.xs),
+                padding: EdgeInsets.symmetric(horizontal: context.spacing.xs.h),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +45,7 @@ class HotelSearchCard extends StatelessWidget {
                             context.colorScheme.onSurfaceVariant,
                           ),
                         ),
-                        SizedBox(height: context.spacing.xs),
+                        SizedBox(height: context.spacing.xs.h),
                         Text(
                           hotel.location,
                           style: HBTextStyles.bodyRegularSmall(
@@ -69,7 +65,7 @@ class HotelSearchCard extends StatelessWidget {
                                     BlendMode.srcIn,
                                   ),
                                 ),
-                                SizedBox(height: context.spacing.xs),
+                                SizedBox(height: context.spacing.xs.h),
                                 Text(
                                   context.l10n.bed(hotel.bed ?? 0),
                                   style: HBTextStyles.bodySemiboldSmall(
@@ -89,7 +85,7 @@ class HotelSearchCard extends StatelessWidget {
                                     BlendMode.srcIn,
                                   ),
                                 ),
-                                SizedBox(height: context.spacing.xs),
+                                SizedBox(height: context.spacing.xs.h),
                                 Text(
                                   context.l10n.bathroom(hotel.bathroom ?? 0),
                                   style: HBTextStyles.bodySemiboldSmall(
@@ -111,7 +107,7 @@ class HotelSearchCard extends StatelessWidget {
                             context.colorScheme.primary,
                           ),
                         ),
-                        SizedBox(height: context.spacing.xs),
+                        SizedBox(height: context.spacing.xs.h),
                         Text(
                           context.l10n.perNight,
                           style: HBTextStyles.bodyRegularSmall(
@@ -126,7 +122,7 @@ class HotelSearchCard extends StatelessWidget {
             ],
           ),
           Container(
-            height: 180,
+            height: 180.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: context.colorScheme.inverseSurface.withValues(alpha: 0.15),
@@ -142,8 +138,8 @@ class HotelSearchCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: 56,
-                    height: 24,
+                    width: 56.w,
+                    height: 24.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: context.colorScheme.surface.withValues(
@@ -155,8 +151,8 @@ class HotelSearchCard extends StatelessWidget {
                       children: [
                         SvgPicture.asset(
                           Assets.images.icon.solarStarBold,
-                          width: 12,
-                          height: 12,
+                          width: 12.w,
+                          height: 12.w,
                         ),
                         SizedBox(height: context.spacing.xs),
                         Text(
@@ -170,8 +166,8 @@ class HotelSearchCard extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    width: 30,
-                    height: 30,
+                    width: 30.w,
+                    height: 30.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: context.colorScheme.surface.withValues(

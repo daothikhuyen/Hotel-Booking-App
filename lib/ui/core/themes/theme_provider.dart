@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 
 class ThemeProvider with ChangeNotifier {
   ThemeData _themeData = darkMode;

@@ -1,9 +1,18 @@
 // validator for email
-import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 // validator for text
+bool validateForm(GlobalKey<FormState> formKey) {
+
+  if(!formKey.currentState!.validate()) {
+    return false;
+  }
+
+  return true;
+
+}
+
 String? validateText(BuildContext context, String? value, String errorMessage) {
   if (value == null || value.isEmpty) {
     return errorMessage;

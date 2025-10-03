@@ -1,17 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:hotel_booking_app/data/repositories/api_status.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/alter/loading_overlay.dart';
 import 'package:hotel_booking_app/ui/core/widgets/alter/snack_bar.dart';
 import 'package:hotel_booking_app/ui/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/ui/core/widgets/textfield.dart';
 import 'package:hotel_booking_app/ui/features/auth/view_model/auth_controller.dart';
-import 'package:hotel_booking_app/utils/validator.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
-import 'package:provider/provider.dart';
 
 class PersonalInfo extends StatefulWidget {
   const PersonalInfo({super.key});
@@ -82,7 +76,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                   context.colorScheme.onSurfaceVariant,
                 ),
               ),
-              SizedBox(height: context.spacing.sm),
+              SizedBox(height: context.spacing.sm.h),
               HBTextField(
                 controller: _displayName,
                 hintText: 'Khuyen',
@@ -97,7 +91,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                   context.colorScheme.onSurfaceVariant,
                 ),
               ),
-              SizedBox(height: context.spacing.sm),
+              SizedBox(height: context.spacing.sm.h),
               HBTextField(
                 controller: _email,
                 hintText: 'daothikhuyen@gmail.com',
@@ -112,7 +106,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                   context.colorScheme.onSurfaceVariant,
                 ),
               ),
-              SizedBox(height: context.spacing.sm),
+              SizedBox(height: context.spacing.sm.h),
               HBTextField(
                 controller: _location,
                 hintText: 'San Diego, CA',
@@ -127,7 +121,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                   context.colorScheme.onSurfaceVariant,
                 ),
               ),
-              SizedBox(height: context.spacing.sm),
+              SizedBox(height: context.spacing.sm.h),
               // input for number phone
               InternationalPhoneNumberInput(
                 onInputChanged: (PhoneNumber number) {
@@ -150,9 +144,10 @@ class _PersonalInfoState extends State<PersonalInfo> {
                   errorStyle: HBTextStyles.bodyRegularMedium(
                     context.colorScheme.error,
                   ),
+                  errorMaxLines: 3, 
                 ),
               ),
-              SizedBox(height: context.spacing.huge),
+              SizedBox(height: context.spacing.huge.h),
               SizedBox(
                 width: double.infinity,
                 child: PrimaryBtn(
@@ -170,14 +165,15 @@ class _PersonalInfoState extends State<PersonalInfo> {
 
                       if (result.status == ApiStatus.success) {
                         userProvider.setUser(result.data);
+                        snackBar.showSnackBar(context, result.message);
                       }
-                      snackBar.showSnackBar(context, result.message);
+                      
                     } finally {
                       context.pop();
                     }
                   },
                   bold: true,
-                  size: 56,
+                  size: 56.h,
                   isSelected: false,
                 ),
               ),

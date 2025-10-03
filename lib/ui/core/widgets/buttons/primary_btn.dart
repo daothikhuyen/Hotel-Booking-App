@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 
 class PrimaryBtn extends StatelessWidget {
   const PrimaryBtn({
@@ -33,10 +31,10 @@ class PrimaryBtn extends StatelessWidget {
               !isSelected
                   ? BorderSide(
                     color: context.colorScheme.outline.withValues(alpha: 0.3),
-                    width: 1.01,
+                    width: 1.01.w,
                   )
                   : const BorderSide(width: 0),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12.r),
         ),
         elevation: 0,
       ),

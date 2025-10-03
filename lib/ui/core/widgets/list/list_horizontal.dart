@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
-import 'package:hotel_booking_app/routing/page_routes.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/best_today_card.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/header_card.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/skeleton.dart';
@@ -46,7 +43,7 @@ class _ListHorizontalState extends State<ListHorizontal> {
           child:
               widget.listHotels.isNotEmpty
                   ? SizedBox(
-                    height: 102,
+                    height: 102.h,
                     child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
@@ -83,7 +80,7 @@ class NewCardSkeleton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 102,
+      height: 102.h,
       child: ListView.builder(
         physics: const AlwaysScrollableScrollPhysics(),
         shrinkWrap: true,
@@ -95,13 +92,13 @@ class NewCardSkeleton extends StatelessWidget {
             interval: const Duration(seconds: 5),
             colorOpacity: 1,
             child: Container(
-              height: 101,
-              width: 300,
+              height: 101.h,
+              width: 300.w,
               padding: EdgeInsets.all(context.spacing.sm),
-              margin: EdgeInsets.only(right: context.spacing.md),
+              margin: EdgeInsets.only(right: context.spacing.md.w),
               decoration: BoxDecoration(
                 border: Border.all(
-                  width: 1.01,
+                  width: 1.01.w,
                   color: context.colorScheme.outline.withValues(alpha: 0.7),
                 ),
                 borderRadius: BorderRadius.circular(18),
@@ -109,17 +106,17 @@ class NewCardSkeleton extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  const Skeleton(width: 75, height: 75),
+                  Skeleton(width: 75.w, height: 75.h),
                   SizedBox(width: context.spacing.sm),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Skeleton(width: 150, height: 13),
+                      Skeleton(width: 150.w, height: 13.h),
                       SizedBox(height: context.spacing.sm),
-                      const Skeleton(width: 100, height: 13),
+                      Skeleton(width: 100.w, height: 13.h),
                       SizedBox(height: context.spacing.sm),
-                      const Skeleton(width: 100, height: 13),
+                      Skeleton(width: 100.w, height: 13.h),
                     ],
                   ),
                 ],

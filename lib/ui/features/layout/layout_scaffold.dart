@@ -1,12 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
-import 'package:hotel_booking_app/ui/core/widgets/cards/skeleton.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/features/home/view_model/navigation_controller.dart';
-import 'package:hotel_booking_app/utils/translation_helper.dart';
-import 'package:provider/provider.dart';
+import 'package:hotel_booking_app/ui/features/layout/bottom_nav_bar.dart';
+import 'package:hotel_booking_app/ui/features/layout/side_nav_rail.dart';
 
 class LayoutScaffold extends StatefulWidget {
   const LayoutScaffold({required this.navigationShell, Key? key})
@@ -33,63 +28,29 @@ class _LayoutScaffoldState extends State<LayoutScaffold> {
   @override
   Widget build(BuildContext context) {
     final controller = Provider.of<NavigationController>(context);
+    final useSideNavRail = MediaQuery.sizeOf(context).width >= 600;
 
     return Scaffold(
-      body: widget.navigationShell,
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: context.colorScheme.outline,
-              offset: const Offset(0, -5),
-              blurRadius: 60,
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // Ipad, Desktop: NavigationRail
+          if (useSideNavRail)
+            Expanded(
+              child: SideNavRail(
+                widget: widget,
+                controller: controller,
+              ),
             ),
-          ],
-        ),
-        child: NavigationBarTheme(
-          data: NavigationBarThemeData(
-            labelTextStyle: WidgetStateProperty.resolveWith<TextStyle?>((
-              states,
-            ) {
-              if (states.contains(WidgetState.selected)) {
-                return HBTextStyles.bodySemiboldSmall(
-                  context.colorScheme.primary,
-                );
-              }
-              return HBTextStyles.bodyMediumSmall(
-                context.colorScheme.onTertiary,
-              );
-            }),
-          ),
-          child: NavigationBar(
-            selectedIndex: widget.navigationShell.currentIndex,
-            indicatorColor: Colors.transparent,
-            onDestinationSelected: widget.navigationShell.goBranch,
-            destinations:
-                controller.listDestinations.length >= 2
-                    ? controller.listDestinations.map<NavigationDestination>((
-                      d,
-                    ) {
-                      return NavigationDestination(
-                        icon: SvgPicture.asset(d.icon),
-                        selectedIcon: SvgPicture.asset(
-                          d.icon,
-                          colorFilter: ColorFilter.mode(
-                            context.colorScheme.primary,
-                            BlendMode.srcIn,
-                          ),
-                          fit: BoxFit.cover,
-                        ),
-                        label: getTranslatedText(context, d.labelKey),
-                      );
-                    }).toList()
-                    : [
-                      const Skeleton(width: double.infinity, height: 30),
-                      const Skeleton(width: double.infinity, height: 30),
-                    ],
-          ),
-        ),
+          Expanded(flex: 7, child: widget.navigationShell),
+        ],
       ),
+
+      // Mobile: BottomNavigationBar
+      bottomNavigationBar:
+          useSideNavRail
+              ? null
+              : BottomNavBar(widget: widget, controller: controller),
     );
   }
 }

@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
-
-class HBTextField extends StatelessWidget {
+import 'package:hotel_booking_app/ui/core/core.dart';
+class HBTextField extends StatefulWidget {
   const HBTextField({
     required this.controller,
     required this.hintText,
     required this.color,
+    this.onChanged,
     this.obscureText = false,
     this.validator,
     this.enabled = true,
@@ -14,7 +12,7 @@ class HBTextField extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.next,
     super.key,
-    this.onToggleObscureText, this.onChanged,
+    this.onToggleObscureText,
   });
   final TextEditingController controller;
   final String hintText;
@@ -29,6 +27,19 @@ class HBTextField extends StatelessWidget {
   final ValueChanged<String>? onChanged;
 
   @override
+  State<HBTextField> createState() => _HBTextFieldState();
+}
+
+class _HBTextFieldState extends State<HBTextField> {
+  final FocusNode _focusNode = FocusNode();
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final textColor = context.colorScheme.onSurfaceVariant;
     final hintColor = textColor.withValues(alpha: 0.7);
@@ -40,20 +51,20 @@ class HBTextField extends StatelessWidget {
     );
 
     return TextFormField(
-      controller: controller,
+      controller: widget.controller,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      validator: validator,
-      onChanged: onChanged,
-      enabled: enabled,
+      validator: widget.validator,
+      onChanged: widget.onChanged,
+      enabled: widget.enabled,
       style:
-          enabled
+          widget.enabled
               ? HBTextStyles.bodySemiboldSmall(textColor)
               : HBTextStyles.bodySemiboldSmall(hintColor),
       decoration: InputDecoration(
-        hintText: hintText,
+        hintText: widget.hintText,
         hintStyle: HBTextStyles.bodySemiboldSmall(hintColor),
         filled: true,
-        fillColor: color,
+        fillColor: widget.color,
         border: InputBorder.none,
         enabledBorder: border(Colors.transparent),
         focusedBorder: border(Colors.transparent),
@@ -61,19 +72,21 @@ class HBTextField extends StatelessWidget {
         errorBorder: border(errorColor),
         focusedErrorBorder: border(errorColor),
         suffixIcon:
-            isPassword
+            widget.isPassword
                 ? IconButton(
                   icon: Icon(
-                    obscureText ? Icons.visibility_off : Icons.visibility,
+                    widget.obscureText
+                        ? Icons.visibility_off
+                        : Icons.visibility,
                   ),
-                  onPressed: onToggleObscureText,
+                  onPressed: widget.onToggleObscureText,
                 )
                 : null,
         errorStyle: HBTextStyles.bodyRegularMedium(errorColor),
       ),
-      keyboardType: keyboardType,
-      textInputAction: textInputAction,
-      obscureText: isPassword && obscureText,
+      keyboardType: widget.keyboardType,
+      textInputAction: widget.textInputAction,
+      obscureText: widget.isPassword && widget.obscureText,
     );
   }
 }

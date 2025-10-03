@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 
 class Skeleton extends StatelessWidget {
   const Skeleton({
@@ -25,7 +24,7 @@ class Skeleton extends StatelessWidget {
           width: 1.02,
           color: context.colorScheme.outline.withValues(alpha: 0.7),
         ),
-        borderRadius: BorderRadius.circular(13),
+        borderRadius: BorderRadius.circular(13.r),
         color: context.colorScheme.inverseSurface.withValues(alpha: 0.35),
       ),
     );

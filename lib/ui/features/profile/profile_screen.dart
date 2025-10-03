@@ -1,18 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/routing/page_routes.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/alter/dialog.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/second_btn.dart';
 import 'package:hotel_booking_app/ui/features/auth/view_model/auth_controller.dart';
 import 'package:hotel_booking_app/ui/features/profile/view_model/profile_controller.dart';
 import 'package:hotel_booking_app/ui/features/profile/widgets/setting_section.dart';
-import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -53,9 +45,9 @@ class ProfileView extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.only(
-          left: context.spacing.lg,
-          right: context.spacing.lg,
-          top: context.spacing.xl,
+          left: context.spacing.lg.w,
+          right: context.spacing.lg.r,
+          top: context.spacing.md.h,
         ),
         child: SingleChildScrollView(
           child: Column(
@@ -63,24 +55,24 @@ class ProfileView extends StatelessWidget {
             children: [
               if (user?.email != null)
                 SizedBox(
-                  height: 57,
+                  height: 53.h,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
                         children: [
                           Container(
-                            width: 56,
-                            height: 56,
+                            width: 50.w,
+                            height: 50.h,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
+                              shape: BoxShape.circle,
                               image: DecorationImage(
                                 image: imageProvider,
                                 fit: BoxFit.cover,
                               ),
                             ),
                           ),
-                          SizedBox(width: context.spacing.sm),
+                          SizedBox(width: context.spacing.sm.w),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -94,6 +86,7 @@ class ProfileView extends StatelessWidget {
                                   ),
                                 ),
                               ),
+                              SizedBox(height: context.spacing.xs.h),
                               Text(
                                 user?.location ?? '',
                                 maxLines: 1,
@@ -112,7 +105,11 @@ class ProfileView extends StatelessWidget {
                         onTap: () {
                           context.push(PageRoutes.personalInfo);
                         },
-                        child: SvgPicture.asset(Assets.images.icon.editSquare),
+                        child: SvgPicture.asset(
+                          Assets.images.icon.editSquare,
+                          width: 20.w,
+                          height: 20.h,
+                        ),
                       ),
                     ],
                   ),
@@ -124,8 +121,8 @@ class ProfileView extends StatelessWidget {
                       child: SecondBtn(
                         titleBtn: context.l10n.signIn,
                         color: context.colorScheme.primary,
-                        size: 46,
-                        radiusSize: 12,
+                        size: 46.h,
+                        radiusSize: 12.r,
                         onPressed: () {
                           context.push(PageRoutes.signIn);
                         },
@@ -136,17 +133,17 @@ class ProfileView extends StatelessWidget {
                         textButton: context.l10n.signUp,
                         onPressed: () {},
                         bold: true,
-                        size: 46,
+                        size: 46.h,
                         isSelected: true,
                       ),
                     ),
                   ],
                 ),
-              SizedBox(height: context.spacing.huge),
+              SizedBox(height: context.spacing.lg.h),
               const SettingSection(), // setting
               if (user?.email != null)
                 Padding(
-                  padding: EdgeInsets.only(top:  context.spacing.xs),
+                  padding: EdgeInsets.only(top: context.spacing.xs.h),
                   child: Center(
                     child: TextButton(
                       onPressed: () => hbDialog.showSignOutDialog(context),

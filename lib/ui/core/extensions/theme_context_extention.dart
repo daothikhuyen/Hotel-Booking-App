@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/themes/spacing_constants.dart';
+
 
 extension ThemeContext on BuildContext {
   ThemeData get themeData => Theme.of(this);

@@ -1,19 +1,12 @@
-import 'dart:async';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
-import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/routing/page_routes.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/alter/page_alter_null.dart';
 import 'package:hotel_booking_app/ui/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/ui/core/widgets/textfield.dart';
 import 'package:hotel_booking_app/ui/features/home/view_model/hotel_controller.dart';
+import 'package:hotel_booking_app/ui/features/home/view_model/search_hotel_controller.dart';
 import 'package:hotel_booking_app/ui/features/search/widgets/hotel_search_card.dart';
 import 'package:hotel_booking_app/ui/features/search/widgets/section/filter_card.dart';
-import 'package:provider/provider.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({required this.listHotelRecommentd, super.key});
@@ -38,7 +31,7 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   Future<void> _onSearchChanged() async {
-    final searchController = context.read<HotelController>();
+    final searchController = context.read<SearchHotelController>();
 
     if (_debounce?.isActive ?? false) _debounce?.cancel();
 
@@ -56,7 +49,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Provider.of<HotelController>(context);
+    final controller = Provider.of<SearchHotelController>(context);
 
     return Scaffold(
       appBar: HBAppBar(
@@ -66,19 +59,15 @@ class _SearchScreenState extends State<SearchScreen> {
         onPressed: () => context.go(PageRoutes.homePage),
       ),
       body: Padding(
-        padding: EdgeInsets.only(
-          top: context.spacing.xxl,
-          left: context.spacing.xl,
-          right: context.spacing.xl,
-        ),
+        padding: context.spacing.horizlg.w,
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.only(top: context.spacing.sm),
-              padding: EdgeInsets.symmetric(horizontal: context.spacing.lg),
+              margin: EdgeInsets.only(top: context.spacing.md.h),
+              padding: EdgeInsets.symmetric(horizontal: context.spacing.lg.w),
               decoration: BoxDecoration(
                 border: Border.all(
-                  width: 1.3,
+                  width: 1.3.w,
                   color: context.colorScheme.outline,
                 ),
                 borderRadius: BorderRadius.circular(30),
@@ -117,7 +106,7 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: context.spacing.xs),
+                padding: EdgeInsets.all(context.spacing.xs.w),
                 child: RefreshIndicator(
                   onRefresh: () async {
                     setState(() {

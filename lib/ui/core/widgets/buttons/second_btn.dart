@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 
 class SecondBtn extends StatelessWidget {
   const SecondBtn({
@@ -31,7 +29,7 @@ class SecondBtn extends StatelessWidget {
           vertical: context.spacing.sm,
         ),
         decoration: BoxDecoration(
-          border: Border.all(width: 1.5, color: color),
+          border: Border.all(width: 1.5.w, color: color),
           borderRadius: BorderRadius.circular(radiusSize),
         ),
         child: Center(

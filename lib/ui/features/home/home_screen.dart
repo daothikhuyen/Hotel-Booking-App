@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
-import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/routing/page_routes.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/header_card.dart';
 import 'package:hotel_booking_app/ui/core/widgets/category/category_list.dart';
 import 'package:hotel_booking_app/ui/core/widgets/list/list_horizontal.dart';
@@ -15,7 +9,6 @@ import 'package:hotel_booking_app/ui/features/home/view_model/navigation_control
 import 'package:hotel_booking_app/ui/features/home/widgets/header_bar.dart';
 import 'package:hotel_booking_app/ui/features/home/widgets/list_popular.dart';
 import 'package:hotel_booking_app/ui/features/home/widgets/map_section.dart';
-import 'package:provider/provider.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -38,12 +31,13 @@ class _HomeScreenState extends State<HomeScreen> {
         onRefresh: () async {
           controller.reset(4);
           controllerCategory.reset();
+          await controller.fetchMostPopularHotels(context, limit: 4);
         },
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
-              expandedHeight: context.height.expandedAppBar,
-              toolbarHeight: context.height.toolbar,
+              expandedHeight: context.height.expandedAppBar.h,
+              toolbarHeight:  context.height.toolbar.h,
               elevation: 0,
               shadowColor: context.colorScheme.onSurfaceVariant.withValues(
                 alpha: 0.4,
@@ -55,11 +49,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 background: Center(
                   child: Padding(
                     padding: EdgeInsets.only(
-                      left: context.spacing.lg,
-                      top: context.spacing.xxl,
+                      left: context.spacing.lg.w,
+                      top: context.spacing.lg.h,
                     ),
                     child: SizedBox(
-                      height: 60,
+                      height: 57.h,
                       child: HeaderBar(
                         linkImage: user?.photoURL ?? '',
                         userName: user?.displayName ?? '',
@@ -79,22 +73,25 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(right: context.spacing.lg),
+                      margin: EdgeInsets.only(
+                        right: context.spacing.lg,
+                        bottom: context.spacing.md,
+                      ),
                       width: double.infinity,
-                      height: 72,
+                      height: 62.h,
                       decoration: BoxDecoration(
                         color: context.colorScheme.secondary,
                         border: Border.all(
-                          width: 1.02,
+                          width: 1.02.w,
                           color: context.colorScheme.secondary,
                         ),
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Padding(
                         padding: EdgeInsets.only(
-                          right:  context.spacing.xl,
-                          top:  context.spacing.lg,
-                          bottom:  context.spacing.lg,
+                          right: context.spacing.xl,
+                          top: context.spacing.lg,
+                          bottom: context.spacing.lg,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -124,31 +121,24 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     // Most Popular
-                    LayoutBuilder(
-                      builder: (context, constraints) {
-                        return VisibilityDetector(
-                          key: const Key('popular-section'),
-                          onVisibilityChanged: (info) {
-                            if (info.visibleFraction >= 0.1 &&
-                                controller.listPopular.isEmpty) {
-                              controller.fetchMostPopularHotels(
-                                context,
-                                limit: 4,
-                              );
-                            }
-                          },
-                          child: Column(
-                            children: [
-                              ListPopular(
-                                controller.listPopular,
-                                controller.listPopular.length < 10
-                                    ? controller.listPopular.length
-                                    : 10,
-                              ),
-                            ],
-                          ),
-                        );
+                    VisibilityDetector(
+                      key: const Key('popular-section'),
+                      onVisibilityChanged: (info) {
+                        if (info.visibleFraction >= 0.1 &&
+                            controller.listPopular.isEmpty) {
+                          controller.fetchMostPopularHotels(context, limit: 4);
+                        }
                       },
+                      child: Column(
+                        children: [
+                          ListPopular(
+                            controller.listPopular,
+                            controller.listPopular.length < 10
+                                ? controller.listPopular.length
+                                : 10,
+                          ),
+                        ],
+                      ),
                     ),
 
                     // Recommended For You
@@ -171,13 +161,13 @@ class _HomeScreenState extends State<HomeScreen> {
                               context.push(PageRoutes.seeAllPage, extra: 2);
                             },
                           ),
-                          SizedBox(height: context.spacing.xs),
+                          SizedBox(height: context.spacing.xs.h),
                           // category list
                           CategoryList(
                             key: ValueKey(controllerCategory.listCategory),
                             listCategory: controllerCategory.listCategory,
                           ),
-                          SizedBox(height: context.spacing.sm),
+                          SizedBox(height: context.spacing.sm.h),
                           ListVertical(
                             controller.listRecomended,
                             context.l10n.homeRecommended,
@@ -191,7 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     // Map
                     Padding(
-                      padding: const EdgeInsets.only(right: 18),
+                      padding: EdgeInsets.only(right: 18.w),
                       child: MapSection(title: context.l10n.nearYou),
                     ),
                     // Best Today

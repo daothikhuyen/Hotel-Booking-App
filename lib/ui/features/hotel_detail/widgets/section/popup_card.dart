@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/gen/assets.gen.dart';
@@ -85,10 +86,10 @@ class _PopupCardState extends State<PopupCard> {
                                       )
                                     else
                                       Skeleton(
-                                        width: context.spacing.huge,
-                                        height: context.spacing.sm,
+                                        width: context.spacing.huge.w,
+                                        height: context.spacing.sm.h,
                                       ),
-                                    SizedBox(height: context.spacing.xs),
+                                    SizedBox(height: context.spacing.xs.h),
                                     Row(
                                       children: [
                                         Padding(
@@ -96,8 +97,8 @@ class _PopupCardState extends State<PopupCard> {
                                             right: context.spacing.xs,
                                           ),
                                           child: SvgPicture.asset(
-                                            width: 18,
-                                            height: 18,
+                                            width: 18.w,
+                                            height: 18.h,
                                             Assets.images.icon.frame,
                                           ),
                                         ),
@@ -113,11 +114,11 @@ class _PopupCardState extends State<PopupCard> {
                                                 ),
                                           )
                                         else
-                                          const Skeleton(width: 50, height: 5),
+                                          Skeleton(width: 50.w, height: 5.h),
                                         Padding(
                                           padding: EdgeInsets.only(
-                                            left: context.spacing.lg,
-                                            right: context.spacing.sm,
+                                            left: context.spacing.lg.w,
+                                            right: context.spacing.sm.w,
                                           ),
                                           child: SvgPicture.asset(
                                             Assets.images.icon.solarStarBold,
@@ -137,10 +138,10 @@ class _PopupCardState extends State<PopupCard> {
                                   ],
                                 ),
                                 SizedBox(
-                                  width: 40,
-                                  height: 40,
+                                  width: 40.w,
+                                  height: 40.h,
                                   child: CircleAvatar(
-                                    radius: 32,
+                                    radius: 32.r,
                                     backgroundColor:
                                         context.colorScheme.secondary,
                                     child: SvgPicture.asset(
@@ -177,8 +178,8 @@ class _PopupCardState extends State<PopupCard> {
 
                             Padding(
                               padding: EdgeInsets.only(
-                                left: context.spacing.xl,
-                                right: context.spacing.sm,
+                                left: context.spacing.xl.w,
+                                right: context.spacing.sm.w,
                               ),
                               child: HeaderCard(
                                 title: context.l10n.description,
@@ -188,7 +189,9 @@ class _PopupCardState extends State<PopupCard> {
                             ),
                             ReadMore(text: context.l10n.descriptionHotel),
                             Padding(
-                              padding: EdgeInsets.only(top: context.spacing.sm),
+                              padding: EdgeInsets.only(
+                                top: context.spacing.sm.h,
+                              ),
                               child: MapSection(title: context.l10n.location),
                             ),
                             HeaderCard(

@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
 import 'package:hotel_booking_app/data/repositories/api_response.dart';
-import 'package:hotel_booking_app/data/repositories/api_status.dart';
 import 'package:hotel_booking_app/data/services/auth_service.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/exceptions/app_exception.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/utils/helpers/local_storage_helper.dart';
 
 class AuthController extends ChangeNotifier {

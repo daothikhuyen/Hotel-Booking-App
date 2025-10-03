@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/header_card.dart';
 import 'package:hotel_booking_app/ui/features/request_booking/widgets/items/date_picker_item.dart';
 import 'package:intl/intl.dart';
@@ -75,8 +71,8 @@ class _DatePickerState extends State<DatePicker> {
               child: GestureDetector(
                 onTap: selectedDate,
                 child: Container(
-                  height: 94,
-                  padding: EdgeInsets.all(context.spacing.sm),
+                  height: 80.h,
+                  padding: EdgeInsets.all(context.spacing.sm.h),
                   margin: EdgeInsets.only(
                     left: context.spacing.xs,
                     right: context.spacing.sm,
@@ -98,7 +94,7 @@ class _DatePickerState extends State<DatePicker> {
                               BlendMode.srcIn,
                             ),
                           ),
-                          SizedBox(height: context.spacing.sm),
+                          SizedBox(width: context.spacing.sm.w),
                           Text(
                             context.l10n.checkIn,
                             style: HBTextStyles.bodyMediumMedium(
@@ -107,7 +103,7 @@ class _DatePickerState extends State<DatePicker> {
                           ),
                         ],
                       ),
-                      SizedBox(height: context.spacing.sm),
+                      SizedBox(height: context.spacing.sm.h),
                       Text(
                         formatStartDate ?? today.toString(),
                         style: HBTextStyles.bodyRegularMedium(
@@ -124,7 +120,7 @@ class _DatePickerState extends State<DatePicker> {
               child: GestureDetector(
                 onTap: selectedDate,
                 child: Container(
-                  height: 94,
+                  height: 80.h,
                   padding: EdgeInsets.all(context.spacing.sm),
                   margin: EdgeInsets.only(
                     right: context.spacing.xs,
@@ -146,7 +142,7 @@ class _DatePickerState extends State<DatePicker> {
                               BlendMode.srcIn,
                             ),
                           ),
-                          SizedBox(height: context.spacing.sm),
+                          SizedBox(width: context.spacing.sm.w),
                           Text(
                             context.l10n.checkOut,
                             style: HBTextStyles.bodyMediumMedium(
@@ -155,7 +151,7 @@ class _DatePickerState extends State<DatePicker> {
                           ),
                         ],
                       ),
-                      SizedBox(height: context.spacing.sm),
+                      SizedBox(height: context.spacing.sm.h),
                       Text(
                         formatEndDate ?? today.toString(),
                         style: HBTextStyles.bodyRegularMedium(

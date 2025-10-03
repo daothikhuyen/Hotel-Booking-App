@@ -1,11 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
-import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/primary_btn.dart';
-import 'package:hotel_booking_app/ui/features/home/view_model/hotel_controller.dart';
+import 'package:hotel_booking_app/ui/features/home/view_model/search_hotel_controller.dart';
 import 'package:hotel_booking_app/ui/features/profile/data/filter_data.dart';
 
 DropdownMenuItem<String> buildMenuItem(BuildContext context, String item) {
@@ -28,7 +23,10 @@ Map<String, int> extractBedBath(String item) {
   return {'bed': 0, 'bathroom': 0};
 }
 
-Future<dynamic> filterCard(BuildContext context, HotelController controller) {
+Future<dynamic> filterCard(
+  BuildContext context,
+  SearchHotelController controller,
+) {
   String? selectedValue;
   String? locationSelected;
   String? starSelected;
@@ -48,9 +46,9 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
           builder: (context, setState) {
             return Padding(
               padding: EdgeInsets.only(
-                left: context.spacing.lg,
-                top: context.spacing.xxl,
-                bottom: context.spacing.xl,
+                left: context.spacing.lg.w,
+                top: context.spacing.xxl.h,
+                bottom: context.spacing.xl.h,
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -73,9 +71,9 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                     ),
                     textAlign: TextAlign.start,
                   ),
-                  SizedBox(height: context.spacing.sm),
+                  SizedBox(height: context.spacing.sm.h),
                   Container(
-                    margin: EdgeInsets.only(right: context.spacing.lg),
+                    margin: EdgeInsets.only(right: context.spacing.lg.w),
                     padding: EdgeInsets.symmetric(
                       horizontal: context.spacing.md,
                       vertical: context.spacing.xs,
@@ -101,7 +99,7 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                       ),
                     ),
                   ),
-                 SizedBox(height: context.spacing.xl),
+                  SizedBox(height: context.spacing.xl.h),
                   Text(
                     context.l10n.titlePrice,
                     style: HBTextStyles.bodyMediumMedium(
@@ -109,7 +107,7 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                     ),
                     textAlign: TextAlign.start,
                   ),
-                  SizedBox(height: context.spacing.sm),
+                  SizedBox(height: context.spacing.sm.h),
                   Slider(
                     value: currentSliderValue,
                     max: 1000,
@@ -122,7 +120,7 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                       });
                     },
                   ),
-                 SizedBox(height: context.spacing.xl),
+                  SizedBox(height: context.spacing.xl),
                   Text(
                     context.l10n.location,
                     style: HBTextStyles.bodyMediumMedium(
@@ -130,9 +128,9 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                     ),
                     textAlign: TextAlign.start,
                   ),
-                 SizedBox(height: context.spacing.md),
+                  SizedBox(height: context.spacing.md.h),
                   SizedBox(
-                    height: 50,
+                    height: 43.h,
                     child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
@@ -149,7 +147,7 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                               });
                             },
                             bold: false,
-                            size: 42,
+                            size: 42.h,
                             isSelected: locationSelected == locationItem[index],
                           ),
                         );
@@ -168,7 +166,7 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                   SizedBox(
                     height: context.spacing.huge,
                     child: Padding(
-                      padding: EdgeInsets.only(right: context.spacing.lg),
+                      padding: EdgeInsets.only(right: context.spacing.lg.w),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children:
@@ -181,17 +179,17 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                                 },
                                 child: Container(
                                   margin: EdgeInsets.only(
-                                    left: context.spacing.sm,
+                                    left: context.spacing.sm.w,
                                   ),
-                                  width: 56,
-                                  height: 43,
+                                  width: 56.w,
+                                  height: 43.h,
                                   decoration: BoxDecoration(
                                     border: Border.all(
                                       color:
                                           starSelected == start
                                               ? context.colorScheme.primary
                                               : context.colorScheme.outline,
-                                      width: 1.01,
+                                      width: 1.01.w,
                                     ),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
@@ -200,10 +198,10 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                                     children: [
                                       SvgPicture.asset(
                                         Assets.images.icon.solarStarBold,
-                                        width: 18,
-                                        height: 18,
+                                        width: 18.w,
+                                        height: 18.w,
                                       ),
-                                      SizedBox(height: context.spacing.xs),
+                                      SizedBox(height: context.spacing.xs.h),
                                       Text(
                                         start,
                                         style: HBTextStyles.bodySemiboldMedium(
@@ -218,9 +216,9 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                       ),
                     ),
                   ),
-                  SizedBox(height: context.spacing.xl),
+                  SizedBox(height: context.spacing.xl.h),
                   Container(
-                    margin: EdgeInsets.only(right: context.spacing.lg),
+                    margin: EdgeInsets.only(right: context.spacing.lg.w),
                     child: SizedBox(
                       width: double.infinity,
                       child: PrimaryBtn(
@@ -240,7 +238,7 @@ Future<dynamic> filterCard(BuildContext context, HotelController controller) {
                               });
                         },
                         bold: false,
-                        size: 56,
+                        size: 46.h,
                         isSelected: true,
                       ),
                     ),

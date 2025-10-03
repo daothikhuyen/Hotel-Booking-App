@@ -1,11 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/data/model/category.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/skeleton.dart';
 import 'package:hotel_booking_app/ui/core/widgets/category/category_item.dart';
 import 'package:hotel_booking_app/ui/features/home/view_model/hotel_controller.dart';
 import 'package:hotel_booking_app/utils/translation_helper.dart';
-import 'package:provider/provider.dart';
 
 class CategoryList extends StatefulWidget {
   const CategoryList({
@@ -37,7 +35,7 @@ class _CategoryListState extends State<CategoryList> {
     final controller = context.read<HotelController>();
 
     return SizedBox(
-      height: 43,
+      height: 39.h,
       child:
           widget.listCategory.isNotEmpty
               ? ListView.builder(
@@ -71,7 +69,7 @@ class _CategoryListState extends State<CategoryList> {
                 itemBuilder: (context, index) {
                   return Container(
                     margin: EdgeInsets.only(right: context.spacing.sm),
-                    child: const Skeleton(width: 97, height: 43),
+                    child: Skeleton(width: 97.w, height: 43.h),
                   );
                 },
               ),

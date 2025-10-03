@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 
 class LoadingOverlay {
   void showLoading(BuildContext context) {

@@ -1,4 +1,4 @@
-import 'dart:ui';
+import 'package:hotel_booking_app/ui/core/core.dart';
 
 class AppColors {
 

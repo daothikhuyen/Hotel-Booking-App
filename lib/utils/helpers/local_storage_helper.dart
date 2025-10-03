@@ -1,6 +1,8 @@
 import 'dart:convert';
+
 import 'package:flutter/services.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/exceptions/app_exception.dart';
 import 'package:hotel_booking_app/ui/core/exceptions/error_type.dart';
 import 'package:shared_preferences/shared_preferences.dart';

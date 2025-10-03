@@ -1,19 +1,10 @@
-import 'dart:async';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hotel_booking_app/data/model/booking.dart';
-import 'package:hotel_booking_app/gen/assets.gen.dart';
-import 'package:hotel_booking_app/routing/page_routes.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
-import 'package:hotel_booking_app/ui/core/themes/theme.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/ui/core/widgets/textfield.dart';
 import 'package:hotel_booking_app/ui/features/my_booking/view_model/my_booking_controller.dart';
 import 'package:hotel_booking_app/ui/features/my_booking/widgets/sections/booked.dart';
 import 'package:hotel_booking_app/ui/features/my_booking/widgets/sections/history.dart';
-import 'package:provider/provider.dart';
 
 class MyBookingScreen extends StatefulWidget {
   const MyBookingScreen({Key? key})
@@ -76,24 +67,19 @@ class _MyBookingScreenState extends State<MyBookingScreen>
           return [
             SliverToBoxAdapter(
               child: Padding(
-                padding: EdgeInsets.only(
-                  top: context.spacing.xxl,
-                  left: context.spacing.xl,
-                  right: context.spacing.xl,
-                ),
+                padding: context.spacing.allLg,
                 child: Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(top: context.spacing.sm),
                       padding: EdgeInsets.symmetric(
-                        horizontal: context.spacing.lg,
+                        horizontal: context.spacing.md.h,
                       ),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          width: 1.3,
+                          width: 1.3.w,
                           color: context.colorScheme.outline,
                         ),
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(30.r),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -118,14 +104,13 @@ class _MyBookingScreenState extends State<MyBookingScreen>
                     if (search.text.isEmpty)
                       Container(
                         margin: EdgeInsets.only(
-                          top: context.spacing.xxl,
-                          bottom: context.spacing.lg,
+                          top: context.spacing.xl.h,
                         ),
                         padding: EdgeInsets.symmetric(
-                          vertical: context.spacing.xs,
-                          horizontal: context.spacing.xs,
+                          vertical: context.spacing.xs.h,
+                          horizontal: context.spacing.xs.w,
                         ),
-                        height: 55,
+                        height: 48.h,
                         decoration: BoxDecoration(
                           color: context.colorScheme.outline.withValues(
                             alpha: 0.25,
@@ -163,11 +148,7 @@ class _MyBookingScreenState extends State<MyBookingScreen>
           ];
         },
         body: Padding(
-          padding: EdgeInsets.only(
-            top: context.spacing.sm,
-            left: context.spacing.xl,
-            right: context.spacing.xl,
-          ),
+          padding: context.spacing.horizMd,
           child: TabBarView(
             controller: tabController,
             children: <Widget>[

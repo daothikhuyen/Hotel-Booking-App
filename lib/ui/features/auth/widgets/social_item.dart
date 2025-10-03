@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
+import 'package:hotel_booking_app/ui/core/core.dart';
 
 class SocialItem extends StatelessWidget {
   const SocialItem({
@@ -17,8 +15,8 @@ class SocialItem extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        width: 72,
-        height: 48,
+        width: 72.w,
+        height: 48.h,
         padding: EdgeInsets.all(context.spacing.md),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
