@@ -42,23 +42,29 @@ class MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     final controller = Provider.of<ProfileController>(context);
 
-    return MaterialApp.router(
-      title: 'Hotel Booking App',
-      routerConfig: goRouter,
-      debugShowCheckedModeBanner: false,
-      theme: lightMode,
-      darkTheme: darkMode,
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en'), // English
-        Locale('vi'), // vietnamese
-      ],
-      locale: controller.locale,
+    return ScreenUtilInit(
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp.router(
+          title: 'Hotel Booking App',
+          routerConfig: goRouter,
+          debugShowCheckedModeBanner: false,
+          theme: lightMode,
+          darkTheme: darkMode,
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('en'), // English
+            Locale('vi'), // vietnamese
+          ],
+          locale: controller.locale,
+        );
+      },
     );
   }
 }

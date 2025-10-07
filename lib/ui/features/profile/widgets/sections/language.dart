@@ -25,112 +25,115 @@ class _LanguageState extends State<Language> {
         color: context.colorScheme.onSurfaceVariant,
         onPressed: () => context.pop(),
       ),
-      body: Padding(
-        padding: EdgeInsets.only(
-          left: context.spacing.lg.w,
-          right: context.spacing.lg.w,
-          top: context.spacing.xl.h,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.all(context.spacing.lg),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 1.01.w,
-                  color: context.colorScheme.outline,
-                ),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    context.l10n.suggestedLanguages,
-                    style: HBTextStyles.bodySemiboldSmall(
-                      context.colorScheme.onTertiary,
-                    ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(
+            left: context.spacing.lg.w,
+            right: context.spacing.lg.w,
+            top: context.spacing.xl.h,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: double.infinity,
+                padding: EdgeInsets.all(context.spacing.lg),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 1.01.w,
+                    color: context.colorScheme.outline,
                   ),
-                  SizedBox(height: context.spacing.md),
-                  ...suggestedLanguages.asMap().entries.map((entry) {
-                    final index = entry.key;
-                    final lang = entry.value;
-                    return Column(
-                      children: [
-                        LanguageCard(
-                          isSelected: controller.selctedIndex == index,
-                          title: getTranslatedText(context, lang['name'] ?? ''),
-                          color: context.colorScheme.onSurfaceVariant,
-                          onPressed: () {
-                            controller
-                              ..setSelectedLanguage(index, lang['code'] ?? '')
-                              ..setLocale(Locale(lang['code'] ?? 'en'));
-                          },
-                        ),
-
-                        if (index < suggestedLanguages.length - 1)
-                          Container(
-                            margin: EdgeInsets.symmetric(
-                              vertical: context.spacing.lg,
-                            ),
-                            child: const BuildDivider(),
-                          ),
-                      ],
-                    );
-                  }),
-                ],
-              ),
-            ),
-            SizedBox(height: context.spacing.xxl.h),
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.all(context.spacing.lg),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 1.01.w,
-                  color: context.colorScheme.outline,
+                  borderRadius: BorderRadius.circular(12),
                 ),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    context.l10n.otherLanguages,
-                    style: HBTextStyles.bodySemiboldSmall(
-                      context.colorScheme.onTertiary,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      context.l10n.suggestedLanguages,
+                      style: HBTextStyles.bodySemiboldSmall(
+                        context.colorScheme.onTertiary,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: context.spacing.md.h),
-
-                  ...otherLanguages.asMap().entries.map((entry) {
-                    final index = entry.key;
-                    final lang = entry.value;
-                    return Column(
-                      children: [
-                        LanguageCard(
-                          isSelected: false,
-                          title: lang['name'] ?? '',
-                          onPressed: () {},
-                          color: context.colorScheme.onTertiary,
-                        ),
-
-                        if (index < otherLanguages.length - 1)
-                          Container(
-                            margin: EdgeInsets.symmetric(
-                              vertical: context.spacing.lg.h,
-                            ),
-                            child: const BuildDivider(),
+                    SizedBox(height: context.spacing.md),
+                    ...suggestedLanguages.asMap().entries.map((entry) {
+                      final index = entry.key;
+                      final lang = entry.value;
+                      return Column(
+                        children: [
+                          LanguageCard(
+                            isSelected: controller.selctedIndex == index,
+                            // ignore: lines_longer_than_80_chars
+                            title: getTranslatedText(context, lang['name'] ?? ''),
+                            color: context.colorScheme.onSurfaceVariant,
+                            onPressed: () {
+                              controller
+                                ..setSelectedLanguage(index, lang['code'] ?? '')
+                                ..setLocale(Locale(lang['code'] ?? 'en'));
+                            },
                           ),
-                      ],
-                    );
-                  }),
-                ],
+        
+                          if (index < suggestedLanguages.length - 1)
+                            Container(
+                              margin: EdgeInsets.symmetric(
+                                vertical: context.spacing.lg,
+                              ),
+                              child: const BuildDivider(),
+                            ),
+                        ],
+                      );
+                    }),
+                  ],
+                ),
               ),
-            ),
-          ],
+              SizedBox(height: context.spacing.xxl.h),
+              Container(
+                width: double.infinity,
+                padding: EdgeInsets.all(context.spacing.lg),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 1.01.w,
+                    color: context.colorScheme.outline,
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      context.l10n.otherLanguages,
+                      style: HBTextStyles.bodySemiboldSmall(
+                        context.colorScheme.onTertiary,
+                      ),
+                    ),
+                    SizedBox(height: context.spacing.md.h),
+        
+                    ...otherLanguages.asMap().entries.map((entry) {
+                      final index = entry.key;
+                      final lang = entry.value;
+                      return Column(
+                        children: [
+                          LanguageCard(
+                            isSelected: false,
+                            title: lang['name'] ?? '',
+                            onPressed: () {},
+                            color: context.colorScheme.onTertiary,
+                          ),
+        
+                          if (index < otherLanguages.length - 1)
+                            Container(
+                              margin: EdgeInsets.symmetric(
+                                vertical: context.spacing.lg.h,
+                              ),
+                              child: const BuildDivider(),
+                            ),
+                        ],
+                      );
+                    }),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
