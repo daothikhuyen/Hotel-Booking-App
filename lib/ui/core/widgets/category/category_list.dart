@@ -2,7 +2,7 @@ import 'package:hotel_booking_app/data/model/category.dart';
 import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/skeleton.dart';
 import 'package:hotel_booking_app/ui/core/widgets/category/category_item.dart';
-import 'package:hotel_booking_app/ui/features/home/view_model/hotel_controller.dart';
+import 'package:hotel_booking_app/ui/features/home/controller/hotel_controller.dart';
 import 'package:hotel_booking_app/utils/translation_helper.dart';
 
 class CategoryList extends StatefulWidget {

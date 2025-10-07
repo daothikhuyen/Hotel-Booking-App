@@ -4,7 +4,7 @@ import 'package:hotel_booking_app/ui/core/widgets/alter/page_alter_null.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/build_divider.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/recommended_card.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/vertical_skeleton_card.dart';
-import 'package:hotel_booking_app/ui/features/home/view_model/hotel_controller.dart';
+import 'package:hotel_booking_app/ui/features/home/controller/hotel_controller.dart';
 
 class SeeAllTab extends StatefulWidget {
   const SeeAllTab({required this.index, required this.controller, super.key});

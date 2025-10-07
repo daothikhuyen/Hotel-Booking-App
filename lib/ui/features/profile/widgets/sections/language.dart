@@ -1,8 +1,8 @@
 import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/build_divider.dart';
+import 'package:hotel_booking_app/ui/features/profile/controller/profile_controller.dart';
 import 'package:hotel_booking_app/ui/features/profile/data/languages_data.dart';
-import 'package:hotel_booking_app/ui/features/profile/view_model/profile_controller.dart';
 import 'package:hotel_booking_app/ui/features/profile/widgets/language_card.dart';
 import 'package:hotel_booking_app/utils/translation_helper.dart';
 
@@ -62,8 +62,10 @@ class _LanguageState extends State<Language> {
                         children: [
                           LanguageCard(
                             isSelected: controller.selctedIndex == index,
-                            // ignore: lines_longer_than_80_chars
-                            title: getTranslatedText(context, lang['name'] ?? ''),
+                            title: getTranslatedText(
+                              context,
+                              lang['name'] ?? '',
+                            ),
                             color: context.colorScheme.onSurfaceVariant,
                             onPressed: () {
                               controller
@@ -71,7 +73,7 @@ class _LanguageState extends State<Language> {
                                 ..setLocale(Locale(lang['code'] ?? 'en'));
                             },
                           ),
-        
+
                           if (index < suggestedLanguages.length - 1)
                             Container(
                               margin: EdgeInsets.symmetric(
@@ -106,7 +108,7 @@ class _LanguageState extends State<Language> {
                       ),
                     ),
                     SizedBox(height: context.spacing.md.h),
-        
+
                     ...otherLanguages.asMap().entries.map((entry) {
                       final index = entry.key;
                       final lang = entry.value;
@@ -118,7 +120,7 @@ class _LanguageState extends State<Language> {
                             onPressed: () {},
                             color: context.colorScheme.onTertiary,
                           ),
-        
+
                           if (index < otherLanguages.length - 1)
                             Container(
                               margin: EdgeInsets.symmetric(

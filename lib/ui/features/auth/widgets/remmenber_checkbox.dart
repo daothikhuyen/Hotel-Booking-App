@@ -1,26 +1,26 @@
 import 'package:hotel_booking_app/ui/core/core.dart';
 
-class CircularCheckbox extends StatefulWidget {
-  const CircularCheckbox({
+class RemmenberCheckbox extends StatefulWidget {
+  const RemmenberCheckbox({
     required this.size,
-    required this.isCheckbox,
+    required this.isTicked,
     super.key,
   });
 
   final double? size;
-  final bool isCheckbox;
+  final bool isTicked;
 
   @override
-  State<CircularCheckbox> createState() => _CircularCheckboxState();
+  State<RemmenberCheckbox> createState() => _RemmenberCheckboxState();
 }
 
-class _CircularCheckboxState extends State<CircularCheckbox> {
-  bool _isCheckbox = false;
+class _RemmenberCheckboxState extends State<RemmenberCheckbox> {
+  bool _isTicked = false;
 
   @override
   void initState() {
     super.initState();
-    _isCheckbox = widget.isCheckbox;
+    _isTicked = widget.isTicked;
   }
 
   @override
@@ -28,11 +28,11 @@ class _CircularCheckboxState extends State<CircularCheckbox> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          _isCheckbox = !_isCheckbox;
+          _isTicked = !_isTicked;
         });
       },
       child:
-          _isCheckbox
+          _isTicked
               ? Icon(
                 Icons.check_circle,
                 size: widget.size ?? 25.h,

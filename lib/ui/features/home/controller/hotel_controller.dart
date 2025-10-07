@@ -110,6 +110,8 @@ class HotelController extends ChangeNotifier {
     }
   }
 
+//break is not necessary 
+//because Dart's switch syntax (from Dart 3 onwards) has changed
   void reset(int index) {
     switch (index) {
       case 0:

@@ -34,8 +34,8 @@ class HBUser {
       'uid': uid,
       'email': email,
       'displayName': displayName,
-      'numberPhone': numberPhone ?? '0',
-      'location': location ?? 'San Diego, CA',
+      'numberPhone': numberPhone ?? '',
+      'location': location ?? '',
       'photoURL': photoURL ?? '',
     };
   }

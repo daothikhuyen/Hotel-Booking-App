@@ -1,5 +1,5 @@
 import 'package:hotel_booking_app/ui/core/core.dart';
-import 'package:hotel_booking_app/ui/features/home/view_model/navigation_controller.dart';
+import 'package:hotel_booking_app/ui/features/home/controller/navigation_controller.dart';
 import 'package:hotel_booking_app/ui/features/layout/bottom_nav_bar.dart';
 import 'package:hotel_booking_app/ui/features/layout/side_nav_rail.dart';
 

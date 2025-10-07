@@ -2,8 +2,8 @@ import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/alter/dialog.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/second_btn.dart';
-import 'package:hotel_booking_app/ui/features/auth/view_model/auth_controller.dart';
-import 'package:hotel_booking_app/ui/features/profile/view_model/profile_controller.dart';
+import 'package:hotel_booking_app/ui/features/auth/controller/auth_controller.dart';
+import 'package:hotel_booking_app/ui/features/profile/controller/profile_controller.dart';
 import 'package:hotel_booking_app/ui/features/profile/widgets/setting_section.dart';
 
 class ProfileScreen extends StatelessWidget {

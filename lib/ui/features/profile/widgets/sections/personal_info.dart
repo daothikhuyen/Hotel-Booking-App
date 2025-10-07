@@ -4,7 +4,7 @@ import 'package:hotel_booking_app/ui/core/widgets/alter/snack_bar.dart';
 import 'package:hotel_booking_app/ui/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/ui/core/widgets/textfield.dart';
-import 'package:hotel_booking_app/ui/features/auth/view_model/auth_controller.dart';
+import 'package:hotel_booking_app/ui/features/auth/controller/auth_controller.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 class PersonalInfo extends StatefulWidget {

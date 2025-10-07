@@ -3,8 +3,8 @@ import 'package:hotel_booking_app/ui/core/widgets/alter/loading_overlay.dart';
 import 'package:hotel_booking_app/ui/core/widgets/alter/snack_bar.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/ui/core/widgets/textfield.dart';
-import 'package:hotel_booking_app/ui/features/auth/view_model/auth_controller.dart';
-import 'package:hotel_booking_app/ui/features/auth/widgets/circular_checkbox.dart';
+import 'package:hotel_booking_app/ui/features/auth/controller/auth_controller.dart';
+import 'package:hotel_booking_app/ui/features/auth/widgets/remmenber_checkbox.dart';
 import 'package:hotel_booking_app/ui/features/auth/widgets/social_section.dart';
 
 class SignIn extends StatefulWidget {
@@ -22,7 +22,7 @@ class _SignInState extends State<SignIn> {
   final _password = TextEditingController();
   final ValueNotifier<bool> isFormValid = ValueNotifier(false);
 
-  bool isCheckbox = false;
+  bool isTicked = false;
   bool isSubmitted = false;
   bool _obscureText = true;
   String? error;
@@ -118,7 +118,7 @@ class _SignInState extends State<SignIn> {
                   },
                 ),
                 FormField<bool>(
-                  initialValue: isCheckbox,
+                  initialValue: isTicked,
                   validator: (value) {
                     return null;
                     // TODOS: will do in the future
@@ -131,10 +131,7 @@ class _SignInState extends State<SignIn> {
                         children: [
                           Row(
                             children: [
-                              CircularCheckbox(
-                                size: 28.r,
-                                isCheckbox: false,
-                              ),
+                              RemmenberCheckbox(size: 28.r, isTicked: false),
                               SizedBox(width: context.spacing.sm.w),
                               Text(
                                 context.l10n.checkbox,
@@ -225,7 +222,7 @@ class _SignInState extends State<SignIn> {
                     ],
                   ),
                 ),
-                DividerWithText(text: context.l10n.orSignIn,),
+                DividerWithText(text: context.l10n.orSignIn),
                 SocailSection(error: error),
                 SizedBox(height: context.spacing.xl),
                 Center(

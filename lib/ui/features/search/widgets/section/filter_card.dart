@@ -1,6 +1,6 @@
 import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/primary_btn.dart';
-import 'package:hotel_booking_app/ui/features/home/view_model/search_hotel_controller.dart';
+import 'package:hotel_booking_app/ui/features/home/controller/search_hotel_controller.dart';
 import 'package:hotel_booking_app/ui/features/profile/data/filter_data.dart';
 
 DropdownMenuItem<String> buildMenuItem(BuildContext context, String item) {

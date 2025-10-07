@@ -1,6 +1,6 @@
 import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/primary_btn.dart';
-import 'package:hotel_booking_app/ui/features/home/view_model/hotel_controller.dart';
+import 'package:hotel_booking_app/ui/features/home/controller/hotel_controller.dart';
 
 class HeaderBar extends StatelessWidget {
   const HeaderBar({

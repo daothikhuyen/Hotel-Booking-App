@@ -4,8 +4,8 @@ import 'package:hotel_booking_app/ui/core/widgets/alter/snack_bar.dart';
 import 'package:hotel_booking_app/ui/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/primary_btn.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/recommended_card.dart';
-import 'package:hotel_booking_app/ui/features/my_booking/view_model/my_booking_controller.dart';
-import 'package:hotel_booking_app/ui/features/request_booking/view_model/booking_controller.dart';
+import 'package:hotel_booking_app/ui/features/my_booking/controller/my_booking_controller.dart';
+import 'package:hotel_booking_app/ui/features/request_booking/controller/booking_controller.dart';
 import 'package:hotel_booking_app/ui/features/request_booking/widgets/checkout/info_hotel_booking.dart';
 import 'package:hotel_booking_app/ui/features/request_booking/widgets/checkout/promo_card.dart';
 

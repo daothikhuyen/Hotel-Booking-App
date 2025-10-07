@@ -1,7 +1,7 @@
 import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/alter/loading_overlay.dart';
 import 'package:hotel_booking_app/ui/core/widgets/alter/snack_bar.dart';
-import 'package:hotel_booking_app/ui/features/auth/view_model/auth_controller.dart';
+import 'package:hotel_booking_app/ui/features/auth/controller/auth_controller.dart';
 import 'package:hotel_booking_app/ui/features/auth/widgets/social_item.dart';
 
 class SocailSection extends StatefulWidget {

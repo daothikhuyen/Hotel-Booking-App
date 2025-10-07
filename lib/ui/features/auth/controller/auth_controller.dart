@@ -8,13 +8,17 @@ import 'package:hotel_booking_app/utils/helpers/local_storage_helper.dart';
 class AuthController extends ChangeNotifier {
   final AuthService authService = AuthService();
   HBUser? _currentUser;
-
   HBUser? get currentUser => _currentUser;
-  bool _isSignIn = false;
+
   bool get isSignIn => _isSignIn;
+  bool isLoading = false;
+  bool _isSignIn = false;
+  String? message;
 
   void setUser(HBUser user) {
     _currentUser = user;
+    _isSignIn = true;
+    isLoading = false;
     notifyListeners();
   }
 
@@ -39,17 +43,21 @@ class AuthController extends ChangeNotifier {
     required GlobalKey<FormState> formKey,
   }) async {
     try {
-      if (formKey.currentState!.validate()) {
+      if (formKey.currentState?.validate()??false) {
+        isLoading = true;
+        notifyListeners();
         final user = await AuthService().signInUser(context, email, password);
-        return ApiResponse(
-          ApiStatus.success,
-          message: context.l10n.signInSucess,
-          data: user,
-        );
+        if (user != null) {
+          setUser(user);
+        }
       }
-      return ApiResponse(ApiStatus.error);
+      return  ApiResponse(ApiStatus.error); 
     } on AppException catch (e) {
+      message = e.message;
+      notifyListeners();
       return ApiResponse(ApiStatus.error, message: e.message);
+    } finally {
+      Navigator.pop(context);
     }
   }
 

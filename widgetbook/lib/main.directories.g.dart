@@ -45,7 +45,7 @@ import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/list/lis
     as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_list_list_vertical;
 import 'package:widgetbook_hotel_booking_app/hotel_booking/core/widgets/text_field.dart'
     as _widgetbook_hotel_booking_app_hotel_booking_core_widgets_text_field;
-import 'package:widgetbook_hotel_booking_app/hotel_booking/features/auth/widgets/circular_checkbox.dart'
+import 'package:widgetbook_hotel_booking_app/hotel_booking/features/auth/widgets/remmenber_checkbox.dart'
     as _widgetbook_hotel_booking_app_hotel_booking_features_auth_widgets_circular_checkbox;
 import 'package:widgetbook_hotel_booking_app/hotel_booking/features/auth/widgets/social_item.dart'
     as _widgetbook_hotel_booking_app_hotel_booking_features_auth_widgets_social_item;

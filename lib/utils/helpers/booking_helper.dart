@@ -1,7 +1,7 @@
 import 'package:hotel_booking_app/data/model/booking.dart';
 import 'package:hotel_booking_app/data/model/hotel.dart';
 import 'package:hotel_booking_app/data/model/user.dart';
-import 'package:hotel_booking_app/ui/features/auth/view_model/auth_controller.dart';
+import 'package:hotel_booking_app/ui/features/auth/controller/auth_controller.dart';
 
 double calculatorNightlyRate(double priceHotel, int numberNight) {
   return priceHotel * numberNight;

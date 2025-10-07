@@ -3,8 +3,8 @@ import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/alter/page_alter_null.dart';
 import 'package:hotel_booking_app/ui/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/ui/core/widgets/textfield.dart';
-import 'package:hotel_booking_app/ui/features/home/view_model/hotel_controller.dart';
-import 'package:hotel_booking_app/ui/features/home/view_model/search_hotel_controller.dart';
+import 'package:hotel_booking_app/ui/features/home/controller/hotel_controller.dart';
+import 'package:hotel_booking_app/ui/features/home/controller/search_hotel_controller.dart';
 import 'package:hotel_booking_app/ui/features/search/widgets/hotel_search_card.dart';
 import 'package:hotel_booking_app/ui/features/search/widgets/section/filter_card.dart';
 

@@ -4,8 +4,8 @@ import 'package:hotel_booking_app/firebase_options.dart';
 import 'package:hotel_booking_app/l10n/app_localizations.dart';
 import 'package:hotel_booking_app/routing/app_routes.dart';
 import 'package:hotel_booking_app/ui/core/core.dart';
-import 'package:hotel_booking_app/ui/features/auth/view_model/auth_controller.dart';
-import 'package:hotel_booking_app/ui/features/profile/view_model/profile_controller.dart';
+import 'package:hotel_booking_app/ui/features/auth/controller/auth_controller.dart';
+import 'package:hotel_booking_app/ui/features/profile/controller/profile_controller.dart';
 import 'package:hotel_booking_app/utils/helpers/local_storage_helper.dart';
 
 void main() async {

@@ -3,7 +3,7 @@ import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/alter/dialog.dart';
 import 'package:hotel_booking_app/ui/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/ui/core/widgets/buttons/primary_btn.dart';
-import 'package:hotel_booking_app/ui/features/auth/view_model/auth_controller.dart';
+import 'package:hotel_booking_app/ui/features/auth/controller/auth_controller.dart';
 import 'package:hotel_booking_app/ui/features/request_booking/widgets/request/counter_card.dart';
 import 'package:hotel_booking_app/ui/features/request_booking/widgets/request/date_picker.dart';
 import 'package:hotel_booking_app/ui/features/request_booking/widgets/request/pay_with.dart';

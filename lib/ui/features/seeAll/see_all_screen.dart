@@ -1,6 +1,6 @@
 import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/app_bar.dart';
-import 'package:hotel_booking_app/ui/features/home/view_model/hotel_controller.dart';
+import 'package:hotel_booking_app/ui/features/home/controller/hotel_controller.dart';
 import 'package:hotel_booking_app/ui/features/seeAll/see_all_tab.dart';
 
 class SeeAllScreen extends StatefulWidget {

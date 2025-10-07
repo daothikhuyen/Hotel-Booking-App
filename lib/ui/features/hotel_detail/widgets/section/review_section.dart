@@ -5,7 +5,7 @@ import 'package:hotel_booking_app/gen/assets.gen.dart';
 import 'package:hotel_booking_app/ui/core/extensions/theme_context_extention.dart';
 import 'package:hotel_booking_app/ui/core/themes/theme.dart';
 import 'package:hotel_booking_app/ui/core/widgets/alter/snack_bar.dart';
-import 'package:hotel_booking_app/ui/features/hotel_detail/view_model/hotel_detail_controller.dart';
+import 'package:hotel_booking_app/ui/features/hotel_detail/controller/hotel_detail_controller.dart';
 import 'package:hotel_booking_app/ui/features/hotel_detail/widgets/review_card.dart';
 import 'package:provider/provider.dart';
 

@@ -8,7 +8,7 @@ import 'package:hotel_booking_app/ui/core/themes/theme.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/header_card.dart';
 import 'package:hotel_booking_app/ui/core/widgets/cards/skeleton.dart';
 import 'package:hotel_booking_app/ui/core/widgets/list/list_horizontal.dart';
-import 'package:hotel_booking_app/ui/features/home/view_model/hotel_controller.dart';
+import 'package:hotel_booking_app/ui/features/home/controller/hotel_controller.dart';
 import 'package:hotel_booking_app/ui/features/home/widgets/map_section.dart';
 import 'package:hotel_booking_app/ui/features/hotel_detail/data/facilities.dart';
 import 'package:hotel_booking_app/ui/features/hotel_detail/widgets/facilities_card.dart';

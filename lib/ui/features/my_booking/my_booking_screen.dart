@@ -2,7 +2,7 @@ import 'package:hotel_booking_app/data/model/booking.dart';
 import 'package:hotel_booking_app/ui/core/core.dart';
 import 'package:hotel_booking_app/ui/core/widgets/app_bar.dart';
 import 'package:hotel_booking_app/ui/core/widgets/textfield.dart';
-import 'package:hotel_booking_app/ui/features/my_booking/view_model/my_booking_controller.dart';
+import 'package:hotel_booking_app/ui/features/my_booking/controller/my_booking_controller.dart';
 import 'package:hotel_booking_app/ui/features/my_booking/widgets/sections/booked.dart';
 import 'package:hotel_booking_app/ui/features/my_booking/widgets/sections/history.dart';
 

@@ -115,7 +115,7 @@ class AuthService {
             context: context,
             id: snapshot.user?.uid ?? '',
             email: snapshot.user?.email ?? '',
-            location: 'San Francico',
+            location: '',
           );
         }
       }
